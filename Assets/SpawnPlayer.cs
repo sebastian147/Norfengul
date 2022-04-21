@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Cinemachine;
 
 public class SpawnPlayer : MonoBehaviour
 {
     public GameObject playerPrefab;
-
+    public CinemachineVirtualCamera cam;
 
     public float minX;
     public float minY;
     public float maxX;
     public float maxY;
 
-    private void Start() {
+    void Start() 
+    {
         Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
-
+        var player = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        cam.LookAt = player.transform;
+        cam.Follow = player.transform;
     }
 }

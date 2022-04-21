@@ -25,4 +25,10 @@ public class playerMovement : mob
             }
         }
     }
+    public override void FixedUpdate() {
+        if(view.IsMine)
+        {
+            base.FixedUpdate();
+        }
+    }
 }

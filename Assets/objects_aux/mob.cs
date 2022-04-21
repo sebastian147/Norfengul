@@ -67,7 +67,7 @@ public class mob : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         
     }
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         bool wasGrounded = m_Grounded;
 		m_Grounded = false;
