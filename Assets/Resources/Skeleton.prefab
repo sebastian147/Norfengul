@@ -245,6 +245,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 7304863293011540598}
+  - {fileID: 7337804939442262138}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -267,7 +268,7 @@ MonoBehaviour:
     InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 2
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -296,7 +297,9 @@ MonoBehaviour:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &1516031830435777113
 GameObject:
   m_ObjectHideFlags: 0
