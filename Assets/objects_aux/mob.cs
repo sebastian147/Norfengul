@@ -13,8 +13,11 @@ public class mob : MonoBehaviour
 
     float horizontalMove = 0f;
     public float runSpeed = 40f;
-
+	public int amountOfJumps = 1;
+	int jumpdones = 0;
+	int jumpsends = 0;
     private bool jumping = false;//boorame?
+	private bool flag = false;
 
     [Header("test")]
 
@@ -71,25 +74,23 @@ public class mob : MonoBehaviour
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        if(jumping == true)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
+            if (colliders[i].gameObject != gameObject)
             {
-                if (colliders[i].gameObject != gameObject)
+                m_Grounded = true;
+                if (!wasGrounded)
                 {
-                    m_Grounded = true;
-                    if (wasGrounded)
-                    {
-                        jumping = false;
-                        animator.SetBool("isJumping", false);
-                    }
+                    jumping = false;
+                    animator.SetBool("isJumping", false);
+					jumpsends = 0;
+					jumpdones = 0;
                 }
             }
-        }
+          }
         //move or character
-        Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-        jump = false;
+        Move(horizontalMove * Time.fixedDeltaTime, false, jumping);
     }
 
 
@@ -97,9 +98,18 @@ public class mob : MonoBehaviour
     //funcion para actualizar controlador salto
     protected void Jump()
     {
-        jumping = true;
-        jump = true;
-        animator.SetBool("isJumping", true);
+		if(jumpsends<amountOfJumps)
+		{
+			jumpsends++;
+			jumping = true;
+		}
+		if(jumpsends == 1 && !m_Grounded)
+		{
+			jumpsends = 0;
+			jumping = false;
+		}
+		animator.SetBool("isJumping", jumping);
+		Debug.Log(jumpsends);
     }
     //funcion para attacar mele
     protected void Attack()
@@ -190,8 +200,9 @@ public class mob : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
+		if (jumpdones < jumpsends && jumping == true)
 		{
+			jumpdones ++;
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));

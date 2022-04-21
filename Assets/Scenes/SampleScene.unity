@@ -355,7 +355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.816525, y: 1.165, z: -10}
+  m_LocalPosition: {x: -3.8155625, y: 1.165, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -441,7 +441,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0975387, y: 1}
+    m_SensorSize: {x: 2.2200773, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -465,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890342088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.816525, y: 1.165, z: -10}
+  m_LocalPosition: {x: -3.8155625, y: 1.165, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -664,6 +664,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   runSpeed: 20
+  amountOfJumps: 12
   m_JumpForce: 400
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
