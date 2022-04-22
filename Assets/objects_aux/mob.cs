@@ -42,7 +42,8 @@ public class mob : MonoBehaviour
     public LayerMask enemyLayers;
     public LayerMask playerLayers;
 	protected float attackRate = 2f;
-	protected float nextAttackTime = 0f; 
+	protected float nextAttackTime = 0f;
+	[SerializeField] private Collider2D HitBoxColliders;
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
@@ -89,7 +90,7 @@ public class mob : MonoBehaviour
 					jumpdones = 0;
                 }
             }
-          }
+        }
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false, jumping);
     }
@@ -117,13 +118,17 @@ public class mob : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
+		//attack players
 		if(friendlyFire)
 		{
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
 			//damage them
-			foreach (Collider2D player in hitPlayer)
+			for (int i = 0; i < hitPlayer.Length; i++)
 			{
-				player.GetComponent<playerMovement>().TakeDamage(attackDamage);
+				if (hitPlayer[i].gameObject != gameObject)
+				{
+					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
+				}
 			}
 		}
     }
