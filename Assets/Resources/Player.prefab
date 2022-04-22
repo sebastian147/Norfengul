@@ -220,11 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7589445820547012836}
-  attackPoint: {fileID: 7589445821012008566}
-  attackRange: 0.2
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 1024
   runSpeed: 20
   amountOfJumps: 2
   m_JumpForce: 400
@@ -239,6 +234,15 @@ MonoBehaviour:
   m_CrouchDisableCollider: {fileID: 0}
   maxHealth: 100
   attackDamage: 40
+  friendlyFire: 1
+  attackPoint: {fileID: 7589445821012008566}
+  attackRange: 0.2
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 512
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
