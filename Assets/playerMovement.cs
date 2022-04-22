@@ -5,10 +5,10 @@ using Photon.Pun;
 
 public class playerMovement : mob
 {
-    PhotonView view;
-    public override void Start() {
+    //PhotonView view;
+    /*public override void Start() {
         view = GetComponent<PhotonView>();
-    }
+    }*/
     public override void Update()
     {
         if(view.IsMine)

@@ -21,4 +21,15 @@ public class SpawnPlayer : MonoBehaviour
         cam.LookAt = player.transform;
         cam.Follow = player.transform;
     }
+    /*public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if(player == otherPlayer)
+        {
+            Destroy(gameObject);
+        }
+    }
+    public override void OnLeftRoom()
+    {
+        Destroy(gameObject);
+    }*/
 }

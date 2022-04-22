@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 public class mob : MonoBehaviour
 {
@@ -51,6 +52,9 @@ public class mob : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	protected PhotonView view;
+
+
     private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -61,6 +65,7 @@ public class mob : MonoBehaviour
 	}
     public virtual void Start()
     {
+		view = GetComponent<PhotonView>();
     }
     // Update is called once per frame
     public virtual void Update()
@@ -96,15 +101,22 @@ public class mob : MonoBehaviour
     }
 
 
-
+	[PunRPC]
 	public void TakeDamage(int damage)
 	{
-		currentHealth -= damage;
+		view.RPC("RPC_TakeDamage", RpcTarget.All, damage);//nombre funcion, a quien se lo paso, valor
+	}
+	void RPC_TakeDamage(int damage)
+	{
+		if(!view.IsMine)//solo funciona en la compu del otro
+			return;
+		Debug.Log(" diee");
+		/*currentHealth -= damage;
 		//animacion de lastimado
 		if(currentHealth <= 0)
 		{
 			Die();
-		}
+		}*/
 	}
     //funcion para attacar mele
     protected virtual void Attack()
