@@ -237,6 +237,8 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 7589445820774910812}
   m_CeilingCheck: {fileID: 7589445819373386797}
   m_CrouchDisableCollider: {fileID: 0}
+  maxHealth: 100
+  attackDamage: 40
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -7,17 +7,13 @@ public class mob : MonoBehaviour
 {
     public Animator animator;
     protected bool jump = false; //verify
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
 
     float horizontalMove = 0f;
     public float runSpeed = 40f;
 	public int amountOfJumps = 1;
-	int jumpdones = 0;
-	int jumpsends = 0;
+	private int jumpdones = 0;
+	private int jumpsends = 0;
     private bool jumping = false;//boorame?
-	private bool flag = false;
 
     [Header("test")]
 
@@ -37,10 +33,16 @@ public class mob : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
-
-
-
-
+	public int maxHealth = 100;
+	private int currentHealth = 0;
+	public int attackDamage = 10;
+	public bool friendlyFire = false;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public LayerMask playerLayers;
+	protected float attackRate = 2f;
+	protected float nextAttackTime = 0f; 
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
@@ -51,14 +53,13 @@ public class mob : MonoBehaviour
     private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
+        currentHealth = maxHealth;
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
 	}
-    void Start()
+    public virtual void Start()
     {
-        
     }
     // Update is called once per frame
     public virtual void Update()
@@ -95,7 +96,54 @@ public class mob : MonoBehaviour
 
 
 
-    //funcion para actualizar controlador salto
+	public void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+		//animacion de lastimado
+		if(currentHealth <= 0)
+		{
+			Die();
+		}
+	}
+    //funcion para attacar mele
+    protected virtual void Attack()
+    {
+        //update animation
+        animator.SetTrigger("Attack");
+        //detect enemis
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //damage them
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+		if(friendlyFire)
+		{
+			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+			//damage them
+			foreach (Collider2D player in hitPlayer)
+			{
+				player.GetComponent<playerMovement>().TakeDamage(attackDamage);
+			}
+		}
+    }
+    protected void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+            return;
+
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    protected void Die()
+    {
+		animator.SetBool("IsDead", true);
+		GetComponent<Collider2D>().enabled = false;
+		this.enabled = false;
+    }
+	
+	
+	//funcion para actualizar controlador salto
     protected void Jump()
     {
 		if(jumpsends<amountOfJumps)
@@ -109,33 +157,6 @@ public class mob : MonoBehaviour
 			jumping = false;
 		}
 		animator.SetBool("isJumping", jumping);
-		Debug.Log(jumpsends);
-    }
-    //funcion para attacar mele
-    protected void Attack()
-    {
-        //update animation
-        animator.SetTrigger("Attack");
-        //detect enemis
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        //damage them
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            Debug.Log("hit");
-        }
-    }
-    protected void OnDrawGizmosSelected()
-    {
-        if(attackPoint == null)
-            return;
-
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
-    protected void Die()
-    {
-        //die animation
-        //disable mob
     }
     public void Move(float move, bool crouch, bool jump)
 	{

@@ -6,7 +6,7 @@ using Photon.Pun;
 public class playerMovement : mob
 {
     PhotonView view;
-    public void Start() {
+    public override void Start() {
         view = GetComponent<PhotonView>();
     }
     public override void Update()
@@ -21,7 +21,11 @@ public class playerMovement : mob
             }
             if(Input.GetMouseButtonDown(0))
             {
-                Attack();
+                if(Time.time >= nextAttackTime)
+                {
+                    Attack();
+                    nextAttackTime = Time.time + 1f/attackRate;
+                }
             }
         }
     }
