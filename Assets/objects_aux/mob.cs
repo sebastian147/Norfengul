@@ -144,7 +144,7 @@ public class mob : MonoBehaviour
     {
 		animator.SetBool("IsDead", true);
 		GetComponent<Collider2D>().enabled = false;
-		this.enable = false;
+		this.enabled = false;
     }
 	
 	
