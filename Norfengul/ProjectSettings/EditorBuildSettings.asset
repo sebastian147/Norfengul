@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: ca34f19393de35a43bc842640356cfb7
   - enabled: 1
+    path: Assets/Scenes/Esenario de Prueba.unity
+    guid: 836251e5626c31b45be496ab221728ac
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 7173939065bd8dd48a96f0918771c9ed
   m_configObjects: {}
