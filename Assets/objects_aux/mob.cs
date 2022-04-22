@@ -125,7 +125,7 @@ public class mob : MonoBehaviour
 			//damage them
 			for (int i = 0; i < hitPlayer.Length; i++)
 			{
-				if (hitPlayer[i].gameObject != gameObject)
+				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())
 				{
 					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
 				}
@@ -144,7 +144,7 @@ public class mob : MonoBehaviour
     {
 		animator.SetBool("IsDead", true);
 		GetComponent<Collider2D>().enabled = false;
-		this.enabled = false;
+		this.enable = false;
     }
 	
 	
