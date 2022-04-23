@@ -101,23 +101,11 @@ public class mob : MonoBehaviour
     }
 
 
-	[PunRPC]
 	public void TakeDamage(int damage)
 	{
-		view.RPC("RPC_TakeDamage", RpcTarget.All, damage);//nombre funcion, a quien se lo paso, valor
+		view.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
 	}
-	void RPC_TakeDamage(int damage)
-	{
-		if(!view.IsMine)//solo funciona en la compu del otro
-			return;
-		Debug.Log(" diee");
-		/*currentHealth -= damage;
-		//animacion de lastimado
-		if(currentHealth <= 0)
-		{
-			Die();
-		}*/
-	}
+
     //funcion para attacar mele
     protected virtual void Attack()
     {
@@ -155,8 +143,9 @@ public class mob : MonoBehaviour
     protected void Die()
     {
 		animator.SetBool("IsDead", true);
-		GetComponent<Collider2D>().enabled = false;
-		this.enabled = false;
+		Collider2D _col = GetComponent<Collider2D>();
+		_col.enabled = false;
+ 		this.enabled = false;
     }
 	
 	
@@ -257,5 +246,18 @@ public class mob : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+	[PunRPC]
+	protected void RPC_TakeDamage(int damage)
+	{
+		if(!view.IsMine)//solo funciona en la compu del otro
+			return;
+		Debug.Log(" diee");
+		currentHealth -= damage;
+		//animacion de lastimado
+		if(currentHealth <= 0)
+		{
+			Die();
+		}
 	}
 }
