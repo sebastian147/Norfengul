@@ -103,7 +103,8 @@ public class mob : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
-		view.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
+		RPC_TakeDamage(damage, true);
+		view.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage, false);//nombre funcion, a quien se lo paso, valor
 	}
 
     //funcion para attacar mele
@@ -143,8 +144,10 @@ public class mob : MonoBehaviour
     protected void Die()
     {
 		animator.SetBool("IsDead", true);
-		Collider2D _col = GetComponent<Collider2D>();
-		_col.enabled = false;
+		gameObject.GetComponent<Dissolve>().Active();
+		GetComponent<BoxCollider2D>().enabled = false;
+		GetComponent<CircleCollider2D>().enabled = false;
+		m_Rigidbody2D.isKinematic = true;
  		this.enabled = false;
     }
 	
@@ -248,9 +251,9 @@ public class mob : MonoBehaviour
 		transform.localScale = theScale;
 	}
 	[PunRPC]
-	protected void RPC_TakeDamage(int damage)
+	protected void RPC_TakeDamage(int damage, bool updateClient)
 	{
-		if(!view.IsMine)//solo funciona en la compu del otro
+		if(!view.IsMine && !updateClient)//solo funciona en la compu del otro//rev update
 			return;
 		Debug.Log(" diee");
 		currentHealth -= damage;
