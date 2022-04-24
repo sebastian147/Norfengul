@@ -16,7 +16,7 @@ TagManager:
   - Land
   - Player
   - enemy
-  - 
+  - velocity
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Front
+    uniqueID: 816576003
     locked: 0
