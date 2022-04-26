@@ -5,11 +5,11 @@ using Photon.Pun;
 
 public class playerMovement : mob
 {
-    public override void Awake() {
-        base.Awake();
-    }
+
     public override void Update()
     {
+        if(!Pv.IsMine)
+            return;
         base.Update();
 
         if(Input.GetButtonDown("Jump"))
@@ -27,6 +27,8 @@ public class playerMovement : mob
     }
     public override void FixedUpdate() 
     {
+        if(!Pv.IsMine)
+            return;
         base.FixedUpdate();
     }
 }

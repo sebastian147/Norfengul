@@ -38,8 +38,13 @@ public class PlayerManager : MonoBehaviour
     }
     public void Die()
     {
+        StartCoroutine(WaitForPlay(2.0f));
+    }
+
+    IEnumerator WaitForPlay(float waitTime) 
+    { 
+        yield return new WaitForSeconds(waitTime);
         PhotonNetwork.Destroy(player);
         CreateController();
     }
-
 }

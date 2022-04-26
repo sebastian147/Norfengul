@@ -52,7 +52,7 @@ public class mob : MonoBehaviourPunCallbacks
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
-	private PhotonView Pv;
+	protected PhotonView Pv;
 	PlayerManager playerManager;
 
     public virtual void Awake()
@@ -69,15 +69,11 @@ public class mob : MonoBehaviourPunCallbacks
     // Update is called once per frame
     public virtual void Update()
     {
-		if(!Pv.IsMine)
-			return;
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
     public virtual void FixedUpdate()
     {
-		if(!Pv.IsMine)
-			return;
         bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
@@ -105,7 +101,7 @@ public class mob : MonoBehaviourPunCallbacks
 
 	public void TakeDamage(int damage)
 	{
-		Pv.RPC("RPC_TakeDamage", RpcTarget.All, damage);//nombre funcion, a quien se lo paso, valor
+		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
 	}
 
     //funcion para attacar mele
@@ -123,13 +119,16 @@ public class mob : MonoBehaviourPunCallbacks
 		//attack players
 		if(friendlyFire)
 		{
+			Debug.Log(gameObject.GetInstanceID());
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
 			//damage them
 			for (int i = 0; i < hitPlayer.Length; i++)
 			{
-				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())
+				Debug.Log(hitPlayer[i].gameObject.GetInstanceID());
+				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())//rev
 				{
 					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
+					Debug.Log("hit");
 				}
 			}
 		}
@@ -139,8 +138,8 @@ public class mob : MonoBehaviourPunCallbacks
         if(attackPoint == null)
             return;
 
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
     protected void Die()
     {
@@ -149,8 +148,9 @@ public class mob : MonoBehaviourPunCallbacks
 		GetComponent<BoxCollider2D>().enabled = false;
 		GetComponent<CircleCollider2D>().enabled = false;
 		m_Rigidbody2D.isKinematic = true;
- 		this.enabled = false;
-		playerManager.Die();
+		//this.enabled = false;
+		if(Pv.IsMine)
+			playerManager.Die();
     }
 	
 	
@@ -255,8 +255,6 @@ public class mob : MonoBehaviourPunCallbacks
 	[PunRPC]
 	protected void RPC_TakeDamage(int damage)
 	{
-		if(!Pv.IsMine)//solo funciona en la compu del otro//rev update
-			return;
 		currentHealth -= damage;
 		//animacion de lastimado
 		if(currentHealth <= 0)
