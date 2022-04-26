@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Photon.Pun;
 
-public class mob : MonoBehaviour
+public class mob : MonoBehaviourPunCallbacks
 {
     public Animator animator;
     protected bool jump = false; //verify
@@ -52,27 +52,25 @@ public class mob : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
-	protected PhotonView view;
+	protected PhotonView Pv;
+	PlayerManager playerManager;
 
-
-    private void Awake()
+    public virtual void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+		Pv = GetComponent<PhotonView>();
+		playerManager = PhotonView.Find((int)Pv.InstantiationData[0]).GetComponent<PlayerManager>();
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
 	}
-    public virtual void Start()
-    {
-		view = GetComponent<PhotonView>();
-    }
+
     // Update is called once per frame
     public virtual void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        
     }
     public virtual void FixedUpdate()
     {
@@ -103,8 +101,7 @@ public class mob : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
-		RPC_TakeDamage(damage, true);
-		view.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage, false);//nombre funcion, a quien se lo paso, valor
+		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
 	}
 
     //funcion para attacar mele
@@ -122,13 +119,16 @@ public class mob : MonoBehaviour
 		//attack players
 		if(friendlyFire)
 		{
+			Debug.Log(gameObject.GetInstanceID());
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
 			//damage them
 			for (int i = 0; i < hitPlayer.Length; i++)
 			{
-				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())
+				Debug.Log(hitPlayer[i].gameObject.GetInstanceID());
+				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())//rev
 				{
 					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
+					Debug.Log("hit");
 				}
 			}
 		}
@@ -138,8 +138,8 @@ public class mob : MonoBehaviour
         if(attackPoint == null)
             return;
 
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
     protected void Die()
     {
@@ -148,7 +148,9 @@ public class mob : MonoBehaviour
 		GetComponent<BoxCollider2D>().enabled = false;
 		GetComponent<CircleCollider2D>().enabled = false;
 		m_Rigidbody2D.isKinematic = true;
- 		this.enabled = false;
+		//this.enabled = false;
+		if(Pv.IsMine)
+			playerManager.Die();
     }
 	
 	
@@ -251,11 +253,8 @@ public class mob : MonoBehaviour
 		transform.localScale = theScale;
 	}
 	[PunRPC]
-	protected void RPC_TakeDamage(int damage, bool updateClient)
+	protected void RPC_TakeDamage(int damage)
 	{
-		if(!view.IsMine && !updateClient)//solo funciona en la compu del otro//rev update
-			return;
-		Debug.Log(" diee");
 		currentHealth -= damage;
 		//animacion de lastimado
 		if(currentHealth <= 0)
