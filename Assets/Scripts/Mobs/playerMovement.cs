@@ -5,34 +5,28 @@ using Photon.Pun;
 
 public class playerMovement : mob
 {
-    //PhotonView view;
-    /*public override void Start() {
-        view = GetComponent<PhotonView>();
-    }*/
+    public override void Awake() {
+        base.Awake();
+    }
     public override void Update()
     {
-        if(view.IsMine)
-        {
-            base.Update();
+        base.Update();
 
-            if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(Time.time >= nextAttackTime)
             {
-                Jump();
-            }
-            if(Input.GetMouseButtonDown(0))
-            {
-                if(Time.time >= nextAttackTime)
-                {
-                    Attack();
-                    nextAttackTime = Time.time + 1f/attackRate;
-                }
+                Attack();
+                nextAttackTime = Time.time + 1f/attackRate;
             }
         }
     }
-    public override void FixedUpdate() {
-        if(view.IsMine)
-        {
-            base.FixedUpdate();
-        }
+    public override void FixedUpdate() 
+    {
+        base.FixedUpdate();
     }
 }
