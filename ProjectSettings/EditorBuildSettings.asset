@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: 93e33217e4d2c914b97c0b0792545581
-  - enabled: 1
-    path: Assets/Scenes/Lobby.unity
-    guid: 1f7544f15ad683c4ca3ea43cbddf4e11
+    path: Assets/Scenes/Menu.unity
+    guid: 098786e8ecad31341bc9bf8071ba0a2b
   - enabled: 1
     path: Assets/Scenes/Esenario de Prueba.unity
     guid: e4bd2917e0e5e2745b06f71c819297f0
+  - enabled: 0
+    path: Assets/Scenes/Loading.unity
+    guid: 93e33217e4d2c914b97c0b0792545581
+  - enabled: 0
+    path: Assets/Scenes/Lobby.unity
+    guid: 1f7544f15ad683c4ca3ea43cbddf4e11
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8b1759434aa6d874bad4056ed7832a6a,
       type: 2}
