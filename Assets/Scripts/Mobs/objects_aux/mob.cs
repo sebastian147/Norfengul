@@ -14,8 +14,8 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] public int amountOfJumps = 1;
 	[SerializeField] public float counterJumpForce = 40f;
     [SerializeField] public float jumpHeight = 10f;
-	[SerializeField] private float allowedTimeInAir = 0.25f;
-	[SerializeField] private float _groundRayCastLenght = 0.1f;//move variable ?
+	[SerializeField] private float allowedTimeInAir = 0.1f;
+	[SerializeField] private float _groundRayCastLenght = 0.25f;//move variable ?
 	[SerializeField] private float offset = 0.23f;
 	private float timeInAir = 0;
 	protected bool jumpStop = false;

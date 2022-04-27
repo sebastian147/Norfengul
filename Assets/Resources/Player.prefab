@@ -182,8 +182,8 @@ MonoBehaviour:
   amountOfJumps: 2
   counterJumpForce: 40
   jumpHeight: 10
-  allowedTimeInAir: 0.25
-  _groundRayCastLenght: 0.1
+  allowedTimeInAir: 0.1
+  _groundRayCastLenght: 0.2
   offset: 0.23
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
