@@ -148,7 +148,7 @@ public class mob : MonoBehaviourPunCallbacks
 		GetComponent<BoxCollider2D>().enabled = false;
 		GetComponent<CircleCollider2D>().enabled = false;
 		m_Rigidbody2D.isKinematic = true;
-		//this.enabled = false;
+		this.enabled = false;
 		if(Pv.IsMine)
 			playerManager.Die();
     }
