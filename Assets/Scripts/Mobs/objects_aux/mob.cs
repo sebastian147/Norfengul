@@ -7,18 +7,20 @@ using Photon.Pun;
 public class mob : MonoBehaviourPunCallbacks
 {
     public Animator animator;
-    protected bool jump = false; //verify
-
     float horizontalMove = 0f;
     public float runSpeed = 40f;
-	public int amountOfJumps = 1;
+
+	[Header("Jump")]
+	[SerializeField] public int amountOfJumps = 1;
+	[SerializeField] public float counterJumpForce = 40f;
+    [SerializeField] public float jumpHeight = 10f;
+	protected bool jumpStop = false;
+ 	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
 	private int jumpdones = 0;
 	private int jumpsends = 0;
     private bool jumping = false;//boorame?
 
     [Header("test")]
-
-	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -26,11 +28,12 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
+	[SerializeField] private LayerMask m_whatIsDeath;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-	private bool m_Grounded;            // Whether or not the player is grounded.
+	protected bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
-	private Rigidbody2D m_Rigidbody2D;
+	protected Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
@@ -69,11 +72,35 @@ public class mob : MonoBehaviourPunCallbacks
     // Update is called once per frame
     public virtual void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+		m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, jumpHeight);//mover a start o awake cuando se sete el valor
+
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;//move to player
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
     public virtual void FixedUpdate()
     {
+		IsGroundedCheck();
+		IsDeathZoneCheck();
+
+        //move or character
+        Move(horizontalMove * Time.fixedDeltaTime, false);
+		FixedJump();
+
+    }
+
+
+	private void IsDeathZoneCheck()
+	{
+		Collider2D[] collidersD = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_whatIsDeath);
+
+        for (int i = 0; i < collidersD.Length; i++)
+        {
+			Die();
+        }
+	}
+
+	private void IsGroundedCheck()
+	{
         bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
@@ -94,10 +121,7 @@ public class mob : MonoBehaviourPunCallbacks
                 }
             }
         }
-        //move or character
-        Move(horizontalMove * Time.fixedDeltaTime, false, jumping);
-    }
-
+	}
 
 	public void TakeDamage(int damage)
 	{
@@ -109,6 +133,27 @@ public class mob : MonoBehaviourPunCallbacks
     {
         //update animation
         animator.SetTrigger("Attack");
+		CheckEnemysToAttack();
+		CheckPlayersToAttack();
+    }
+	private void CheckPlayersToAttack()
+	{
+		//attack players
+		if(friendlyFire)
+		{
+			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+			//damage them
+			for (int i = 0; i < hitPlayer.Length; i++)
+			{
+				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())//rev
+				{
+					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
+				}
+			}
+		}
+	}
+	private void CheckEnemysToAttack()
+	{
         //detect enemis
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         //damage them
@@ -116,23 +161,7 @@ public class mob : MonoBehaviourPunCallbacks
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
-		//attack players
-		if(friendlyFire)
-		{
-			Debug.Log(gameObject.GetInstanceID());
-			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-			//damage them
-			for (int i = 0; i < hitPlayer.Length; i++)
-			{
-				Debug.Log(hitPlayer[i].gameObject.GetInstanceID());
-				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())//rev
-				{
-					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
-					Debug.Log("hit");
-				}
-			}
-		}
-    }
+	}
     protected void OnDrawGizmosSelected()
     {
         if(attackPoint == null)
@@ -145,15 +174,23 @@ public class mob : MonoBehaviourPunCallbacks
     {
 		animator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
-		GetComponent<BoxCollider2D>().enabled = false;
-		GetComponent<CircleCollider2D>().enabled = false;
-		m_Rigidbody2D.isKinematic = true;
+		//GetComponent<BoxCollider2D>().enabled = false;
+		//GetComponent<CircleCollider2D>().enabled = false;
+		//m_Rigidbody2D.isKinematic = true;
 		this.enabled = false;
 		if(Pv.IsMine)
 			playerManager.Die();
     }
-	
-	
+		[PunRPC]
+	protected void RPC_TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+		//animacion de lastimado
+		if(currentHealth <= 0)
+		{
+			Die();
+		}
+	}
 	//funcion para actualizar controlador salto
     protected void Jump()
     {
@@ -169,7 +206,8 @@ public class mob : MonoBehaviourPunCallbacks
 		}
 		animator.SetBool("isJumping", jumping);
     }
-    public void Move(float move, bool crouch, bool jump)
+	//move character
+    public void Move(float move, bool crouch)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -231,17 +269,35 @@ public class mob : MonoBehaviourPunCallbacks
 				Flip();
 			}
 		}
+
+	}
+	void FixedJump()
+	{
 		// If the player should jump...
 		if (jumpdones < jumpsends && jumping == true)
 		{
 			jumpdones ++;
 			// Add a vertical force to the player.
 			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+			m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce * m_Rigidbody2D.mass, ForceMode2D.Impulse);
 		}
+		if(jumping)
+        {
+            if(jumpStop && Vector2.Dot(m_Rigidbody2D.velocity, Vector2.up) > 0)
+            {
+                m_Rigidbody2D.AddForce(new Vector2(0f, -counterJumpForce) * m_Rigidbody2D.mass);
+            }
+        }
 	}
-
-
+    public static float CalculateJumpForce(float gravityStrength, float jumpHeight)
+    {
+        //h = v^2/2g
+        //2gh = v^2
+        //sqrt(2gh) = v
+        return Mathf.Sqrt(2 * gravityStrength * jumpHeight);
+    }    
+	//flip character
 	private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
@@ -251,15 +307,5 @@ public class mob : MonoBehaviourPunCallbacks
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}
-	[PunRPC]
-	protected void RPC_TakeDamage(int damage)
-	{
-		currentHealth -= damage;
-		//animacion de lastimado
-		if(currentHealth <= 0)
-		{
-			Die();
-		}
 	}
 }

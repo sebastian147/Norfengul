@@ -190,6 +190,9 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 2836940208312759798}
   m_CeilingCheck: {fileID: 2836940208506618503}
   m_CrouchDisableCollider: {fileID: 0}
+  m_whatIsDeath:
+    serializedVersion: 2
+    m_Bits: 128
   maxHealth: 100
   attackDamage: 40
   friendlyFire: 1
