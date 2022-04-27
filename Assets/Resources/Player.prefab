@@ -180,7 +180,11 @@ MonoBehaviour:
   animator: {fileID: 2836940207534286414}
   runSpeed: 20
   amountOfJumps: 2
-  m_JumpForce: 400
+  counterJumpForce: 40
+  jumpHeight: 10
+  allowedTimeInAir: 0.25
+  _groundRayCastLenght: 0.1
+  offset: 0.23
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1

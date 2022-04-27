@@ -25,7 +25,7 @@ public class playerMovement : mob
         {
             jumpStop = true;
         }
-        if(Input.GetMouseButtonDown(2))
+        if(Input.GetMouseButtonDown(1))
         {
             if(Time.time >= nextAttackTime)
             {
