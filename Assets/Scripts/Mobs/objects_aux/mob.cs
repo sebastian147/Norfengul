@@ -7,19 +7,20 @@ using Photon.Pun;
 public class mob : MonoBehaviourPunCallbacks
 {
     public Animator animator;
-    protected bool jump = false; //verify
-
     float horizontalMove = 0f;
     public float runSpeed = 40f;
-	public int amountOfJumps = 1;
+
+	[Header("Jump")]
+	[SerializeField] public int amountOfJumps = 1;
+	[SerializeField] public float counterJumpForce = 40f;
+    [SerializeField] public float jumpHeight = 10f;
+	protected bool jumpStop = false;
+ 	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
 	private int jumpdones = 0;
 	private int jumpsends = 0;
     private bool jumping = false;//boorame?
 
     [Header("test")]
-
-	[SerializeField] protected float m_JumpForce = 400f;						// Amount of force added when the player jumps.
-    protected float jumpTimeCounter=0.35f;
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -71,6 +72,8 @@ public class mob : MonoBehaviourPunCallbacks
     // Update is called once per frame
     public virtual void Update()
     {
+		m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, jumpHeight);//mover a start o awake cuando se sete el valor
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;//move to player
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
@@ -81,6 +84,8 @@ public class mob : MonoBehaviourPunCallbacks
 
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
+		FixedJump();
+
     }
 
 
@@ -264,16 +269,34 @@ public class mob : MonoBehaviourPunCallbacks
 				Flip();
 			}
 		}
+
+	}
+	void FixedJump()
+	{
 		// If the player should jump...
 		if (jumpdones < jumpsends && jumping == true)
 		{
 			jumpdones ++;
 			// Add a vertical force to the player.
 			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+			m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce * m_Rigidbody2D.mass, ForceMode2D.Impulse);
 		}
+		if(jumping)
+        {
+            if(jumpStop && Vector2.Dot(m_Rigidbody2D.velocity, Vector2.up) > 0)
+            {
+                m_Rigidbody2D.AddForce(new Vector2(0f, -counterJumpForce) * m_Rigidbody2D.mass);
+            }
+        }
 	}
-
+    public static float CalculateJumpForce(float gravityStrength, float jumpHeight)
+    {
+        //h = v^2/2g
+        //2gh = v^2
+        //sqrt(2gh) = v
+        return Mathf.Sqrt(2 * gravityStrength * jumpHeight);
+    }    
 	//flip character
 	private void Flip()
 	{
