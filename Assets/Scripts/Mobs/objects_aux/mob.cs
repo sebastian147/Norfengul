@@ -14,6 +14,10 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] public int amountOfJumps = 1;
 	[SerializeField] public float counterJumpForce = 40f;
     [SerializeField] public float jumpHeight = 10f;
+	[SerializeField] private float allowedTimeInAir = 0.25f;
+	[SerializeField] private float _groundRayCastLenght = 0.1f;//move variable ?
+	[SerializeField] private float offset = 0.23f;
+	private float timeInAir = 0;
 	protected bool jumpStop = false;
  	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
 	private int jumpdones = 0;
@@ -103,10 +107,33 @@ public class mob : MonoBehaviourPunCallbacks
 	{
         bool wasGrounded = m_Grounded;
 		m_Grounded = false;
+		RaycastHit2D raycastSuelo = Physics2D.Raycast(m_GroundCheck.position,Vector2.down, _groundRayCastLenght ,m_WhatIsGround);
+		RaycastHit2D raycastSuelo2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(offset,0,0),Vector2.down, _groundRayCastLenght ,m_WhatIsGround);
+		RaycastHit2D raycastSuelo3 = Physics2D.Raycast(m_GroundCheck.position+new Vector3(offset,0,0),Vector2.down, _groundRayCastLenght ,m_WhatIsGround);
 
+		if(raycastSuelo || raycastSuelo2 || raycastSuelo3)
+		{
+			m_Grounded = true;
+            if (!wasGrounded)
+            {
+                jumping = false;
+                animator.SetBool("isJumping", false);
+				jumpsends = 0;
+				jumpdones = 0;
+				timeInAir = 0;
+            }
+		}
+		else if(!jumping)
+		{
+			timeInAir += Time.fixedDeltaTime;
+			if(timeInAir < allowedTimeInAir)
+			{
+				m_Grounded = true;
+			}
+		}
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        /*Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
@@ -120,7 +147,7 @@ public class mob : MonoBehaviourPunCallbacks
 					jumpdones = 0;
                 }
             }
-        }
+        }*/
 	}
 
 	public void TakeDamage(int damage)
@@ -169,6 +196,9 @@ public class mob : MonoBehaviourPunCallbacks
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+		Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
     }
     protected void Die()
     {
