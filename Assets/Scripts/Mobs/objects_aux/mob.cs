@@ -72,7 +72,10 @@ public class mob : MonoBehaviourPunCallbacks
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
 	}
-
+	public virtual void Star()
+	{
+		
+	}
     // Update is called once per frame
     public virtual void Update()
     {
