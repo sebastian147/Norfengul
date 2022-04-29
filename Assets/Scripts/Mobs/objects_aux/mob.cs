@@ -24,6 +24,11 @@ public class mob : MonoBehaviourPunCallbacks
 	private int jumpsends = 0;
     private bool jumping = false;//boorame?
 
+	[Header("CornerCorrection")]
+	[SerializeField] private float offsetOut = 0.27f;
+	[SerializeField] private float offsetIn = 0.15f;
+	[SerializeField] private float _topRayCastLenght = 0.5f;
+
     [Header("test")]
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
@@ -92,9 +97,9 @@ public class mob : MonoBehaviourPunCallbacks
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
 		FixedJump();
+		CornerCorrection();
 
     }
-
 
 	private void IsDeathZoneCheck()
 	{
@@ -134,6 +139,25 @@ public class mob : MonoBehaviourPunCallbacks
 				m_Grounded = true;
 			}
 		}
+	}
+	public void CornerCorrection()
+	{
+		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
+		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
+		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
+		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
+		if((raycastSueloLeft || raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
+		{
+			Debug.Log("izquierda");
+			transform.position += new Vector3(offsetOut,0,0);
+		}
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (raycastSueloRight || raycastSueloRight2))
+		{
+			Debug.Log("derecha");
+
+			transform.position -= new Vector3(offsetOut,0,0);
+		}
+	
 	}
 
 	public void TakeDamage(int damage)
@@ -185,7 +209,13 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
 		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
-    }
+		
+		Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position-new Vector3(offsetIn,0,0));
+		Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position-new Vector3(offsetOut,0,0));
+		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetIn,0,0));
+		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetOut,0,0));
+
+	}
     protected void Die()
     {
 		animator.SetBool("IsDead", true);
@@ -210,7 +240,6 @@ public class mob : MonoBehaviourPunCallbacks
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)
     {
-		Debug.Log(counter);
 		if(jumpsends<amountOfJumps)
 		{
 			jumpsends++;

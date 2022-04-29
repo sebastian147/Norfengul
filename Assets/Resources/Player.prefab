@@ -185,6 +185,9 @@ MonoBehaviour:
   allowedTimeInAir: 0.1
   _groundRayCastLenght: 0.2
   offset: 0.23
+  offsetOut: 0.27
+  offsetIn: 0.15
+  _topRayCastLenght: 0.5
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -212,6 +215,7 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+  jumpBufferTime: 0.2
 --- !u!58 &2836940207534286411
 CircleCollider2D:
   m_ObjectHideFlags: 0
