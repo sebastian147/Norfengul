@@ -46,8 +46,9 @@ public class mob : MonoBehaviourPunCallbacks
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
-	public int maxHealth = 100;
+	[SerializeField] private int maxHealth = 100;
 	private int currentHealth = 0;
+	[SerializeField] private HealthBar healthBar;
 	public int attackDamage = 10;
 	public bool friendlyFire = false;
     public Transform attackPoint;
@@ -79,7 +80,7 @@ public class mob : MonoBehaviourPunCallbacks
 	}
 	public virtual void Star()
 	{
-		
+		healthBar.SetMaxHealth(maxHealth);
 	}
     // Update is called once per frame
     public virtual void Update()
@@ -227,7 +228,7 @@ public class mob : MonoBehaviourPunCallbacks
 		if(Pv.IsMine)
 			playerManager.Die();
     }
-		[PunRPC]
+	[PunRPC]
 	protected void RPC_TakeDamage(int damage)
 	{
 		currentHealth -= damage;
@@ -236,6 +237,8 @@ public class mob : MonoBehaviourPunCallbacks
 		{
 			Die();
 		}
+		if(Pv.IsMine)
+			healthBar.SetHealth(currentHealth);
 	}
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)
@@ -326,7 +329,7 @@ public class mob : MonoBehaviourPunCallbacks
 		}
 
 	}
-	void FixedJump()
+	private void FixedJump()
 	{
 		// If the player should jump...
 		if (jumpdones < jumpsends && jumping == true)
@@ -345,7 +348,7 @@ public class mob : MonoBehaviourPunCallbacks
             }
         }
 	}
-    public static float CalculateJumpForce(float gravityStrength, float jumpHeight)
+    private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
     {
         //h = v^2/2g
         //2gh = v^2
