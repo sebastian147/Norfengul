@@ -5,11 +5,12 @@ using Photon.Pun;
 
 public class playerMovement : mob
 {
-    public Queue<KeyCode> inputBuffer;
+    public float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter = 0f;
+
     public override void Awake()
     {
         base.Awake();
-        inputBuffer = new Queue<KeyCode>();
     }
     public override void Star()
     {
@@ -26,14 +27,22 @@ public class playerMovement : mob
 
         if(Input.GetButtonDown("Jump"))
         {
-            inputBuffer.Enqueue(KeyCode.Space);
+            jumpBufferCounter = jumpBufferTime;
             jumpStop = false;
-            Invoke("BufferDeQueue",2f);
         }
         else if(Input.GetButtonUp("Jump"))
         {
             jumpStop = true;
         }
+        else
+        {
+            jumpBufferCounter -= Time.fixedDeltaTime;
+        }
+        if(jumpBufferCounter > 0)
+        {
+            jumpBufferCounter = Jump(jumpBufferCounter);
+        }
+        
         if(Input.GetMouseButtonDown(0))
         {
             if(Time.time >= nextAttackTime)
@@ -41,15 +50,7 @@ public class playerMovement : mob
                 Attack();
                 nextAttackTime = Time.time + 1f/attackRate;
             }
-        }        
-        if(inputBuffer.Count > 0)
-        {
-            if(inputBuffer.Peek() == KeyCode.Space)
-            {
-                Jump();
-                inputBuffer.Dequeue();
-            }
-        }
+        } 
     }
     public override void FixedUpdate() 
     {
@@ -57,11 +58,5 @@ public class playerMovement : mob
             return;
         base.FixedUpdate();
     }
-    public void BufferDeQueue()
-    {
-        if(inputBuffer.Count > 0)
-        {
-            inputBuffer.Dequeue();
-        }
-    }
+
 }

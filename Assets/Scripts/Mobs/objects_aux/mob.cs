@@ -134,23 +134,6 @@ public class mob : MonoBehaviourPunCallbacks
 				m_Grounded = true;
 			}
 		}
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        /*Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                m_Grounded = true;
-                if (!wasGrounded)
-                {
-                    jumping = false;
-                    animator.SetBool("isJumping", false);
-					jumpsends = 0;
-					jumpdones = 0;
-                }
-            }
-        }*/
 	}
 
 	public void TakeDamage(int damage)
@@ -225,19 +208,29 @@ public class mob : MonoBehaviourPunCallbacks
 		}
 	}
 	//funcion para actualizar controlador salto
-    protected void Jump()
+    protected float Jump(float counter = 0f)
     {
+		Debug.Log(counter);
 		if(jumpsends<amountOfJumps)
 		{
 			jumpsends++;
 			jumping = true;
+			counter = 0f;
 		}
 		if(jumpsends == 1 && !m_Grounded)
 		{
 			jumpsends = 0;
 			jumping = false;
+			counter = 0f;
 		}
-		animator.SetBool("isJumping", jumping);
+		if(counter > 0 && m_Grounded && jumpsends == 0 )
+		{
+			jumpsends++;
+			counter = 0f;
+			jumping = true;
+		}
+		animator.SetBool("isJumping", true);
+		return counter;
     }
 	//move character
     public void Move(float move, bool crouch)
