@@ -49,6 +49,7 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private int maxHealth = 100;
 	private int currentHealth = 0;
 	[SerializeField] private HealthBar healthBar;
+	[SerializeField] GameObject ui;
 	public int attackDamage = 10;
 	public bool friendlyFire = false;
     public Transform attackPoint;
@@ -77,10 +78,15 @@ public class mob : MonoBehaviourPunCallbacks
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+		if(Pv.IsMine)
+			healthBar.SetMaxHealth(maxHealth);
+		else
+			Destroy(ui);
+
 	}
 	public virtual void Star()
 	{
-		healthBar.SetMaxHealth(maxHealth);
+
 	}
     // Update is called once per frame
     public virtual void Update()
@@ -232,13 +238,13 @@ public class mob : MonoBehaviourPunCallbacks
 	protected void RPC_TakeDamage(int damage)
 	{
 		currentHealth -= damage;
+		if(Pv.IsMine)
+			healthBar.SetHealth(currentHealth);
 		//animacion de lastimado
 		if(currentHealth <= 0)
 		{
 			Die();
 		}
-		if(Pv.IsMine)
-			healthBar.SetHealth(currentHealth);
 	}
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)
