@@ -146,16 +146,16 @@ public class mob : MonoBehaviourPunCallbacks
 		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
-		if((raycastSueloLeft || raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
+		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
 		{
 			Debug.Log("izquierda");
-			transform.position += new Vector3(offsetOut,0,0);
+			transform.position += new Vector3(offsetOut-offsetIn,0,0);
 		}
-		else if((!raycastSueloLeft && !raycastSueloLeft2) && (raycastSueloRight || raycastSueloRight2))
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2))
 		{
 			Debug.Log("derecha");
 
-			transform.position -= new Vector3(offsetOut,0,0);
+			transform.position -= new Vector3(offsetOut-offsetIn,0,0);
 		}
 	
 	}
