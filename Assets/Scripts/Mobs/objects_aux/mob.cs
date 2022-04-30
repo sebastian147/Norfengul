@@ -17,6 +17,10 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private float allowedTimeInAir = 0.1f;
 	[SerializeField] private float _groundRayCastLenght = 0.25f;//move variable ?
 	[SerializeField] private float offset = 0.23f;
+	[SerializeField] private float apexModifier = 2f;
+	[SerializeField] private float apexModifierTime = 0.3f;
+	private float apexModifierCurrent = 1f;
+	private float apexModifierTimeCount = 0.3f;
 	private float timeInAir = 0;
 	protected bool jumpStop = false;
  	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
@@ -155,13 +159,10 @@ public class mob : MonoBehaviourPunCallbacks
 		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
 		{
-			Debug.Log("izquierda");
 			transform.position += new Vector3(offsetOut-offsetIn,0,0);
 		}
 		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2))
 		{
-			Debug.Log("derecha");
-
 			transform.position -= new Vector3(offsetOut-offsetIn,0,0);
 		}
 	
@@ -221,6 +222,7 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position-new Vector3(offsetOut,0,0));
 		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetIn,0,0));
 		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetOut,0,0));
+
 
 	}
     protected void Die()
@@ -316,7 +318,7 @@ public class mob : MonoBehaviourPunCallbacks
 			}
 
 			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			Vector3 targetVelocity = new Vector2(move * 10f*apexModifierCurrent, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -352,7 +354,25 @@ public class mob : MonoBehaviourPunCallbacks
             {
                 m_Rigidbody2D.AddForce(new Vector2(0f, -counterJumpForce) * m_Rigidbody2D.mass);
             }
+			Debug.Log(Mathf.Abs(m_Rigidbody2D.velocity.y));
+			if(Mathf.Abs(m_Rigidbody2D.velocity.y) <  0.15f && apexModifierTimeCount > 0)
+			{
+
+				apexModifierTimeCount -= Time.fixedDeltaTime;
+				apexModifierCurrent = apexModifier;
+				m_Rigidbody2D.gravityScale = 0;
+				m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x, 0,1);
+			}
+			else
+			{
+				apexModifierTimeCount = apexModifierTime;
+				m_Rigidbody2D.gravityScale = 3;
+			}
         }
+		else
+		{
+			apexModifierCurrent = 1;
+		}
 	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
     {
