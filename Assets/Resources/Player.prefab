@@ -187,11 +187,15 @@ MonoBehaviour:
   allowedTimeInAir: 0.1
   _groundRayCastLenght: 0.2
   offset: 0.23
-  apexModifier: 20
+  apexModifier: 1.2
   apexModifierTime: 0.05
   offsetOut: 0.27
   offsetIn: 0.15
   _topRayCastLenght: 0.5
+  _topRayCastLenghtB: 0.5
+  offsetOutB: 0
+  offsetInB: 0.1
+  distanceFromMidle: 0
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1

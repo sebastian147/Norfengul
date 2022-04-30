@@ -32,6 +32,10 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private float offsetOut = 0.27f;
 	[SerializeField] private float offsetIn = 0.15f;
 	[SerializeField] private float _topRayCastLenght = 0.5f;
+	[SerializeField] private float _topRayCastLenghtB = 0.5f;
+	[SerializeField] private float offsetOutB = 0.27f;
+	[SerializeField] private float offsetInB = 0.15f;
+	[SerializeField] private float distanceFromMidle = 0.5f;
 
     [Header("test")]
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
@@ -108,7 +112,8 @@ public class mob : MonoBehaviourPunCallbacks
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
 		FixedJump();
-		CornerCorrection();
+		CornerCorrectionTop();
+		CornerCorrectionbottom();
 
     }
 
@@ -151,7 +156,7 @@ public class mob : MonoBehaviourPunCallbacks
 			}
 		}
 	}
-	public void CornerCorrection()
+	public void CornerCorrectionTop()
 	{
 		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
@@ -166,6 +171,23 @@ public class mob : MonoBehaviourPunCallbacks
 			transform.position -= new Vector3(offsetOut-offsetIn,0,0);
 		}
 	
+	}
+	public void CornerCorrectionbottom ()
+	{
+		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
+		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
+		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
+		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
+		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2) && !m_Grounded)
+		{
+			Debug.Log("izquierda");
+			transform.position += new Vector3(-0.1f,0.2f,0);
+		}
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2) && !m_Grounded)
+		{
+			Debug.Log("derecha");
+			transform.position += new Vector3(0.1f,0.2f,0);
+		}
 	}
 
 	public void TakeDamage(int damage)
@@ -223,7 +245,10 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetIn,0,0));
 		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetOut,0,0));
 
-
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0),Vector3.left*_topRayCastLenghtB+m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0));
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector3.left*_topRayCastLenghtB+m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0));
 	}
     protected void Die()
     {
@@ -354,7 +379,6 @@ public class mob : MonoBehaviourPunCallbacks
             {
                 m_Rigidbody2D.AddForce(new Vector2(0f, -counterJumpForce) * m_Rigidbody2D.mass);
             }
-			Debug.Log(Mathf.Abs(m_Rigidbody2D.velocity.y));
 			if(Mathf.Abs(m_Rigidbody2D.velocity.y) <  0.15f && apexModifierTimeCount > 0)
 			{
 
