@@ -178,15 +178,15 @@ public class mob : MonoBehaviourPunCallbacks
 		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
 		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
 		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
-		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2) && !m_Grounded)
+		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2) && !m_Grounded && m_Rigidbody2D.velocity.x <0)
 		{
 			Debug.Log("izquierda");
-			transform.position += new Vector3(-0.1f,0.2f,0);
+			transform.position += new Vector3(-0.1f,0.1f,0);
 		}
-		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2) && !m_Grounded)
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2) && !m_Grounded && m_Rigidbody2D.velocity.x >0)
 		{
 			Debug.Log("derecha");
-			transform.position += new Vector3(0.1f,0.2f,0);
+			transform.position += new Vector3(0.1f,0.1f,0);
 		}
 	}
 
@@ -396,6 +396,8 @@ public class mob : MonoBehaviourPunCallbacks
 		else
 		{
 			apexModifierCurrent = 1;
+			apexModifierTimeCount = apexModifierTime;
+			m_Rigidbody2D.gravityScale = 3;
 		}
 	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
