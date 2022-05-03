@@ -51,6 +51,10 @@ public class mob : MonoBehaviourPunCallbacks
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	protected bool m_Grounded;            // Whether or not the player is grounded.
 	protected bool _inWall = false;
+	[SerializeField] protected Transform m_WallCheck;
+	[SerializeField] private float _wallRayCastLenght = 0.2f;
+	protected float wallGrabingJumpforce=1;
+	protected float wallGrabingDirection=0;
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	protected Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -98,13 +102,34 @@ public class mob : MonoBehaviourPunCallbacks
 	{
 
 	}
+	bool wasInWall = false;
+
     // Update is called once per frame
     public virtual void Update()
     {
 		m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, jumpHeight);//mover a start o awake cuando se sete el valor
+		if(_inWall)
+		{
+			wallGrabing();
+		}
+		else{
+			if(wasInWall)
+			{
+				jumping = false;
+				jumpsends = 0;
+				jumpdones = 0;
+				timeInAir = 0;
+			}
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;//move to player
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+			wallGrabingJumpforce = 1;
+			wallGrabingDirection = 0;
+			m_Rigidbody2D.gravityScale = 3;
+
+			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;//move to player
+			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+		}
+		wasInWall = _inWall;
+
     }
     public virtual void FixedUpdate()
     {
@@ -132,7 +157,7 @@ public class mob : MonoBehaviourPunCallbacks
 	}
 	private void IsWallCheck()
 	{
-		RaycastHit2D raycastSuelo = Physics2D.Raycast(attackPoint.position,new Vector2(horizontalMove), _groundRayCastLenght ,m_WhatIsGround);
+		RaycastHit2D raycastSuelo = Physics2D.Raycast(m_WallCheck.position,new Vector2(Input.GetAxisRaw("Horizontal"), 0), _wallRayCastLenght,m_WhatIsGround);
 
 		if(raycastSuelo)
 		{
@@ -206,7 +231,25 @@ public class mob : MonoBehaviourPunCallbacks
 			transform.position += new Vector3(0.1f,0.1f,0);
 		}
 	}
+	public void wallGrabing()
+	{
+		if(_inWall)
+		{
+			m_Rigidbody2D.gravityScale = 0;
+			m_Rigidbody2D.velocity = new Vector2(Input.GetAxisRaw("Horizontal"),0);
+			horizontalMove = 0;
+			jumpsends=amountOfJumps-1;
+			jumpdones=amountOfJumps-1;
+			wallGrabingDirection = -1*Input.GetAxisRaw("Horizontal");
+			wallGrabingJumpforce = 2;
+			timeInAir = 0;
 
+		}
+		else
+		{
+
+		}
+	}
 	public void TakeDamage(int damage)
 	{
 		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
@@ -266,6 +309,9 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector3.left*_topRayCastLenghtB+m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0));
+	
+		Gizmos.DrawLine(attackPoint.position, attackPoint.position*_groundRayCastLenght);
+
 	}
     protected void Die()
     {
@@ -388,7 +434,7 @@ public class mob : MonoBehaviourPunCallbacks
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-			m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce * m_Rigidbody2D.mass, ForceMode2D.Impulse);
+			m_Rigidbody2D.AddForce(new Vector2(wallGrabingDirection,1)*wallGrabingJumpforce * m_JumpForce * m_Rigidbody2D.mass, ForceMode2D.Impulse);
 		}
 		if(jumping)
         {
