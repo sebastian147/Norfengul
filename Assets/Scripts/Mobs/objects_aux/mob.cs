@@ -46,9 +46,11 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 	[SerializeField] private LayerMask m_whatIsDeath;
+	
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	protected bool m_Grounded;            // Whether or not the player is grounded.
+	protected bool _inWall = false;
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	protected Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -108,6 +110,8 @@ public class mob : MonoBehaviourPunCallbacks
     {
 		IsGroundedCheck();
 		IsDeathZoneCheck();
+		IsWallCheck();
+
 
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
@@ -126,7 +130,20 @@ public class mob : MonoBehaviourPunCallbacks
 			Die();
         }
 	}
+	private void IsWallCheck()
+	{
+		RaycastHit2D raycastSuelo = Physics2D.Raycast(attackPoint.position,new Vector2(horizontalMove), _groundRayCastLenght ,m_WhatIsGround);
 
+		if(raycastSuelo)
+		{
+			_inWall = true;
+		}
+		else
+		{
+			_inWall = false;
+		}
+
+	}
 	private void IsGroundedCheck()
 	{
         bool wasGrounded = m_Grounded;
