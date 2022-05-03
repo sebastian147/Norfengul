@@ -17,6 +17,10 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private float allowedTimeInAir = 0.1f;
 	[SerializeField] private float _groundRayCastLenght = 0.25f;//move variable ?
 	[SerializeField] private float offset = 0.23f;
+	[SerializeField] private float apexModifier = 2f;
+	[SerializeField] private float apexModifierTime = 0.3f;
+	private float apexModifierCurrent = 1f;
+	private float apexModifierTimeCount = 0.3f;
 	private float timeInAir = 0;
 	protected bool jumpStop = false;
  	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
@@ -28,6 +32,10 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private float offsetOut = 0.27f;
 	[SerializeField] private float offsetIn = 0.15f;
 	[SerializeField] private float _topRayCastLenght = 0.5f;
+	[SerializeField] private float _topRayCastLenghtB = 0.5f;
+	[SerializeField] private float offsetOutB = 0.27f;
+	[SerializeField] private float offsetInB = 0.15f;
+	[SerializeField] private float distanceFromMidle = 0.5f;
 
     [Header("test")]
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
@@ -49,6 +57,7 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private int maxHealth = 100;
 	private int currentHealth = 0;
 	[SerializeField] private HealthBar healthBar;
+	[SerializeField] GameObject ui;
 	public int attackDamage = 10;
 	public bool friendlyFire = false;
     public Transform attackPoint;
@@ -77,10 +86,15 @@ public class mob : MonoBehaviourPunCallbacks
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+		if(Pv.IsMine)
+			healthBar.SetMaxHealth(maxHealth);
+		else
+			Destroy(ui);
+
 	}
 	public virtual void Star()
 	{
-		healthBar.SetMaxHealth(maxHealth);
+
 	}
     // Update is called once per frame
     public virtual void Update()
@@ -98,7 +112,8 @@ public class mob : MonoBehaviourPunCallbacks
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
 		FixedJump();
-		CornerCorrection();
+		CornerCorrectionTop();
+		CornerCorrectionbottom();
 
     }
 
@@ -141,7 +156,7 @@ public class mob : MonoBehaviourPunCallbacks
 			}
 		}
 	}
-	public void CornerCorrection()
+	public void CornerCorrectionTop()
 	{
 		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
@@ -149,16 +164,30 @@ public class mob : MonoBehaviourPunCallbacks
 		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
 		{
-			Debug.Log("izquierda");
 			transform.position += new Vector3(offsetOut-offsetIn,0,0);
 		}
 		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2))
 		{
-			Debug.Log("derecha");
-
 			transform.position -= new Vector3(offsetOut-offsetIn,0,0);
 		}
 	
+	}
+	public void CornerCorrectionbottom ()
+	{
+		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
+		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
+		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
+		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
+		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2) && !m_Grounded && m_Rigidbody2D.velocity.x <0)
+		{
+			Debug.Log("izquierda");
+			transform.position += new Vector3(-0.1f,0.1f,0);
+		}
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2) && !m_Grounded && m_Rigidbody2D.velocity.x >0)
+		{
+			Debug.Log("derecha");
+			transform.position += new Vector3(0.1f,0.1f,0);
+		}
 	}
 
 	public void TakeDamage(int damage)
@@ -216,6 +245,10 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetIn,0,0));
 		Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position+new Vector3(offsetOut,0,0));
 
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0),Vector3.left*_topRayCastLenghtB+m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0));
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector3.left*_topRayCastLenghtB+m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0));
 	}
     protected void Die()
     {
@@ -232,13 +265,13 @@ public class mob : MonoBehaviourPunCallbacks
 	protected void RPC_TakeDamage(int damage)
 	{
 		currentHealth -= damage;
+		if(Pv.IsMine)
+			healthBar.SetHealth(currentHealth);
 		//animacion de lastimado
 		if(currentHealth <= 0)
 		{
 			Die();
 		}
-		if(Pv.IsMine)
-			healthBar.SetHealth(currentHealth);
 	}
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)
@@ -310,7 +343,7 @@ public class mob : MonoBehaviourPunCallbacks
 			}
 
 			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			Vector3 targetVelocity = new Vector2(move * 10f*apexModifierCurrent, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -346,7 +379,26 @@ public class mob : MonoBehaviourPunCallbacks
             {
                 m_Rigidbody2D.AddForce(new Vector2(0f, -counterJumpForce) * m_Rigidbody2D.mass);
             }
+			if(Mathf.Abs(m_Rigidbody2D.velocity.y) <  0.15f && apexModifierTimeCount > 0)
+			{
+
+				apexModifierTimeCount -= Time.fixedDeltaTime;
+				apexModifierCurrent = apexModifier;
+				m_Rigidbody2D.gravityScale = 0;
+				m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x, 0,1);
+			}
+			else
+			{
+				apexModifierTimeCount = apexModifierTime;
+				m_Rigidbody2D.gravityScale = 3;
+			}
         }
+		else
+		{
+			apexModifierCurrent = 1;
+			apexModifierTimeCount = apexModifierTime;
+			m_Rigidbody2D.gravityScale = 3;
+		}
 	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
     {
