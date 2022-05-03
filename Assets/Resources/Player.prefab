@@ -831,7 +831,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5174259854875614760, guid: d5f30aef2b9804c43bcda7bb54e0ac3a,
         type: 3}
       propertyPath: m_Name
       value: Barra de Vida
