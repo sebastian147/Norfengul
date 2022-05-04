@@ -210,7 +210,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_WallCheck: {fileID: 5002034421337006041}
-  _wallRayCastLenght: 0.2
+  _wallRayCastLenght: 0.3
+  wallSlidingSpeed: 1
   maxHealth: 100
   healthBar: {fileID: 881365251720784196}
   ui: {fileID: 8860155079433219701}
@@ -613,7 +614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5647090082281367332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.092, y: -0.001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
