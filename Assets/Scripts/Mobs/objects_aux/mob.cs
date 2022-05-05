@@ -234,9 +234,9 @@ public class mob : MonoBehaviourPunCallbacks
 			if(wasInWall)
 			{
 				jumping = false;
-				jumpsends = 0;
-				jumpdones = 0;
-				timeInAir = 0;
+				jumpsends = amountOfJumps-1;
+				jumpdones = amountOfJumps-1;
+				timeInAir = -allowedTimeInAir;
 			}
 
 			wallGrabingJumpforce = 0;
@@ -289,7 +289,7 @@ public class mob : MonoBehaviourPunCallbacks
             return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        //Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 		Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
 		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
@@ -304,7 +304,7 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0));
 	
-		Gizmos.DrawLine(attackPoint.position, attackPoint.position*_groundRayCastLenght);
+		Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+_wallRayCastLenght*new Vector3(transform.localScale.x, 0,0));
 
 	}
     protected void Die()
