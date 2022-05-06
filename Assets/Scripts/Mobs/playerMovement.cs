@@ -12,6 +12,7 @@ public class playerMovement : mob
     {
         base.Awake();
     }
+    
     public override void Star()
     {
         if(!Pv.IsMine)
