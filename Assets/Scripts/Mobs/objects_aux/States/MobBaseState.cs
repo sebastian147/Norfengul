@@ -23,7 +23,7 @@ public abstract class MobBaseState
         
     }
     
-    public virtual int move(Mob myMob)
+    public virtual int move(Mob myMob)//mover de aca
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
 		Vector3 targetVelocity = new Vector2(horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
@@ -33,13 +33,13 @@ public abstract class MobBaseState
     }
     
     public abstract void animate(Mob  myMob);
-    public virtual void endState(Mob myMob)
-    {
+    public abstract void EndState(Mob myMob);
+    public abstract void StarState(Mob myMob);
+    public abstract void CheckChangeState();
+    public abstract void UpdateState();
+    public abstract void FixedUpdateState();
+    public virtual void SwitchState(){
 
-    }
-    public virtual void starState(Mob myMob)
-    {
-        
     }
  
 }

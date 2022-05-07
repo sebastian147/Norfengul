@@ -47,6 +47,7 @@ public class Mob : MonoBehaviourPunCallbacks
         {
             return;
         }
+        
         mobMove();
         inputPlayer.InputChecks();//ver mejor manera
         collisionCheck.CollisionCheck();

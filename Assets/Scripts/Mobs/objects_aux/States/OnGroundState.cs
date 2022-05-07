@@ -4,7 +4,25 @@ using UnityEngine;
 
 public abstract class OnGroundState : MobBaseState
 {
-    public string WALK_ANIMATION = "Walk";
 
+    public override void EndState(Mob myMob)
+    {
 
+    }
+    public override void StarState(Mob myMob)
+    {
+
+    }
+    public override void CheckChangeState()
+    {
+
+    }
+    public override void UpdateState()
+    {
+
+    }
+    public override void FixedUpdateState()
+    {
+        
+    }
 }
