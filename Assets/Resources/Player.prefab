@@ -446,11 +446,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74a295168059a044894231d30f1a869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 2836940207534286408}
-  myAnimator: {fileID: 0}
-  mySpriteRenderer: {fileID: 0}
-  myRigidbody: {fileID: 0}
-  Pv: {fileID: 0}
+  animator: {fileID: 2836940207534286414}
+  runSpeed: 40
+  amountOfJumps: 1
+  counterJumpForce: 40
+  jumpHeight: 10
+  allowedTimeInAir: 0.1
+  _groundRayCastLenght: 0.25
+  offset: 0.23
+  apexModifier: 2
+  apexModifierTime: 0.3
+  offsetOut: 0.27
+  offsetIn: 0.15
+  _topRayCastLenght: 0.5
+  _topRayCastLenghtB: 0.5
+  offsetOutB: 0.27
+  offsetInB: 0.15
+  distanceFromMidle: 0.5
+  m_CrouchSpeed: 0.36
+  m_MovementSmoothing: 0.05
+  m_AirControl: 1
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  m_GroundCheck: {fileID: 2836940208312759798}
+  m_CeilingCheck: {fileID: 2836940208506618503}
+  m_CrouchDisableCollider: {fileID: 0}
+  m_whatIsDeath:
+    serializedVersion: 2
+    m_Bits: 128
+  maxHealth: 100
+  healthBar: {fileID: 881365251720784196}
+  ui: {fileID: 8860155079433219701}
+  attackDamage: 10
+  friendlyFire: 1
+  attackPoint: {fileID: 2836940208013041884}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  HitBoxColliders: {fileID: 2836940207534286411}
+  OnCrouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2836940208013041827
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +942,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f30aef2b9804c43bcda7bb54e0ac3a, type: 3}
+--- !u!114 &881365251720784196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 299930540482664044, guid: d5f30aef2b9804c43bcda7bb54e0ac3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 581716667276607272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c47763b5a3f59547895bb17dda3fd29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5754480842191593729 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5174259854875614761, guid: d5f30aef2b9804c43bcda7bb54e0ac3a,
