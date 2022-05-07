@@ -18,8 +18,9 @@ public class Mob : MonoBehaviourPunCallbacks
     //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
     public StateMachine myStateMachine;
     public MobBaseState actualState;
+    InputPlayer inputPlayer;
+    [SerializeField] public CollisionUpdates collisionCheck;
     
-
 
     void Awake()
     {
@@ -30,6 +31,8 @@ public class Mob : MonoBehaviourPunCallbacks
 		playerManager = PhotonView.Find((int)Pv.InstantiationData[0]).GetComponent<PlayerManager>();
 
         myStateMachine = new StateMachine();
+        inputPlayer = new InputPlayer();
+        //collisionCheck = new CollisionUpdates();
 
         actualState = myStateMachine.initializeStates();
     }
@@ -45,7 +48,8 @@ public class Mob : MonoBehaviourPunCallbacks
             return;
         }
         mobMove();
-        mobJump();
+        inputPlayer.InputChecks();//ver mejor manera
+        collisionCheck.CollisionCheck();
     }
 
     void mobMove()
@@ -53,8 +57,5 @@ public class Mob : MonoBehaviourPunCallbacks
         myStateMachine.changeState(actualState.move(this));
     }
 
-    void mobJump()
-    {
-        //myStateMachine.changeState(actualState.jump(this));
-    }
+
 }

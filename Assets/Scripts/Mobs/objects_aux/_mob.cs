@@ -4,19 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using Photon.Pun;
 
-public class mob : MonoBehaviourPunCallbacks
+public class _mob : MonoBehaviourPunCallbacks
 {
-    public Animator animator;
-    float horizontalMove = 0f;
-    public float runSpeed = 40f;
-
+	/*
 	[Header("Jump")]
 	[SerializeField] public int amountOfJumps = 1;
 	[SerializeField] public float counterJumpForce = 40f;
     [SerializeField] public float jumpHeight = 10f;
 	[SerializeField] private float allowedTimeInAir = 0.1f;
-	[SerializeField] private float _groundRayCastLenght = 0.25f;//move variable ?
-	[SerializeField] private float offset = 0.23f;
 	[SerializeField] private float apexModifier = 2f;
 	[SerializeField] private float apexModifierTime = 0.3f;
 	private float apexModifierCurrent = 1f;
@@ -41,14 +36,11 @@ public class mob : MonoBehaviourPunCallbacks
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
-	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
-	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
-	[SerializeField] private LayerMask m_whatIsDeath;
 
-	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-	protected bool m_Grounded;            // Whether or not the player is grounded.
+
+
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	protected Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -106,8 +98,7 @@ public class mob : MonoBehaviourPunCallbacks
     }
     public virtual void FixedUpdate()
     {
-		IsGroundedCheck();
-		IsDeathZoneCheck();
+
 
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
@@ -117,45 +108,9 @@ public class mob : MonoBehaviourPunCallbacks
 
     }
 
-	private void IsDeathZoneCheck()
-	{
-		Collider2D[] collidersD = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_whatIsDeath);
 
-        for (int i = 0; i < collidersD.Length; i++)
-        {
-			Die();
-        }
-	}
 
-	private void IsGroundedCheck()
-	{
-        bool wasGrounded = m_Grounded;
-		m_Grounded = false;
-		RaycastHit2D raycastSuelo = Physics2D.Raycast(m_GroundCheck.position,Vector2.down, _groundRayCastLenght ,m_WhatIsGround);
-		RaycastHit2D raycastSuelo2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(offset,0,0),Vector2.down, _groundRayCastLenght ,m_WhatIsGround);
-		RaycastHit2D raycastSuelo3 = Physics2D.Raycast(m_GroundCheck.position+new Vector3(offset,0,0),Vector2.down, _groundRayCastLenght ,m_WhatIsGround);
 
-		if(raycastSuelo || raycastSuelo2 || raycastSuelo3)
-		{
-			m_Grounded = true;
-            if (!wasGrounded)
-            {
-                jumping = false;
-                animator.SetBool("isJumping", false);
-				jumpsends = 0;
-				jumpdones = 0;
-				timeInAir = 0;
-            }
-		}
-		else if(!jumping)
-		{
-			timeInAir += Time.fixedDeltaTime;
-			if(timeInAir < allowedTimeInAir)
-			{
-				m_Grounded = true;
-			}
-		}
-	}
 	public void CornerCorrectionTop()
 	{
 		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
@@ -236,9 +191,7 @@ public class mob : MonoBehaviourPunCallbacks
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-		Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
-		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
-		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
+
 		
 		Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position-new Vector3(offsetIn,0,0));
 		Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector3.up*_topRayCastLenght+m_CeilingCheck.position-new Vector3(offsetOut,0,0));
@@ -418,4 +371,5 @@ public class mob : MonoBehaviourPunCallbacks
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+*/
 }

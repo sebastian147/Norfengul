@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum myStates{
+    Idle,
+    Walk,
+    Jump,
+    Crouch
+}
 public class StateMachine
 {
     public Dictionary<int, MobBaseState> myDictionary = new Dictionary<int, MobBaseState>();
@@ -15,17 +20,13 @@ public class StateMachine
 
     */
 
-    public enum myStates{
-        Idle,
-        Walk,
-        Crouch
-    }
+
 
     public MobBaseState initializeStates(){
         //Initilizes all mob states
-        myDictionary.Add(0, new IdleState());
-        myDictionary.Add(1, new WalkState());
-        //myDictionary.Add(2, new CrouchState());
+        myDictionary.Add((int) myStates.Idle, new IdleState());
+        myDictionary.Add((int) myStates.Walk, new WalkState());
+        myDictionary.Add((int) myStates.Jump, new CrouchState());
         
         //myStates.jumpSate = new JumpState();
         return myDictionary[0];

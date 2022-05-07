@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class playerMovement : mob
+public class playerMovement : Mob
 {
-    public float jumpBufferTime = 0.2f;
+   /* public float jumpBufferTime = 0.2f;
     private float jumpBufferCounter = 0f;
 
     public override void Awake()
@@ -39,10 +39,10 @@ public class playerMovement : mob
         {
             jumpBufferCounter -= Time.fixedDeltaTime;
         }
-        if(jumpBufferCounter > 0)
-        {
-            jumpBufferCounter = Jump(jumpBufferCounter);
-        }
+        //if(jumpBufferCounter > 0)
+        //{
+            //jumpBufferCounter = Jump(jumpBufferCounter);
+        //}
         
         if(Input.GetMouseButtonDown(0))
         {
@@ -58,6 +58,6 @@ public class playerMovement : mob
         if(!Pv.IsMine)
             return;
         base.FixedUpdate();
-    }
+    }*/
 
 }
