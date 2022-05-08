@@ -20,6 +20,7 @@ public class Mob : MonoBehaviourPunCallbacks
     public MobBaseState actualState;
     InputPlayer inputPlayer;
     [SerializeField] public CollisionUpdates collisionCheck;
+    private Dictionary<int, MobBaseState> stateMachine = new Dictionary<int, MobBaseState>();
     
 
     void Awake()
@@ -33,8 +34,7 @@ public class Mob : MonoBehaviourPunCallbacks
         myStateMachine = new StateMachine();
         inputPlayer = new InputPlayer();
         //collisionCheck = new CollisionUpdates();
-
-        actualState = myStateMachine.initializeStates();
+        stateMachine = myStateMachine.initializeStates();
     }
 
 
@@ -47,7 +47,7 @@ public class Mob : MonoBehaviourPunCallbacks
         {
             return;
         }
-        
+        //stateMachine[state].UpdateState(this);
         mobMove();
         inputPlayer.InputChecks();//ver mejor manera
         collisionCheck.CollisionCheck();

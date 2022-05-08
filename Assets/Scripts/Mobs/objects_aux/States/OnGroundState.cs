@@ -13,15 +13,15 @@ public abstract class OnGroundState : MobBaseState
     {
 
     }
-    public override void CheckChangeState()
+    public override void CheckChangeState(Mob myMob)
     {
 
     }
-    public override void UpdateState()
+    public override void UpdateState(Mob myMob)
     {
 
     }
-    public override void FixedUpdateState()
+    public override void FixedUpdateState(Mob myMob)
     {
         
     }

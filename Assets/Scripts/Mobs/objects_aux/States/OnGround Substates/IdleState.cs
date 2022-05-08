@@ -6,7 +6,7 @@ public class IdleState : MobBaseState
 {
     public override void animate(Mob myMob)
     {
-        myMob.myAnimator.SetBool("IDLE", false);
+        myMob.myAnimator.SetFloat("Speed", 0);
     }
     public override void EndState(Mob myMob)
     {
@@ -16,15 +16,19 @@ public class IdleState : MobBaseState
     {
 
     }
-    public override void CheckChangeState()
+    public override void CheckChangeState(Mob myMob)
     {
+       // if(myMob.speed>0.01f)
+        //{
 
+        //}
     }
-    public override void UpdateState()
+    public override void UpdateState(Mob myMob)
     {
-
+        animate(myMob);
+        CheckChangeState(myMob);
     }
-    public override void FixedUpdateState()
+    public override void FixedUpdateState(Mob myMob)
     {
 
     }

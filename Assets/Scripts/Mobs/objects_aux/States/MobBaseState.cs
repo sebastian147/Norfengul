@@ -35,10 +35,10 @@ public abstract class MobBaseState
     public abstract void animate(Mob  myMob);
     public abstract void EndState(Mob myMob);
     public abstract void StarState(Mob myMob);
-    public abstract void CheckChangeState();
-    public abstract void UpdateState();
-    public abstract void FixedUpdateState();
-    public virtual void SwitchState(){
+    public abstract void CheckChangeState(Mob myMob);
+    public abstract void UpdateState(Mob myMob);
+    public abstract void FixedUpdateState(Mob myMob);
+    public virtual void SwitchState(Mob myMob){
 
     }
  
