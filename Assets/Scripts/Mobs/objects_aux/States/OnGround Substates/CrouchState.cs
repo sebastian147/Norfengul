@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrouchState : MobBaseState
 {
     public CrouchState(){
-        this.moveSpeed = 10f;
+        //this.moveSpeed = 10f;
     }
 
 

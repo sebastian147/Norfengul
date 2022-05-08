@@ -8,14 +8,13 @@ public class WalkState : MobBaseState
 
     public override void animate(Mob myMob)
     {
-        if ( horizontalMove > 0)
+        myMob.myAnimator.SetFloat("Speed", myMob.myRigidbody.velocity.x);
+        if ( myMob.myRigidbody.velocity.x > 0)
         {
-            myMob.myAnimator.SetBool(WALK_ANIMATION, true);
             myMob.mySpriteRenderer.flipX = false;
         }
-        else if (horizontalMove <0)
+        else if (myMob.myRigidbody.velocity.x <0)
         {
-            myMob.myAnimator.SetBool(WALK_ANIMATION, true);
             myMob.mySpriteRenderer.flipX = true;
         }
     }
@@ -29,11 +28,15 @@ public class WalkState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-
+        if(myMob.myRigidbody.velocity.x<0.01f)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(0);
+        }
     }
     public override void UpdateState(Mob myMob)
     {
-
+        animate(myMob);
+        CheckChangeState(myMob);
     }
     public override void FixedUpdateState(Mob myMob)
     {

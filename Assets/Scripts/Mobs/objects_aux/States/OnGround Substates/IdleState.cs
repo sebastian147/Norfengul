@@ -18,10 +18,10 @@ public class IdleState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-       // if(myMob.speed>0.01f)
-        //{
-
-        //}
+        if(myMob.myRigidbody.velocity.x>0.01f)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(1);
+        }
     }
     public override void UpdateState(Mob myMob)
     {

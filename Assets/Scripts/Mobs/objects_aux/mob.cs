@@ -17,11 +17,15 @@ public class Mob : MonoBehaviourPunCallbacks
 
     //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
     public StateMachine myStateMachine;
-    public MobBaseState actualState;
+    public int actualState;
     InputPlayer inputPlayer;
     [SerializeField] public CollisionUpdates collisionCheck;
-    private Dictionary<int, MobBaseState> stateMachine = new Dictionary<int, MobBaseState>();
-    
+
+    [Header("Move")]
+    protected float horizontalMove = 0f;
+    protected float moveSpeed = 40f;
+    private Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
     void Awake()
     {
@@ -34,7 +38,7 @@ public class Mob : MonoBehaviourPunCallbacks
         myStateMachine = new StateMachine();
         inputPlayer = new InputPlayer();
         //collisionCheck = new CollisionUpdates();
-        stateMachine = myStateMachine.initializeStates();
+        myStateMachine.initializeStates();
     }
 
 
@@ -47,15 +51,19 @@ public class Mob : MonoBehaviourPunCallbacks
         {
             return;
         }
-        //stateMachine[state].UpdateState(this);
-        mobMove();
+        myStateMachine.myDictionary[actualState].UpdateState(this);
+        move(this);
         inputPlayer.InputChecks();//ver mejor manera
         collisionCheck.CollisionCheck();
     }
 
-    void mobMove()
+    public virtual int move(Mob myMob)//mover de aca
     {
-        myStateMachine.changeState(actualState.move(this));
+        horizontalMove = Input.GetAxisRaw("Horizontal");
+		Vector3 targetVelocity = new Vector2(horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+		// And then smoothing it out and applying it to the character
+		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);        return 1;
+        return 1;
     }
 
 
