@@ -8,15 +8,7 @@ public class WalkState : MobBaseState
 
     public override void animate(Mob myMob)
     {
-        myMob.myAnimator.SetFloat("Speed", myMob.myRigidbody.velocity.x);
-        if ( myMob.myRigidbody.velocity.x > 0)
-        {
-            myMob.mySpriteRenderer.flipX = false;
-        }
-        else if (myMob.myRigidbody.velocity.x <0)
-        {
-            myMob.mySpriteRenderer.flipX = true;
-        }
+        myMob.myAnimator.SetFloat("Speed", Mathf.Abs(myMob.myRigidbody.velocity.x));
     }
     public override void EndState(Mob myMob)
     {
@@ -28,7 +20,7 @@ public class WalkState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-        if(myMob.myRigidbody.velocity.x<0.01f)
+        if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1)
         {
             myMob.actualState = myMob.myStateMachine.changeState(0);
         }
@@ -40,6 +32,8 @@ public class WalkState : MobBaseState
     }
     public override void FixedUpdateState(Mob myMob)
     {
-
+		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+		// And then smoothing it out and applying it to the character
+		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
     }
 }

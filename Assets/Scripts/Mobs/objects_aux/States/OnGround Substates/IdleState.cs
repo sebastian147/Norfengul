@@ -18,9 +18,10 @@ public class IdleState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-        if(myMob.myRigidbody.velocity.x>0.01f)
+        if(Mathf.Abs(myMob.horizontalMove)>0)
         {
             myMob.actualState = myMob.myStateMachine.changeState(1);
+            Debug.Log("entre");
         }
     }
     public override void UpdateState(Mob myMob)

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
-    public void InputChecks()
+    public void InputChecks(Mob myMob)
     {
         JumpCheck();
         AttackCheck();
+        MoveCheck(myMob);
     }
 
     public float jumpBufferTime = 0.2f;
@@ -43,9 +44,8 @@ public class InputPlayer : MonoBehaviour
             //}
         } 
     }
-
-
-
-        
-
+    public void MoveCheck(Mob myMob)
+    {
+        myMob.horizontalMove = Input.GetAxisRaw("Horizontal");
+    }
 }
