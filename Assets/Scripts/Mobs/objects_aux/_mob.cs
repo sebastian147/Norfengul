@@ -7,21 +7,7 @@ using Photon.Pun;
 public class _mob : MonoBehaviourPunCallbacks
 {
 	/*
-	[Header("Jump")]
-	[SerializeField] public int amountOfJumps = 1;
-	[SerializeField] public float counterJumpForce = 40f;
-    [SerializeField] public float jumpHeight = 10f;
-	[SerializeField] private float allowedTimeInAir = 0.1f;
-	[SerializeField] private float apexModifier = 2f;
-	[SerializeField] private float apexModifierTime = 0.3f;
-	private float apexModifierCurrent = 1f;
-	private float apexModifierTimeCount = 0.3f;
-	private float timeInAir = 0;
-	protected bool jumpStop = false;
- 	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
-	private int jumpdones = 0;
-	private int jumpsends = 0;
-    private bool jumping = false;//boorame?
+
 
 	[Header("CornerCorrection")]
 	[SerializeField] private float offsetOut = 0.27f;
@@ -91,10 +77,7 @@ public class _mob : MonoBehaviourPunCallbacks
     // Update is called once per frame
     public virtual void Update()
     {
-		m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, jumpHeight);//mover a start o awake cuando se sete el valor
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;//move to player
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
     public virtual void FixedUpdate()
     {
@@ -229,26 +212,7 @@ public class _mob : MonoBehaviourPunCallbacks
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)
     {
-		if(jumpsends<amountOfJumps)
-		{
-			jumpsends++;
-			jumping = true;
-			counter = 0f;
-		}
-		if(jumpsends == 1 && !m_Grounded)
-		{
-			jumpsends = 0;
-			jumping = false;
-			counter = 0f;
-		}
-		if(counter > 0 && m_Grounded && jumpsends == 0 )
-		{
-			jumpsends++;
-			counter = 0f;
-			jumping = true;
-		}
-		animator.SetBool("isJumping", true);
-		return counter;
+
     }
 	//move character
     public void Move(float move, bool crouch)
@@ -317,49 +281,9 @@ public class _mob : MonoBehaviourPunCallbacks
 	}
 	private void FixedJump()
 	{
-		// If the player should jump...
-		if (jumpdones < jumpsends && jumping == true)
-		{
-			jumpdones ++;
-			// Add a vertical force to the player.
-			m_Grounded = false;
-			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-			m_Rigidbody2D.AddForce(Vector2.up * m_JumpForce * m_Rigidbody2D.mass, ForceMode2D.Impulse);
-		}
-		if(jumping)
-        {
-            if(jumpStop && Vector2.Dot(m_Rigidbody2D.velocity, Vector2.up) > 0)
-            {
-                m_Rigidbody2D.AddForce(new Vector2(0f, -counterJumpForce) * m_Rigidbody2D.mass);
-            }
-			if(Mathf.Abs(m_Rigidbody2D.velocity.y) <  0.15f && apexModifierTimeCount > 0)
-			{
 
-				apexModifierTimeCount -= Time.fixedDeltaTime;
-				apexModifierCurrent = apexModifier;
-				m_Rigidbody2D.gravityScale = 0;
-				m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x, 0,1);
-			}
-			else
-			{
-				apexModifierTimeCount = apexModifierTime;
-				m_Rigidbody2D.gravityScale = 3;
-			}
-        }
-		else
-		{
-			apexModifierCurrent = 1;
-			apexModifierTimeCount = apexModifierTime;
-			m_Rigidbody2D.gravityScale = 3;
-		}
 	}
-    private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
-    {
-        //h = v^2/2g
-        //2gh = v^2
-        //sqrt(2gh) = v
-        return Mathf.Sqrt(2 * gravityStrength * jumpHeight);
-    }    
+  
 	//flip character
 	private void Flip()
 	{

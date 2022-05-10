@@ -12,11 +12,11 @@ public class CollisionUpdates : MonoBehaviour
 	[SerializeField] private float _groundRayCastLenght = 0.25f;//move variable ?
 	[SerializeField] private float offset = 0.23f;
 
-    public void CollisionCheck()
+    public void CollisionCheck(Mob myMob)
     {
         GizmosDraw();
         IsDeathZoneCheck();
-        IsGroundedCheck();
+        IsGroundedCheck(myMob);
     }
 	public void IsDeathZoneCheck()
 	{
@@ -28,8 +28,7 @@ public class CollisionUpdates : MonoBehaviour
         }
 	}
 
-	protected bool m_Grounded;            // Whether or not the player is grounded.
-    public void IsGroundedCheck()
+    public void IsGroundedCheck(Mob myMob)
 	{
         //bool wasGrounded = m_Grounded;
 		//m_Grounded = false;
@@ -39,19 +38,15 @@ public class CollisionUpdates : MonoBehaviour
 
 		if(raycastSuelo || raycastSuelo2 || raycastSuelo3)
 		{
-			m_Grounded = true;
+			myMob.m_Grounded = true;
             /*if (!wasGrounded)
             {
-                jumping = false;
-                animator.SetBool("isJumping", false);
-				jumpsends = 0;
-				jumpdones = 0;
-				timeInAir = 0;
+
             }*/
 		}
 		else
 		{
-			m_Grounded = false;
+			myMob.m_Grounded = false;
 		}
 		/*else if(!jumping)
 		{

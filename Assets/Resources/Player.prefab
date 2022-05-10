@@ -64,7 +64,27 @@ MonoBehaviour:
   myAnimator: {fileID: 2836940207534286414}
   mySpriteRenderer: {fileID: 2836940207534286415}
   myRigidbody: {fileID: 2836940207534286412}
+  actualState: 0
   collisionCheck: {fileID: 4400238434088136523}
+  horizontalMove: 0
+  m_Velocity: {x: 0, y: 0, z: 0}
+  m_MovementSmoothing: 0.05
+  amountOfJumps: 2
+  counterJumpForce: 40
+  jumpHeight: 10
+  allowedTimeInAir: 0.1
+  jumpBufferCounter: 0
+  apexModifier: 2
+  apexModifierTime: 0.3
+  apexModifierCurrent: 1
+  apexModifierTimeCount: 0.3
+  timeInAir: 0
+  jumpStop: 0
+  m_JumpForce: 5
+  jumpdones: 0
+  jumpsends: 0
+  jumping: 0
+  m_Grounded: 0
 --- !u!212 &2836940207534286415
 SpriteRenderer:
   m_ObjectHideFlags: 0

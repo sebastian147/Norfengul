@@ -26,14 +26,16 @@ public class StateMachine
         //Initilizes all mob states
         myDictionary.Add((int) myStates.Idle, new IdleState());
         myDictionary.Add((int) myStates.Walk, new WalkState());
-        myDictionary.Add((int) myStates.Jump, new CrouchState());
+        myDictionary.Add((int) myStates.Jump, new OnJumpState());
         
         //myStates.jumpSate = new JumpState();
         return myDictionary[0];
     }
 
-    public int changeState(int index)
+    public int changeState(int index,int actual, Mob myMob)
     {
+        myDictionary[actual].EndState(myMob);
+        myDictionary[index].StarState(myMob);
         //Returns the state needed by the mob
         //return (MobBaseState)myDictionary[index];
         return index;

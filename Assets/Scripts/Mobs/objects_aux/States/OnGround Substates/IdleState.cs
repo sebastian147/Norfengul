@@ -20,8 +20,11 @@ public class IdleState : MobBaseState
     {
         if(Mathf.Abs(myMob.horizontalMove)>0)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(1);
-            Debug.Log("entre");
+            myMob.actualState = myMob.myStateMachine.changeState(1,0,myMob);
+        }
+        if(myMob.jumpBufferCounter>0)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(2,0,myMob);
         }
     }
     public override void UpdateState(Mob myMob)

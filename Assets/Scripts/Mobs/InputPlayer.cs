@@ -6,32 +6,27 @@ public class InputPlayer : MonoBehaviour
 {
     public void InputChecks(Mob myMob)
     {
-        JumpCheck();
+        JumpCheck(myMob);
         AttackCheck();
         MoveCheck(myMob);
     }
 
-    public float jumpBufferTime = 0.2f;
-    public float jumpBufferCounter = 0f;
-    public void JumpCheck()//mover logica del tiempo a salto
+    public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
         if(Input.GetButtonDown("Jump"))
         {
-            jumpBufferCounter = jumpBufferTime;
-            //jumpStop = false;
+            myMob.jumpBufferCounter = myMob.allowedTimeInAir;
+            myMob.jumpStop = false;
         }
         else if(Input.GetButtonUp("Jump"))
         {
-            //jumpStop = true;
+            myMob.jumpStop = true;
         }
         else
         {
-            jumpBufferCounter -= Time.fixedDeltaTime;
+            myMob.jumpBufferCounter -= Time.fixedDeltaTime;
         }
-        if(jumpBufferCounter > 0)
-        {
-            //jumpBufferCounter = Jump(jumpBufferCounter);
-        }
+
     }
     public void AttackCheck()
     {
