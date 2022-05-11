@@ -553,7 +553,7 @@ MonoBehaviour:
   m_whatIsDeath:
     serializedVersion: 2
     m_Bits: 128
-  _groundRayCastLenght: 0.25
+  _groundRayCastLenght: 0.1
   offset: 0.23
 --- !u!1 &2836940208506618502
 GameObject:

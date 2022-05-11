@@ -22,7 +22,7 @@ public class InputPlayer : MonoBehaviour
         {
             myMob.jumpStop = true;
         }
-        else
+        else if(myMob.jumpBufferCounter > 0 && myMob.jumpStop == true)
         {
             myMob.jumpBufferCounter -= Time.fixedDeltaTime;
         }

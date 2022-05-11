@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OnJumpState : MobBaseState
 {
+	private bool jumpMade;
     public override void animate(Mob myMob)
     {
         return;
@@ -11,7 +12,7 @@ public class OnJumpState : MobBaseState
     public override void EndState(Mob myMob)
     {
         myMob.jumping = false;
-        myMob.myAnimator.SetBool("isJumping", false);
+		myMob.myAnimator.SetBool("isJumping", false);
 		myMob.jumpsends = 0;
 		myMob.jumpdones = 0;
 		myMob.timeInAir = 0;
@@ -19,17 +20,23 @@ public class OnJumpState : MobBaseState
     public override void StarState(Mob myMob)
     {
 		myMob.m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, myMob.jumpHeight);//mover a start o awake cuando se sete el valor
+		jumpMade = false;
     }
     public override void CheckChangeState(Mob myMob)
     {
+
+        if(myMob.m_Grounded && Mathf.Abs(myMob.myRigidbody.velocity.x) > 1)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(1,2,myMob);
+			return;
+        }
         if(myMob.m_Grounded)
         {
             myMob.actualState = myMob.myStateMachine.changeState(0,2,myMob);
+			return;
         }
-        if(myMob.m_Grounded && Mathf.Abs(myMob.horizontalMove)>0)
-        {
-            myMob.actualState = myMob.myStateMachine.changeState(1,2,myMob);
-        }
+
+
     }
     public override void UpdateState(Mob myMob)
     {
@@ -53,7 +60,9 @@ public class OnJumpState : MobBaseState
 			myMob.jumping = true;
 		}*/
 		myMob.myAnimator.SetBool("isJumping", true);
-        CheckChangeState(myMob);
+		jumpMade = JumpCheck(myMob);
+		if(jumpMade)
+        	CheckChangeState(myMob);//revisar
 
     }
     public override void FixedUpdateState(Mob myMob)
@@ -61,7 +70,6 @@ public class OnJumpState : MobBaseState
         // If the player should jump...
 		if (myMob.jumpdones < myMob.jumpsends && myMob.jumping == true)
 		{
-            Debug.Log("hola");
 			myMob.jumpdones ++;
 			// Add a vertical force to the player.
 			myMob.myRigidbody.velocity = new Vector2(myMob.myRigidbody.velocity.x, 0);
@@ -93,6 +101,10 @@ public class OnJumpState : MobBaseState
 			myMob.apexModifierTimeCount = myMob.apexModifierTime;
 			myMob.myRigidbody.gravityScale = 3;
 		}*/
+		//move on air
+		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+		// And then smoothing it out and applying it to the character
+		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
     }
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
     {
@@ -100,5 +112,13 @@ public class OnJumpState : MobBaseState
         //2gh = v^2
         //sqrt(2gh) = v
         return Mathf.Sqrt(2 * gravityStrength * jumpHeight);
-    }  
+    } 
+	private bool JumpCheck (Mob myMob)
+	{
+		if(myMob.m_Grounded == false)
+		{
+			jumpMade = true;
+		}
+		return jumpMade;
+	}
 }
