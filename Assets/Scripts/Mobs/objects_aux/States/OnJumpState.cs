@@ -40,25 +40,9 @@ public class OnJumpState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+		if(myMob.jumping)
+			MakeAJump(myMob);
 
-		if(myMob.jumpsends<myMob.amountOfJumps)
-		{
-			myMob.jumpsends++;
-			myMob.jumping = true;
-			myMob.jumpBufferCounter = 0f;
-		}
-		/*if(myMob.jumpsends == 1 && !myMob.m_Grounded)
-		{
-			myMob.jumpsends = 0;
-			myMob.jumping = false;
-			myMob.jumpBufferCounter = 0f;
-		}*/
-		/*if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )
-		{
-			myMob.jumpsends++;
-			myMob.jumpBufferCounter = 0f;
-			myMob.jumping = true;
-		}*/
 		myMob.myAnimator.SetBool("isJumping", true);
 		jumpMade = JumpCheck(myMob);
 		if(jumpMade)
@@ -68,7 +52,7 @@ public class OnJumpState : MobBaseState
     public override void FixedUpdateState(Mob myMob)
     {
         // If the player should jump...
-		if (myMob.jumpdones < myMob.jumpsends && myMob.jumping == true)
+		if (myMob.jumpdones < myMob.jumpsends)
 		{
 			myMob.jumpdones ++;
 			// Add a vertical force to the player.
@@ -106,6 +90,27 @@ public class OnJumpState : MobBaseState
 		// And then smoothing it out and applying it to the character
 		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
     }
+	private void MakeAJump(Mob myMob)
+	{
+		if(myMob.jumpsends<myMob.amountOfJumps)
+		{
+			myMob.jumpsends++;
+			myMob.jumpBufferCounter = 0f;
+		}
+		/*if(myMob.jumpsends == 1 && !myMob.m_Grounded)
+		{
+			myMob.jumpsends = 0;
+			myMob.jumping = false;
+			myMob.jumpBufferCounter = 0f;
+		}*/
+		/*if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )
+		{
+			myMob.jumpsends++;
+			myMob.jumpBufferCounter = 0f;
+			myMob.jumping = true;
+		}*/
+		myMob.jumping = false;
+	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
     {
         //h = v^2/2g
