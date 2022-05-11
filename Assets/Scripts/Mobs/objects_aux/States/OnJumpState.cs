@@ -87,9 +87,14 @@ public class OnJumpState : MobBaseState
 			myMob.apexModifierTimeCount = myMob.apexModifierTime;
 			myMob.myRigidbody.gravityScale = 3;
 		}*/
-		if(!myMob.m_Grounded && myMob.timeInAir > 0)
+		if(!myMob.m_Grounded && myMob.timeInAir > 0)//coyote time timer
 		{
 			myMob.timeInAir -= Time.fixedDeltaTime;
+		}
+		if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )
+		{
+			myMob.jumpsends++;
+			myMob.jumpBufferCounter = 0f;
 		}
 		//move on air falta checkear
 		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
@@ -108,15 +113,6 @@ public class OnJumpState : MobBaseState
 			myMob.jumpsends = 0;
 			myMob.jumpBufferCounter = 0f;
 		}
-
-
-		/*if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )
-		{
-			myMob.jumpsends++;
-			myMob.jumpBufferCounter = 0f;
-			myMob.jumping = true;
-		}*/
-
 		myMob.jumping = false;
 	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
