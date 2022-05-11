@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnJumpState : MobBaseState
 {
 	private bool jumpMade;
+	private float timeInAir;
     public override void animate(Mob myMob)
     {
         return;
@@ -15,12 +16,13 @@ public class OnJumpState : MobBaseState
 		myMob.myAnimator.SetBool("isJumping", false);
 		myMob.jumpsends = 0;
 		myMob.jumpdones = 0;
-		myMob.timeInAir = 0;
+		//myMob.timeInAir = 0;
     }
     public override void StarState(Mob myMob)
     {
 		myMob.m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, myMob.jumpHeight);//mover a start o awake cuando se sete el valor
 		jumpMade = false;
+		myMob.timeInAir = myMob.allowedTimeInAir;
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -47,7 +49,6 @@ public class OnJumpState : MobBaseState
 		jumpMade = JumpCheck(myMob);
 		if(jumpMade)
         	CheckChangeState(myMob);//revisar
-
     }
     public override void FixedUpdateState(Mob myMob)
     {
@@ -86,30 +87,36 @@ public class OnJumpState : MobBaseState
 			myMob.apexModifierTimeCount = myMob.apexModifierTime;
 			myMob.myRigidbody.gravityScale = 3;
 		}*/
-		//move on air
+		if(!myMob.m_Grounded && myMob.timeInAir > 0)
+		{
+			myMob.timeInAir -= Time.fixedDeltaTime;
+		}
+		//move on air falta checkear
 		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
 		// And then smoothing it out and applying it to the character
 		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
     }
 	private void MakeAJump(Mob myMob)
 	{
-		if(myMob.jumpsends<myMob.amountOfJumps)
+		if(myMob.jumpsends<myMob.amountOfJumps)//normal jumps
 		{
 			myMob.jumpsends++;
 			myMob.jumpBufferCounter = 0f;
 		}
-		/*if(myMob.jumpsends == 1 && !myMob.m_Grounded)
+		if(myMob.jumpsends == 1 && !myMob.m_Grounded && myMob.timeInAir <= 0)//coyote time
 		{
 			myMob.jumpsends = 0;
-			myMob.jumping = false;
 			myMob.jumpBufferCounter = 0f;
-		}*/
+		}
+
+
 		/*if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )
 		{
 			myMob.jumpsends++;
 			myMob.jumpBufferCounter = 0f;
 			myMob.jumping = true;
 		}*/
+
 		myMob.jumping = false;
 	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)

@@ -23,10 +23,12 @@ public class WalkState : MobBaseState
         if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1)
         {
             myMob.actualState = myMob.myStateMachine.changeState(0,1,myMob);
+            return;
         }
-        if(myMob.jumpBufferCounter>0)
+        if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
         {
             myMob.actualState = myMob.myStateMachine.changeState(2,1,myMob);
+            return;
         }
     }
     public override void UpdateState(Mob myMob)

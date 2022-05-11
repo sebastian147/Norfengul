@@ -15,7 +15,7 @@ public class InputPlayer : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump"))
         {
-            myMob.jumpBufferCounter = myMob.allowedTimeInAir;
+            myMob.jumpBufferCounter = myMob.jumpBufferTime;
             myMob.jumpStop = false;
             myMob.jumping = true;
         }

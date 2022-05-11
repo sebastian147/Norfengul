@@ -32,6 +32,7 @@ public class Mob : MonoBehaviourPunCallbacks
 	[SerializeField] public float counterJumpForce = 40f;
     [SerializeField] public float jumpHeight = 10f;
 	[SerializeField] public float allowedTimeInAir = 0.1f;
+    public float jumpBufferTime = 0.5f;
 	public float jumpBufferCounter = 0f;
 	[SerializeField] public float apexModifier = 2f;
 	[SerializeField] public float apexModifierTime = 0.3f;
