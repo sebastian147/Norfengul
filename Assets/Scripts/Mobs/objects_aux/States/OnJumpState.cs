@@ -59,12 +59,13 @@ public class OnJumpState : MobBaseState
 			myMob.myRigidbody.velocity = new Vector2(myMob.myRigidbody.velocity.x, 0);
 			myMob.myRigidbody.AddForce(Vector2.up * myMob.m_JumpForce * myMob.myRigidbody.mass, ForceMode2D.Impulse);
 		}
+		if(myMob.jumpStop && Vector2.Dot(myMob.myRigidbody.velocity, Vector2.up) > 0)
+        {
+            myMob.myRigidbody.AddForce(new Vector2(0f, -myMob.counterJumpForce) * myMob.myRigidbody.mass);
+        }
 		/*if(myMob.jumping)
         {
-            if(myMob.jumpStop && Vector2.Dot(myMob.myRigidbody.velocity, Vector2.up) > 0)
-            {
-                myMob.myRigidbody.AddForce(new Vector2(0f, -myMob.counterJumpForce) * myMob.myRigidbody.mass);
-            }
+
 			if(Mathf.Abs(myMob.myRigidbody.velocity.y) <  0.15f && myMob.apexModifierTimeCount > 0)
 			{
 
