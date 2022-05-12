@@ -73,9 +73,10 @@ MonoBehaviour:
   counterJumpForce: 40
   jumpHeight: 10
   allowedTimeInAir: 0.1
+  jumpBufferTime: 0.5
   jumpBufferCounter: 0
-  apexModifier: 2
-  apexModifierTime: 0.3
+  apexModifier: 1.4
+  apexModifierTime: 0.03
   apexModifierCurrent: 1
   apexModifierTimeCount: 0.3
   timeInAir: 0
@@ -84,7 +85,25 @@ MonoBehaviour:
   jumpdones: 0
   jumpsends: 0
   jumping: 0
+  offsetOut: 0.27
+  offsetIn: 0.15
+  _topRayCastLenght: 0.5
+  _topRayCastLenghtB: 0.5
+  offsetOutB: 0.27
+  offsetInB: 0.15
+  distanceFromMidle: 0.5
   m_Grounded: 0
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  m_GroundCheck: {fileID: 2836940208312759798}
+  m_whatIsDeath:
+    serializedVersion: 2
+    m_Bits: 128
+  k_GroundedRadius: 0.2
+  _groundRayCastLenght: 0.25
+  offset: 0.23
+  m_CeilingCheck: {fileID: 2836940208506618503}
 --- !u!212 &2836940207534286415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -546,15 +565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc9837443914394081220d4000b4c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  m_GroundCheck: {fileID: 2836940208312759798}
-  m_whatIsDeath:
-    serializedVersion: 2
-    m_Bits: 128
-  _groundRayCastLenght: 0.1
-  offset: 0.23
 --- !u!1 &2836940208506618502
 GameObject:
   m_ObjectHideFlags: 0

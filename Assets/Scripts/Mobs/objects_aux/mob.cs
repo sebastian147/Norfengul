@@ -45,7 +45,24 @@ public class Mob : MonoBehaviourPunCallbacks
 	public int jumpsends = 0;
     public bool jumping = false;//boorame?
 
+	[Header("CornerCorrection")]
+	[SerializeField] public float offsetOut = 0.27f;
+	[SerializeField] public float offsetIn = 0.15f;
+	[SerializeField] public float _topRayCastLenght = 0.5f;
+	[SerializeField] public float _topRayCastLenghtB = 0.5f;
+	[SerializeField] public float offsetOutB = 0.27f;
+	[SerializeField] public float offsetInB = 0.15f;
+	[SerializeField] public float distanceFromMidle = 0.5f;
 	[SerializeField] public bool m_Grounded;							// A position marking where to check if the player is grounded.
+
+	[Header("CollisionDetection")]
+    [SerializeField] public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
+	[SerializeField] public Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
+    [SerializeField] public LayerMask m_whatIsDeath;
+    public float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+	[SerializeField] public float _groundRayCastLenght = 0.25f;//move variable ?
+	[SerializeField] public float offset = 0.23f;
+	[SerializeField] public Transform m_CeilingCheck;							// A position marking where to check for ceilings
 
 
     void Awake()
@@ -80,7 +97,13 @@ public class Mob : MonoBehaviourPunCallbacks
             return;
         myStateMachine.myDictionary[actualState].FixedUpdateState(this);
     }
-
+    public void OnDrawGizmosSelected()
+    {
+		Gizmos.color = Color.red;
+        Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
+    }
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private void Fliping()
     {

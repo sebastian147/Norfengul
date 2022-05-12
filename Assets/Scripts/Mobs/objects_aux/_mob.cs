@@ -9,20 +9,12 @@ public class _mob : MonoBehaviourPunCallbacks
 	/*
 
 
-	[Header("CornerCorrection")]
-	[SerializeField] private float offsetOut = 0.27f;
-	[SerializeField] private float offsetIn = 0.15f;
-	[SerializeField] private float _topRayCastLenght = 0.5f;
-	[SerializeField] private float _topRayCastLenghtB = 0.5f;
-	[SerializeField] private float offsetOutB = 0.27f;
-	[SerializeField] private float offsetInB = 0.15f;
-	[SerializeField] private float distanceFromMidle = 0.5f;
+
 
     [Header("test")]
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
-	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 
 
@@ -86,47 +78,14 @@ public class _mob : MonoBehaviourPunCallbacks
         //move or character
         Move(horizontalMove * Time.fixedDeltaTime, false);
 		FixedJump();
-		CornerCorrectionTop();
-		CornerCorrectionbottom();
+
 
     }
 
 
 
 
-	public void CornerCorrectionTop()
-	{
-		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
-		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_CeilingCheck.position-new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
-		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
-		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
-		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
-		{
-			transform.position += new Vector3(offsetOut-offsetIn,0,0);
-		}
-		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2))
-		{
-			transform.position -= new Vector3(offsetOut-offsetIn,0,0);
-		}
-	
-	}
-	public void CornerCorrectionbottom ()
-	{
-		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
-		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
-		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
-		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
-		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2) && !m_Grounded && m_Rigidbody2D.velocity.x <0)
-		{
-			Debug.Log("izquierda");
-			transform.position += new Vector3(-0.1f,0.1f,0);
-		}
-		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2) && !m_Grounded && m_Rigidbody2D.velocity.x >0)
-		{
-			Debug.Log("derecha");
-			transform.position += new Vector3(0.1f,0.1f,0);
-		}
-	}
+
 
 	public void TakeDamage(int damage)
 	{

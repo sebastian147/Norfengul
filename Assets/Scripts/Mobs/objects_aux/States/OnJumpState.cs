@@ -44,9 +44,17 @@ public class OnJumpState : MobBaseState
     {
 		if(myMob.jumping)
 			MakeAJump(myMob);
-
+		if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )//buffer
+		{
+			myMob.jumpsends++;
+			myMob.jumpBufferCounter = 0f;
+		}
 		myMob.myAnimator.SetBool("isJumping", true);
 		jumpMade = JumpCheck(myMob);
+
+		CornerCorrectionTop(myMob);
+		CornerCorrectionbottom(myMob);
+
 		if(jumpMade)
         	CheckChangeState(myMob);//revisar
     }
@@ -64,22 +72,24 @@ public class OnJumpState : MobBaseState
         {
             myMob.myRigidbody.AddForce(new Vector2(0f, -myMob.counterJumpForce) * myMob.myRigidbody.mass);
         }
+		if(Mathf.Abs(myMob.myRigidbody.velocity.y) <  0.15f && myMob.apexModifierTimeCount > 0)
+		{
+
+			myMob.apexModifierTimeCount -= Time.fixedDeltaTime;
+			myMob.apexModifierCurrent = myMob.apexModifier;
+			myMob.myRigidbody.gravityScale = 0;
+			myMob.myRigidbody.velocity = new Vector3(myMob.myRigidbody.velocity.x, 0,1);
+		}
+		else
+		{
+			myMob.apexModifierCurrent = 1;
+			myMob.apexModifierTimeCount = myMob.apexModifierTime;
+			myMob.myRigidbody.gravityScale = 3;
+		}
 		/*if(myMob.jumping)
         {
 
-			if(Mathf.Abs(myMob.myRigidbody.velocity.y) <  0.15f && myMob.apexModifierTimeCount > 0)
-			{
 
-				myMob.apexModifierTimeCount -= Time.fixedDeltaTime;
-				myMob.apexModifierCurrent = myMob.apexModifier;
-				myMob.myRigidbody.gravityScale = 0;
-				myMob.myRigidbody.velocity = new Vector3(myMob.myRigidbody.velocity.x, 0,1);
-			}
-			else
-			{
-				myMob.apexModifierTimeCount = myMob.apexModifierTime;
-				myMob.myRigidbody.gravityScale = 3;
-			}
         }
 		else
 		{
@@ -91,13 +101,9 @@ public class OnJumpState : MobBaseState
 		{
 			myMob.timeInAir -= Time.fixedDeltaTime;
 		}
-		if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )
-		{
-			myMob.jumpsends++;
-			myMob.jumpBufferCounter = 0f;
-		}
+
 		//move on air falta checkear
-		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f*myMob.apexModifierCurrent, myMob.myRigidbody.velocity.y);
 		// And then smoothing it out and applying it to the character
 		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
     }
@@ -113,7 +119,41 @@ public class OnJumpState : MobBaseState
 			myMob.jumpsends = 0;
 			myMob.jumpBufferCounter = 0f;
 		}
+
 		myMob.jumping = false;
+	}
+	public void CornerCorrectionTop(Mob myMob)
+	{
+		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(myMob.m_CeilingCheck.position-new Vector3(myMob.offsetIn,0,0),Vector2.up, myMob._topRayCastLenght ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(myMob.m_CeilingCheck.position-new Vector3(myMob.offsetOut,0,0),Vector2.up, myMob._topRayCastLenght ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloRight = Physics2D.Raycast(myMob.m_CeilingCheck.position+new Vector3(myMob.offsetIn,0,0),Vector2.up, myMob._topRayCastLenght ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(myMob.m_CeilingCheck.position+new Vector3(myMob.offsetOut,0,0),Vector2.up, myMob._topRayCastLenght ,myMob.m_WhatIsGround);
+		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
+		{
+			myMob.transform.position += new Vector3(myMob.offsetOut-myMob.offsetIn,0,0);
+		}
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2))
+		{
+			myMob.transform.position -= new Vector3(myMob.offsetOut-myMob.offsetIn,0,0);
+		}
+	
+	}
+	public void CornerCorrectionbottom (Mob myMob)
+	{
+		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(myMob.m_GroundCheck.position-new Vector3(myMob.distanceFromMidle,-myMob.offsetInB,0),Vector2.left, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(myMob.m_GroundCheck.position-new Vector3(myMob.distanceFromMidle,-myMob.offsetOutB,0),Vector2.left, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloRight = Physics2D.Raycast(myMob.m_GroundCheck.position+new Vector3(myMob.distanceFromMidle,myMob.offsetInB,0),Vector2.right, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(myMob.m_GroundCheck.position+new Vector3(myMob.distanceFromMidle,myMob.offsetOutB,0),Vector2.right, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2) && !myMob.m_Grounded && myMob.myRigidbody.velocity.x <0)
+		{
+			Debug.Log("izquierda");
+			myMob.transform.position += new Vector3(-0.1f,0.1f,0);
+		}
+		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2) && !myMob.m_Grounded && myMob.myRigidbody.velocity.x >0)
+		{
+			Debug.Log("derecha");
+			myMob.transform.position += new Vector3(0.1f,0.1f,0);
+		}
 	}
     private static float CalculateJumpForce(float gravityStrength, float jumpHeight)
     {
