@@ -67,6 +67,7 @@ MonoBehaviour:
   actualState: 0
   collisionCheck: {fileID: 4400238434088136523}
   horizontalMove: 0
+  moveSpeed: 40
   m_Velocity: {x: 0, y: 0, z: 0}
   m_MovementSmoothing: 0.05
   amountOfJumps: 2
@@ -104,6 +105,23 @@ MonoBehaviour:
   _groundRayCastLenght: 0.25
   offset: 0.23
   m_CeilingCheck: {fileID: 2836940208506618503}
+  attacking: 0
+  attackRate: 2
+  nextAttackTime: 0
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
+  ui: {fileID: 0}
+  attackDamage: 10
+  friendlyFire: 0
+  attackPoint: {fileID: 2836940208013041884}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &2836940207534286415
 SpriteRenderer:
   m_ObjectHideFlags: 0

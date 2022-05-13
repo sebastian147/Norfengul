@@ -28,6 +28,11 @@ public class IdleState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(2,0,myMob);
             return;
         }
+        if(myMob.attacking == true)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(3,0,myMob);
+            return;
+        }
     }
     public override void UpdateState(Mob myMob)
     {
@@ -38,4 +43,5 @@ public class IdleState : MobBaseState
     {
 
     }
+    
 }

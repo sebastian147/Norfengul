@@ -24,18 +24,8 @@ public class _mob : MonoBehaviourPunCallbacks
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
-	[SerializeField] private int maxHealth = 100;
-	private int currentHealth = 0;
-	[SerializeField] private HealthBar healthBar;
-	[SerializeField] GameObject ui;
-	public int attackDamage = 10;
-	public bool friendlyFire = false;
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
-    public LayerMask playerLayers;
-	protected float attackRate = 2f;
-	protected float nextAttackTime = 0f;
+
+
 	[SerializeField] private Collider2D HitBoxColliders;
 
 	[System.Serializable]
@@ -96,36 +86,10 @@ public class _mob : MonoBehaviourPunCallbacks
     protected virtual void Attack()
     {
         //update animation
-        animator.SetTrigger("Attack");
-		CheckEnemysToAttack();
-		CheckPlayersToAttack();
+
+
     }
-	private void CheckPlayersToAttack()
-	{
-		//attack players
-		if(friendlyFire)
-		{
-			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-			//damage them
-			for (int i = 0; i < hitPlayer.Length; i++)
-			{
-				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())//rev
-				{
-					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
-				}
-			}
-		}
-	}
-	private void CheckEnemysToAttack()
-	{
-        //detect enemis
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        //damage them
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-        }
-	}
+
     protected void OnDrawGizmosSelected()
     {
         if(attackPoint == null)

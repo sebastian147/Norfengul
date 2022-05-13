@@ -7,10 +7,9 @@ public class InputPlayer : MonoBehaviour
     public void InputChecks(Mob myMob)
     {
         JumpCheck(myMob);
-        AttackCheck();
+        AttackCheck(myMob);
         MoveCheck(myMob);
     }
-
     public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
         if(Input.GetButtonDown("Jump"))
@@ -29,15 +28,16 @@ public class InputPlayer : MonoBehaviour
         }
 
     }
-    public void AttackCheck()
+    public void AttackCheck(Mob myMob)
     {
         if(Input.GetMouseButtonDown(0))
         {
-            //if(Time.time >= nextAttackTime)
-            //{
-                //Attack();
-                //nextAttackTime = Time.time + 1f/attackRate;
-            //}
+            if(Time.time >= myMob.nextAttackTime)
+            {
+                
+                myMob.nextAttackTime = Time.time + 1f/myMob.attackRate;
+                myMob.attacking = true;
+            }
         } 
     }
     public void MoveCheck(Mob myMob)

@@ -23,7 +23,7 @@ public class Mob : MonoBehaviourPunCallbacks
 
     [Header("Move")]
     public float horizontalMove = 0f;
-    protected float moveSpeed = 40f;
+    [SerializeField] protected float moveSpeed = 40f;
     public Vector3 m_Velocity = Vector3.zero;
     [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
@@ -64,6 +64,20 @@ public class Mob : MonoBehaviourPunCallbacks
 	[SerializeField] public float offset = 0.23f;
 	[SerializeField] public Transform m_CeilingCheck;							// A position marking where to check for ceilings
 
+    [Header("Attack")]
+    public bool attacking = false;
+    [SerializeField] public float attackRate = 2f;
+	[SerializeField] public float nextAttackTime = 0f;
+	[SerializeField] public int maxHealth = 100;
+	public int currentHealth = 0;
+	[SerializeField] public HealthBar healthBar;
+	[SerializeField] GameObject ui;
+	public int attackDamage = 10;
+	public bool friendlyFire = false;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public LayerMask playerLayers;
 
     void Awake()
     {
