@@ -11,7 +11,7 @@ public class Mob : MonoBehaviourPunCallbacks
     public Animator myAnimator;
     public SpriteRenderer mySpriteRenderer;
     public Rigidbody2D myRigidbody;
-    protected PhotonView Pv;
+    public PhotonView Pv;
 	PlayerManager playerManager;
 
 
@@ -90,7 +90,12 @@ public class Mob : MonoBehaviourPunCallbacks
         myStateMachine = new StateMachine();
         inputPlayer = new InputPlayer();
         //collisionCheck = new CollisionUpdates();
+        currentHealth = maxHealth;
         myStateMachine.initializeStates();
+        if(Pv.IsMine)
+			healthBar.SetMaxHealth(maxHealth);
+		else
+			Destroy(ui);
     }
 
 
@@ -145,6 +150,22 @@ public class Mob : MonoBehaviourPunCallbacks
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-
-
+	public void TakeDamage(int damage)
+	{
+		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
+	}
+    [PunRPC]
+	protected void RPC_TakeDamage(int damage)//try to move me
+	{
+		currentHealth -= damage;
+		if(Pv.IsMine)
+			healthBar.SetHealth(currentHealth);
+		//animacion de lastimado
+		if(currentHealth <= 0)
+		{
+            Debug.Log("die");
+			//Die();
+		}
+        return;
+	}
 }

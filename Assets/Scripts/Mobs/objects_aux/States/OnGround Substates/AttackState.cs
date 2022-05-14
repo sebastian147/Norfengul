@@ -36,10 +36,11 @@ public class AttackState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
-        CheckEnemysToAttack(myMob);
-		CheckPlayersToAttack(myMob);
+
         animate(myMob);
         CheckChangeState(myMob);
+        CheckEnemysToAttack(myMob);
+		CheckPlayersToAttack(myMob);
     }
     public override void FixedUpdateState(Mob myMob)
     {
@@ -54,9 +55,11 @@ public class AttackState : MobBaseState
 			//damage them
 			for (int i = 0; i < hitPlayer.Length; i++)
 			{
-				if (hitPlayer[i].gameObject.GetInstanceID() != myMob.GetInstanceID())//rev
+				if (hitPlayer[i].gameObject.GetInstanceID() != myMob.gameObject.GetInstanceID())//rev
 				{
-					//hitPlayer[i].GetComponent<playerMovement>().TakeDamage(myMob.attackDamage);
+					//hitPlayer[i].GetComponent<Mob>().actualState = hitPlayer[i].GetComponent<Mob>().myStateMachine.changeState(4,3,myMob);
+                    hitPlayer[i].GetComponent<Mob>().TakeDamage(myMob.attackDamage);
+                    return;
 				}
 			}
 		}

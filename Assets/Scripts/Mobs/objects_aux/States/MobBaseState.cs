@@ -31,5 +31,5 @@ public abstract class MobBaseState
     public virtual void SwitchState(Mob myMob){
 
     }
- 
+
 }

@@ -64,6 +64,7 @@ MonoBehaviour:
   myAnimator: {fileID: 2836940207534286414}
   mySpriteRenderer: {fileID: 2836940207534286415}
   myRigidbody: {fileID: 2836940207534286412}
+  Pv: {fileID: 0}
   actualState: 0
   collisionCheck: {fileID: 4400238434088136523}
   horizontalMove: 0
@@ -110,18 +111,18 @@ MonoBehaviour:
   nextAttackTime: 0
   maxHealth: 100
   currentHealth: 0
-  healthBar: {fileID: 0}
-  ui: {fileID: 0}
+  healthBar: {fileID: 881365251720784196}
+  ui: {fileID: 8860155079433219701}
   attackDamage: 10
-  friendlyFire: 0
+  friendlyFire: 1
   attackPoint: {fileID: 2836940208013041884}
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   playerLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!212 &2836940207534286415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -971,6 +972,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f30aef2b9804c43bcda7bb54e0ac3a, type: 3}
+--- !u!114 &881365251720784196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 299930540482664044, guid: d5f30aef2b9804c43bcda7bb54e0ac3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 581716667276607272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c47763b5a3f59547895bb17dda3fd29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5754480842191593729 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5174259854875614761, guid: d5f30aef2b9804c43bcda7bb54e0ac3a,

@@ -6,6 +6,7 @@ public enum myStates{
     Walk,
     Jump,
     Attack,
+    TakeDamage,
     Crouch
 }
 public class StateMachine
@@ -29,7 +30,7 @@ public class StateMachine
         myDictionary.Add((int) myStates.Walk, new WalkState());
         myDictionary.Add((int) myStates.Jump, new OnJumpState());
         myDictionary.Add((int) myStates.Attack, new AttackState());
-        
+        myDictionary.Add((int) myStates.TakeDamage, new TakeDamageState());
         //myStates.jumpSate = new JumpState();
         return myDictionary[0];
     }

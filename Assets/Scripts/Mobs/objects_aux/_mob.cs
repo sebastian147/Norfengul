@@ -46,10 +46,7 @@ public class _mob : MonoBehaviourPunCallbacks
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
-		if(Pv.IsMine)
-			healthBar.SetMaxHealth(maxHealth);
-		else
-			Destroy(ui);
+
 
 	}
 	public virtual void Star()
@@ -77,10 +74,7 @@ public class _mob : MonoBehaviourPunCallbacks
 
 
 
-	public void TakeDamage(int damage)
-	{
-		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
-	}
+
 
     //funcion para attacar mele
     protected virtual void Attack()
@@ -120,18 +114,7 @@ public class _mob : MonoBehaviourPunCallbacks
 		if(Pv.IsMine)
 			playerManager.Die();
     }
-	[PunRPC]
-	protected void RPC_TakeDamage(int damage)
-	{
-		currentHealth -= damage;
-		if(Pv.IsMine)
-			healthBar.SetHealth(currentHealth);
-		//animacion de lastimado
-		if(currentHealth <= 0)
-		{
-			Die();
-		}
-	}
+
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)
     {
