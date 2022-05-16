@@ -35,7 +35,7 @@ public class _mob : MonoBehaviourPunCallbacks
 	private bool m_wasCrouching = false;
 
 	protected PhotonView Pv;
-	PlayerManager playerManager;
+
 
     public virtual void Awake()
 	{
@@ -103,17 +103,7 @@ public class _mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0),Vector3.right*_topRayCastLenghtB+m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0));
 	}
-    protected void Die()
-    {
-		animator.SetBool("IsDead", true);
-		gameObject.GetComponent<Dissolve>().Active();
-		//GetComponent<BoxCollider2D>().enabled = false;
-		//GetComponent<CircleCollider2D>().enabled = false;
-		//m_Rigidbody2D.isKinematic = true;
-		this.enabled = false;
-		if(Pv.IsMine)
-			playerManager.Die();
-    }
+
 
 	//funcion para actualizar controlador salto
     protected float Jump(float counter = 0f)

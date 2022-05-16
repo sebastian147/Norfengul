@@ -157,15 +157,27 @@ public class Mob : MonoBehaviourPunCallbacks
     [PunRPC]
 	protected void RPC_TakeDamage(int damage)//try to move me
 	{
-		currentHealth -= damage;
-		if(Pv.IsMine)
-			healthBar.SetHealth(currentHealth);
-		//animacion de lastimado
-		if(currentHealth <= 0)
-		{
-            Debug.Log("die");
-			//Die();
-		}
-        return;
+        if(currentHealth > 0)//bug de muerte en respawn
+        {
+            currentHealth -= damage;
+            if(Pv.IsMine)
+                healthBar.SetHealth(currentHealth);
+            //animacion de lastimado
+            if(currentHealth <= 0)
+            {
+                Die();
+            }
+        }
 	}
+    protected void Die()
+    {
+		myAnimator.SetBool("IsDead", true);
+		gameObject.GetComponent<Dissolve>().Active();
+		//GetComponent<BoxCollider2D>().enabled = false;
+		//GetComponent<CircleCollider2D>().enabled = false;
+		//m_Rigidbody2D.isKinematic = true;
+		this.enabled = false;
+		if(Pv.IsMine)
+			playerManager.Die();
+    }
 }
