@@ -35,13 +35,13 @@ public class StateMachine
         return myDictionary[0];
     }
 
-    public int changeState(int index,int actual, Mob myMob)
+    public int changeState(myStates index, Mob myMob)
     {
-        myDictionary[actual].EndState(myMob);
-        myDictionary[index].StarState(myMob);
+        myDictionary[myMob.actualState].EndState(myMob);
+        myDictionary[(int) index].StarState(myMob);
         //Returns the state needed by the mob
         //return (MobBaseState)myDictionary[index];
-        return index;
+        return (int) index;
     }
 }
 

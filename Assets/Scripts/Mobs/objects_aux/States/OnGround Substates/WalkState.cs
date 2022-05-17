@@ -22,17 +22,17 @@ public class WalkState : MobBaseState
     {
         if(myMob.attacking == true)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(3,0,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
             return;
         }
         if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(2,1,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
         if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(0,1,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
             return;
         }
 

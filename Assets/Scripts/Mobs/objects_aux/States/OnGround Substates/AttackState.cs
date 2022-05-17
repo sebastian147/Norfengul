@@ -20,7 +20,7 @@ public class AttackState : MobBaseState
     {
         if(Mathf.Abs(myMob.horizontalMove) != 0)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(1,3,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
             return;
         }
         /*if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
@@ -30,7 +30,7 @@ public class AttackState : MobBaseState
         }*/
         if(Mathf.Abs(myMob.horizontalMove) == 0)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(0,3,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
             return;
         }
     }

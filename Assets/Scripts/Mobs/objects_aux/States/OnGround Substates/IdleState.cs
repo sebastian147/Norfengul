@@ -20,17 +20,17 @@ public class IdleState : MobBaseState
     {
         if(myMob.attacking == true)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(3,0,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
             return;
         }
         if(Mathf.Abs(myMob.horizontalMove) != 0)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(1,0,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
             return;
         }
         if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(2,0,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
     }

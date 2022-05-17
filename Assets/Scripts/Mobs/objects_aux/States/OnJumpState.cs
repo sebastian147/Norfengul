@@ -28,17 +28,17 @@ public class OnJumpState : MobBaseState
     {
         if(myMob.attacking == true)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(3,0,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
             return;
         }
         if(myMob.m_Grounded && Mathf.Abs(myMob.myRigidbody.velocity.x) > 1)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(1,2,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
 			return;
         }
         if(myMob.m_Grounded)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(0,2,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
 			return;
         }
 
