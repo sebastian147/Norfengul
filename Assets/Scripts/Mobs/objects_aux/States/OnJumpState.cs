@@ -26,7 +26,11 @@ public class OnJumpState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-
+        if(myMob.attacking == true)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(3,0,myMob);
+            return;
+        }
         if(myMob.m_Grounded && Mathf.Abs(myMob.myRigidbody.velocity.x) > 1)
         {
             myMob.actualState = myMob.myStateMachine.changeState(1,2,myMob);

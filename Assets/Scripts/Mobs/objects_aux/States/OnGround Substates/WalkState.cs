@@ -20,9 +20,9 @@ public class WalkState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-        if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1)
+        if(myMob.attacking == true)
         {
-            myMob.actualState = myMob.myStateMachine.changeState(0,1,myMob);
+            myMob.actualState = myMob.myStateMachine.changeState(3,0,myMob);
             return;
         }
         if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
@@ -30,6 +30,12 @@ public class WalkState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(2,1,myMob);
             return;
         }
+        if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(0,1,myMob);
+            return;
+        }
+
     }
     public override void UpdateState(Mob myMob)
     {
