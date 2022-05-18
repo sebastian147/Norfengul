@@ -4,14 +4,35 @@ using UnityEngine;
 
 public class CollisionUpdates : MonoBehaviour
 {
-	
-
-
     public void CollisionCheck(Mob myMob)
     {
         IsDeathZoneCheck(myMob);
         IsGroundedCheck(myMob);
+		IsWallCheck(myMob);
     }
+	private void IsWallCheck(Mob myMob)
+	{
+		RaycastHit2D raycastParedLeft = Physics2D.Raycast(myMob.m_WallCheck.position,new Vector2(-1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
+		RaycastHit2D raycastParedRight = Physics2D.Raycast(myMob.m_WallCheck.position,new Vector2(1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
+
+		if(raycastParedLeft)
+		{
+			myMob._inWallLeft = true;
+		}
+		else
+		{
+			myMob._inWallLeft = false;
+		}
+		if(raycastParedRight)
+		{
+			myMob._inWallRight = true;
+		}
+		else
+		{
+			myMob._inWallRight = false;
+		}
+
+	}
 	public void IsDeathZoneCheck(Mob myMob)
 	{
 		Collider2D[] collidersD = Physics2D.OverlapCircleAll(myMob.m_GroundCheck.position, myMob.k_GroundedRadius, myMob.m_whatIsDeath);

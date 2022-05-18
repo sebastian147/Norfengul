@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1985938979602765352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255113144337987700}
+  m_Layer: 9
+  m_Name: wallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1255113144337987700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985938979602765352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.096, y: -0.002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2836940207534286408}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2836940207534286419
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +74,7 @@ Transform:
   - {fileID: 2836940208312759798}
   - {fileID: 2836940208506618503}
   - {fileID: 279604295948610708}
+  - {fileID: 1255113144337987700}
   - {fileID: 2836940208013041884}
   - {fileID: 4543233572073566053}
   m_Father: {fileID: 0}
@@ -87,6 +119,12 @@ MonoBehaviour:
   jumpdones: 0
   jumpsends: 0
   jumping: 0
+  _inWall: 0
+  m_WallCheck: {fileID: 1255113144337987700}
+  _wallRayCastLenght: 0.2
+  wallGrabingJumpforce: 0
+  wallGrabingDirection: 0
+  wallSlidingSpeed: 1
   offsetOut: 0.27
   offsetIn: 0.15
   _topRayCastLenght: 0.5
@@ -538,7 +576,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2836940208312759797
 GameObject:
@@ -775,7 +813,7 @@ RectTransform:
   m_Children:
   - {fileID: 5754480842191593729}
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

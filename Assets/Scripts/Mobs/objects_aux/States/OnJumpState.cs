@@ -17,6 +17,10 @@ public class OnJumpState : MobBaseState
 		myMob.jumpsends = 0;
 		myMob.jumpdones = 0;
 		//myMob.timeInAir = 0;
+
+		//wall grabbing
+        myMob.wallGrabingJumpforce = 0;
+		myMob.wallGrabingDirection = 0;
     }
     public override void StarState(Mob myMob)
     {
@@ -26,6 +30,11 @@ public class OnJumpState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
+		if((myMob._inWallRight || myMob._inWallLeft) && !myMob.m_Grounded)
+		{
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.WallGrabing,myMob);
+            return;	
+		}
         if(myMob.attacking == true)
         {
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);

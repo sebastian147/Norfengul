@@ -45,6 +45,16 @@ public class Mob : MonoBehaviourPunCallbacks
 	public int jumpsends = 0;
     public bool jumping = false;//boorame?
 
+    [Header("Wall Grabing")]
+    public bool _inWallLeft = false;
+    public bool _inWallRight = false;
+	[SerializeField] public Transform m_WallCheck;
+	[SerializeField] public float _wallRayCastLenght = 0.2f;
+	public float wallGrabingJumpforce=0;
+	public float wallGrabingDirection=0;
+	[SerializeField] public float wallSlidingSpeed = 1;
+    [SerializeField] public float timeInwallBuffer = 4f;
+
 	[Header("CornerCorrection")]
 	[SerializeField] public float offsetOut = 0.27f;
 	[SerializeField] public float offsetIn = 0.15f;
