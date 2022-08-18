@@ -4,31 +4,85 @@ using UnityEngine;
 using UnityEngine.Events;
 using Photon.Pun;
 
-public class mob : MonoBehaviourPunCallbacks
+public class Mob : MonoBehaviourPunCallbacks
 {
-    public Animator animator;
-    float horizontalMove = 0f;
-    public float runSpeed = 40f;
+    //Declaration of variables that are from player.
+    public Transform myTransform;
+    public Animator myAnimator;
+    public SpriteRenderer mySpriteRenderer;
+    public Rigidbody2D myRigidbody;
+    public PhotonView Pv;
+	PlayerManager playerManager;
+
+
+    //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
+    public StateMachine myStateMachine;
+    public int actualState;
+    InputPlayer inputPlayer;
+    [SerializeField] public CollisionUpdates collisionCheck;
+
+    [Header("Move")]
+    public float horizontalMove = 0f;
+    [SerializeField] protected float moveSpeed = 40f;
+    public Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
 	[Header("Jump")]
 	[SerializeField] public int amountOfJumps = 1;
 	[SerializeField] public float counterJumpForce = 40f;
     [SerializeField] public float jumpHeight = 10f;
-	[SerializeField] private float allowedTimeInAir = 0.1f;
-	[SerializeField] private float _groundRayCastLenght = 0.25f;//move variable ?
-	[SerializeField] private float offset = 0.23f;
-	[SerializeField] private float apexModifier = 2f;
-	[SerializeField] private float apexModifierTime = 0.3f;
-	private float apexModifierCurrent = 1f;
-	private float apexModifierTimeCount = 0.3f;
-	private float timeInAir = 0;
-	protected bool jumpStop = false;
- 	private float m_JumpForce = 5f;						// Amount of force added when the player jumps.
-	private int jumpdones = 0;
-	private int jumpsends = 0;
-    private bool jumping = false;//boorame?
+	[SerializeField] public float allowedTimeInAir = 0.1f;
+    public float jumpBufferTime = 0.5f;
+	public float jumpBufferCounter = 0f;
+	[SerializeField] public float apexModifier = 2f;
+	[SerializeField] public float apexModifierTime = 0.3f;
+	public float apexModifierCurrent = 1f;
+	public float apexModifierTimeCount = 0.3f;
+	public float timeInAir = 0;
+	public bool jumpStop = false;
+ 	public float m_JumpForce = 5f;						// Amount of force added when the player jumps.
+	public int jumpdones = 0;
+	public int jumpsends = 0;
+    public bool jumping = false;//boorame?
+
+    [Header("Wall Grabing")]
+    public bool _inWallLeft = false;
+    public bool _inWallRight = false;
+	[SerializeField] public Transform m_WallCheck;
+	[SerializeField] public float _wallRayCastLenght = 0.2f;
+	public float wallGrabingJumpforce=0;
+	public float wallGrabingDirection=0;
+	[SerializeField] public float wallSlidingSpeed = 1;
+    [SerializeField] public float timeInwallBuffer = 4f;
 
 	[Header("CornerCorrection")]
+<<<<<<< HEAD
+	[SerializeField] public float offsetOut = 0.27f;
+	[SerializeField] public float offsetIn = 0.15f;
+	[SerializeField] public float _topRayCastLenght = 0.5f;
+	[SerializeField] public float _topRayCastLenghtB = 0.5f;
+	[SerializeField] public float offsetOutB = 0.27f;
+	[SerializeField] public float offsetInB = 0.15f;
+	[SerializeField] public float distanceFromMidle = 0.5f;
+	[SerializeField] public bool m_Grounded;							// A position marking where to check if the player is grounded.
+
+	[Header("CollisionDetection")]
+    [SerializeField] public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
+	[SerializeField] public Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
+    [SerializeField] public LayerMask m_whatIsDeath;
+    public float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+	[SerializeField] public float _groundRayCastLenght = 0.25f;//move variable ?
+	[SerializeField] public float offset = 0.23f;
+	[SerializeField] public Transform m_CeilingCheck;							// A position marking where to check for ceilings
+
+    [Header("Attack")]
+    public bool attacking = false;
+    [SerializeField] public float attackRate = 2f;
+	[SerializeField] public float nextAttackTime = 0f;
+	[SerializeField] public int maxHealth = 100;
+	public int currentHealth = 0;
+	[SerializeField] public HealthBar healthBar;
+=======
 	[SerializeField] private float offsetOut = 0.27f;
 	[SerializeField] private float offsetIn = 0.15f;
 	[SerializeField] private float _topRayCastLenght = 0.5f;
@@ -63,6 +117,7 @@ public class mob : MonoBehaviourPunCallbacks
 	[SerializeField] private int maxHealth = 100;
 	private int currentHealth = 0;
 	[SerializeField] private HealthBar healthBar;
+>>>>>>> master
 	[SerializeField] GameObject ui;
 	public int attackDamage = 10;
 	public bool friendlyFire = false;
@@ -70,52 +125,73 @@ public class mob : MonoBehaviourPunCallbacks
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public LayerMask playerLayers;
-	protected float attackRate = 2f;
-	protected float nextAttackTime = 0f;
-	[SerializeField] private Collider2D HitBoxColliders;
 
-	[System.Serializable]
-	public class BoolEvent : UnityEvent<bool> { }
-
-	public BoolEvent OnCrouchEvent;
-	private bool m_wasCrouching = false;
-
-	protected PhotonView Pv;
-	PlayerManager playerManager;
-
-    public virtual void Awake()
-	{
-		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
-		Pv = GetComponent<PhotonView>();
+    void Awake()
+    {
+        myTransform = GetComponent<Transform>();
+        myAnimator = GetComponent<Animator>();
+        myRigidbody = GetComponent<Rigidbody2D>();
+        Pv = GetComponent<PhotonView>();
 		playerManager = PhotonView.Find((int)Pv.InstantiationData[0]).GetComponent<PlayerManager>();
 
-		if (OnCrouchEvent == null)
-			OnCrouchEvent = new BoolEvent();
-		if(Pv.IsMine)
+        myStateMachine = new StateMachine();
+        inputPlayer = new InputPlayer();
+        //collisionCheck = new CollisionUpdates();
+        currentHealth = maxHealth;
+        myStateMachine.initializeStates();
+        if(Pv.IsMine)
 			healthBar.SetMaxHealth(maxHealth);
 		else
 			Destroy(ui);
+    }
 
-	}
-	public virtual void Star()
-	{
 
+<<<<<<< HEAD
+    // Update is called once per frame'
+    void Update()
+=======
 	}
 
     // Update is called once per frame
     public virtual void Update()
+>>>>>>> master
     {
-		m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, jumpHeight);//mover a start o awake cuando se sete el valor
+        if(!Pv.IsMine)
+            return;
+        myStateMachine.myDictionary[actualState].UpdateState(this);
+        Fliping();
+        inputPlayer.InputChecks(this);//ver mejor manera
+		collisionCheck.CollisionCheck(this);
+    }
 
+<<<<<<< HEAD
+    void FixedUpdate()
+    {
+        if(!Pv.IsMine)
+            return;
+        myStateMachine.myDictionary[actualState].FixedUpdateState(this);
+=======
 		wallGrabing();
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;//move to player
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
+>>>>>>> master
     }
-    public virtual void FixedUpdate()
+    public void OnDrawGizmosSelected()
     {
+<<<<<<< HEAD
+		Gizmos.color = Color.red;
+        Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
+		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
+		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
+    }
+    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    private void Fliping()
+    {
+        // If the input is moving the player right and the player is facing left...
+		if (horizontalMove > 0 && !m_FacingRight)
+=======
 		IsGroundedCheck();
 		IsDeathZoneCheck();
 		IsWallCheck();
@@ -190,17 +266,30 @@ public class mob : MonoBehaviourPunCallbacks
 		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetIn,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(m_CeilingCheck.position+new Vector3(offsetOut,0,0),Vector2.up, _topRayCastLenght ,m_WhatIsGround);
 		if((!raycastSueloLeft && raycastSueloLeft2) && (!raycastSueloRight && !raycastSueloRight2))
+>>>>>>> master
 		{
-			transform.position += new Vector3(offsetOut-offsetIn,0,0);
+			// ... flip the player.
+			Flip();
 		}
-		else if((!raycastSueloLeft && !raycastSueloLeft2) && (!raycastSueloRight && raycastSueloRight2))
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if (horizontalMove < 0 && m_FacingRight)
 		{
-			transform.position -= new Vector3(offsetOut-offsetIn,0,0);
+			// ... flip the player.
+			Flip();
 		}
-	
-	}
-	public void CornerCorrectionbottom ()
+    }
+    private void Flip()
 	{
+<<<<<<< HEAD
+
+		// Switch the way the player is labelled as facing.
+		m_FacingRight = !m_FacingRight;
+
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+=======
 		RaycastHit2D raycastSueloLeft = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
 		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0),Vector2.left, _topRayCastLenghtB ,m_WhatIsGround);
 		RaycastHit2D raycastSueloRight = Physics2D.Raycast(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0),Vector2.right, _topRayCastLenghtB ,m_WhatIsGround);
@@ -243,46 +332,29 @@ public class mob : MonoBehaviourPunCallbacks
 			wallGrabingDirection = 0;
 		}
 		wasInWall = _inWall;
+>>>>>>> master
 	}
 	public void TakeDamage(int damage)
 	{
 		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
 	}
-
-    //funcion para attacar mele
-    protected virtual void Attack()
-    {
-        //update animation
-        animator.SetTrigger("Attack");
-		CheckEnemysToAttack();
-		CheckPlayersToAttack();
-    }
-	private void CheckPlayersToAttack()
+    [PunRPC]
+	protected void RPC_TakeDamage(int damage)//try to move me
 	{
-		//attack players
-		if(friendlyFire)
-		{
-			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-			//damage them
-			for (int i = 0; i < hitPlayer.Length; i++)
-			{
-				if (hitPlayer[i].gameObject.GetInstanceID() != gameObject.GetInstanceID())//rev
-				{
-					hitPlayer[i].GetComponent<playerMovement>().TakeDamage(attackDamage);
-				}
-			}
-		}
-	}
-	private void CheckEnemysToAttack()
-	{
-        //detect enemis
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        //damage them
-        foreach (Collider2D enemy in hitEnemies)
+        if(currentHealth > 0)//bug de muerte en respawn
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            currentHealth -= damage;
+            if(Pv.IsMine)
+                healthBar.SetHealth(currentHealth);
+            //animacion de lastimado
+            if(currentHealth <= 0)
+            {
+                Die();
+            }
         }
 	}
+<<<<<<< HEAD
+=======
     protected void OnDrawGizmosSelected()
     {
         if(attackPoint == null)
@@ -307,9 +379,10 @@ public class mob : MonoBehaviourPunCallbacks
 		Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+_wallRayCastLenght*new Vector3(transform.localScale.x, 0,0));
 
 	}
+>>>>>>> master
     protected void Die()
     {
-		animator.SetBool("IsDead", true);
+		myAnimator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
 		//GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
@@ -318,6 +391,8 @@ public class mob : MonoBehaviourPunCallbacks
 		if(Pv.IsMine)
 			playerManager.Die();
     }
+<<<<<<< HEAD
+=======
 	[PunRPC]
 	protected void RPC_TakeDamage(int damage)
 	{
@@ -476,4 +551,5 @@ public class mob : MonoBehaviourPunCallbacks
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+>>>>>>> master
 }
