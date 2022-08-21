@@ -88,6 +88,7 @@ public class Mob : MonoBehaviourPunCallbacks
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public LayerMask playerLayers;
+    [SerializeField] public GameObject HitParticles; 
 
     void Awake()
     {

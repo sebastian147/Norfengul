@@ -6,6 +6,7 @@ public class AttackState : MobBaseState
 {
     public override void animate(Mob myMob)
     {
+        GameObject.Instantiate(myMob.HitParticles, myMob.attackPoint.position, Quaternion.identity);
         myMob.myAnimator.SetTrigger("Attack");
     }
     public override void EndState(Mob myMob)

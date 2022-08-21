@@ -550,6 +550,8 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 512
+  HitParticles: {fileID: 338923495937173749, guid: 5096b6ddcaf310549ad578cf8dac34e1,
+    type: 3}
 --- !u!1 &2836940208013041827
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,12 +38,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: back
+  - name: Back
     uniqueID: 2893675001
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Front
+  - name: Mountains
     uniqueID: 816576003
+    locked: 0
+  - name: Woods
+    uniqueID: 1705324327
+    locked: 0
+  - name: Trees
+    uniqueID: 905581775
+    locked: 0
+  - name: player
+    uniqueID: 3894075897
+    locked: 0
+  - name: floor
+    uniqueID: 957843003
     locked: 0
