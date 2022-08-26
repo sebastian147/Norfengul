@@ -85,7 +85,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel("Prueba tileset cuadrado");
+        PhotonNetwork.LoadLevel("Prueba Polomir");
     }
 
     public void LeaveRoom()
