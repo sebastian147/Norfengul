@@ -20,9 +20,23 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     [SerializeField] GameObject PlayerListItemPrefab;
     [SerializeField] GameObject startGameButton;
 
+    [SerializeField] TMP_Text scenesSelectButton;
+    public static List<string> scenes = new List<string>();
+    public static int ListCicleActual = 0;
+    private int ListCicleMax = 0;
+
+    
+
     void Awake()
     {
         Instance = this;
+
+        //para cambiar el escenario.
+        scenes.Add("Prueba Chicho");
+        scenes.Add("Prueba Polomir");
+        scenes.Add("Prueba Sebaster");
+        ListCicleMax = scenes.Count;
+        scenesSelectButton.text = scenes[ListCicleActual];
     }
 
     // Start is called before the first frame update
@@ -85,7 +99,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel("Prueba Polomir");
+        PhotonNetwork.LoadLevel(scenes[ListCicleActual]);
     }
 
     public void LeaveRoom()
@@ -124,4 +138,22 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
     }
 
+    public void OnRightArrowClick()
+    {
+        ListCicleActual++;
+        if(ListCicleActual >= ListCicleMax)
+        {
+            ListCicleActual = 0;
+        }
+        scenesSelectButton.text = scenes[ListCicleActual];
+    }
+    public void OnLeftArrowClick()
+    {
+        ListCicleActual--;
+        if(ListCicleActual < 0)
+        {
+            ListCicleActual = ListCicleMax-1;
+        }
+        scenesSelectButton.text = scenes[ListCicleActual];
+    }
 }
