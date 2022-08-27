@@ -9,7 +9,7 @@ public class Mob : MonoBehaviourPunCallbacks
     //Declaration of variables that are from player.
     public Transform myTransform;
     public Animator myAnimator;
-    public SpriteRenderer mySpriteRenderer;
+    //public SpriteRenderer mySpriteRenderer;
     public Rigidbody2D myRigidbody;
     public PhotonView Pv;
 	PlayerManager playerManager;
@@ -183,8 +183,10 @@ public class Mob : MonoBehaviourPunCallbacks
     protected void Die()
     {
 		myAnimator.SetBool("IsDead", true);
-		gameObject.GetComponent<Dissolve>().Active();
-		//GetComponent<BoxCollider2D>().enabled = false;
+		//gameObject.GetComponent<Dissolve>().Active();
+		
+        
+        //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
 		//m_Rigidbody2D.isKinematic = true;
 		this.enabled = false;

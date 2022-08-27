@@ -58,12 +58,30 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
+
+        RoomOptions roomOptions = 
+        new RoomOptions()
+        {
+            IsVisible = true,
+            IsOpen = true,
+            MaxPlayers = 8,
+        };
+        ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
+        _myCustomProperties.Add("Scene", scenes[ListCicleActual]);
+
+        roomOptions.CustomRoomProperties = _myCustomProperties;
+
+
+
+
         if(string.IsNullOrEmpty(roomNameInputField.text))
         {
             return;
         }
-        PhotonNetwork.CreateRoom(roomNameInputField.text);
+        PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions);
         MenuManager.Instance.OpenMenu("loading");
+        
+
     }
 
     public override void OnJoinedRoom()
@@ -84,6 +102,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         }
 
         startGameButton.SetActive(PhotonNetwork.IsMasterClient);
+
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)

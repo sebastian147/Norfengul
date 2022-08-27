@@ -984,7 +984,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTransform: {fileID: 2836940207534286408}
   myAnimator: {fileID: 2836940207534286414}
-  mySpriteRenderer: {fileID: 0}
   myRigidbody: {fileID: 2836940207534286412}
   Pv: {fileID: 4363230796165308452}
   actualState: 0

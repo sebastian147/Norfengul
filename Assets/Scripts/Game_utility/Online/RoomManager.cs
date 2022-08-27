@@ -29,7 +29,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName(ConnectToServer.scenes[ConnectToServer.ListCicleActual]))//game scene 
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName((string)PhotonNetwork.CurrentRoom.CustomProperties["Scene"]))//game scene 
         {
             PhotonNetwork.Instantiate(playerManager.name, Vector2.zero,Quaternion.identity);
         }

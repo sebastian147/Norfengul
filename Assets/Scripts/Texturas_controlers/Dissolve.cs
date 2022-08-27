@@ -13,7 +13,7 @@ public class Dissolve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        material = GetComponent<SpriteRenderer>().material;
+       // material = GetComponent<SpriteRenderer>().material;
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class Dissolve : MonoBehaviour
                 isDissolving = false;
             }
             
-            material.SetFloat("_Fade", (float)fade);
+           // material.SetFloat("_Fade", (float)fade);
         }
     }
     public void Active()

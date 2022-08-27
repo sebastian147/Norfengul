@@ -20,6 +20,6 @@ public class CreateAndJoinsRooms : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Esenario de Prueba");
+        PhotonNetwork.LoadLevel((string)PhotonNetwork.CurrentRoom.CustomProperties["Scene"]);
     }
 }
