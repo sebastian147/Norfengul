@@ -21,6 +21,10 @@ public class OnJumpState : MobBaseState
 		//wall grabbing
         myMob.wallGrabingJumpforce = 0;
 		myMob.wallGrabingDirection = 0;
+
+		myMob.apexModifierCurrent = 1;
+		myMob.apexModifierTimeCount = myMob.apexModifierTime;
+		myMob.myRigidbody.gravityScale = 3;
     }
     public override void StarState(Mob myMob)
     {
@@ -50,8 +54,6 @@ public class OnJumpState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
 			return;
         }
-
-
     }
     public override void UpdateState(Mob myMob)
     {

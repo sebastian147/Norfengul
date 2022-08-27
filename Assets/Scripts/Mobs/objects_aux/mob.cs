@@ -130,9 +130,31 @@ public class Mob : MonoBehaviourPunCallbacks
     public void OnDrawGizmosSelected()
     {
 		Gizmos.color = Color.red;
+        //floor check
         Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
 		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
 		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
+
+        //wall check
+        Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.right*_wallRayCastLenght);
+
+        //top jump correction
+        Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght+new Vector3(offsetIn,0,0));
+        Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght+new Vector3(offsetOut,0,0));
+        Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetIn,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetIn,0,0));
+        Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetOut,0,0));
+
+        //bottom correction
+        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(offsetIn,offsetOutB,0));
+        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(offsetOut,offsetInB,0));
+        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(offsetIn,-offsetInB,0));
+        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(offsetOut,-offsetOutB,0));
+        /*
+        RaycastHit2D raycastSueloLeft = Physics2D.Raycast(myMob.m_GroundCheck.position-new Vector3(myMob.distanceFromMidle,-myMob.offsetInB,0),Vector2.left, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(myMob.m_GroundCheck.position-new Vector3(myMob.distanceFromMidle,-myMob.offsetOutB,0),Vector2.left, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloRight = Physics2D.Raycast(myMob.m_GroundCheck.position+new Vector3(myMob.distanceFromMidle,myMob.offsetInB,0),Vector2.right, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(myMob.m_GroundCheck.position+new Vector3(myMob.distanceFromMidle,myMob.offsetOutB,0),Vector2.right, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
+        */
     }
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private void Fliping()
