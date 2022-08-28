@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Dissolve : MonoBehaviour
 {
-    Material material;
+    [SerializeField] GameObject[] t; 
+    Material[] material;
+    int i = 0;
 
     bool isDissolving = false;
     double fade = 1f;
@@ -13,12 +16,28 @@ public class Dissolve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        material = new Material[t.Length];
+        foreach(GameObject e in t) 
+        {
+            try
+            {
+                material[i] = e.GetComponent<SpriteRenderer>().material;
+            }
+            catch(Exception s)
+            {
+                print(i);
+                print(e);
+                print(s);
+            }
+            i++;
+        }
        // material = GetComponent<SpriteRenderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if(active)
         {
             isDissolving = true;
@@ -33,8 +52,10 @@ public class Dissolve : MonoBehaviour
                 fade = 0f;
                 isDissolving = false;
             }
-            
-           // material.SetFloat("_Fade", (float)fade);
+            for(int i = 0; i<t.Length;i++ ) 
+            {
+                material[i].SetFloat("_Fade", (float)fade);
+            }
         }
     }
     public void Active()

@@ -202,10 +202,10 @@ public class Mob : MonoBehaviourPunCallbacks
             }
         }
 	}
-    protected void Die()
+    public void Die()
     {
 		myAnimator.SetBool("IsDead", true);
-		//gameObject.GetComponent<Dissolve>().Active();
+		gameObject.GetComponent<Dissolve>().Active();
 		
         
         //GetComponent<BoxCollider2D>().enabled = false;

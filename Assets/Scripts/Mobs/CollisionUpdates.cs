@@ -39,7 +39,7 @@ public class CollisionUpdates : MonoBehaviour
 
         for (int i = 0; i < collidersD.Length; i++)
         {
-			//Die();
+			myMob.Die();
         }
 	}
 
