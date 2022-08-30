@@ -12,10 +12,12 @@ public class CollisionUpdates : MonoBehaviour
     }
 	private void IsWallCheck(Mob myMob)
 	{
-		RaycastHit2D raycastParedLeft = Physics2D.Raycast(myMob.m_WallCheck.position,new Vector2(-1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
-		RaycastHit2D raycastParedRight = Physics2D.Raycast(myMob.m_WallCheck.position,new Vector2(1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
+		RaycastHit2D raycastParedLeftTop = Physics2D.Raycast(myMob.m_WallCheck.position,new Vector2(-1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
+		RaycastHit2D raycastParedLeftDown = Physics2D.Raycast(myMob.m_WallCheck.position+new Vector3(0, -myMob.distanceFromGrabs, 0),new Vector2(-1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
+		RaycastHit2D raycastParedRightTop = Physics2D.Raycast(myMob.m_WallCheck.position,new Vector2(1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
+		RaycastHit2D raycastParedRightDown = Physics2D.Raycast(myMob.m_WallCheck.position+new Vector3(0, -myMob.distanceFromGrabs, 0),new Vector2(1, 0), myMob._wallRayCastLenght,myMob.m_WhatIsGround);	
 
-		if(raycastParedLeft)
+		if(raycastParedLeftTop && raycastParedLeftDown)
 		{
 			myMob._inWallLeft = true;
 		}
@@ -23,7 +25,7 @@ public class CollisionUpdates : MonoBehaviour
 		{
 			myMob._inWallLeft = false;
 		}
-		if(raycastParedRight)
+		if(raycastParedRightTop && raycastParedRightDown)
 		{
 			myMob._inWallRight = true;
 		}
@@ -31,7 +33,6 @@ public class CollisionUpdates : MonoBehaviour
 		{
 			myMob._inWallRight = false;
 		}
-
 	}
 	public void IsDeathZoneCheck(Mob myMob)
 	{
