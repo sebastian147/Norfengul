@@ -54,6 +54,8 @@ public class Mob : MonoBehaviourPunCallbacks
 	public float wallGrabingDirection=0;
 	[SerializeField] public float wallSlidingSpeed = 1;
     [SerializeField] public float timeInwallBuffer = 4f;
+    [SerializeField] public float distanceFromGrabs = 0.5f;
+    public bool wallGrabing = false;
 
 	[Header("CornerCorrection")]
 	[SerializeField] public float offsetOut = 0.27f;
@@ -145,16 +147,17 @@ public class Mob : MonoBehaviourPunCallbacks
         Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetOut,0,0));
 
         //bottom correction
-        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(offsetIn,offsetOutB,0));
-        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(offsetOut,offsetInB,0));
-        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(offsetIn,-offsetInB,0));
-        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(offsetOut,-offsetOutB,0));
-        /*
-        RaycastHit2D raycastSueloLeft = Physics2D.Raycast(myMob.m_GroundCheck.position-new Vector3(myMob.distanceFromMidle,-myMob.offsetInB,0),Vector2.left, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
-		RaycastHit2D raycastSueloLeft2 = Physics2D.Raycast(myMob.m_GroundCheck.position-new Vector3(myMob.distanceFromMidle,-myMob.offsetOutB,0),Vector2.left, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
-		RaycastHit2D raycastSueloRight = Physics2D.Raycast(myMob.m_GroundCheck.position+new Vector3(myMob.distanceFromMidle,myMob.offsetInB,0),Vector2.right, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
-		RaycastHit2D raycastSueloRight2 = Physics2D.Raycast(myMob.m_GroundCheck.position+new Vector3(myMob.distanceFromMidle,myMob.offsetOutB,0),Vector2.right, myMob._topRayCastLenghtB ,myMob.m_WhatIsGround);
-        */
+        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(0,offsetOutB,0));
+        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(0,offsetInB,0));
+        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(0,-offsetInB,0));
+        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(0,-offsetOutB,0));
+
+        //Wall grabing
+        Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.right*_wallRayCastLenght);
+        Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.right*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+        Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.left*_wallRayCastLenght);
+        Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.left*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+        
     }
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private void Fliping()

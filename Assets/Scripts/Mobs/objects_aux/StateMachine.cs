@@ -43,6 +43,8 @@ public class StateMachine
         myDictionary[(int) index].StarState(myMob);
         //Returns the state needed by the mob
         //return (MobBaseState)myDictionary[index];
+        Debug.Log((int) index);
+
         return (int) index;
     }
 }
