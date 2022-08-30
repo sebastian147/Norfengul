@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41ff861229ccaf448902706f9367e77e
+guid: a1e0d02580d4f8948b7eaf0e8f94f550
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,127 +104,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eldes - Walk_0
+      name: Eldes - Wall_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 11
         y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 14
+        height: 10
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0.016422998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac72962fbed9feb4a97c448181e617ed
-      internalID: -1288050725
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Walk_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 932df8b9ff6712f43965614f23420517
-      internalID: -1170260737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Walk_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82baa6c44f7c5034b9f5505575b01a61
-      internalID: 1764367036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Walk_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cedd39e417dde534493b1e48b15e3460
-      internalID: -379460222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Walk_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6364f7f39bbf5554db3c28385b9a5842
-      internalID: -914712421
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Walk_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b480a43bef2765408df2822c884ee10
-      internalID: -1008568730
+      spriteID: 1fa0b79b849bc104e9fe4ca6a4292048
+      internalID: 241442921
       vertices: []
       indices: 
       edges: []
@@ -233,19 +128,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eldes - Walk_3: -379460222
-      Eldes - Walk_0: -1288050725
-      Eldes - Walk_2: 1764367036
-      Eldes - Walk_4: -914712421
-      Eldes - Walk_1: -1170260737
-      Eldes - Walk_5: -1008568730
+      Eldes - Wall_0: 241442921
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
