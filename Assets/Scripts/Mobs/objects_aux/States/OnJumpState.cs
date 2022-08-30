@@ -52,7 +52,6 @@ public class OnJumpState : MobBaseState
     {
 		if(((myMob._inWallRight && myMob.horizontalMove > 0)  || (myMob._inWallLeft && myMob.horizontalMove<0)) && !myMob.m_Grounded)
 		{
-			Debug.Log("Enter");
             myMob.actualState = myMob.myStateMachine.changeState(myStates.WallGrabing,myMob);
             return;	
 		}
@@ -85,8 +84,7 @@ public class OnJumpState : MobBaseState
 		myMob.myAnimator.SetBool("isJumping", true);
 		jumpMade = JumpCheck(myMob);
 
-		c.CornerCorrectionTop(myMob);
-		c.CornerCorrectionbottom(myMob);
+		c.CornerCorrectionAll(myMob);
 
 		if(jumpMade || jumpTime <= 0)
         	CheckChangeState(myMob);//revisar

@@ -56,6 +56,7 @@ public class Mob : MonoBehaviourPunCallbacks
     [SerializeField] public float timeInwallBuffer = 4f;
     [SerializeField] public float distanceFromGrabs = 0.5f;
     public bool wallGrabing = false;
+    [SerializeField] public LayerMask m_WhatIsWall;
 
 	[Header("CornerCorrection")]
 	[SerializeField] public float offsetOut = 0.27f;
@@ -105,6 +106,7 @@ public class Mob : MonoBehaviourPunCallbacks
         //collisionCheck = new CollisionUpdates();
         currentHealth = maxHealth;
         myStateMachine.initializeStates();
+        //m_WhatIsWall = m_WhatIsGround;//borrame
         if(Pv.IsMine)
 			healthBar.SetMaxHealth(maxHealth);
 		else
