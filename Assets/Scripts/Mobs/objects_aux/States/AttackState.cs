@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class AttackState : MobBaseState
 {
+    private int pass = 10;
     public override void animate(Mob myMob)
     {
         //  GameObject.Instantiate(myMob.HitParticles, myMob.attackPoint.position, Quaternion.identity);
-        myMob.myAnimator.SetTrigger("Attack");
+		myMob.myAnimator.SetBool("isAttack", true);
     }
     public override void EndState(Mob myMob)
     {
-
+		myMob.myAnimator.SetBool("isAttack", false);
     }
     public override void StarState(Mob myMob)
     {
         myMob.attacking = false;
+        pass = 10;
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -39,7 +41,11 @@ public class AttackState : MobBaseState
     {
 
         animate(myMob);
-        CheckChangeState(myMob);
+        if(pass <=0)
+            CheckChangeState(myMob);
+        else
+            pass--;
+
         CheckEnemysToAttack(myMob);
 		CheckPlayersToAttack(myMob);
     }

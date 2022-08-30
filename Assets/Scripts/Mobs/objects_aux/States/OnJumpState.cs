@@ -48,7 +48,6 @@ public class OnJumpState : MobBaseState
 			move = myMob.horizontalMove;
 			jumpTimeFromWall = jumpTimeFromWallMax;
 		}
-		animate(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -76,6 +75,7 @@ public class OnJumpState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+		animate(myMob);
 		if(myMob.jumping)
 			MakeAJump(myMob);
 		if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )//buffer
