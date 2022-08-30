@@ -989,8 +989,8 @@ MonoBehaviour:
   jumpdones: 0
   jumpsends: 0
   jumping: 0
-  _inWallRightTop: 0
-  _inWallRightDown: 0
+  _inWallLeft: 0
+  _inWallRight: 0
   m_WallCheck: {fileID: 5002034421337006041}
   _wallRayCastLenght: 0.5
   wallGrabingJumpforce: 0
