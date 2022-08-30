@@ -207,10 +207,12 @@ public class Mob : MonoBehaviourPunCallbacks
 	}
     public void Die()
     {
-		myAnimator.SetBool("IsDead", true);
+		currentHealth = 0;
+        healthBar.SetHealth(currentHealth);
+        myAnimator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
-		
         
+		
         //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
 		//m_Rigidbody2D.isKinematic = true;
