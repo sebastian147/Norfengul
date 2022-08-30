@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 317652517}
   - component: {fileID: 317652516}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Fondo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2875,7 +2875,7 @@ GameObject:
   - component: {fileID: 759995113}
   - component: {fileID: 759995112}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Arboles cercanos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
