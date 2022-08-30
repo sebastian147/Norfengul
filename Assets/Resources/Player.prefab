@@ -999,6 +999,9 @@ MonoBehaviour:
   timeInwallBuffer: 1
   distanceFromGrabs: 0.5
   wallGrabing: 0
+  m_WhatIsWall:
+    serializedVersion: 2
+    m_Bits: 134217728
   offsetOut: 0.401
   offsetIn: 0.15
   _topRayCastLenght: 0.5
