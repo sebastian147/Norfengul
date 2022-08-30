@@ -7,10 +7,12 @@ public class WallJumpState : MobBaseState
     private float timer;
     public override void animate(Mob myMob)
     {
+		myMob.myAnimator.SetBool("isInWall", true);
         return;
     }
     public override void EndState(Mob myMob)
     {
+		myMob.myAnimator.SetBool("isInWall", false);
 		myMob.wallGrabing = true;
     }
     public override void StarState(Mob myMob)
@@ -52,6 +54,7 @@ public class WallJumpState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+        animate(myMob);
         if(myMob.horizontalMove !=  myMob.wallGrabingDirection)
         {
             timer += Time.fixedDeltaTime;

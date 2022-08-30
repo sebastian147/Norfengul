@@ -15,6 +15,7 @@ public class OnJumpState : MobBaseState
 	CornerCorrection c = new CornerCorrection();
     public override void animate(Mob myMob)
     {
+		myMob.myAnimator.SetBool("isJumping", true);
         return;
     }
     public override void EndState(Mob myMob)
@@ -47,6 +48,7 @@ public class OnJumpState : MobBaseState
 			move = myMob.horizontalMove;
 			jumpTimeFromWall = jumpTimeFromWallMax;
 		}
+		animate(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -81,7 +83,6 @@ public class OnJumpState : MobBaseState
 			myMob.jumpsends++;
 			myMob.jumpBufferCounter = 0f;
 		}
-		myMob.myAnimator.SetBool("isJumping", true);
 		jumpMade = JumpCheck(myMob);
 
 		c.CornerCorrectionAll(myMob);

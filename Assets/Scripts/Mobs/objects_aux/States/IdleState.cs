@@ -33,6 +33,11 @@ public class IdleState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
+        if(myMob.victory)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Victory,myMob);
+            return;
+        }
     }
     public override void UpdateState(Mob myMob)
     {

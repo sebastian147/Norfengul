@@ -93,6 +93,9 @@ public class Mob : MonoBehaviourPunCallbacks
     public LayerMask playerLayers;
     [SerializeField] public GameObject HitParticles; 
 
+    [Header("victory")]
+    public bool victory = false;
+
     void Awake()
     {
         myTransform = GetComponent<Transform>();

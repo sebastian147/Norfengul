@@ -32,9 +32,9 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         Instance = this;
 
         //para cambiar el escenario.
+        scenes.Add("Prueba Sebaster");
         scenes.Add("Prueba Chicho");
         scenes.Add("Prueba Polomir");
-        scenes.Add("Prueba Sebaster");
         ListCicleMax = scenes.Count;
         scenesSelectButton.text = scenes[ListCicleActual];
     }

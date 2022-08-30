@@ -9,6 +9,7 @@ public class InputPlayer : MonoBehaviour
         JumpCheck(myMob);
         AttackCheck(myMob);
         MoveCheck(myMob);
+        VictoryCheck(myMob);
     }
     public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
@@ -39,6 +40,16 @@ public class InputPlayer : MonoBehaviour
                 myMob.attacking = true;
             }
         } 
+    }
+    public void VictoryCheck(Mob myMob)
+    {
+        if(Input.GetButton("v"))
+        {
+            myMob.victory = true;
+        }
+        else{
+            myMob.victory = false;
+        }
     }
     public void MoveCheck(Mob myMob)
     {

@@ -8,7 +8,8 @@ public enum myStates{
     Attack,
     WallGrabing,
     TakeDamage,
-    Crouch
+    //Crouch,
+    Victory
 }
 public class StateMachine
 {
@@ -33,6 +34,7 @@ public class StateMachine
         myDictionary.Add((int) myStates.Attack, new AttackState());
         myDictionary.Add((int) myStates.WallGrabing, new WallJumpState());
         myDictionary.Add((int) myStates.TakeDamage, new TakeDamageState());
+        myDictionary.Add((int) myStates.Victory, new VictoryState());
         //myStates.jumpSate = new JumpState();
         return myDictionary[0];
     }
