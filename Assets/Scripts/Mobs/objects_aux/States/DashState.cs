@@ -13,13 +13,11 @@ public class DashState : MobBaseState
     public override void EndState(Mob myMob)
     {
         myMob.myRigidbody.gravityScale = originalGravity;
-        myMob.canDash = true; //se deberia poner en true en otro lado luego de pasado el tiempo
         myMob.tr.emitting = false;
-
+        myMob.canDash = false;
     }
     public override void StarState(Mob myMob)
     {
-        myMob.canDash = false;
         originalGravity = myMob.myRigidbody.gravityScale;
         myMob.myRigidbody.gravityScale = 0f;
         myMob.myRigidbody.velocity = new Vector2(Mathf.Sign(myMob.horizontalMove) * myMob.dashingPower, 0f);

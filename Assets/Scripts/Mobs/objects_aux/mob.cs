@@ -14,6 +14,8 @@ public class Mob : MonoBehaviourPunCallbacks
     public PhotonView Pv;
 	PlayerManager playerManager;
 
+    Timers t = new Timers();
+
 
     //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
     public StateMachine myStateMachine;
@@ -102,7 +104,8 @@ public class Mob : MonoBehaviourPunCallbacks
     public bool dashRight = false;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
-    public float dashingCoolDown = 1f;
+    public float dashingCoolDown = 0;
+    public float dashingCoolDownMax = 1f;
     public bool canDash = true;
     [SerializeField] public TrailRenderer tr;
 
@@ -143,6 +146,7 @@ public class Mob : MonoBehaviourPunCallbacks
         if(!Pv.IsMine)
             return;
         myStateMachine.myDictionary[actualState].FixedUpdateState(this);
+        canDash = t.timePassFixed(ref dashingCoolDown, dashingCoolDownMax, !canDash);
     }
     public void OnDrawGizmosSelected()
     {

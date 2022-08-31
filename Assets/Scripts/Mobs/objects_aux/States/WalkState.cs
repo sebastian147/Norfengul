@@ -35,7 +35,7 @@ public class WalkState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
             return;
         }
-        if(myMob.dashRight || myMob.dashLeft)
+        if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
         {
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
             return;
