@@ -10,6 +10,7 @@ public class InputPlayer : MonoBehaviour
         AttackCheck(myMob);
         MoveCheck(myMob);
         VictoryCheck(myMob);
+        DropCheck(myMob);
     }
     public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
@@ -55,4 +56,15 @@ public class InputPlayer : MonoBehaviour
     {
         myMob.horizontalMove = Input.GetAxisRaw("Horizontal");
     }
+    public void DropCheck(Mob myMob)
+    {
+        if(Input.GetAxisRaw("Vertical")<0)
+        {
+            myMob.drop = true;
+        }
+        else{
+            myMob.drop = false;
+        }
+    }
+
 }

@@ -57,6 +57,7 @@ public class Mob : MonoBehaviourPunCallbacks
     [SerializeField] public float distanceFromGrabs = 0.5f;
     public bool wallGrabing = false;
     [SerializeField] public LayerMask m_WhatIsWall;
+    public bool drop = false;
 
 	[Header("CornerCorrection")]
 	[SerializeField] public float offsetOut = 0.27f;

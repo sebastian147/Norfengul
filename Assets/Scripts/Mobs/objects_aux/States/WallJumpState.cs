@@ -22,8 +22,9 @@ public class WallJumpState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
-        if(myMob.jumpBufferCounter>0 && myMob.horizontalMove !=  0)
+        if(myMob.horizontalMove !=  0 && myMob.horizontalMove !=  myMob.wallGrabingDirection && myMob.jumpBufferCounter>0) 
         {
+            Debug.Log("1");
             myMob.wallGrabing = true;
             myMob.jumpsends = myMob.amountOfJumps-1;
 		    myMob.jumpdones = myMob.amountOfJumps-1;
@@ -32,14 +33,15 @@ public class WallJumpState : MobBaseState
         }
         if(timer > myMob.timeInwallBuffer)
         {
+            Debug.Log("2");
             myMob.jumpsends = myMob.amountOfJumps;
 		    myMob.jumpdones = myMob.amountOfJumps;
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
-        if(!myMob._inWallRight && !myMob._inWallLeft && myMob.horizontalMove ==  myMob.wallGrabingDirection)
+        if(myMob.drop)
         {
-            myMob.wallGrabing = true;
+            Debug.Log("3");
             myMob.jumpsends = myMob.amountOfJumps;
 		    myMob.jumpdones = myMob.amountOfJumps;
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);

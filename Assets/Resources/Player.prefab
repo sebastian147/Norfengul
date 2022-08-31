@@ -720,6 +720,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isAttack
+  - Type: 9
+    SynchronizeType: 0
+    Name: Attack
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1002,12 +1005,13 @@ MonoBehaviour:
   wallGrabingJumpforce: 0
   wallGrabingDirection: 0
   wallSlidingSpeed: 1
-  timeInwallBuffer: 1
+  timeInwallBuffer: 2
   distanceFromGrabs: 0.5
   wallGrabing: 0
   m_WhatIsWall:
     serializedVersion: 2
     m_Bits: 134217728
+  drop: 0
   offsetOut: 0.401
   offsetIn: 0.23
   _topRayCastLenght: 0.05
