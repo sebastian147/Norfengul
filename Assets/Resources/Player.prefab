@@ -1056,6 +1056,7 @@ MonoBehaviour:
   dashingPower: 24
   dashingTime: 0.2
   dashingCoolDown: 1
+  dashingCoolDownMax: 1
   canDash: 1
   tr: {fileID: 4608122293946482898}
 --- !u!1 &2836940208013041827
