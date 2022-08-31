@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OnJumpState : MobBaseState
 {
+    float originalGravity;
 	private bool jumpMade;
 	private float timeInAir;
 	private int timesEnter;
@@ -35,9 +36,12 @@ public class OnJumpState : MobBaseState
 		myMob.myRigidbody.gravityScale = 3;
 
 		myMob.wallGrabing = false;
+        myMob.myRigidbody.gravityScale = originalGravity;
+
     }
     public override void StarState(Mob myMob)
     {
+        originalGravity = myMob.myRigidbody.gravityScale;
 		myMob.m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, myMob.jumpHeight);//mover a start o awake cuando se sete el valor
 		jumpMade = false;
 		myMob.timeInAir = myMob.allowedTimeInAir;
@@ -48,7 +52,6 @@ public class OnJumpState : MobBaseState
 			move = myMob.horizontalMove;
 			jumpTimeFromWall = jumpTimeFromWallMax;
 		}
-		animate(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -72,10 +75,15 @@ public class OnJumpState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
 			return;
         }
-
+        if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
+            return;
+        }
     }
     public override void UpdateState(Mob myMob)
     {
+		animate(myMob);
 		if(myMob.jumping)
 			MakeAJump(myMob);
 		if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )//buffer
@@ -122,7 +130,7 @@ public class OnJumpState : MobBaseState
 		{
 			myMob.apexModifierCurrent = 1;
 			myMob.apexModifierTimeCount = myMob.apexModifierTime;
-			myMob.myRigidbody.gravityScale = 3;
+			myMob.myRigidbody.gravityScale = originalGravity;
 		}
 
 		/*if(myMob.jumping)

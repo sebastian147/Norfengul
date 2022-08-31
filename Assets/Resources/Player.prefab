@@ -706,14 +706,23 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Speed
   - Type: 4
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: isJumping
-  - Type: 9
-    SynchronizeType: 2
-    Name: Attack
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: IsDead
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsVictory
+  - Type: 4
+    SynchronizeType: 1
+    Name: isInWall
+  - Type: 4
+    SynchronizeType: 2
+    Name: isAttack
+  - Type: 9
+    SynchronizeType: 0
+    Name: Attack
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -858,7 +867,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -875,8 +884,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.36699232
-        value: 0.1328125
+        time: 0.37039503
+        value: 0.21942139
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -950,7 +959,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
 --- !u!114 &2836940207534286410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,12 +1005,13 @@ MonoBehaviour:
   wallGrabingJumpforce: 0
   wallGrabingDirection: 0
   wallSlidingSpeed: 1
-  timeInwallBuffer: 1
+  timeInwallBuffer: 2
   distanceFromGrabs: 0.5
   wallGrabing: 0
   m_WhatIsWall:
     serializedVersion: 2
     m_Bits: 134217728
+  drop: 0
   offsetOut: 0.401
   offsetIn: 0.23
   _topRayCastLenght: 0.05
@@ -1041,6 +1051,13 @@ MonoBehaviour:
   HitParticles: {fileID: 338923495937173749, guid: 5096b6ddcaf310549ad578cf8dac34e1,
     type: 3}
   victory: 0
+  dashLeft: 0
+  dashRight: 0
+  dashingPower: 24
+  dashingTime: 0.2
+  dashingCoolDown: 1
+  canDash: 1
+  tr: {fileID: 4608122293946482898}
 --- !u!1 &2836940208013041827
 GameObject:
   m_ObjectHideFlags: 0
