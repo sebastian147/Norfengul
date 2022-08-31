@@ -24,7 +24,6 @@ public class WallJumpState : MobBaseState
     {
         if(myMob.horizontalMove !=  0 && myMob.horizontalMove !=  myMob.wallGrabingDirection && myMob.jumpBufferCounter>0) 
         {
-            Debug.Log("1");
             myMob.wallGrabing = true;
             myMob.jumpsends = myMob.amountOfJumps-1;
 		    myMob.jumpdones = myMob.amountOfJumps-1;
@@ -33,7 +32,6 @@ public class WallJumpState : MobBaseState
         }
         if(timer > myMob.timeInwallBuffer)
         {
-            Debug.Log("2");
             myMob.jumpsends = myMob.amountOfJumps;
 		    myMob.jumpdones = myMob.amountOfJumps;
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
@@ -41,7 +39,6 @@ public class WallJumpState : MobBaseState
         }
         if(myMob.drop)
         {
-            Debug.Log("3");
             myMob.jumpsends = myMob.amountOfJumps;
 		    myMob.jumpdones = myMob.amountOfJumps;
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
@@ -49,7 +46,6 @@ public class WallJumpState : MobBaseState
         }
         if(myMob.m_Grounded)
         {
-
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
 			return;
         }

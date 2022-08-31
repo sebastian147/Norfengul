@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
+    float DoubleTapTime = 0f;
+    float DoubleTapTimeMax = 2f;
+    int DoubleTapCounter = 0;
+
     public void InputChecks(Mob myMob)
     {
         JumpCheck(myMob);
@@ -11,6 +15,8 @@ public class InputPlayer : MonoBehaviour
         MoveCheck(myMob);
         VictoryCheck(myMob);
         DropCheck(myMob);
+        myMob.dashLeft = DoubleTap(myMob, "a");
+        myMob.dashRight = DoubleTap(myMob, "d");
     }
     public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
@@ -65,6 +71,32 @@ public class InputPlayer : MonoBehaviour
         else{
             myMob.drop = false;
         }
+    }
+    public bool DoubleTap(Mob myMob, string key)
+    {
+        if(DoubleTapCounter < 2 && Input.GetButtonDown(key))
+        {
+            DoubleTapCounter++;
+            if(DoubleTapCounter == 1)
+            {
+                DoubleTapTime = DoubleTapTimeMax;
+            }
+        }
+        else
+        {
+            DoubleTapTime -= Time.fixedDeltaTime;
+        }
+        if(DoubleTapTime <= 0)
+        {
+            DoubleTapCounter = 0;
+        }
+        if(DoubleTapCounter >= 2)
+        {
+            DoubleTapTime = DoubleTapTimeMax;
+            DoubleTapCounter = 0;
+            return true;
+        }
+        return false;
     }
 
 }

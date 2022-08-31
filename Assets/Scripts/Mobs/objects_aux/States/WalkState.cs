@@ -35,7 +35,11 @@ public class WalkState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
             return;
         }
-
+        if(myMob.dashRight || myMob.dashLeft)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
+            return;
+        }
     }
     public override void UpdateState(Mob myMob)
     {

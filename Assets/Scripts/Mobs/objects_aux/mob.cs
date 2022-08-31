@@ -96,6 +96,15 @@ public class Mob : MonoBehaviourPunCallbacks
 
     [Header("victory")]
     public bool victory = false;
+    
+    [Header("dash")]
+    public bool dashLeft = false;
+    public bool dashRight = false;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCoolDown = 1f;
+    public bool canDash = true;
+    [SerializeField] public TrailRenderer tr;
 
     void Awake()
     {

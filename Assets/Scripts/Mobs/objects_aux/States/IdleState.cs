@@ -46,7 +46,9 @@ public class IdleState : MobBaseState
     }
     public override void FixedUpdateState(Mob myMob)
     {
-
+		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+		// And then smoothing it out and applying it to the character
+		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
     }
     
 }
