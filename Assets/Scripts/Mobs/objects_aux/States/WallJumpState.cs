@@ -37,6 +37,13 @@ public class WallJumpState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
+        if(!myMob.m_Grounded && myMob.horizontalMove ==  myMob.wallGrabingDirection && !myMob._inWallLeft && !myMob._inWallRight)
+        {
+            myMob.jumpsends = myMob.amountOfJumps;
+		    myMob.jumpdones = myMob.amountOfJumps;
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
+            return;          
+        }
         if(myMob.drop)
         {
             myMob.jumpsends = myMob.amountOfJumps;
