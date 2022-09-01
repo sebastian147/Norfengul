@@ -33,6 +33,8 @@ public class DashState : MobBaseState
         }
         if(time <= 0 && !myMob.m_Grounded)
         {
+            myMob.jumpsends = myMob.amountOfJumps;
+		    myMob.jumpdones = myMob.amountOfJumps;
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
