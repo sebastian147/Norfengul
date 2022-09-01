@@ -167,8 +167,8 @@ ScriptedImporter:
     uvTransform: {x: 50, y: 11}
   - name: Arma Izquierda 1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.15668048, y: 0.4882141}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -791,8 +791,8 @@ ScriptedImporter:
     uvTransform: {x: -4, y: -7}
   - name: Pantalones 3
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
