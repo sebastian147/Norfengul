@@ -15,7 +15,7 @@ public class Mob : MonoBehaviourPunCallbacks
 	PlayerManager playerManager;
 
     Timers t = new Timers();
-
+    public bool canFlip = true;
 
     //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
     public StateMachine myStateMachine;
@@ -136,7 +136,8 @@ public class Mob : MonoBehaviourPunCallbacks
         if(!Pv.IsMine)
             return;
         myStateMachine.myDictionary[actualState].UpdateState(this);
-        Fliping();
+        if(canFlip)
+            Fliping();
         inputPlayer.InputChecks(this);//ver mejor manera
 		collisionCheck.CollisionCheck(this);
     }

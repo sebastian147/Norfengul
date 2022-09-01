@@ -14,9 +14,12 @@ public class WallJumpState : MobBaseState
     {
 		myMob.myAnimator.SetBool("isInWall", false);
 		myMob.wallGrabing = true;
+
+        myMob.canFlip = true;
     }
     public override void StarState(Mob myMob)
     {
+        myMob.canFlip = false;
         timer = 0f;
         myMob.wallGrabingDirection = myMob.horizontalMove;
     }

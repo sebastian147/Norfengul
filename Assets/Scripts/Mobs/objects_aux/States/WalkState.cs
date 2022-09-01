@@ -8,11 +8,11 @@ public class WalkState : MobBaseState
 
     public override void animate(Mob myMob)
     {
-        myMob.myAnimator.SetFloat("Speed", Mathf.Abs(myMob.myRigidbody.velocity.x));
+        myMob.myAnimator.SetBool("walking", true);
     }
     public override void EndState(Mob myMob)
     {
-
+        myMob.myAnimator.SetBool("walking", false);
     }
     public override void StarState(Mob myMob)
     {

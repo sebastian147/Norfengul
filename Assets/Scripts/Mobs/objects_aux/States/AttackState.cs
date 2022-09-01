@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : MobBaseState
 {
-    private int pass = 10;
+    private int pass = 10000;
     public override void animate(Mob myMob)
     {
         //  GameObject.Instantiate(myMob.HitParticles, myMob.attackPoint.position, Quaternion.identity);
