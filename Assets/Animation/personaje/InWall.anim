@@ -280,17 +280,6 @@ AnimationClip:
     path: Bone_Suelo/Patas
     classID: 212
     script: {fileID: 0}
-  - curve:
-    - time: 0
-      value: {fileID: 316383269186575412, guid: d6999bca0ea0da048914021adc91f35a,
-        type: 3}
-    - time: 1
-      value: {fileID: 316383269186575412, guid: d6999bca0ea0da048914021adc91f35a,
-        type: 3}
-    attribute: m_Sprite
-    path: Bone_Suelo/Pantalones
-    classID: 212
-    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -307,13 +296,6 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 4290085475
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 899308788
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -385,8 +367,6 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 241442921, guid: a1e0d02580d4f8948b7eaf0e8f94f550, type: 3}
     - {fileID: 241442921, guid: a1e0d02580d4f8948b7eaf0e8f94f550, type: 3}
-    - {fileID: 316383269186575412, guid: d6999bca0ea0da048914021adc91f35a, type: 3}
-    - {fileID: 316383269186575412, guid: d6999bca0ea0da048914021adc91f35a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
