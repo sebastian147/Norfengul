@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cc7660adcd586b46948310062a04b73
+guid: 56a235aae84220d4291d5a096804373b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eldes - Jump_0
+      name: Eldes - Walk pantalones bronze_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d812bcb083dac34fbfaf99e5cbeeb04
-      internalID: 2012982758
+      spriteID: f3c1ae6422a79d843abbf74c49a3eed0
+      internalID: 490908146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eldes - Jump_1
+      name: Eldes - Walk pantalones bronze_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 357f4edd31c02a74aa75d1e7a3ec990a
-      internalID: -69668388
+      spriteID: 26ef6de68aaffcd46a4e3ca67369735b
+      internalID: 462711083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eldes - Jump_2
+      name: Eldes - Walk pantalones bronze_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,8 +160,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d127a0572b844f4ab2f411b953cd03c
-      internalID: -177170727
+      spriteID: 7ea70d75efcb2ba479346850e9474c4e
+      internalID: 894944384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldes - Walk pantalones bronze_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad8cb9bb01c52b4b8be5931d97a2373
+      internalID: -1596943410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldes - Walk pantalones bronze_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f166f69c91a61844396f61e450f2591e
+      internalID: 866923608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldes - Walk pantalones bronze_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0829819fef525974494b2377469003d9
+      internalID: 2110643758
       vertices: []
       indices: 
       edges: []
@@ -177,9 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eldes - Jump_0: 2012982758
-      Eldes - Jump_2: -177170727
-      Eldes - Jump_1: -69668388
+      Eldes - Walk pantalones bronze_3: -1596943410
+      Eldes - Walk pantalones bronze_1: 462711083
+      Eldes - Walk pantalones bronze_0: 490908146
+      Eldes - Walk pantalones bronze_2: 894944384
+      Eldes - Walk pantalones bronze_5: 2110643758
+      Eldes - Walk pantalones bronze_4: 866923608
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
