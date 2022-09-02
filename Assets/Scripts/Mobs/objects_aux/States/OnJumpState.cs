@@ -83,6 +83,7 @@ public class OnJumpState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+        base.UpdateState(myMob);
 		animate(myMob);
 		if(myMob.jumping)
 			MakeAJump(myMob);

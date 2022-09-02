@@ -15,13 +15,12 @@ public class WallJumpState : MobBaseState
 		myMob.myAnimator.SetBool("isInWall", false);
 		myMob.wallGrabing = true;
 
-        myMob.canFlip = true;
     }
     public override void StarState(Mob myMob)
     {
-        myMob.canFlip = false;
         timer = 0f;
         myMob.wallGrabingDirection = myMob.horizontalMove;
+        Fliping(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -62,6 +61,7 @@ public class WallJumpState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+        base.UpdateState(myMob);
         animate(myMob);
         if(myMob.horizontalMove !=  myMob.wallGrabingDirection)
         {
@@ -72,5 +72,16 @@ public class WallJumpState : MobBaseState
     public override void FixedUpdateState(Mob myMob)
     {
         myMob.myRigidbody.velocity = new Vector2(myMob.myRigidbody.velocity.x,Mathf.Clamp(myMob.myRigidbody.velocity.y, Vector2.down.y*myMob.wallSlidingSpeed, float.MaxValue));//mover a fixed update
+    }
+    public override void Fliping(Mob myMob)
+    {
+        if(myMob.m_FacingRight && myMob._inWallLeft)
+        {
+            Flip(myMob);
+        }
+        else if(!myMob.m_FacingRight && myMob._inWallRight)
+        {
+            Flip(myMob);
+        }
     }
 }

@@ -41,6 +41,7 @@ public class IdleState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+        base.UpdateState(myMob);
         animate(myMob);
         CheckChangeState(myMob);
     }

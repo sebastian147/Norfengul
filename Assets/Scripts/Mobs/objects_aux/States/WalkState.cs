@@ -43,6 +43,7 @@ public class WalkState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+        base.UpdateState(myMob);
         CheckChangeState(myMob);
     }
     public override void FixedUpdateState(Mob myMob)

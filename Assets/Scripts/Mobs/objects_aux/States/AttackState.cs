@@ -39,7 +39,7 @@ public class AttackState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
-
+        base.UpdateState(myMob);//rev
         animate(myMob);
         if(pass <=0)
             CheckChangeState(myMob);

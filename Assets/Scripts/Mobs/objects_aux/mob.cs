@@ -15,7 +15,7 @@ public class Mob : MonoBehaviourPunCallbacks
 	PlayerManager playerManager;
 
     Timers t = new Timers();
-    public bool canFlip = true;
+    public bool m_FacingRight = true;
 
     //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
     public StateMachine myStateMachine;
@@ -136,8 +136,7 @@ public class Mob : MonoBehaviourPunCallbacks
         if(!Pv.IsMine)
             return;
         myStateMachine.myDictionary[actualState].UpdateState(this);
-        if(canFlip)
-            Fliping();
+        //Fliping();
         inputPlayer.InputChecks(this);//ver mejor manera
 		collisionCheck.CollisionCheck(this);
     }
@@ -179,33 +178,7 @@ public class Mob : MonoBehaviourPunCallbacks
         Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.left*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
         
     }
-    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    private void Fliping()
-    {
-        // If the input is moving the player right and the player is facing left...
-		if (horizontalMove > 0 && !m_FacingRight)
-		{
-			// ... flip the player.
-			Flip();
-		}
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if (horizontalMove < 0 && m_FacingRight)
-		{
-			// ... flip the player.
-			Flip();
-		}
-    }
-    private void Flip()
-	{
 
-		// Switch the way the player is labelled as facing.
-		m_FacingRight = !m_FacingRight;
-
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
 	public void TakeDamage(int damage)
 	{
 		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
