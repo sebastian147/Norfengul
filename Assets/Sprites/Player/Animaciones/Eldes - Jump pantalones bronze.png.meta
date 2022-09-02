@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cc7660adcd586b46948310062a04b73
+guid: 9a33441ada273ad4795d23b855398308
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eldes - Jump_0
+      name: Eldes - Jump pantalones bronze_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d812bcb083dac34fbfaf99e5cbeeb04
-      internalID: 2012982758
+      spriteID: efa3dd8b9eca087448260cf1de6670db
+      internalID: 633270902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eldes - Jump_1
+      name: Eldes - Jump pantalones bronze_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 357f4edd31c02a74aa75d1e7a3ec990a
-      internalID: -69668388
+      spriteID: a1fd3558e4b2a7a42bfc66e817190881
+      internalID: -1458590409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eldes - Jump_2
+      name: Eldes - Jump pantalones bronze_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,8 +160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d127a0572b844f4ab2f411b953cd03c
-      internalID: -177170727
+      spriteID: 85b9d845ffb58a243842971937a20b2e
+      internalID: -695936629
       vertices: []
       indices: 
       edges: []
@@ -177,9 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eldes - Jump_0: 2012982758
-      Eldes - Jump_2: -177170727
-      Eldes - Jump_1: -69668388
+      Eldes - Jump pantalones bronze_1: -1458590409
+      Eldes - Jump pantalones bronze_0: 633270902
+      Eldes - Jump pantalones bronze_2: -695936629
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
