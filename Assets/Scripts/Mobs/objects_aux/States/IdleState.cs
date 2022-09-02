@@ -6,11 +6,11 @@ public class IdleState : MobBaseState
 {
     public override void animate(Mob myMob)
     {
-        myMob.myAnimator.SetFloat("Speed", 0);
+        myMob.myAnimator.SetBool("idle", true);
     }
     public override void EndState(Mob myMob)
     {
-
+        myMob.myAnimator.SetBool("idle", false);
     }
     public override void StarState(Mob myMob)
     {
@@ -41,6 +41,7 @@ public class IdleState : MobBaseState
     }
     public override void UpdateState(Mob myMob)
     {
+        base.UpdateState(myMob);
         animate(myMob);
         CheckChangeState(myMob);
     }
