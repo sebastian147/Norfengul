@@ -18,11 +18,25 @@ public class DashState : MobBaseState
     }
     public override void StarState(Mob myMob)
     {
+        int direction = 1;
         originalGravity = myMob.myRigidbody.gravityScale;
         myMob.myRigidbody.gravityScale = 0f;
-        myMob.myRigidbody.velocity = new Vector2(Mathf.Sign(myMob.horizontalMove) * myMob.dashingPower, 0f);
+        if(myMob.dashRight)
+        {
+            direction = 1;
+        }
+        else if(myMob.dashLeft)
+        {
+            direction = -1;
+        }
+        else
+        {
+            Debug.Log("error");
+        }
+        myMob.myRigidbody.velocity = new Vector2(direction * myMob.dashingPower, 0f);
         myMob.tr.emitting = true;
         time = myMob.dashingTime;
+        Fliping(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -48,6 +62,17 @@ public class DashState : MobBaseState
     public override void FixedUpdateState(Mob myMob)
     {
         time -= Time.fixedDeltaTime;
+    }
+    public override void Fliping(Mob myMob)
+    {
+        if(myMob.m_FacingRight && myMob.dashLeft)
+        {
+            Flip(myMob);
+        }
+        else if(!myMob.m_FacingRight && myMob.dashRight)
+        {
+            Flip(myMob);
+        }
     }
     
 }
