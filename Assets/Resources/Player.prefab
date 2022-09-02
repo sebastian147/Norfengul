@@ -5882,7 +5882,7 @@ MonoBehaviour:
   myAnimator: {fileID: 2836940207534286414}
   myRigidbody: {fileID: 2836940207534286412}
   Pv: {fileID: 4363230796165308452}
-  canFlip: 1
+  m_FacingRight: 1
   actualState: 0
   collisionCheck: {fileID: 4400238434088136523}
   horizontalMove: 0
