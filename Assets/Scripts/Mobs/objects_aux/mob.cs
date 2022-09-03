@@ -6,35 +6,35 @@ using Photon.Pun;
 
 public class Mob : MonoBehaviourPunCallbacks
 {
-    //Declaration of variables that are from player.
-    public Transform myTransform;
-    public Animator myAnimator;
-    //public SpriteRenderer mySpriteRenderer;
-    public Rigidbody2D myRigidbody;
-    public PhotonView Pv;
-	PlayerManager playerManager;
+        //Declaration of variables that are from player.
+        public Transform myTransform;
+        public Animator myAnimator;
+        //public SpriteRenderer mySpriteRenderer;
+        public Rigidbody2D myRigidbody;
+        public PhotonView Pv;
+        PlayerManager playerManager;
 
-    Timers t = new Timers();
-    public bool m_FacingRight = true;
+        Timers t = new Timers();
+        public bool m_FacingRight = true;
 
-    //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
-    public StateMachine myStateMachine;
-    public int actualState;
-    InputPlayer inputPlayer;
-    [SerializeField] public CollisionUpdates collisionCheck;
+        //Mob has a StateMachine that changes the state always has 1 state active. Initializes as idleState
+        public StateMachine myStateMachine;
+        public int actualState;
+        InputPlayer inputPlayer;
+        [SerializeField] public CollisionUpdates collisionCheck;
 
-    [Header("Move")]
-    public float horizontalMove = 0f;
-    [SerializeField] protected float moveSpeed = 40f;
-    public Vector3 m_Velocity = Vector3.zero;
-    [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+        [Header("Move")]
+        public float horizontalMove = 0f;
+        [SerializeField] protected float moveSpeed = 40f;
+        public Vector3 m_Velocity = Vector3.zero;
+        [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 
 	[Header("Jump")]
 	[SerializeField] public int amountOfJumps = 1;
 	[SerializeField] public float counterJumpForce = 40f;
-    [SerializeField] public float jumpHeight = 10f;
+        [SerializeField] public float jumpHeight = 10f;
 	[SerializeField] public float allowedTimeInAir = 0.1f;
-    public float jumpBufferTime = 0.5f;
+        public float jumpBufferTime = 0.5f;
 	public float jumpBufferCounter = 0f;
 	[SerializeField] public float apexModifier = 2f;
 	[SerializeField] public float apexModifierTime = 0.3f;
@@ -45,21 +45,21 @@ public class Mob : MonoBehaviourPunCallbacks
  	public float m_JumpForce = 5f;						// Amount of force added when the player jumps.
 	public int jumpdones = 0;
 	public int jumpsends = 0;
-    public bool jumping = false;//boorame?
+        public bool jumping = false;//boorame?
 
-    [Header("Wall Grabing")]
-    public bool _inWallLeft = false;
-    public bool _inWallRight = false;
-	[SerializeField] public Transform m_WallCheck;
-	[SerializeField] public float _wallRayCastLenght = 0.2f;
-	public float wallGrabingJumpforce=0;
-	public float wallGrabingDirection=0;
-	[SerializeField] public float wallSlidingSpeed = 1;
-    [SerializeField] public float timeInwallBuffer = 4f;
-    [SerializeField] public float distanceFromGrabs = 0.5f;
-    public bool wallGrabing = false;
-    [SerializeField] public LayerMask m_WhatIsWall;
-    public bool drop = false;
+        [Header("Wall Grabing")]
+        public bool _inWallLeft = false;
+        public bool _inWallRight = false;
+        [SerializeField] public Transform m_WallCheck;
+        [SerializeField] public float _wallRayCastLenght = 0.2f;
+        public float wallGrabingJumpforce=0;
+        public float wallGrabingDirection=0;
+        [SerializeField] public float wallSlidingSpeed = 1;
+        [SerializeField] public float timeInwallBuffer = 4f;
+        [SerializeField] public float distanceFromGrabs = 0.5f;
+        public bool wallGrabing = false;
+        [SerializeField] public LayerMask m_WhatIsWall;
+        public bool drop = false;
 
 	[Header("CornerCorrection")]
 	[SerializeField] public float offsetOut = 0.27f;
@@ -72,17 +72,17 @@ public class Mob : MonoBehaviourPunCallbacks
 	[SerializeField] public bool m_Grounded;							// A position marking where to check if the player is grounded.
 
 	[Header("CollisionDetection")]
-    [SerializeField] public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
+        [SerializeField] public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] public Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
-    [SerializeField] public LayerMask m_whatIsDeath;
-    public float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+        [SerializeField] public LayerMask m_whatIsDeath;
+        public float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	[SerializeField] public float _groundRayCastLenght = 0.25f;//move variable ?
 	[SerializeField] public float offset = 0.23f;
 	[SerializeField] public Transform m_CeilingCheck;							// A position marking where to check for ceilings
 
-    [Header("Attack")]
-    public bool attacking = false;
-    [SerializeField] public float attackRate = 2f;
+        [Header("Attack")]
+        public bool attacking = false;
+        [SerializeField] public float attackRate = 2f;
 	[SerializeField] public float nextAttackTime = 0f;
 	[SerializeField] public int maxHealth = 100;
 	public int currentHealth = 0;
@@ -90,127 +90,127 @@ public class Mob : MonoBehaviourPunCallbacks
 	[SerializeField] GameObject ui;
 	public int attackDamage = 10;
 	public bool friendlyFire = false;
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
-    public LayerMask playerLayers;
-    [SerializeField] public GameObject HitParticles; 
+        public Transform attackPoint;
+        public float attackRange = 0.5f;
+        public LayerMask enemyLayers;
+        public LayerMask playerLayers;
+        [SerializeField] public GameObject HitParticles; 
 
-    [Header("victory")]
-    public bool victory = false;
-    
-    [Header("dash")]
-    public bool dashLeft = false;
-    public bool dashRight = false;
-    public float dashingPower = 24f;
-    public float dashingTime = 0.2f;
-    public float dashingCoolDown = 0;
-    public float dashingCoolDownMax = 1f;
-    public bool canDash = true;
-    [SerializeField] public TrailRenderer tr;
-
-    void Awake()
-    {
-        myTransform = GetComponent<Transform>();
-        myAnimator = GetComponent<Animator>();
-        myRigidbody = GetComponent<Rigidbody2D>();
-        Pv = GetComponent<PhotonView>();
-		playerManager = PhotonView.Find((int)Pv.InstantiationData[0]).GetComponent<PlayerManager>();
-
-        myStateMachine = new StateMachine();
-        inputPlayer = new InputPlayer();
-        //collisionCheck = new CollisionUpdates();
-        currentHealth = maxHealth;
-        myStateMachine.initializeStates();
-        //m_WhatIsWall = m_WhatIsGround;//borrame
-        if(Pv.IsMine)
-			healthBar.SetMaxHealth(maxHealth);
-		else
-			Destroy(ui);
-    }
-
-
-    // Update is called once per frame'
-    void Update()
-    {
-        if(!Pv.IsMine)
-            return;
-        myStateMachine.myDictionary[actualState].UpdateState(this);
-        //Fliping();
-        inputPlayer.InputChecks(this);//ver mejor manera
-		collisionCheck.CollisionCheck(this);
-    }
-
-    void FixedUpdate()
-    {
-        if(!Pv.IsMine)
-            return;
-        myStateMachine.myDictionary[actualState].FixedUpdateState(this);
-        canDash = t.timePassFixed(ref dashingCoolDown, dashingCoolDownMax, !canDash);
-    }
-    public void OnDrawGizmosSelected()
-    {
-		Gizmos.color = Color.red;
-        //floor check
-        Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
-		Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
-		Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
-
-        //wall check
-        Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.right*_wallRayCastLenght);
-
-        //top jump correction
-        Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght+new Vector3(offsetIn,0,0));
-        Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght+new Vector3(offsetOut,0,0));
-        Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetIn,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetIn,0,0));
-        Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetOut,0,0));
-
-        //bottom correction
-        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(0,offsetOutB,0));
-        Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(0,offsetInB,0));
-        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(0,-offsetInB,0));
-        Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(0,-offsetOutB,0));
-
-        //Wall grabing
-        Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.right*_wallRayCastLenght);
-        Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.right*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
-        Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.left*_wallRayCastLenght);
-        Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.left*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+        [Header("victory")]
+        public bool victory = false;
         
-    }
+        [Header("dash")]
+        public bool dashLeft = false;
+        public bool dashRight = false;
+        public float dashingPower = 24f;
+        public float dashingTime = 0.2f;
+        public float dashingCoolDown = 0;
+        public float dashingCoolDownMax = 1f;
+        public bool canDash = true;
+        [SerializeField] public TrailRenderer tr;
+
+        void Awake()
+        {
+                myTransform = GetComponent<Transform>();
+                myAnimator = GetComponent<Animator>();
+                myRigidbody = GetComponent<Rigidbody2D>();
+                Pv = GetComponent<PhotonView>();
+                playerManager = PhotonView.Find((int)Pv.InstantiationData[0]).GetComponent<PlayerManager>();
+
+                myStateMachine = new StateMachine();
+                inputPlayer = new InputPlayer();
+                //collisionCheck = new CollisionUpdates();
+                currentHealth = maxHealth;
+                myStateMachine.initializeStates();
+                //m_WhatIsWall = m_WhatIsGround;//borrame
+                if(Pv.IsMine)
+                        healthBar.SetMaxHealth(maxHealth);
+                else
+                        Destroy(ui);
+        }
+
+
+        // Update is called once per frame'
+        void Update()
+        {
+                if(!Pv.IsMine)
+                        return;
+                myStateMachine.myDictionary[actualState].UpdateState(this);
+                //Fliping();
+                inputPlayer.InputChecks(this);//ver mejor manera
+                collisionCheck.CollisionCheck(this);
+        }
+
+        void FixedUpdate()
+        {
+                if(!Pv.IsMine)
+                        return;
+                myStateMachine.myDictionary[actualState].FixedUpdateState(this);
+                canDash = t.timePassFixed(ref dashingCoolDown, dashingCoolDownMax, !canDash);
+        }
+        public void OnDrawGizmosSelected()
+        {
+                Gizmos.color = Color.red;
+                //floor check
+                Gizmos.DrawLine(m_GroundCheck.position, m_GroundCheck.position+Vector3.down*_groundRayCastLenght);
+                Gizmos.DrawLine(m_GroundCheck.position-new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght-new Vector3(offset,0,0));
+                Gizmos.DrawLine(m_GroundCheck.position+new Vector3(offset,0,0), m_GroundCheck.position+Vector3.down*_groundRayCastLenght+new Vector3(offset,0,0));
+
+                //wall check
+                Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.right*_wallRayCastLenght);
+
+                //top jump correction
+                Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetIn,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght+new Vector3(offsetIn,0,0));
+                Gizmos.DrawLine(m_CeilingCheck.position+new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght+new Vector3(offsetOut,0,0));
+                Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetIn,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetIn,0,0));
+                Gizmos.DrawLine(m_CeilingCheck.position-new Vector3(offsetOut,0,0), m_CeilingCheck.position+Vector3.up*_topRayCastLenght-new Vector3(offsetOut,0,0));
+
+                //bottom correction
+                Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetOutB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(0,offsetOutB,0));
+                Gizmos.DrawLine(m_GroundCheck.position+new Vector3(distanceFromMidle,offsetInB,0), m_GroundCheck.position+Vector3.right*_topRayCastLenghtB+new Vector3(0,offsetInB,0));
+                Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetInB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(0,-offsetInB,0));
+                Gizmos.DrawLine(m_GroundCheck.position-new Vector3(distanceFromMidle,-offsetOutB,0), m_GroundCheck.position+Vector3.left*_topRayCastLenghtB-new Vector3(0,-offsetOutB,0));
+
+                //Wall grabing
+                Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.right*_wallRayCastLenght);
+                Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.right*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+                Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.left*_wallRayCastLenght);
+                Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.left*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+                
+        }
 
 	public void TakeDamage(int damage)
 	{
 		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
 	}
-    [PunRPC]
+        [PunRPC]
 	protected void RPC_TakeDamage(int damage)//try to move me
 	{
-        if(currentHealth > 0)//bug de muerte en respawn
-        {
-            currentHealth -= damage;
-            if(Pv.IsMine)
-                healthBar.SetHealth(currentHealth);
-            //animacion de lastimado
-            if(currentHealth <= 0)
-            {
-                Die();
-            }
-        }
+                if(currentHealth > 0)//bug de muerte en respawn
+                {
+                        currentHealth -= damage;
+                        if(Pv.IsMine)
+                                healthBar.SetHealth(currentHealth);
+                        //animacion de lastimado
+                        if(currentHealth <= 0)
+                        {
+                                Die();
+                        }
+                }
 	}
-    public void Die()
-    {
-		currentHealth = 0;
-        healthBar.SetHealth(currentHealth);
-        myAnimator.SetBool("IsDead", true);
+        public void Die()
+        {
+                currentHealth = 0;
+                healthBar.SetHealth(currentHealth);
+                myAnimator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
         
 		
-        //GetComponent<BoxCollider2D>().enabled = false;
+                //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
 		//m_Rigidbody2D.isKinematic = true;
 		this.enabled = false;
 		if(Pv.IsMine)
 			playerManager.Die();
-    }
+        }
 }
