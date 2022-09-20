@@ -13,87 +13,105 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library:
-  - m_Name: Armas
-    m_Hash: -1755132704
+  - m_Name: "Armas Peque\xF1as"
+    m_Hash: -1030584791
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: Entry
-      m_Hash: -354373004
-      m_Sprite: {fileID: 21300000, guid: b3fabc87cbf505d4d870daef2c6f65d9, type: 3}
+    - m_Name: Espada de Hierro
+      m_Hash: -646087735
+      m_Sprite: {fileID: -493600848, guid: b3fabc87cbf505d4d870daef2c6f65d9, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: b3fabc87cbf505d4d870daef2c6f65d9,
+      m_SpriteOverride: {fileID: -493600848, guid: b3fabc87cbf505d4d870daef2c6f65d9,
         type: 3}
-    - m_Name: Entry_0
-      m_Hash: 874506106
-      m_Sprite: {fileID: 21300000, guid: 9d917c8dc3a4f8e459fd5e2312cbec98, type: 3}
+    - m_Name: Espada de Bronze
+      m_Hash: 1029384026
+      m_Sprite: {fileID: -998570663, guid: c42c66fc29b3411428464b216ff675b4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 9d917c8dc3a4f8e459fd5e2312cbec98,
-        type: 3}
-    - m_Name: Entry_1
-      m_Hash: 1125701612
-      m_Sprite: {fileID: 21300000, guid: 43d6d2886d6e4aa4b960f13b29f338c4, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 43d6d2886d6e4aa4b960f13b29f338c4,
-        type: 3}
-    - m_Name: Entry_2
-      m_Hash: -636385706
-      m_Sprite: {fileID: 21300000, guid: c42c66fc29b3411428464b216ff675b4, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: c42c66fc29b3411428464b216ff675b4,
-        type: 3}
-    - m_Name: Entry_3
-      m_Hash: -1391020352
-      m_Sprite: {fileID: 21300000, guid: b6ca770240be95342be4ae4b434f5b62, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: b6ca770240be95342be4ae4b434f5b62,
-        type: 3}
-    - m_Name: Entry_4
-      m_Hash: 863118179
-      m_Sprite: {fileID: 21300000, guid: 3e71b9bafd67df14e997ab15f69bdb38, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 3e71b9bafd67df14e997ab15f69bdb38,
-        type: 3}
-    - m_Name: Entry_5
-      m_Hash: 1148523509
-      m_Sprite: {fileID: 21300000, guid: 6161d0cd901c59749892d9b19ede53dd, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 6161d0cd901c59749892d9b19ede53dd,
-        type: 3}
-    - m_Name: Entry_6
-      m_Hash: -579059121
-      m_Sprite: {fileID: 21300000, guid: 0192a3c9fb7a09940a30bcc3c48bb0a2, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 0192a3c9fb7a09940a30bcc3c48bb0a2,
+      m_SpriteOverride: {fileID: -998570663, guid: c42c66fc29b3411428464b216ff675b4,
         type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 8
+    m_EntryOverrideCount: 2
+  - m_Name: Armas Medianas
+    m_Hash: 2011553419
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Espadon de Hierro
+      m_Hash: -489869082
+      m_Sprite: {fileID: -1234605191, guid: 9d917c8dc3a4f8e459fd5e2312cbec98, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1234605191, guid: 9d917c8dc3a4f8e459fd5e2312cbec98,
+        type: 3}
+    - m_Name: Espadon de Bronze
+      m_Hash: 116092021
+      m_Sprite: {fileID: 1642288552, guid: b6ca770240be95342be4ae4b434f5b62, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1642288552, guid: b6ca770240be95342be4ae4b434f5b62,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Armas Grandes
+    m_Hash: 345431448
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Hacha de Hierro
+      m_Hash: 982137448
+      m_Sprite: {fileID: -1980568490, guid: 43d6d2886d6e4aa4b960f13b29f338c4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1980568490, guid: 43d6d2886d6e4aa4b960f13b29f338c4,
+        type: 3}
+    - m_Name: Hacha de Bronze
+      m_Hash: -559126789
+      m_Sprite: {fileID: 604932258, guid: 3e71b9bafd67df14e997ab15f69bdb38, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 604932258, guid: 3e71b9bafd67df14e997ab15f69bdb38,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Armas Largas
+    m_Hash: 296892466
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanza de Hierro
+      m_Hash: 402213910
+      m_Sprite: {fileID: 1234590082, guid: 6161d0cd901c59749892d9b19ede53dd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1234590082, guid: 6161d0cd901c59749892d9b19ede53dd,
+        type: 3}
+    - m_Name: Alabarda de Hierro
+      m_Hash: 756572764
+      m_Sprite: {fileID: -1772273580, guid: 0192a3c9fb7a09940a30bcc3c48bb0a2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1772273580, guid: 0192a3c9fb7a09940a30bcc3c48bb0a2,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
   - m_Name: Escudos
     m_Hash: -533883922
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: Entry
-      m_Hash: -354373004
-      m_Sprite: {fileID: 21300000, guid: 6773426a3cc917a41920bb33e85f3023, type: 3}
+    - m_Name: "Escudo de Hierro peque\xF1o_0"
+      m_Hash: -1528176627
+      m_Sprite: {fileID: 605688389, guid: 36b01a80a542b5343ad86ae84292ff85, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 6773426a3cc917a41920bb33e85f3023,
+      m_SpriteOverride: {fileID: 605688389, guid: 36b01a80a542b5343ad86ae84292ff85,
         type: 3}
-    - m_Name: Entry_0
-      m_Hash: 874506106
-      m_Sprite: {fileID: 21300000, guid: 36b01a80a542b5343ad86ae84292ff85, type: 3}
+    - m_Name: "Escudo de Bronze Peque\xF1o"
+      m_Hash: -1340186748
+      m_Sprite: {fileID: -1242831522, guid: 6773426a3cc917a41920bb33e85f3023, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 36b01a80a542b5343ad86ae84292ff85,
+      m_SpriteOverride: {fileID: -1242831522, guid: 6773426a3cc917a41920bb33e85f3023,
         type: 3}
-    - m_Name: Entry_1
-      m_Hash: 1125701612
-      m_Sprite: {fileID: 21300000, guid: a4fce23e05c5c2449ab61381bf432772, type: 3}
+    - m_Name: Escudo de Hierro Mediano
+      m_Hash: 1098643878
+      m_Sprite: {fileID: -1897813749, guid: a4fce23e05c5c2449ab61381bf432772, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: a4fce23e05c5c2449ab61381bf432772,
+      m_SpriteOverride: {fileID: -1897813749, guid: a4fce23e05c5c2449ab61381bf432772,
         type: 3}
-    - m_Name: Entry_2
-      m_Hash: -636385706
-      m_Sprite: {fileID: 21300000, guid: 3561bdb7eee506943ad41183e80022cf, type: 3}
+    - m_Name: Escudo de Hierro Grande
+      m_Hash: -611969684
+      m_Sprite: {fileID: 900630058, guid: 3561bdb7eee506943ad41183e80022cf, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 3561bdb7eee506943ad41183e80022cf,
+      m_SpriteOverride: {fileID: 900630058, guid: 3561bdb7eee506943ad41183e80022cf,
         type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
