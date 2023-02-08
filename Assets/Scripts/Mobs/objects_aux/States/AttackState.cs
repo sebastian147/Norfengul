@@ -38,11 +38,9 @@ public class AttackState : MobBaseState
                         return;
                 }
         }
-        private int i=-1;
         public override void UpdateState(Mob myMob)
         {
                 base.UpdateState(myMob);//rev
-                Debug.Log(i++);
                 if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
                         CheckChangeState(myMob);
                 //CheckChangeState(myMob);

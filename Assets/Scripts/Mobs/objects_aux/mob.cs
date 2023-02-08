@@ -97,7 +97,6 @@ public class Mob : MonoBehaviourPunCallbacks
         [SerializeField] public GameObject HitParticles; 
 
         public Armas arma;
-        public Animation_handler eventHandler;
 
 
         [Header("victory")]
