@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armas : MonoBehaviour
+public class Arma : MonoBehaviour
 {
         public Animator anim;
         // Start is called before the first frame update
