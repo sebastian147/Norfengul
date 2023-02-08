@@ -4975,8 +4975,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5395051528589496015}
   m_Bounds:
-    m_Center: {x: -0.028871, y: -0.11367577, z: 0}
-    m_Extent: {x: 0.28774583, y: 0.31833315, z: 0}
+    m_Center: {x: -0.02887097, y: -0.11367583, z: 0}
+    m_Extent: {x: 0.2877458, y: 0.3183331, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5097,8 +5097,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5395051528589496015}
   m_Bounds:
-    m_Center: {x: -0.03018257, y: -0.051182568, z: 0}
-    m_Extent: {x: 0.22198072, y: 0.160806, z: 0}
+    m_Center: {x: -0.030182555, y: -0.051182747, z: 0}
+    m_Extent: {x: 0.2219807, y: 0.16080597, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5241,8 +5241,8 @@ MonoBehaviour:
   - {fileID: 5395051528589496015}
   - {fileID: 3971520831405278113}
   m_Bounds:
-    m_Center: {x: -0.06473118, y: -0.048454314, z: 0}
-    m_Extent: {x: 0.44034272, y: 0.37350568, z: 0}
+    m_Center: {x: -0.06473118, y: -0.045721352, z: 0}
+    m_Extent: {x: 0.44034272, y: 0.37582925, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5349,8 +5349,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3948423958264144959}
   m_Bounds:
-    m_Center: {x: 0.032662146, y: -0.061773747, z: 0}
-    m_Extent: {x: 0.0965662, y: 0.12709805, z: 0}
+    m_Center: {x: 0.03266228, y: -0.061773732, z: 0}
+    m_Extent: {x: 0.09656623, y: 0.12709807, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5472,8 +5472,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6698148227306051054}
   m_Bounds:
-    m_Center: {x: 0.09408778, y: 0.030218005, z: 0}
-    m_Extent: {x: 0.16207817, y: 0.53293514, z: 0}
+    m_Center: {x: 0.09408775, y: 0.030217946, z: 0}
+    m_Extent: {x: 0.1620782, y: 0.53293514, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5994,7 +5994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: c8b42984a7fb6e041bcea9200ee92afd,
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 47b61a094ec835948be88b8f92ef8898,
     type: 3}
 --- !u!1 &2836940208013041827
 GameObject:
@@ -6205,8 +6205,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2503485780144541083}
   m_Bounds:
-    m_Center: {x: -0.032044917, y: 0.013159901, z: 0}
-    m_Extent: {x: 0.10066451, y: 0.1300985, z: 0}
+    m_Center: {x: -0.032044888, y: 0.0131598115, z: 0}
+    m_Extent: {x: 0.1006645, y: 0.13009849, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -6757,7 +6757,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8568232358726575819}
   m_Bounds:
-    m_Center: {x: -0.019736096, y: -0.039573073, z: 0}
+    m_Center: {x: -0.019736111, y: -0.03957331, z: 0}
     m_Extent: {x: 0.12853308, y: 0.0985153, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -11677,6 +11677,7 @@ GameObject:
   - component: {fileID: 3966096114283772608}
   - component: {fileID: 2518636607289452581}
   - component: {fileID: 224347531086710461}
+  - component: {fileID: 6755546888436425815}
   m_Layer: 0
   m_Name: Arma Izquierda
   m_TagString: Untagged
@@ -11740,8 +11741,7 @@ SpriteRenderer:
   m_SortingLayerID: -400891399
   m_SortingLayer: 4
   m_SortingOrder: 11
-  m_Sprite: {fileID: -4528942005672272804, guid: d6999bca0ea0da048914021adc91f35a,
-    type: 3}
+  m_Sprite: {fileID: -1980568490, guid: 43d6d2886d6e4aa4b960f13b29f338c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11765,14 +11765,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RootBone: {fileID: 6340998893509898900}
-  m_BoneTransforms:
-  - {fileID: 6340998893509898900}
+  m_BoneTransforms: []
   m_Bounds:
     m_Center: {x: 0.4653371, y: 0.026349604, z: 0}
     m_Extent: {x: 0.7203387, y: 0.16372764, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!114 &6755546888436425815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327735592066970785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: -5.1126535e+16
 --- !u!1 &5647090082281367332
 GameObject:
   m_ObjectHideFlags: 0
@@ -12041,8 +12055,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5631334956098237408}
   m_Bounds:
-    m_Center: {x: -0.061790586, y: -0.03892848, z: 0}
-    m_Extent: {x: 0.4437831, y: 0.351783, z: 0}
+    m_Center: {x: -0.061790645, y: -0.03892845, z: 0}
+    m_Extent: {x: 0.4437831, y: 0.35178307, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -12168,8 +12182,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5395051528589496015}
   m_Bounds:
-    m_Center: {x: -0.030182004, y: -0.051210105, z: 0}
-    m_Extent: {x: 0.22329226, y: 0.22329223, z: 0}
+    m_Center: {x: -0.03018199, y: -0.051210165, z: 0}
+    m_Extent: {x: 0.22329225, y: 0.2232922, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
