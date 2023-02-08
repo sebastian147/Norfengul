@@ -96,7 +96,7 @@ public class Mob : MonoBehaviourPunCallbacks
         public LayerMask playerLayers;
         [SerializeField] public GameObject HitParticles; 
 
-        public Armas arma;
+        public Arma arma;
 
 
         [Header("victory")]
