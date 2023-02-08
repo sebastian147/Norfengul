@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : MobBaseState
 {
-        private int pass = 10000;
+        private string stateName ="Attack";
         public override void animate(Mob myMob)
         {
                 //  GameObject.Instantiate(myMob.HitParticles, myMob.attackPoint.position, Quaternion.identity);
@@ -17,7 +17,8 @@ public class AttackState : MobBaseState
         public override void StarState(Mob myMob)
         {
                 myMob.attacking = false;
-                pass = 10;
+                myMob.arma.StarState();
+                animate(myMob);
         }
         public override void CheckChangeState(Mob myMob)
         {
@@ -40,12 +41,9 @@ public class AttackState : MobBaseState
         public override void UpdateState(Mob myMob)
         {
                 base.UpdateState(myMob);//rev
-                animate(myMob);
-                if(pass <=0)
+                if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
                         CheckChangeState(myMob);
-                else
-                        pass--;
-
+                //CheckChangeState(myMob);
                 CheckEnemysToAttack(myMob);
                 CheckPlayersToAttack(myMob);
         }

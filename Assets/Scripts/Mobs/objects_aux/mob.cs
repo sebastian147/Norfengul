@@ -96,6 +96,9 @@ public class Mob : MonoBehaviourPunCallbacks
         public LayerMask playerLayers;
         [SerializeField] public GameObject HitParticles; 
 
+        public Armas arma;
+
+
         [Header("victory")]
         public bool victory = false;
         
@@ -198,6 +201,7 @@ public class Mob : MonoBehaviourPunCallbacks
                         }
                 }
 	}
+        //moveme de aca
         public void Die()
         {
                 currentHealth = 0;
@@ -213,4 +217,5 @@ public class Mob : MonoBehaviourPunCallbacks
 		if(Pv.IsMine)
 			playerManager.Die();
         }
+
 }

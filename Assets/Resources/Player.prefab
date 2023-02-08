@@ -4975,8 +4975,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5395051528589496015}
   m_Bounds:
-    m_Center: {x: -0.028871, y: -0.11367571, z: 0}
-    m_Extent: {x: 0.28774586, y: 0.31833318, z: 0}
+    m_Center: {x: -0.028871, y: -0.11367577, z: 0}
+    m_Extent: {x: 0.28774583, y: 0.31833315, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5097,8 +5097,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5395051528589496015}
   m_Bounds:
-    m_Center: {x: -0.03018257, y: -0.05118251, z: 0}
-    m_Extent: {x: 0.22198075, y: 0.16080602, z: 0}
+    m_Center: {x: -0.03018257, y: -0.051182568, z: 0}
+    m_Extent: {x: 0.22198072, y: 0.160806, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5241,8 +5241,8 @@ MonoBehaviour:
   - {fileID: 5395051528589496015}
   - {fileID: 3971520831405278113}
   m_Bounds:
-    m_Center: {x: -0.06473118, y: -0.06571528, z: 0}
-    m_Extent: {x: 0.44034272, y: 0.3907675, z: 0}
+    m_Center: {x: -0.06473118, y: -0.048454314, z: 0}
+    m_Extent: {x: 0.44034272, y: 0.37350568, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5349,8 +5349,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3948423958264144959}
   m_Bounds:
-    m_Center: {x: 0.032662205, y: -0.061773658, z: 0}
-    m_Extent: {x: 0.0965662, y: 0.12709804, z: 0}
+    m_Center: {x: 0.032662146, y: -0.061773747, z: 0}
+    m_Extent: {x: 0.0965662, y: 0.12709805, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -5380,6 +5380,7 @@ GameObject:
   - component: {fileID: 7533691341201008262}
   - component: {fileID: 2493828922413799799}
   - component: {fileID: 3134188292123824282}
+  - component: {fileID: 676880528493169507}
   m_Layer: 0
   m_Name: Arma Derecha
   m_TagString: Untagged
@@ -5471,11 +5472,24 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6698148227306051054}
   m_Bounds:
-    m_Center: {x: 0.09408778, y: 0.030218124, z: 0}
-    m_Extent: {x: 0.16207817, y: 0.5329351, z: 0}
+    m_Center: {x: 0.09408778, y: 0.030218005, z: 0}
+    m_Extent: {x: 0.16207817, y: 0.53293514, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!114 &676880528493169507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693466990522345991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5bd9c128a81a24795a54fce23e4468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &2836940207534286419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5957,6 +5971,7 @@ MonoBehaviour:
     m_Bits: 512
   HitParticles: {fileID: 338923495937173749, guid: 5096b6ddcaf310549ad578cf8dac34e1,
     type: 3}
+  arma: {fileID: 676880528493169507}
   victory: 0
   dashLeft: 0
   dashRight: 0
@@ -6190,8 +6205,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2503485780144541083}
   m_Bounds:
-    m_Center: {x: -0.032045037, y: 0.013159908, z: 0}
-    m_Extent: {x: 0.10066447, y: 0.13009846, z: 0}
+    m_Center: {x: -0.032044917, y: 0.013159901, z: 0}
+    m_Extent: {x: 0.10066451, y: 0.1300985, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -6743,7 +6758,7 @@ MonoBehaviour:
   - {fileID: 8568232358726575819}
   m_Bounds:
     m_Center: {x: -0.019736096, y: -0.039573073, z: 0}
-    m_Extent: {x: 0.12853311, y: 0.09851532, z: 0}
+    m_Extent: {x: 0.12853308, y: 0.0985153, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -12153,8 +12168,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5395051528589496015}
   m_Bounds:
-    m_Center: {x: -0.030182004, y: -0.051210046, z: 0}
-    m_Extent: {x: 0.22329229, y: 0.22329226, z: 0}
+    m_Center: {x: -0.030182004, y: -0.051210105, z: 0}
+    m_Extent: {x: 0.22329226, y: 0.22329223, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
