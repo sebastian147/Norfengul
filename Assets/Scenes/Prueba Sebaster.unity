@@ -1646,7 +1646,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2081216956}
+  - {fileID: 643959580}
   m_Father: {fileID: 112691860}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2356,7 +2356,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -3959,6 +3958,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8d02f74547293f499a0dc94d119d682, type: 3}
+--- !u!4 &643959580 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7801254947043810055, guid: 34f43c81e230ff84c96078bc6f2e8b1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 785344149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &644767728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,7 +4500,6 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -5030,7 +5034,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -5781,12 +5784,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 814804279}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &821195609 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2695101452197659621, guid: 41a796efad197424ba6ba55ad1e85334,
-    type: 3}
-  m_PrefabInstance: {fileID: 916047724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &834022080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5997,7 +5994,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -8446,7 +8442,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -8643,7 +8638,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -8755,7 +8749,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -9126,7 +9119,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -9670,7 +9662,6 @@ MonoBehaviour:
     type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -10161,7 +10152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    pixelsPerUnit: 16
+    pixelsPerUnit: 23
     renderingLayerMask:
       mask: 0
     layerMask:
@@ -10277,7 +10268,7 @@ Camera:
   far clip plane: 1000
   field of view: 50
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 3.9130435
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10322,7 +10313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 16
+  m_AssetsPPU: 23
   m_RefResolutionX: 320
   m_RefResolutionY: 180
   m_CropFrame: 0

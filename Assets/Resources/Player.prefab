@@ -5380,6 +5380,7 @@ GameObject:
   - component: {fileID: 7533691341201008262}
   - component: {fileID: 2493828922413799799}
   - component: {fileID: 3134188292123824282}
+  - component: {fileID: 676880528493169507}
   m_Layer: 0
   m_Name: Arma Derecha
   m_TagString: Untagged
@@ -5476,6 +5477,19 @@ MonoBehaviour:
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
+--- !u!114 &676880528493169507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693466990522345991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5bd9c128a81a24795a54fce23e4468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &2836940207534286419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5957,6 +5971,7 @@ MonoBehaviour:
     m_Bits: 512
   HitParticles: {fileID: 338923495937173749, guid: 5096b6ddcaf310549ad578cf8dac34e1,
     type: 3}
+  arma: {fileID: 676880528493169507}
   victory: 0
   dashLeft: 0
   dashRight: 0
