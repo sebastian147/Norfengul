@@ -107,12 +107,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_0
       rect:
         serializedVersion: 2
-        x: 256
+        x: 288
         y: 192
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_1
       rect:
         serializedVersion: 2
-        x: 384
+        x: 385
         y: 192
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_2
       rect:
         serializedVersion: 2
-        x: 448
+        x: 480
         y: 192
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_3
       rect:
         serializedVersion: 2
-        x: 512
-        y: 192
-        width: 64
+        x: 0
+        y: 128
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 96
         y: 128
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 192
         y: 128
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_6
       rect:
         serializedVersion: 2
-        x: 128
+        x: 288
         y: 128
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +254,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_7
       rect:
         serializedVersion: 2
-        x: 192
+        x: 384
         y: 128
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_8
       rect:
         serializedVersion: 2
-        x: 256
+        x: 480
         y: 128
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_9
       rect:
         serializedVersion: 2
-        x: 320
-        y: 128
-        width: 64
+        x: 0
+        y: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_10
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
-        width: 64
+        x: 96
+        y: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,12 +338,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_11
       rect:
         serializedVersion: 2
-        x: 448
-        y: 128
-        width: 64
+        x: 192
+        y: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_12
       rect:
         serializedVersion: 2
-        x: 512
-        y: 128
-        width: 64
+        x: 0
+        y: 0
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -380,12 +380,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
+        x: 96
+        y: 0
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -401,12 +401,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
+        x: 192
+        y: 0
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -422,12 +422,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_15
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
+        x: 288
+        y: 0
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -443,12 +443,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_16
       rect:
         serializedVersion: 2
-        x: 0
+        x: 384
         y: 0
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -464,12 +464,12 @@ TextureImporter:
       name: Huscarle_1_ATTACK2_17
       rect:
         serializedVersion: 2
-        x: 64
+        x: 480
         y: 0
-        width: 64
+        width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3333333, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -477,132 +477,6 @@ TextureImporter:
       bones: []
       spriteID: 6dc03f0cf3377074b908f6832bfe7ba5
       internalID: 1159887180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huscarle_1_ATTACK2_18
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fcce7fd394492b4db5a7b2f4d609528
-      internalID: 387825520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huscarle_1_ATTACK2_19
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4523ffec8273c7947b6ebece91473c0a
-      internalID: -2081190186
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huscarle_1_ATTACK2_20
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddc894312e7c90d448678e600001a344
-      internalID: 302614623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huscarle_1_ATTACK2_21
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f87d366d387c28845937076897f90bc1
-      internalID: 1088062504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huscarle_1_ATTACK2_22
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c21181554760ef41941500afb526c42
-      internalID: -247686626
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huscarle_1_ATTACK2_23
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30df72608de4a7b4cb1b29bd4b1380dc
-      internalID: -361018057
       vertices: []
       indices: 
       edges: []
@@ -620,9 +494,7 @@ TextureImporter:
     nameFileIdTable:
       Huscarle_1_ATTACK2_0: -682506018
       Huscarle_1_ATTACK2_4: 1369043639
-      Huscarle_1_ATTACK2_23: -361018057
       Huscarle_1_ATTACK2_3: -411998708
-      Huscarle_1_ATTACK2_19: -2081190186
       Huscarle_1_ATTACK2_8: 34175000
       Huscarle_1_ATTACK2_10: -735031000
       Huscarle_1_ATTACK2_2: 1736133660
@@ -630,16 +502,12 @@ TextureImporter:
       Huscarle_1_ATTACK2_1: -1498497894
       Huscarle_1_ATTACK2_11: 947473719
       Huscarle_1_ATTACK2_9: -379368859
-      Huscarle_1_ATTACK2_22: -247686626
-      Huscarle_1_ATTACK2_18: 387825520
-      Huscarle_1_ATTACK2_21: 1088062504
       Huscarle_1_ATTACK2_7: -1552234736
       Huscarle_1_ATTACK2_15: -374659742
       Huscarle_1_ATTACK2_5: -1487959840
       Huscarle_1_ATTACK2_16: 1031264387
       Huscarle_1_ATTACK2_6: 1837750294
       Huscarle_1_ATTACK2_13: -1916944358
-      Huscarle_1_ATTACK2_20: 302614623
       Huscarle_1_ATTACK2_12: 1296437003
       Huscarle_1_ATTACK2_14: 611844331
   spritePackingTag: 
