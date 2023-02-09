@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackState : MobBaseState
 {
         private string attackTipe = "";
+        private float attackDirection;
         public override void animate(Mob myMob)
         {
                 //  GameObject.Instantiate(myMob.HitParticles, myMob.attackPoint.position, Quaternion.identity);
@@ -17,6 +18,7 @@ public class AttackState : MobBaseState
         }
         public override void StarState(Mob myMob)
         {
+                attackDirection=myMob.horizontalMove;
                 attackTipe =myMob.arma.Armas.weaponType.ToString();
                 myMob.attacking = false;
                 animate(myMob);
@@ -41,7 +43,7 @@ public class AttackState : MobBaseState
         }
         public override void UpdateState(Mob myMob)
         {
-                base.UpdateState(myMob);//rev
+                //base.UpdateState(myMob);//dont flip while attack
                 if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
                         CheckChangeState(myMob);
                 //CheckChangeState(myMob);
@@ -50,7 +52,9 @@ public class AttackState : MobBaseState
         }
         public override void FixedUpdateState(Mob myMob)
         {
-
+                Vector3 targetVelocity = new Vector2(myMob.horizontalMove * 10f/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+                // And then smoothing it out and applying it to the character
+                myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
         }
 	private void CheckPlayersToAttack(Mob myMob)
 	{
