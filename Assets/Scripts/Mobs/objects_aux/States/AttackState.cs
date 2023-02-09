@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class AttackState : MobBaseState
 {
-        private string stateName ="Attack";
+        private string attackTipe = "";
         public override void animate(Mob myMob)
         {
                 //  GameObject.Instantiate(myMob.HitParticles, myMob.attackPoint.position, Quaternion.identity);
-                myMob.myAnimator.SetBool("isAttack", true);
+                myMob.myAnimator.SetBool(attackTipe, true);
         }
         public override void EndState(Mob myMob)
         {
-                myMob.myAnimator.SetBool("isAttack", false);
+                myMob.myAnimator.SetBool(attackTipe, false);
+                //myMob.myAnimator.Weapon;
         }
         public override void StarState(Mob myMob)
         {
+                attackTipe =myMob.arma.Armas.weaponType.ToString();
                 myMob.attacking = false;
-                myMob.arma.StarState();
                 animate(myMob);
         }
         public override void CheckChangeState(Mob myMob)
@@ -56,14 +57,14 @@ public class AttackState : MobBaseState
 		//attack players
 		if(myMob.friendlyFire)
 		{
-			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(myMob.attackPoint.position, myMob.attackRange, myMob.playerLayers);
+			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(myMob.attackPoint.position, myMob.arma.Armas.damageArea, myMob.playerLayers);
 			//damage them
 			for (int i = 0; i < hitPlayer.Length; i++)
 			{
 				if (hitPlayer[i].gameObject.GetInstanceID() != myMob.gameObject.GetInstanceID())//rev
 				{
 					//hitPlayer[i].GetComponent<Mob>().actualState = hitPlayer[i].GetComponent<Mob>().myStateMachine.changeState(4,3,myMob);
-                                        hitPlayer[i].GetComponent<Mob>().TakeDamage(myMob.attackDamage);
+                                        hitPlayer[i].GetComponent<Mob>().TakeDamage(myMob.arma.Armas.damage);
                                         return;
 				}
 			}
@@ -72,7 +73,7 @@ public class AttackState : MobBaseState
 	private void CheckEnemysToAttack(Mob myMob)
 	{
                 //detect enemis
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(myMob.attackPoint.position, myMob.attackRange, myMob.enemyLayers);
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(myMob.attackPoint.position, myMob.arma.Armas.damageArea, myMob.enemyLayers);
                 //damage them
                 foreach (Collider2D enemy in hitEnemies)
                 {
