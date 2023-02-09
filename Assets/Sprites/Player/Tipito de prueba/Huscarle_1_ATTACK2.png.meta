@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -618,7 +618,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_1_ATTACK2_20: 302614623
       Huscarle_1_ATTACK2_0: -682506018
       Huscarle_1_ATTACK2_4: 1369043639
       Huscarle_1_ATTACK2_23: -361018057
@@ -640,6 +639,7 @@ TextureImporter:
       Huscarle_1_ATTACK2_16: 1031264387
       Huscarle_1_ATTACK2_6: 1837750294
       Huscarle_1_ATTACK2_13: -1916944358
+      Huscarle_1_ATTACK2_20: 302614623
       Huscarle_1_ATTACK2_12: 1296437003
       Huscarle_1_ATTACK2_14: 611844331
   spritePackingTag: 
