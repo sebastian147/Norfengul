@@ -18,6 +18,11 @@ public class IdleState : MobBaseState
         }
         public override void CheckChangeState(Mob myMob)
         {
+                if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
+                {
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
+                        return;
+                }
                 if(myMob.attacking == true)
                 {
                 myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
