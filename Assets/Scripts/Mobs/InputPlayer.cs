@@ -5,10 +5,10 @@ using UnityEngine;
 public class InputPlayer : MonoBehaviour
 {
     float DoubleTapTimeL = 0f;
-    float DoubleTapTimeMaxL = 0.7f;
+    float DoubleTapTimeMaxL = 2f;
     int DoubleTapCounterL = 0;
     float DoubleTapTimeR = 0f;
-    float DoubleTapTimeMaxR = 0.7f;
+    float DoubleTapTimeMaxR = 2f;
     int DoubleTapCounterR = 0;
 
     public void InputChecks(Mob myMob)
