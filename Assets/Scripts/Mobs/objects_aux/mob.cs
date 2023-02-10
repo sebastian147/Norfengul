@@ -25,7 +25,7 @@ public class Mob : MonoBehaviourPunCallbacks
 
         [Header("Move")]
         public float horizontalMove = 0f;
-        [SerializeField] protected float moveSpeed = 40f;
+        [SerializeField] public float moveSpeed = 40f;
         public Vector3 m_Velocity = Vector3.zero;
         [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 

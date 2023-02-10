@@ -25,3 +25,5 @@ MonoBehaviour:
   effect: 0
   category: Armas Largas
   label: Lanza de Hierro
+  library: {fileID: 7108339969198208228, guid: 075c371f818a6c44f8086caa8afedb94, type: 3}
+  mySpriteResolver: {fileID: 0}

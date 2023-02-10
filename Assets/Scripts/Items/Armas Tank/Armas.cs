@@ -17,6 +17,9 @@ public class Armas : itemInfo
         [SerializeField]public int effect;
         [SerializeField]public string category;
         [SerializeField]public string label;
+        public UnityEngine.U2D.Animation.SpriteLibraryAsset library;
+        public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
+
  
 
 }
