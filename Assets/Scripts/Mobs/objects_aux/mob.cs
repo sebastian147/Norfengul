@@ -88,15 +88,13 @@ public class Mob : MonoBehaviourPunCallbacks
 	public int currentHealth = 0;
 	[SerializeField] public HealthBar healthBar;
 	[SerializeField] GameObject ui;
-	public int attackDamage = 10;
 	public bool friendlyFire = false;
         public Transform attackPoint;
-        public float attackRange = 0.5f;
         public LayerMask enemyLayers;
         public LayerMask playerLayers;
         [SerializeField] public GameObject HitParticles; 
 
-        public Arma arma;
+        public MeleWeaponLogic arma;
 
 
         [Header("victory")]

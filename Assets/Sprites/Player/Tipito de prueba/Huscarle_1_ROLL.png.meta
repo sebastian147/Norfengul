@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 015253aa8142c8643a927a5399e865c7
+guid: c5dccb26ecc548e4298d5cd5c42bb07f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,8 +68,8 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,64 +104,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: polvo_0
+      name: Huscarle_1_ROLL_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32e94c742f98e0c42b420c9a6cf2b432
-      internalID: 1991811681
+      spriteID: b5d96c228b07be24489012077ee294b8
+      internalID: 688101140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: polvo_1
+      name: Huscarle_1_ROLL_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 64
         y: 0
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.46500456, y: 0.45188108}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f62bbf5c466b624eb820bbf29b87435
-      internalID: 1476831138
+      spriteID: 48fec2289fd7cf840bae7ad3eb471e24
+      internalID: 274574139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: polvo_2
+      name: Huscarle_1_ROLL_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 128
         y: 0
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.49125123, y: 0.43875778}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc3a4b393c4931a4bbaa260047503b9c
-      internalID: -160774020
+      spriteID: aa1562de60d44ca43b2fa191ee67768a
+      internalID: -1968937515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huscarle_1_ROLL_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4b1cec003a11f4c8c8726ca72a0952
+      internalID: -2098025214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huscarle_1_ROLL_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c9421744754da4489faf8e9c17f941
+      internalID: 1396366397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huscarle_1_ROLL_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49a5a86cd63bfe4eaeef3981ba595e9
+      internalID: 1901559016
       vertices: []
       indices: 
       edges: []
@@ -177,9 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      polvo_0: 1991811681
-      polvo_2: -160774020
-      polvo_1: 1476831138
+      Huscarle_1_ROLL_2: -1968937515
+      Huscarle_1_ROLL_4: 1396366397
+      Huscarle_1_ROLL_0: 688101140
+      Huscarle_1_ROLL_3: -2098025214
+      Huscarle_1_ROLL_1: 274574139
+      Huscarle_1_ROLL_5: 1901559016
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

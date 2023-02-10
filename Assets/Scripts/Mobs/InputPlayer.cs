@@ -18,6 +18,8 @@ public class InputPlayer : MonoBehaviour
         MoveCheck(myMob);
         VictoryCheck(myMob);
         DropCheck(myMob);
+        SlotOneCheck(myMob);
+        SlotTwoCheck(myMob);
         myMob.dashLeft = DoubleTap(myMob, "a", ref DoubleTapTimeL, DoubleTapTimeMaxL, ref DoubleTapCounterL);
         myMob.dashRight = DoubleTap(myMob, "d", ref DoubleTapTimeR, DoubleTapTimeMaxR, ref DoubleTapCounterR);
     }
@@ -59,6 +61,20 @@ public class InputPlayer : MonoBehaviour
         }
         else{
             myMob.victory = false;
+        }
+    }
+    public void SlotOneCheck(Mob myMob)
+    {
+        if(Input.GetButton("1"))
+        {
+            myMob.arma.Armas = Resources.Load<Armas>("Arma");
+        }
+    }
+    public void SlotTwoCheck(Mob myMob)
+    {
+        if(Input.GetButton("2"))
+        {
+            myMob.arma.Armas = Resources.Load<Armas>("Arma 1");
         }
     }
     public void MoveCheck(Mob myMob)
