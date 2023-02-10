@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0542db65029363459d7092c8de3a51e, type: 3}
+  m_Name: Arma
+  m_EditorClassIdentifier: 
+  ID: 0
+  NombreDelItem: Hacha penistica
+  Sprite: {fileID: -4528942005672272804, guid: d6999bca0ea0da048914021adc91f35a, type: 3}
+  Animation: 
+  Sound: 
+  Value: 0
+  damage: 10
+  weaponType: 0
+  knockback: 2
+  damageArea: 0.5
+  effect: 0
+  category: Armas Grandes
+  label: Hacha de Hierro
+  library: {fileID: 7108339969198208228, guid: e4222964f26a9ee42ac8790ef2f23820, type: 3}
+  mySpriteResolver: {fileID: 0}
