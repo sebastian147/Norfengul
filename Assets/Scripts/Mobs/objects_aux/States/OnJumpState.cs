@@ -75,11 +75,6 @@ public class OnJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
                         return;
                 }
-                if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
-                {
-                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
-                        return;
-                }
         }
         public override void UpdateState(Mob myMob)
         {
@@ -101,6 +96,10 @@ public class OnJumpState : MobBaseState
                 else
                 {
                         jumpTime -= Time.fixedDeltaTime;
+                }
+                if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)//arreglar
+                {
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
                 }
         }
         public override void FixedUpdateState(Mob myMob)
