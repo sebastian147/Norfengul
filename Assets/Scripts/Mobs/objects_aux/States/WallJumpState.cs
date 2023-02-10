@@ -23,6 +23,11 @@ public class WallJumpState : MobBaseState
         }
         public override void CheckChangeState(Mob myMob)
         {
+                if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
+                {
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
+                        return;
+                }
                 if(myMob.horizontalMove !=  0 && myMob.horizontalMove !=  myMob.wallGrabingDirection && myMob.jumpBufferCounter>0) 
                 {
                         myMob.wallGrabing = true;
@@ -57,6 +62,7 @@ public class WallJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
                         return;
                 }
+
         }
         public override void UpdateState(Mob myMob)
         {

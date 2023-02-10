@@ -8,19 +8,21 @@ public class DashState : MobBaseState
         float originalGravity;
         public override void animate(Mob myMob)
         {
-                //myMob.myAnimator.SetFloat("Speed", 0);
+                myMob.myAnimator.SetBool("isRoll", true);
         }
         public override void EndState(Mob myMob)
         {
                 myMob.myRigidbody.gravityScale = originalGravity;
                 myMob.tr.emitting = false;
                 myMob.canDash = false;
+                myMob.myAnimator.SetBool("isRoll", false);
+
         }
         public override void StarState(Mob myMob)
         {
                 int direction = 1;
                 originalGravity = myMob.myRigidbody.gravityScale;
-                myMob.myRigidbody.gravityScale = 0f;
+                //myMob.myRigidbody.gravityScale = 0f;
                 if(myMob.dashRight)
                 {
                         direction = 1;
@@ -34,9 +36,10 @@ public class DashState : MobBaseState
                         Debug.Log("error");
                 }
                 myMob.myRigidbody.velocity = new Vector2(direction * myMob.dashingPower, 0f);
-                myMob.tr.emitting = true;
+                //myMob.tr.emitting = true;
                 time = myMob.dashingTime;
                 Fliping(myMob);
+                animate(myMob);
         }
         public override void CheckChangeState(Mob myMob)
         {
@@ -55,8 +58,8 @@ public class DashState : MobBaseState
         }
         public override void UpdateState(Mob myMob)
         {
-                animate(myMob);
-                CheckChangeState(myMob);
+                if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
+                        CheckChangeState(myMob);
 
         }
         public override void FixedUpdateState(Mob myMob)

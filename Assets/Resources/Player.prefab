@@ -5149,6 +5149,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: spear
+  - Type: 4
+    SynchronizeType: 0
+    Name: isRoll
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -5479,7 +5482,7 @@ MonoBehaviour:
   victory: 0
   dashLeft: 0
   dashRight: 0
-  dashingPower: 24
+  dashingPower: 8
   dashingTime: 0.2
   dashingCoolDown: 1
   dashingCoolDownMax: 1

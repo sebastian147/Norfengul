@@ -20,6 +20,11 @@ public class WalkState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
+        if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
+        {
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
+            return;
+        }
         if(myMob.attacking == true)
         {
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
@@ -35,11 +40,7 @@ public class WalkState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
             return;
         }
-        if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
-        {
-            myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
-            return;
-        }
+
     }
     public override void UpdateState(Mob myMob)
     {

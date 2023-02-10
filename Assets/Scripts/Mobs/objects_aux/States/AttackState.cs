@@ -22,6 +22,8 @@ public class AttackState : MobBaseState
                 attackTipe =myMob.arma.Armas.weaponType.ToString();
                 myMob.attacking = false;
                 animate(myMob);
+                CheckEnemysToAttack(myMob);
+                CheckPlayersToAttack(myMob);
         }
         public override void CheckChangeState(Mob myMob)
         {
@@ -47,8 +49,7 @@ public class AttackState : MobBaseState
                 if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
                         CheckChangeState(myMob);
                 //CheckChangeState(myMob);
-                CheckEnemysToAttack(myMob);
-                CheckPlayersToAttack(myMob);
+
         }
         public override void FixedUpdateState(Mob myMob)
         {

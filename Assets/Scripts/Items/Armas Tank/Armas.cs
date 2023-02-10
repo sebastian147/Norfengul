@@ -20,6 +20,8 @@ public class Armas : itemInfo
         public UnityEngine.U2D.Animation.SpriteLibraryAsset library;
         public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
 
+        [SerializeField] public Rect HitBox;
+
  
 
 }
