@@ -5126,31 +5126,31 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: isJumping
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsDead
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsVictory
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: isInWall
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: idle
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: walking
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: sword
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: spear
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: isRoll
   m_SynchronizeLayers:
   - SynchronizeType: 0
