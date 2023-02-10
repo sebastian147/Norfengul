@@ -25,3 +25,5 @@ MonoBehaviour:
   effect: 0
   category: Armas Grandes
   label: Hacha de Hierro
+  library: {fileID: 7108339969198208228, guid: e4222964f26a9ee42ac8790ef2f23820, type: 3}
+  mySpriteResolver: {fileID: 0}
