@@ -67,14 +67,14 @@ public class InputPlayer : MonoBehaviour
     {
         if(Input.GetButton("1"))
         {
-            myMob.arma.Armas = Resources.Load<Armas>("Arma");
+            myMob.arma.Armas = Resources.Load<Armas>("Armas_Huscarle/Arma");
         }
     }
     public void SlotTwoCheck(Mob myMob)
     {
         if(Input.GetButton("2"))
         {
-            myMob.arma.Armas = Resources.Load<Armas>("Arma 1");
+            myMob.arma.Armas = Resources.Load<Armas>("Armas_Huscarle/Arma 1");
         }
     }
     public void MoveCheck(Mob myMob)

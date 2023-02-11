@@ -19,11 +19,17 @@ MonoBehaviour:
   Sound: 
   Value: 0
   damage: 10
-  weaponType: 1
+  weaponType: 0
   knockback: 0
   damageArea: 0.2
   effect: 0
   category: Armas Largas
   label: Lanza de Hierro
-  library: {fileID: 7108339969198208228, guid: 075c371f818a6c44f8086caa8afedb94, type: 3}
+  library: {fileID: 7108339969198208228, guid: da92eebd8cead0f4c8cd11f5d36857b5, type: 3}
   mySpriteResolver: {fileID: 0}
+  HitBox:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0

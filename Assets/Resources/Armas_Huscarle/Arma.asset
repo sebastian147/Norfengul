@@ -19,7 +19,7 @@ MonoBehaviour:
   Sound: 
   Value: 0
   damage: 10
-  weaponType: 0
+  weaponType: 1
   knockback: 2
   damageArea: 0.5
   effect: 0
