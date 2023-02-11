@@ -295,4 +295,46 @@ MonoBehaviour:
         type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 1
+  - m_Name: Block
+    m_Hash: 1121630246
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Frame_Block_1
+      m_Hash: 1139835462
+      m_Sprite: {fileID: 2070179677, guid: d6afd61bd6592bb4f99839dfbc21f99c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2070179677, guid: d6afd61bd6592bb4f99839dfbc21f99c,
+        type: 3}
+    - m_Name: Frame_Block_2
+      m_Hash: -621161476
+      m_Sprite: {fileID: 500049445, guid: d6afd61bd6592bb4f99839dfbc21f99c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 500049445, guid: d6afd61bd6592bb4f99839dfbc21f99c,
+        type: 3}
+    - m_Name: Frame_Block_3
+      m_Hash: -1375804566
+      m_Sprite: {fileID: 939957635, guid: d6afd61bd6592bb4f99839dfbc21f99c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 939957635, guid: d6afd61bd6592bb4f99839dfbc21f99c,
+        type: 3}
+    - m_Name: Frame_Block_4
+      m_Hash: 865760969
+      m_Sprite: {fileID: 614409489, guid: d6afd61bd6592bb4f99839dfbc21f99c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 614409489, guid: d6afd61bd6592bb4f99839dfbc21f99c,
+        type: 3}
+    - m_Name: Frame_Block_5
+      m_Hash: 1151157855
+      m_Sprite: {fileID: -392852454, guid: d6afd61bd6592bb4f99839dfbc21f99c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -392852454, guid: d6afd61bd6592bb4f99839dfbc21f99c,
+        type: 3}
+    - m_Name: Frame_Block_6
+      m_Hash: -577497115
+      m_Sprite: {fileID: 616076555, guid: d6afd61bd6592bb4f99839dfbc21f99c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 616076555, guid: d6afd61bd6592bb4f99839dfbc21f99c,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 6
   m_PrimaryLibraryGUID: 

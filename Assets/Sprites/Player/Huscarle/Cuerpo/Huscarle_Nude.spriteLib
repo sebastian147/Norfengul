@@ -367,4 +367,46 @@ MonoBehaviour:
         type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 1
+  - m_Name: Block
+    m_Hash: 1121630246
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Huscarle_2_BLOCK_Cuerpo_0
+      m_Hash: -618255957
+      m_Sprite: {fileID: 2134590297, guid: efaaca2ee6928d749a5017eb77ccfa1e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2134590297, guid: efaaca2ee6928d749a5017eb77ccfa1e,
+        type: 3}
+    - m_Name: Frame_Block_2
+      m_Hash: -621161476
+      m_Sprite: {fileID: 1013012225, guid: efaaca2ee6928d749a5017eb77ccfa1e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1013012225, guid: efaaca2ee6928d749a5017eb77ccfa1e,
+        type: 3}
+    - m_Name: Frame_Block_3
+      m_Hash: -1375804566
+      m_Sprite: {fileID: -1639218462, guid: efaaca2ee6928d749a5017eb77ccfa1e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1639218462, guid: efaaca2ee6928d749a5017eb77ccfa1e,
+        type: 3}
+    - m_Name: Frame_Block_4
+      m_Hash: 865760969
+      m_Sprite: {fileID: 1714588199, guid: efaaca2ee6928d749a5017eb77ccfa1e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1714588199, guid: efaaca2ee6928d749a5017eb77ccfa1e,
+        type: 3}
+    - m_Name: Frame_Block_5
+      m_Hash: 1151157855
+      m_Sprite: {fileID: 739141442, guid: efaaca2ee6928d749a5017eb77ccfa1e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 739141442, guid: efaaca2ee6928d749a5017eb77ccfa1e,
+        type: 3}
+    - m_Name: Frame_Block_6
+      m_Hash: -577497115
+      m_Sprite: {fileID: 303447657, guid: efaaca2ee6928d749a5017eb77ccfa1e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 303447657, guid: efaaca2ee6928d749a5017eb77ccfa1e,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 6
   m_PrimaryLibraryGUID: 
