@@ -187,6 +187,7 @@ public class Mob : MonoBehaviourPunCallbacks
         [PunRPC]
 	protected void RPC_TakeDamage(int damage)//try to move me
 	{
+                myAnimator.SetBool("isHit", true);
                 if(currentHealth > 0)//bug de muerte en respawn
                 {
                         currentHealth -= damage;
@@ -198,6 +199,13 @@ public class Mob : MonoBehaviourPunCallbacks
                                 Die();
                         }
                 }
+                
+                if(!(myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
+                {
+                        ///convertir en un estado
+
+                }
+                myAnimator.SetBool("isHit", false);
 	}
         //moveme de aca
         public void Die()
