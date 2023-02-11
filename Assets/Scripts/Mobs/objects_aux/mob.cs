@@ -206,7 +206,6 @@ public class Mob : MonoBehaviourPunCallbacks
                 healthBar.SetHealth(currentHealth);
                 myAnimator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
-        
 		
                 //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
