@@ -5270,6 +5270,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: isRoll
+  - Type: 4
+    SynchronizeType: 1
+    Name: isHit
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
