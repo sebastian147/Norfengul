@@ -28,6 +28,11 @@ public class AttackState : MobBaseState
         }
         public override void CheckChangeState(Mob myMob)
         {
+                if(Mathf.Abs(myMob.horizontalMove) != 0 && myMob.running == true)
+                {
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
+                        return;
+                }
                 if(Mathf.Abs(myMob.horizontalMove) != 0)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
@@ -38,6 +43,7 @@ public class AttackState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(2,0,myMob);
                         return;
                 }*/
+
                 if(Mathf.Abs(myMob.horizontalMove) == 0)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);

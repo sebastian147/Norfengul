@@ -28,6 +28,8 @@ public class Mob : MonoBehaviourPunCallbacks
         [SerializeField] public float moveSpeed = 40f;
         public Vector3 m_Velocity = Vector3.zero;
         [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+        [SerializeField] public float runningSpeed = 40f;
+        public bool running = false; 
 
 	[Header("Jump")]
 	[SerializeField] public int amountOfJumps = 1;

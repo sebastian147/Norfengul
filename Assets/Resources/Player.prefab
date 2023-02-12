@@ -5273,6 +5273,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: isHit
+  - Type: 4
+    SynchronizeType: 0
+    Name: running
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -5332,7 +5335,7 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 10
+    TeleportIfDistanceGreaterThan: 2
     InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
@@ -5526,6 +5529,8 @@ MonoBehaviour:
   moveSpeed: 5
   m_Velocity: {x: 0, y: 0, z: 0}
   m_MovementSmoothing: 0.05
+  runningSpeed: 8
+  running: 0
   amountOfJumps: 2
   counterJumpForce: 40
   jumpHeight: 10

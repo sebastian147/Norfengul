@@ -13,6 +13,7 @@ public enum myStates{
     Victory,
     Dash,
     Damage,
+    Running
 }
 public class StateMachine
 {
@@ -40,6 +41,7 @@ public class StateMachine
         myDictionary.Add((int) myStates.Victory, new VictoryState());
         myDictionary.Add((int) myStates.Dash, new DashState());
         myDictionary.Add((int) myStates.Damage, new DamageState());
+        myDictionary.Add((int) myStates.Running, new RunningState());
 
         //myStates.jumpSate = new JumpState();
         return myDictionary[0];

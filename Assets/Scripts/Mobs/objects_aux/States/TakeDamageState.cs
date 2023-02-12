@@ -20,6 +20,11 @@ public class TakeDamageState : MobBaseState
     }
     public override void CheckChangeState(Mob myMob)
     {
+        if(Mathf.Abs(myMob.horizontalMove) != 0 && myMob.running == true)
+        {
+                myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
+                return;
+        }
         if(Mathf.Abs(myMob.horizontalMove) != 0)
         {
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);

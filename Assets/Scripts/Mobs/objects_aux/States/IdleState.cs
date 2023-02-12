@@ -25,23 +25,28 @@ public class IdleState : MobBaseState
                 }
                 if(myMob.attacking == true)
                 {
-                myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
-                return;
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
+                        return;
+                }
+                if(Mathf.Abs(myMob.horizontalMove) != 0 && myMob.running == true)
+                {
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
+                        return;
                 }
                 if(Mathf.Abs(myMob.horizontalMove) != 0)
                 {
-                myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
-                return;
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
+                        return;
                 }
                 if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
                 {
-                myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
-                return;
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
+                        return;
                 }
                 if(myMob.victory)
                 {
-                myMob.actualState = myMob.myStateMachine.changeState(myStates.Victory,myMob);
-                return;
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Victory,myMob);
+                        return;
                 }
         }
         public override void UpdateState(Mob myMob)

@@ -16,12 +16,35 @@ public class InputPlayer : MonoBehaviour
         JumpCheck(myMob);
         AttackCheck(myMob);
         MoveCheck(myMob);
-        VictoryCheck(myMob);
+        myMob.victory=ChangeBoolStateInput("v");
+        myMob.dashLeft=ChangeBoolStateInput("q");
+        myMob.dashRight=ChangeBoolStateInput("e");
+        myMob.running=IsRuning(myMob);        
         DropCheck(myMob);
         SlotOneCheck(myMob);
         SlotTwoCheck(myMob);
-        myMob.dashLeft = DoubleTap(myMob, "a", ref DoubleTapTimeL, DoubleTapTimeMaxL, ref DoubleTapCounterL);
-        myMob.dashRight = DoubleTap(myMob, "d", ref DoubleTapTimeR, DoubleTapTimeMaxR, ref DoubleTapCounterR);
+        //myMob.dashLeft = DoubleTap(myMob, "a", ref DoubleTapTimeL, DoubleTapTimeMaxL, ref DoubleTapCounterL);
+        //myMob.dashRight = DoubleTap(myMob, "d", ref DoubleTapTimeR, DoubleTapTimeMaxR, ref DoubleTapCounterR);
+    }
+    public bool ChangeBoolStateInput(string key)
+    {
+        if(Input.GetButton(key))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public bool IsRuning(Mob myMob)
+    {
+        if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
@@ -55,13 +78,7 @@ public class InputPlayer : MonoBehaviour
     }
     public void VictoryCheck(Mob myMob)
     {
-        if(Input.GetButton("v"))
-        {
-            myMob.victory = true;
-        }
-        else{
-            myMob.victory = false;
-        }
+
     }
     public void SlotOneCheck(Mob myMob)
     {
