@@ -16,6 +16,7 @@ public class DashState : MobBaseState
                 myMob.tr.emitting = false;
                 myMob.canDash = false;
                 myMob.myAnimator.SetBool("isRoll", false);
+                myMob.gameObject.layer = LayerMask.NameToLayer("Player");
 
         }
         public override void StarState(Mob myMob)
@@ -23,6 +24,8 @@ public class DashState : MobBaseState
                 int direction = 1;
                 originalGravity = myMob.myRigidbody.gravityScale;
                 //myMob.myRigidbody.gravityScale = 0f;
+                myMob.gameObject.layer = LayerMask.NameToLayer("Inmunity");
+
                 if(myMob.dashRight)
                 {
                         direction = 1;

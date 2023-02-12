@@ -129,6 +129,9 @@ public class Mob : MonoBehaviourPunCallbacks
                 else
                         Destroy(ui);
         }
+        private void Start() {
+                
+        }
 
 
         // Update is called once per frame'
