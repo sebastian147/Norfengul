@@ -55,6 +55,12 @@ public class CollisionUpdates : MonoBehaviour
 		if(raycastSuelo || raycastSuelo2 || raycastSuelo3)
 		{
 			myMob.m_Grounded = true;
+                        if( myMob.jumpdones != 0)
+                        {
+                                myMob.jumpsends = 0;
+                        }
+                        myMob.jumpdones = 0;//si esta en el piso hay zero saltos echos
+
             /*if (!wasGrounded)
             {
 

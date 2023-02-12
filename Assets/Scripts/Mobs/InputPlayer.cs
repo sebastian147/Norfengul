@@ -53,6 +53,10 @@ public class InputPlayer : MonoBehaviour
             myMob.jumpBufferCounter = myMob.jumpBufferTime;
             myMob.jumpStop = false;
             myMob.jumping = true;
+            if(myMob.jumpdones == 0)
+            {
+                myMob.jumpsends = 0;//esto es para que salte despues de golpear yno se bugue cuando cae haciendo un salto simple con el buffer
+            }
         }
         else if(Input.GetButtonUp("Jump"))
         {

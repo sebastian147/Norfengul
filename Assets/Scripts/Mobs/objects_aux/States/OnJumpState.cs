@@ -23,8 +23,8 @@ public class OnJumpState : MobBaseState
         {
                 myMob.jumping = false;
 		myMob.myAnimator.SetBool("isJumping", false);
-		myMob.jumpsends = 0;
-		myMob.jumpdones = 0;
+		//myMob.jumpsends = 0;
+		//myMob.jumpdones = 0;
 		//myMob.timeInAir = 0;
 
 		//wall grabbing
@@ -47,7 +47,6 @@ public class OnJumpState : MobBaseState
                 jumpMade = false;
                 myMob.timeInAir = myMob.allowedTimeInAir;
                 jumpTime = jumpTimeMax;
-
                 if(myMob.wallGrabing == true)//time from wall jump
                 {
                         move = myMob.horizontalMove;

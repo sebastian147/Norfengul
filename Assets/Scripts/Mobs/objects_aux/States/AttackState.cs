@@ -38,11 +38,11 @@ public class AttackState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
                         return;
                 }
-                /*if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
+                if(myMob.jumpBufferCounter>0 || !myMob.m_Grounded)
                 {
-                        myMob.actualState = myMob.myStateMachine.changeState(2,0,myMob);
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
                         return;
-                }*/
+                }
 
                 if(Mathf.Abs(myMob.horizontalMove) == 0)
                 {
