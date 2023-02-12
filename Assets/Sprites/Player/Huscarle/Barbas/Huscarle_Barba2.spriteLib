@@ -181,39 +181,39 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Frame_Attack1_1
       m_Hash: 2034909554
-      m_Sprite: {fileID: -2091893248, guid: b40294bdee149114c95de07a22f32353, type: 3}
+      m_Sprite: {fileID: 144995520, guid: a4314127719020f4bb978bb194abf302, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -2091893248, guid: b40294bdee149114c95de07a22f32353,
+      m_SpriteOverride: {fileID: 144995520, guid: a4314127719020f4bb978bb194abf302,
         type: 3}
     - m_Name: Frame_Attack1_2
       m_Hash: -532475704
-      m_Sprite: {fileID: -1394315750, guid: b40294bdee149114c95de07a22f32353, type: 3}
+      m_Sprite: {fileID: -759306097, guid: a4314127719020f4bb978bb194abf302, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1394315750, guid: b40294bdee149114c95de07a22f32353,
+      m_SpriteOverride: {fileID: -759306097, guid: a4314127719020f4bb978bb194abf302,
         type: 3}
     - m_Name: Frame_Attack1_3
       m_Hash: -1757142946
-      m_Sprite: {fileID: 672437795, guid: b40294bdee149114c95de07a22f32353, type: 3}
+      m_Sprite: {fileID: -762502069, guid: a4314127719020f4bb978bb194abf302, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 672437795, guid: b40294bdee149114c95de07a22f32353,
+      m_SpriteOverride: {fileID: -762502069, guid: a4314127719020f4bb978bb194abf302,
         type: 3}
     - m_Name: Frame_Attack1_4
       m_Hash: 153138685
-      m_Sprite: {fileID: -1602838305, guid: b40294bdee149114c95de07a22f32353, type: 3}
+      m_Sprite: {fileID: -797847891, guid: a4314127719020f4bb978bb194abf302, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1602838305, guid: b40294bdee149114c95de07a22f32353,
+      m_SpriteOverride: {fileID: -797847891, guid: a4314127719020f4bb978bb194abf302,
         type: 3}
     - m_Name: Frame_Attack1_5
       m_Hash: 2116519275
-      m_Sprite: {fileID: -161681574, guid: b40294bdee149114c95de07a22f32353, type: 3}
+      m_Sprite: {fileID: -658620763, guid: a4314127719020f4bb978bb194abf302, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -161681574, guid: b40294bdee149114c95de07a22f32353,
+      m_SpriteOverride: {fileID: -658620763, guid: a4314127719020f4bb978bb194abf302,
         type: 3}
     - m_Name: Frame_Attack1_6
       m_Hash: -416361263
-      m_Sprite: {fileID: 1631122952, guid: b40294bdee149114c95de07a22f32353, type: 3}
+      m_Sprite: {fileID: -1465915797, guid: a4314127719020f4bb978bb194abf302, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1631122952, guid: b40294bdee149114c95de07a22f32353,
+      m_SpriteOverride: {fileID: -1465915797, guid: a4314127719020f4bb978bb194abf302,
         type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 6
