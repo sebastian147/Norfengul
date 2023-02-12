@@ -7,7 +7,6 @@ public enum weaponType{
     axe
 }
 [CreateAssetMenu(fileName = "Arma", menuName = "Arma", order = 1)]
-
 public class Armas : itemInfo
 {
         [SerializeField]public int damage;
@@ -17,10 +16,9 @@ public class Armas : itemInfo
         [SerializeField]public int effect;
         [SerializeField]public string category;
         [SerializeField]public string label;
-        public UnityEngine.U2D.Animation.SpriteLibraryAsset library;
-        public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
+        [SerializeField]public UnityEngine.U2D.Animation.SpriteLibraryAsset library;
+        [SerializeField]public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
 
         [SerializeField] public Rect HitBox;
-
 
 }

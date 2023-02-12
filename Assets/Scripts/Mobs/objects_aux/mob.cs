@@ -222,5 +222,14 @@ public class Mob : MonoBehaviourPunCallbacks
 		if(Pv.IsMine)
 			playerManager.Die();
         }
+        public void changeWeapon(string weaponName)
+        {
+                Pv.RPC("RPC_changeWeapon", RpcTarget.AllBuffered, weaponName);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_changeWeapon(string weaponName)
+        {
+                arma.Armas = Resources.Load<Armas>(weaponName);
+        }
 
 }
