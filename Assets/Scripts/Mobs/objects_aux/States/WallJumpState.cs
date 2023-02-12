@@ -30,6 +30,13 @@ public class WallJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
                         return;
                 }
+                if(myMob.drop)
+                {
+                        myMob.jumpsends = myMob.amountOfJumps;
+                        myMob.jumpdones = myMob.amountOfJumps;
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
+                        return;
+                }
                 if(myMob.horizontalMove !=  0 && myMob.horizontalMove !=  myMob.wallGrabingDirection && myMob.jumpBufferCounter>0) 
                 {
                         myMob.wallGrabing = true;
@@ -45,6 +52,7 @@ public class WallJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
                         return;
                 }
+
                 if(!myMob.m_Grounded && myMob.horizontalMove ==  myMob.wallGrabingDirection && !myMob._inWallLeft && !myMob._inWallRight)
                 {
                         myMob.jumpsends = myMob.amountOfJumps;
@@ -52,13 +60,7 @@ public class WallJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
                         return;          
                 }
-                if(myMob.drop)
-                {
-                        myMob.jumpsends = myMob.amountOfJumps;
-                        myMob.jumpdones = myMob.amountOfJumps;
-                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
-                        return;
-                }
+
                 if(myMob.m_Grounded)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);

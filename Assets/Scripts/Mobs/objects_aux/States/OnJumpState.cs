@@ -56,7 +56,7 @@ public class OnJumpState : MobBaseState
         }
         public override void CheckChangeState(Mob myMob)
         {
-                if(((myMob._inWallRight && myMob.horizontalMove > 0)  || (myMob._inWallLeft && myMob.horizontalMove<0)) && !myMob.m_Grounded)
+                if(((myMob._inWallRight && myMob.horizontalMove > 0)  || (myMob._inWallLeft && myMob.horizontalMove<0)) && !myMob.m_Grounded && !myMob.drop)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.WallGrabing,myMob);
                         return;	
