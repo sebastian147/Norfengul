@@ -234,5 +234,6 @@ public class Mob : MonoBehaviourPunCallbacks
         {
                 arma.Armas = Resources.Load<Armas>(weaponName);
         }
+        
 
 }
