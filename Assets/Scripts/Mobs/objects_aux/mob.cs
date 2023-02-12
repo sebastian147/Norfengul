@@ -234,6 +234,14 @@ public class Mob : MonoBehaviourPunCallbacks
         {
                 arma.Armas = Resources.Load<Armas>(weaponName);
         }
-        
+        public void changeLayer(string layer)
+        {
+                Pv.RPC("RPC_changeLayer", RpcTarget.AllBuffered, layer);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_changeLayer(string layer)
+        {
+                this.gameObject.layer = LayerMask.NameToLayer(layer);
+        }
 
 }
