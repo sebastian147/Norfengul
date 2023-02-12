@@ -109,7 +109,7 @@ public class Mob : MonoBehaviourPunCallbacks
         public float dashingTime = 0.2f;
         public float dashingCoolDown = 0;
         public float dashingCoolDownMax = 1f;
-        public bool canDash = true;
+        public bool canDash = false;
         [SerializeField] public TrailRenderer tr;
 
         void Awake()

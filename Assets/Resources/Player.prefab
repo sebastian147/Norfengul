@@ -5605,12 +5605,8 @@ MonoBehaviour:
   dashingTime: 0.2
   dashingCoolDown: 1
   dashingCoolDownMax: 1
-  canDash: 1
+  canDash: 0
   tr: {fileID: 4608122293946482898}
-  PartesDelPersonaje:
-  - {fileID: 4120274849058350800}
-  - {fileID: 1606894784473987611}
-  - {fileID: 1606894784473987611}
 --- !u!114 &2574129163813346387
 MonoBehaviour:
   m_ObjectHideFlags: 0
