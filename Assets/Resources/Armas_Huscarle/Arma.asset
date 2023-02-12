@@ -18,7 +18,7 @@ MonoBehaviour:
   Animation: 
   Sound: 
   Value: 0
-  damage: 10
+  damage: 20
   weaponType: 1
   knockback: 2
   damageArea: 0.5
