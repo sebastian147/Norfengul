@@ -22,6 +22,5 @@ public class Armas : itemInfo
 
         [SerializeField] public Rect HitBox;
 
-                
 
 }

@@ -41,6 +41,7 @@ public class OnJumpState : MobBaseState
         }
         public override void StarState(Mob myMob)
         {
+                animate(myMob);
                 originalGravity = myMob.myRigidbody.gravityScale;
                 myMob.m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, myMob.jumpHeight);//mover a start o awake cuando se sete el valor
                 jumpMade = false;
@@ -79,7 +80,6 @@ public class OnJumpState : MobBaseState
         public override void UpdateState(Mob myMob)
         {
                 base.UpdateState(myMob);
-                animate(myMob);
                 if(myMob.jumping)
                         MakeAJump(myMob);
                 if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )//buffer

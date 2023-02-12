@@ -14,7 +14,7 @@ public class VictoryState : MobBaseState
     }
     public override void StarState(Mob myMob)
     {
-
+        animate(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -42,7 +42,6 @@ public class VictoryState : MobBaseState
     public override void UpdateState(Mob myMob)
     {
         base.UpdateState(myMob);
-        animate(myMob);
         CheckChangeState(myMob);
     }
     public override void FixedUpdateState(Mob myMob)

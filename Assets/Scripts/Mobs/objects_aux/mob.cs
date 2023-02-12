@@ -177,6 +177,10 @@ public class Mob : MonoBehaviourPunCallbacks
                 Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.right*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
                 Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.left*_wallRayCastLenght);
                 Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.left*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+
+                //attack
+                Gizmos.DrawWireSphere(attackPoint.position, arma.Armas.damageArea);
+
                 
         }
 
@@ -187,7 +191,7 @@ public class Mob : MonoBehaviourPunCallbacks
         [PunRPC]
 	protected void RPC_TakeDamage(int damage)//try to move me
 	{
-                myAnimator.SetBool("isHit", true);
+
                 if(currentHealth > 0)//bug de muerte en respawn
                 {
                         currentHealth -= damage;
@@ -197,15 +201,11 @@ public class Mob : MonoBehaviourPunCallbacks
                         if(currentHealth <= 0)
                         {
                                 Die();
+                                return;
                         }
-                }
-                
-                if(!(myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
-                {
-                        ///convertir en un estado
+                        actualState = myStateMachine.changeState(myStates.Damage,this);
 
                 }
-                myAnimator.SetBool("isHit", false);
 	}
         //moveme de aca
         public void Die()
