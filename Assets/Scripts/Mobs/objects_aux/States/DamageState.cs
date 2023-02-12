@@ -15,6 +15,7 @@ public class DamageState : MobBaseState
         }
         public override void StarState(Mob myMob)
         {
+                myMob.gameObject.layer = LayerMask.NameToLayer("Player");
 
                 AnimatorControllerParameter[] parametros = myMob.myAnimator.parameters;
 
