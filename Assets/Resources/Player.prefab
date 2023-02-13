@@ -5115,7 +5115,6 @@ GameObject:
   - component: {fileID: 2836940207534286408}
   - component: {fileID: 2836940207534286414}
   - component: {fileID: 2836940207534286413}
-  - component: {fileID: 5192898709689865869}
   - component: {fileID: 2836940207534286412}
   - component: {fileID: 6715036968863409614}
   - component: {fileID: 4363230796165308452}
@@ -5127,6 +5126,7 @@ GameObject:
   - component: {fileID: 2574129163813346387}
   - component: {fileID: 758727501125520017}
   - component: {fileID: 2670097524706784369}
+  - component: {fileID: -1722766525870770375}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -5207,32 +5207,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.30931106, y: 0.60520047}
-  m_EdgeRadius: 0
---- !u!61 &5192898709689865869
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2836940207534286419}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: e2f6705eeaf903e43a3e51bf3ef424a4, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.018415019, y: -0.04899934}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.3333334}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2093111, y: 0.5052005}
   m_EdgeRadius: 0
 --- !u!50 &2836940207534286412
 Rigidbody2D:
@@ -5328,6 +5302,7 @@ MonoBehaviour:
   - {fileID: 6715036968863409614}
   - {fileID: 1465484838121943822}
   - {fileID: 1652776204591482652}
+  - {fileID: -1722766525870770375}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -5354,15 +5329,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2836940207534286419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 1
-    TeleportEnabled: 0
-    TeleportIfDistanceGreaterThan: 5
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 20
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
@@ -5716,6 +5691,22 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 9.672044e+9
+--- !u!114 &-1722766525870770375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836940207534286419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2836940208013041827
 GameObject:
   m_ObjectHideFlags: 0
