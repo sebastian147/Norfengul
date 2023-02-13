@@ -112,6 +112,15 @@ public class Mob : MonoBehaviourPunCallbacks
         public bool canDash = false;
         [SerializeField] public TrailRenderer tr;
 
+        [Header("skin")]
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Arma;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Barbas;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Cuerpo;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Escudos;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Pelos;
+
+
         void Awake()
         {
                 myTransform = GetComponent<Transform>();
@@ -243,6 +252,20 @@ public class Mob : MonoBehaviourPunCallbacks
         public void RPC_changeLayer(string layer)
         {
                 this.gameObject.layer = LayerMask.NameToLayer(layer);
+        }
+        public void changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos)
+        {
+                Pv.RPC("RPC_changeSkin", RpcTarget.AllBuffered,  Arma, Barbas, Cuerpo, Escudos, Pelos);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos)
+        {
+                this.Arma.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Arma);
+                this.Barbas.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Barbas);
+                this.Cuerpo.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Cuerpo);
+                this.Escudos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Escudos);
+                this.Pelos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Pelos);
+                mySpriteResolver.ResolveSpriteToSpriteRenderer();
         }
 
 }

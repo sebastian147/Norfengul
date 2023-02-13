@@ -69,3 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2836940207534286419, guid: 605cc061cb1a3884d903bf1013950fec,
     type: 3}
+  Arma: 
+  Barbas: 
+  Cuerpo: 
+  Escudos: 
+  Pelos: 
