@@ -5330,7 +5330,6 @@ MonoBehaviour:
   canDash: 0
   tr: {fileID: 4608122293946482898}
   mySpriteResolver: {fileID: 2670097524706784369}
-  Arma: {fileID: 3186983592829019602}
   Barbas: {fileID: 7752781635830891598}
   Cuerpo: {fileID: 2574129163813346387}
   Escudos: {fileID: 6682166191420498984}

@@ -11,13 +11,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
         public static RoomManager Instance;    
         public GameObject playerManager;
         string folderPath = "Assets/Resources/Skins_Huscarle";
+        string folderPathA = "Assets/Resources/Armas_Huscarle";
 
-        string skinRandomCarpeta(string path,string pathNT)
+        string skinRandomCarpeta(string path,string pathNT, string end)
         {
                 System.Random random = new System.Random();
-                string[] fileNames = Directory.GetFiles(path).Where(name => name.EndsWith(".spriteLib")).ToArray();
+                string[] fileNames = Directory.GetFiles(path).Where(name => name.EndsWith(end)).ToArray();
                 string randomFilePath   = fileNames[random.Next(0, fileNames.Length)];
-                randomFilePath = randomFilePath.Replace(".spriteLib", "");
+                randomFilePath = randomFilePath.Replace(end, "");
                 return randomFilePath.Replace(pathNT, "");
         }
         private void Awake() {
@@ -44,11 +45,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
                 if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName((string)PhotonNetwork.CurrentRoom.CustomProperties["Scene"]))//game scene 
                 {
-                        string Barbas = skinRandomCarpeta(folderPath+"/Barbas", "Assets/Resources/");
-                        string Arma = skinRandomCarpeta(folderPath+"/Armas", "Assets/Resources/");
-                        string Cuerpo = skinRandomCarpeta(folderPath+"/Cuerpo", "Assets/Resources/");
-                        string Escudos = skinRandomCarpeta(folderPath+"/Escudos", "Assets/Resources/");
-                        string Pelos = skinRandomCarpeta(folderPath+"/Pelos", "Assets/Resources/");
+                        string Barbas = skinRandomCarpeta(folderPath+"/Barbas", "Assets/Resources/",".spriteLib");
+                        string Arma = skinRandomCarpeta(folderPathA, "Assets/Resources/",".asset");
+                        string Cuerpo = skinRandomCarpeta(folderPath+"/Cuerpo", "Assets/Resources/",".spriteLib");
+                        string Escudos = skinRandomCarpeta(folderPath+"/Escudos", "Assets/Resources/",".spriteLib");
+                        string Pelos = skinRandomCarpeta(folderPath+"/Pelos", "Assets/Resources/",".spriteLib");
                         object[] customData = new object[] { Barbas, Arma, Cuerpo, Escudos, Pelos };
 
                         PhotonNetwork.Instantiate(playerManager.name, Vector2.zero,Quaternion.identity,0,customData);

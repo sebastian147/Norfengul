@@ -47,14 +47,14 @@ public class PlayerManager : MonoBehaviour
                 virtualCamera.Follow = player.transform;
                 //skin
                 object[] instantiationData = this.GetComponent<PhotonView>().InstantiationData;
-                Arma = (string)instantiationData[0];
-                Barbas = (string)instantiationData[1];
+                Barbas = (string)instantiationData[0];
+                Arma = (string)instantiationData[1];
                 Cuerpo = (string)instantiationData[2];
                 Escudos = (string)instantiationData[3];
                 Pelos = (string)instantiationData[4];
 
 
-                print(Arma + Barbas + Cuerpo + Escudos + Pelos);
+                //print(Arma + Barbas + Cuerpo + Escudos + Pelos);
 
                 player.GetComponent<playerMovement>().changeSkin(Arma,Barbas,Cuerpo,Escudos,Pelos);
         }

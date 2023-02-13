@@ -114,7 +114,6 @@ public class Mob : MonoBehaviourPunCallbacks
 
         [Header("skin")]
         [SerializeField] public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
-        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Arma;
         [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Barbas;
         [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Cuerpo;
         [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Escudos;
@@ -260,11 +259,11 @@ public class Mob : MonoBehaviourPunCallbacks
         [PunRPC]
         public void RPC_changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos)
         {
-                this.Arma.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Arma);
                 this.Barbas.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Barbas);
                 this.Cuerpo.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Cuerpo);
                 this.Escudos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Escudos);
                 this.Pelos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Pelos);
+                this.arma.Armas = Resources.Load<Armas>(Arma);
                 mySpriteResolver.ResolveSpriteToSpriteRenderer();
         }
 
