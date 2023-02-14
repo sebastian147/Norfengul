@@ -45,12 +45,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
                 if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName((string)PhotonNetwork.CurrentRoom.CustomProperties["Scene"]))//game scene 
                 {
+                        float R = Random.Range(0f, 1f);
+                        float G = Random.Range(0f, 1f);
+                        float B = Random.Range(0f, 1f);
                         string Barbas = skinRandomCarpeta(folderPath+"/Barbas", "Assets/Resources/",".spriteLib");
                         string Arma = skinRandomCarpeta(folderPathA, "Assets/Resources/",".asset");
                         string Cuerpo = skinRandomCarpeta(folderPath+"/Cuerpo", "Assets/Resources/",".spriteLib");
                         string Escudos = skinRandomCarpeta(folderPath+"/Escudos", "Assets/Resources/",".spriteLib");
                         string Pelos = skinRandomCarpeta(folderPath+"/Pelos", "Assets/Resources/",".spriteLib");
-                        object[] customData = new object[] { Barbas, Arma, Cuerpo, Escudos, Pelos };
+                        object[] customData = new object[] { Barbas, Arma, Cuerpo, Escudos, Pelos, R, G, B};
 
                         PhotonNetwork.Instantiate(playerManager.name, Vector2.zero,Quaternion.identity,0,customData);
 

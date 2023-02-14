@@ -5334,6 +5334,9 @@ MonoBehaviour:
   Cuerpo: {fileID: 2574129163813346387}
   Escudos: {fileID: 6682166191420498984}
   Pelos: {fileID: 6324542283101424257}
+  ShaderPelos: {fileID: 6325794272506795435}
+  ShaderBarbas: {fileID: 6411161529746471590}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2574129163813346387
 MonoBehaviour:
   m_ObjectHideFlags: 0

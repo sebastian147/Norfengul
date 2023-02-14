@@ -19,7 +19,9 @@ public class PlayerManager : MonoBehaviour
         public string Cuerpo;
         public string Escudos;
         public string Pelos;
-
+        public float R;
+        public float G;
+        public float B;
 
         // Start is called before the first frame update
         void Awake()
@@ -52,11 +54,13 @@ public class PlayerManager : MonoBehaviour
                 Cuerpo = (string)instantiationData[2];
                 Escudos = (string)instantiationData[3];
                 Pelos = (string)instantiationData[4];
+                R = (float)instantiationData[5];
+                G = (float)instantiationData[6];
+                B = (float)instantiationData[7];
 
+                print(Arma + Barbas + Cuerpo + Escudos + Pelos);
 
-                //print(Arma + Barbas + Cuerpo + Escudos + Pelos);
-
-                player.GetComponent<playerMovement>().changeSkin(Arma,Barbas,Cuerpo,Escudos,Pelos);
+                player.GetComponent<playerMovement>().changeSkin(Arma,Barbas,Cuerpo,Escudos,Pelos, R, G, B);//deberia llamar a esta funcion dentro de player y aca solo deberia pasarle los datos
         }
 
         public void Die()

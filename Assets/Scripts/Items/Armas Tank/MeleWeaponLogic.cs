@@ -14,7 +14,7 @@ public class MeleWeaponLogic : MonoBehaviour
         void ChangeWeapon()
         {
                 mySpriteLibrary.spriteLibraryAsset=Armas.library;
-                //mySpriteResolver.ResolveSpriteToSpriteRenderer();
+                mySpriteResolver.ResolveSpriteToSpriteRenderer();
         }
         /*void Update()
         {

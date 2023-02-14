@@ -95,7 +95,7 @@ public class InputPlayer : MonoBehaviour
     {
         if(Input.GetButton("2"))
         {
-            myMob.changeWeapon("Armas_Huscarle/Arma 1");
+            myMob.changeWeapon("Armas_Huscarle/Arma1");
         }
     }
     public void MoveCheck(Mob myMob)
