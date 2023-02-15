@@ -213,7 +213,7 @@ public class Mob : MonoBehaviourPunCallbacks
                 {
                         currentHealth -= damage;
                         GameObject instance = Instantiate(damageNumber, myTransform.position, myTransform.rotation);
-                        instance.GetComponent<TextMesh>().text = damage.ToString();
+                        instance.transform.Find("Damage").GetComponent<TextMesh>().text = damage.ToString();
                         if(Pv.IsMine)
                                 healthBar.SetHealth(currentHealth);
                         //animacion de lastimado
