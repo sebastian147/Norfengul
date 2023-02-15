@@ -21,6 +21,7 @@ public class WallJumpState : MobBaseState
                 myMob.wallGrabingDirection = myMob.horizontalMove;
                 Fliping(myMob);
                 animate(myMob);
+                myMob.myRigidbody.velocity = new Vector2(myMob.myRigidbody.velocity.x,0);//mover a fixed update
 
         }
         public override void CheckChangeState(Mob myMob)
@@ -70,7 +71,7 @@ public class WallJumpState : MobBaseState
         }
         public override void UpdateState(Mob myMob)
         {
-                base.UpdateState(myMob);
+                //base.UpdateState(myMob);
                 if(myMob.horizontalMove !=  myMob.wallGrabingDirection)
                 {
                         timer += Time.fixedDeltaTime;
