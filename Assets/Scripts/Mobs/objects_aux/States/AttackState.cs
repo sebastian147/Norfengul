@@ -53,7 +53,8 @@ public class AttackState : MobBaseState
         public override void UpdateState(Mob myMob)
         {
                 //base.UpdateState(myMob);//dont flip while attack
-                CheckPlayersToAttack(myMob);
+                if(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.85 && myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.55)
+                        CheckPlayersToAttack(myMob);
                 if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
                         CheckChangeState(myMob);
 
