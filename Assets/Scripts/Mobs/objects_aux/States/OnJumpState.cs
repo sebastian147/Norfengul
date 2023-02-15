@@ -49,6 +49,7 @@ public class OnJumpState : MobBaseState
                 jumpTime = jumpTimeMax;
                 if(myMob.wallGrabing == true)//time from wall jump
                 {
+                        Flip(myMob);
                         move = myMob.horizontalMove;
                         jumpTimeFromWall = jumpTimeFromWallMax;
                 }
@@ -78,7 +79,8 @@ public class OnJumpState : MobBaseState
         }
         public override void UpdateState(Mob myMob)
         {
-                base.UpdateState(myMob);
+                if(!myMob.wallGrabing)
+                        base.UpdateState(myMob);
                 if(myMob.jumping)
                         MakeAJump(myMob);
                 if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )//buffer
@@ -150,6 +152,10 @@ public class OnJumpState : MobBaseState
                 {
                         myMob.horizontalMove = move;
                         jumpTimeFromWall -= Time.fixedDeltaTime;
+                }
+                else
+                {
+                        myMob.wallGrabing = false;
                 }
                 //move on air falta checkear
                 Vector3 targetVelocity = new Vector2(myMob.horizontalMove * myMob.moveSpeed*myMob.apexModifierCurrent, myMob.myRigidbody.velocity.y);
