@@ -95,7 +95,7 @@ public class Mob : MonoBehaviourPunCallbacks
         public LayerMask enemyLayers;
         public LayerMask playerLayers;
         [SerializeField] public GameObject HitParticles; 
-
+        [SerializeField]public GameObject damageNumber;
         public MeleWeaponLogic arma;
 
 
@@ -212,6 +212,8 @@ public class Mob : MonoBehaviourPunCallbacks
                 if(currentHealth > 0)//bug de muerte en respawn
                 {
                         currentHealth -= damage;
+                        GameObject instance = Instantiate(damageNumber, myTransform.position, myTransform.rotation);
+                        instance.GetComponent<TextMesh>().text = damage.ToString();
                         if(Pv.IsMine)
                                 healthBar.SetHealth(currentHealth);
                         //animacion de lastimado
