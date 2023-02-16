@@ -16,7 +16,9 @@ public class TakeDamageState : MobBaseState
     }
     public override void StarState(Mob myMob)
     {
+        float knockBack = 200f;
         animate(myMob);
+        myMob.myRigidbody.AddForce(Vector2.up * myMob.myRigidbody.mass * knockBack, ForceMode2D.Impulse);
     }
     public override void CheckChangeState(Mob myMob)
     {

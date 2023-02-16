@@ -14,6 +14,7 @@ public class OnJumpState : MobBaseState
 	private float jumpTime = 0;
 	private float jumpTimeMax = 0.4f;
 	CornerCorrection c = new CornerCorrection();
+        private float moveSpeed = 0f;
         public override void animate(Mob myMob)
         {
                 myMob.myAnimator.SetBool("isJumping", true);
@@ -47,11 +48,19 @@ public class OnJumpState : MobBaseState
                 jumpMade = false;
                 myMob.timeInAir = myMob.allowedTimeInAir;
                 jumpTime = jumpTimeMax;
-                if(myMob.wallGrabing == true)//time from wall jump
+                if(myMob.wallGrabing == true && !myMob.drop)//time from wall jump
                 {
                         Flip(myMob);
                         move = myMob.horizontalMove;
                         jumpTimeFromWall = jumpTimeFromWallMax;
+                }
+                if(myMob.running == true)
+                {
+                        moveSpeed = myMob.runningSpeed;
+                }
+                else
+                {
+                        moveSpeed = myMob.moveSpeed;
                 }
         }
         public override void CheckChangeState(Mob myMob)
@@ -158,7 +167,7 @@ public class OnJumpState : MobBaseState
                         myMob.wallGrabing = false;
                 }
                 //move on air falta checkear
-                Vector3 targetVelocity = new Vector2(myMob.horizontalMove * myMob.moveSpeed*myMob.apexModifierCurrent, myMob.myRigidbody.velocity.y);
+                Vector3 targetVelocity = new Vector2(myMob.horizontalMove * moveSpeed*myMob.apexModifierCurrent, myMob.myRigidbody.velocity.y);
                 // And then smoothing it out and applying it to the character
                 myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
         }
