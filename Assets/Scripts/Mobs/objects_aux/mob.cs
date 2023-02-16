@@ -233,6 +233,8 @@ public class Mob : MonoBehaviourPunCallbacks
                 healthBar.SetHealth(currentHealth);
                 myAnimator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
+                Barbas.GetComponent<Dissolve>().Active();
+                Pelos.GetComponent<Dissolve>().Active();
                 //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
 		//m_Rigidbody2D.isKinematic = true;
@@ -270,8 +272,8 @@ public class Mob : MonoBehaviourPunCallbacks
                         G,
                         B
                 );
-                this.ShaderPelos.material.SetColor("_Color", color);
-                this.ShaderBarbas.material.SetColor("_Color", color);
+                this.ShaderPelos.material.SetColor("_Color1", color);
+                this.ShaderBarbas.material.SetColor("_Color1", color);
                 this.Barbas.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Barbas);
                 this.Cuerpo.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Cuerpo);
                 this.Escudos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Escudos);
