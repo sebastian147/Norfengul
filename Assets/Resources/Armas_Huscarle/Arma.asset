@@ -20,7 +20,7 @@ MonoBehaviour:
   Value: 0
   damage: 20
   weaponType: 1
-  knockback: 2
+  knockback: 5
   damageArea: 0.5
   effect: 0
   category: Armas Grandes

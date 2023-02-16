@@ -5350,6 +5350,8 @@ MonoBehaviour:
   damageNumber: {fileID: 8217694086179624504, guid: cbcfea04b2c0f024aad84deac7fc6b1f,
     type: 3}
   arma: {fileID: 8107550478014900018}
+  knockBackTake: 0
+  dir: 0
   victory: 0
   dashLeft: 0
   dashRight: 0

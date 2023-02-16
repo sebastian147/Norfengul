@@ -40,7 +40,7 @@ public class CollisionUpdates : MonoBehaviour
 
                 for (int i = 0; i < collidersD.Length; i++)
                 {
-                        myMob.TakeDamage(147483647);
+                        myMob.TakeDamage(147483647, false, 0);
                 }
 	}
 

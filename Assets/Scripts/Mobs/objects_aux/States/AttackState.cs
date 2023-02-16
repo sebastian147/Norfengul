@@ -79,7 +79,7 @@ public class AttackState : MobBaseState
 				{
                                         hitPlayerIDs.Add(hitPlayerID);
 					//hitPlayer[i].GetComponent<Mob>().actualState = hitPlayer[i].GetComponent<Mob>().myStateMachine.changeState(4,3,myMob);
-                                        hitPlayer[i].GetComponent<Mob>().TakeDamage(myMob.arma.Armas.damage);
+                                        hitPlayer[i].GetComponent<Mob>().TakeDamage(myMob.arma.Armas.damage, myMob.m_FacingRight, myMob.arma.Armas.knockback);
                                         //hitPlayer[i].GetComponent<Mob>().myStateMachine.changeState(myStates.Damage,hitPlayer[i].GetComponent<Mob>());
                                         return;
 				}

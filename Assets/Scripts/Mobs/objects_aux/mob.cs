@@ -97,7 +97,8 @@ public class Mob : MonoBehaviourPunCallbacks
         [SerializeField] public GameObject HitParticles; 
         [SerializeField]public GameObject damageNumber;
         public MeleWeaponLogic arma;
-
+        public float knockBackTake;
+        public float dir;
 
         [Header("victory")]
         public bool victory = false;
@@ -201,30 +202,30 @@ public class Mob : MonoBehaviourPunCallbacks
                 
         }
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, bool rightAttack, int knockBack)
 	{
-		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
+		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage, rightAttack, knockBack);//nombre funcion, a quien se lo paso, valor
 	}
         [PunRPC]
-	protected void RPC_TakeDamage(int damage)//try to move me
+	protected void RPC_TakeDamage(int damage, bool rightAttack, int knockBack)//try to move me
 	{
 
                 if(currentHealth > 0)//bug de muerte en respawn
                 {       
-                        float knockback = 20f;
-                        int dir = 0;
                         currentHealth -= damage;
                         GameObject instance = Instantiate(damageNumber, myTransform.position, myTransform.rotation);
                         instance.transform.Find("Damage").GetComponent<TextMesh>().text = damage.ToString();
-                        if(m_FacingRight)
-                        {
-                                dir = -1;
-                        }
-                        else if(!m_FacingRight)
+                        if(rightAttack)
                         {
                                 dir = 1;
                         }
-                        myRigidbody.AddForce(new Vector2(dir,1) * myRigidbody.mass * knockback, ForceMode2D.Impulse);
+                        else if(!rightAttack)
+                        {
+                                dir = -1;
+                        }
+                        knockBackTake=knockBack;
+                        this.dir = dir;
+                        //myRigidbody.AddForce(new Vector2(dir,1) * myRigidbody.mass * knockBack, ForceMode2D.Impulse);
                         if(Pv.IsMine)
                                 healthBar.SetHealth(currentHealth);
                         //animacion de lastimado

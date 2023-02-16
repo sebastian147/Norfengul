@@ -20,7 +20,7 @@ MonoBehaviour:
   Value: 0
   damage: 10
   weaponType: 0
-  knockback: 0
+  knockback: 5
   damageArea: 1
   effect: 0
   category: Armas Largas

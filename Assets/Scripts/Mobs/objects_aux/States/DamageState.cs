@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageState : MobBaseState
 {
-
+        float diry = 0;
         public override void animate(Mob myMob)
         {
                 myMob.myAnimator.SetBool("isHit", true);
@@ -69,7 +69,15 @@ public class DamageState : MobBaseState
 
         public override void FixedUpdateState(Mob myMob)
         {
-		Vector3 targetVelocity = new Vector2(myMob.horizontalMove * myMob.moveSpeed/*apexModifierCurrent*/, myMob.myRigidbody.velocity.y);
+                if(myMob.m_Grounded)
+                {
+                        diry = 1;
+                }
+                else
+                {
+                        diry = 0;
+                }//esta hace que si esta en el aire no lo empuje para abajo ni para arriba, puedo calcular la poscicion del personaje que ataco y el que recibio daño y en funcion de eso mandarlo para abajo oa arriba
+		Vector3 targetVelocity = new Vector2(myMob.dir * myMob.knockBackTake/*apexModifierCurrent*/, diry*myMob.knockBackTake*2);
 		// And then smoothing it out and applying it to the character
 		myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
         }
