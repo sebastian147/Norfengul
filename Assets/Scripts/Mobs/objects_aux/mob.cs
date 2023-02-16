@@ -250,6 +250,7 @@ public class Mob : MonoBehaviourPunCallbacks
                 //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
 		//m_Rigidbody2D.isKinematic = true;
+                myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y); 
 		this.enabled = false;
 		if(Pv.IsMine)
 			playerManager.Die();
