@@ -210,10 +210,21 @@ public class Mob : MonoBehaviourPunCallbacks
 	{
 
                 if(currentHealth > 0)//bug de muerte en respawn
-                {
+                {       
+                        float knockback = 20f;
+                        int dir = 0;
                         currentHealth -= damage;
                         GameObject instance = Instantiate(damageNumber, myTransform.position, myTransform.rotation);
                         instance.transform.Find("Damage").GetComponent<TextMesh>().text = damage.ToString();
+                        if(m_FacingRight)
+                        {
+                                dir = -1;
+                        }
+                        else if(!m_FacingRight)
+                        {
+                                dir = 1;
+                        }
+                        myRigidbody.AddForce(new Vector2(dir,1) * myRigidbody.mass * knockback, ForceMode2D.Impulse);
                         if(Pv.IsMine)
                                 healthBar.SetHealth(currentHealth);
                         //animacion de lastimado
