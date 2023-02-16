@@ -12,6 +12,7 @@ public class DamageState : MobBaseState
         public override void EndState(Mob myMob)
         {
                 myMob.myAnimator.SetBool("isHit", false);
+                myMob.changeLayer("Player");
         }
         public override void StarState(Mob myMob)
         {
@@ -24,6 +25,8 @@ public class DamageState : MobBaseState
                 {
                         myMob.myAnimator.SetBool(parametro.name, false);
                 }
+                myMob.changeLayer("Inmunity");
+
         }
         public override void CheckChangeState(Mob myMob)
         {
