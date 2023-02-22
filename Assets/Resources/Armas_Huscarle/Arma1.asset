@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   NombreDelItem: Lanza de la discordia
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 4ef9cf8141b79304a81b45e01c671472, type: 3}
   Animation: 
   Sound: 
   Value: 0

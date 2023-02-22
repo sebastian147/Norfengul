@@ -25,6 +25,9 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public static int ListCicleActual = 0;
     private int ListCicleMax = 0;
 
+    [SerializeField] string playerName = "CACA";
+    [SerializeField] TMP_InputField playerNameInputField; 
+
     
 
     void Awake()
@@ -176,4 +179,16 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         }
         scenesSelectButton.text = scenes[ListCicleActual];
     }
+
+    public void NickNameAsign()
+    {
+        /*playerName = playerNameInputField.text;
+        return;*/
+        string newPlayerName = playerNameInputField.text;
+        if (!string.IsNullOrEmpty(newPlayerName))
+        {
+            PhotonNetwork.NickName = newPlayerName;
+        }
+    }
+
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   NombreDelItem: Hacha penistica
-  Sprite: {fileID: -4528942005672272804, guid: d6999bca0ea0da048914021adc91f35a, type: 3}
+  Sprite: {fileID: 21300000, guid: 2cff9cff059eda04986032bba9fc595f, type: 3}
   Animation: 
   Sound: 
   Value: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   effect: 0
   category: Armas Grandes
   label: Hacha de Hierro
-  library: {fileID: 7108339969198208228, guid: e4222964f26a9ee42ac8790ef2f23820, type: 3}
+  library: {fileID: 7108339969198208228, guid: 0ed17ff664f371443be14a8e5e1e0d3b, type: 3}
   mySpriteResolver: {fileID: 0}
   HitBox:
     serializedVersion: 2

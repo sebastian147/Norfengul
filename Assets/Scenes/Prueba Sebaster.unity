@@ -3640,6 +3640,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2072839019}
     m_Modifications:
+    - target: {fileID: 2695101452197659620, guid: 41a796efad197424ba6ba55ad1e85334,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7777778
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695101452197659620, guid: 41a796efad197424ba6ba55ad1e85334,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2695101452197659621, guid: 41a796efad197424ba6ba55ad1e85334,
         type: 3}
       propertyPath: m_Name
@@ -6964,7 +6974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072839012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03149247, y: 0, z: -10}
+  m_LocalPosition: {x: 0.037790895, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
