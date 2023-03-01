@@ -7,10 +7,21 @@ using TMPro;
 using Photon.Realtime;
 using System.Linq;
 
-public class Nickname : MonoBehaviour
+public class Nickname : MonoBehaviourPunCallbacks
 {
-    public void Start() 
-    {
-        GetComponent<TextMesh>().text =  PhotonNetwork.NickName;
-    }
+        public PhotonView Pv;
+        public void Start() 
+        {
+                Pv= GetComponent<PhotonView>();
+                Name(PhotonNetwork.NickName);
+        }
+        public void Name(string name)
+        {
+                Pv.RPC("RPC_Name", RpcTarget.AllBuffered, name);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_Name(string name)
+        {
+                GetComponent<TextMesh>().text =  name;
+        }
 }

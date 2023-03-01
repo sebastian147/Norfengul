@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &7362623388557179239
 ParticleSystem:
@@ -4906,7 +4906,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6325794272506795435
 SpriteRenderer:
@@ -5048,7 +5048,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5089487086485701752
 SpriteRenderer:
@@ -5177,7 +5177,6 @@ Transform:
   - {fileID: 5002034421337006041}
   - {fileID: 2836940208013041884}
   - {fileID: 4543233572073566053}
-  - {fileID: 3263847912897354266}
   - {fileID: 719187836646225413}
   - {fileID: 2836940208312759798}
   - {fileID: 2836940208506618503}
@@ -5187,6 +5186,7 @@ Transform:
   - {fileID: 6753843021852251669}
   - {fileID: 2594759024858731528}
   - {fileID: 6131303030835461194}
+  - {fileID: 3263847912897354266}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5370,6 +5370,7 @@ MonoBehaviour:
   ShaderPelos: {fileID: 6325794272506795435}
   ShaderBarbas: {fileID: 6411161529746471590}
   color: {r: 0, g: 0, b: 0, a: 0}
+  nickName: {fileID: 9067198547494339830}
 --- !u!114 &2574129163813346387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5774,7 +5775,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4400238434088136523
 MonoBehaviour:
@@ -5817,7 +5818,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4075006940954625982
 GameObject:
@@ -5850,7 +5851,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3496827317496590258
 ParticleSystem:
@@ -10724,7 +10725,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6411161529746471590
 SpriteRenderer:
@@ -10852,7 +10853,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6824185562828969245
 MonoBehaviour:
@@ -11225,7 +11226,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8764354547361725496
 SpriteRenderer:
@@ -11356,7 +11357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836940207534286408}
-  m_RootOrder: 4
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1003297034387204393
 MeshRenderer:
@@ -11434,6 +11435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e95f0fbad13ad34c8db5f553a0cc8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: {fileID: 0}
 --- !u!1001 &581716667276607272
 PrefabInstance:
   m_ObjectHideFlags: 0

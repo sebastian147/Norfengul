@@ -45,17 +45,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
         private CharacterSkin CargarSkin() 
         {
                 string contenido = File.ReadAllText(skinJson);
-                Debug.Log(contenido);
                 CharacterSkin skin = JsonUtility.FromJson<CharacterSkin>(contenido);
-                Debug.Log(skin.Cuerpo);
-                Debug.Log(skin.Escudos);
                 return skin;
         }
 
         private ColorList CargarColores()
         {
                 string contenido = File.ReadAllText(archivoJson);
-                Debug.Log(contenido);
                 ColorList colorArray = JsonUtility.FromJson<ColorList>(contenido);
                 return colorArray;
         }
@@ -99,14 +95,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
                         float G = colorSelect.colors[ran].g;
 
                         CharacterSkin skins = CargarSkin();
-                        Debug.Log(skins.Cuerpo);
-                        Debug.Log(skins.Escudos);
                         string Barbas = skinRandomCarpeta(folderPath+"/Barbas", "Assets/Resources/",".spriteLib");
-                        Debug.Log(Barbas);
                         string Arma = skinRandomCarpeta(folderPathA, "Assets/Resources/",".asset");
                         string Cuerpo = skins.Cuerpo;
                         string Escudos = skins.Escudos;
-                        Debug.Log(Escudos);
                         string Pelos = skinRandomCarpeta(folderPath+"/Pelos", "Assets/Resources/",".spriteLib");
 
                         object[] customData = new object[] { Barbas, Arma, Cuerpo, Escudos, Pelos, R, G, B};

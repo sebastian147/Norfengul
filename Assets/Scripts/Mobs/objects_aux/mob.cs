@@ -122,7 +122,7 @@ public class Mob : MonoBehaviourPunCallbacks
         [SerializeField] public Renderer ShaderPelos;
         [SerializeField] public Renderer ShaderBarbas;
         [SerializeField] public Color color;
-
+        [SerializeField] public GameObject nickName;
 
         void Awake()
         {
@@ -140,7 +140,10 @@ public class Mob : MonoBehaviourPunCallbacks
                 //m_WhatIsWall = m_WhatIsGround;//borrame
 
                 if(Pv.IsMine)
+                {
                         healthBar.SetMaxHealth(maxHealth);
+                        nickName.GetComponent<TextMesh>().text =  PhotonNetwork.NickName;
+                }
                 else
                         Destroy(ui);
         }
@@ -213,7 +216,7 @@ public class Mob : MonoBehaviourPunCallbacks
                 if(currentHealth > 0)//bug de muerte en respawn
                 {       
                         currentHealth -= damage;
-                        GameObject instance = Instantiate(damageNumber, myTransform.position, myTransform.rotation);
+                        GameObject instance = Instantiate(damageNumber, new Vector3(myTransform.position.x, myTransform.position.y, myTransform.position.z-1) , myTransform.rotation);
                         instance.transform.Find("Damage").GetComponent<TextMesh>().text = damage.ToString();
                         if(rightAttack)
                         {

@@ -58,6 +58,7 @@ public abstract class MobBaseState
 		Vector3 theScale = myMob.transform.localScale;
 		theScale.x *= -1;
 		myMob.transform.localScale = theScale;
+                myMob.nickName.transform.localScale = theScale;
 	}
 
 }
