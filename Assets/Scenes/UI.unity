@@ -3095,8 +3095,9 @@ GameObject:
   - component: {fileID: 152174899}
   - component: {fileID: 152174898}
   - component: {fileID: 152174897}
+  - component: {fileID: 152174900}
   m_Layer: 5
-  m_Name: Slot - Armadura (1)
+  m_Name: Slot - Huscarle_ArmaduraCuero1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3194,6 +3195,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 152174900}
+        m_TargetAssemblyTypeName: BotonSelector, Assembly-CSharp
+        m_MethodName: EnviarCuerpo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &152174898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3232,6 +3245,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152174895}
   m_CullTransparentMesh: 1
+--- !u!114 &152174900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152174895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26449dae74bd46a469d7e31c2cedd145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoAEnviar: Huscarle_ArmaduraCuero1.spriteLib
+  receptor: {fileID: 1999581712}
 --- !u!1 &162119629
 GameObject:
   m_ObjectHideFlags: 0
@@ -7789,6 +7816,7 @@ GameObject:
   - component: {fileID: 428874963}
   - component: {fileID: 428874962}
   - component: {fileID: 428874961}
+  - component: {fileID: 428874964}
   m_Layer: 5
   m_Name: Slot - Arma (1)
   m_TagString: Untagged
@@ -7888,6 +7916,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 428874964}
+        m_TargetAssemblyTypeName: BotonSelector, Assembly-CSharp
+        m_MethodName: EnviarArma
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &428874962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7926,6 +7966,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428874959}
   m_CullTransparentMesh: 1
+--- !u!114 &428874964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428874959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26449dae74bd46a469d7e31c2cedd145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoAEnviar: Arma1
+  receptor: {fileID: 1999581712}
 --- !u!1 &431163581
 GameObject:
   m_ObjectHideFlags: 0
@@ -10420,7 +10474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &620423668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13979,6 +14033,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6411161529746471590, guid: 605cc061cb1a3884d903bf1013950fec,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2063768819, guid: 23ec67f5530486140b7e103c12bc97d7,
+        type: 3}
+    - target: {fileID: 7752781635830891598, guid: 605cc061cb1a3884d903bf1013950fec,
+        type: 3}
+      propertyPath: m_SpriteLibraryAsset
+      value: 
+      objectReference: {fileID: 7108339969198208228, guid: 9db514dd6e0a30843a1522523800609b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605cc061cb1a3884d903bf1013950fec, type: 3}
 --- !u!1 &922419863
@@ -15229,10 +15295,10 @@ RectTransform:
   m_Father: {fileID: 1359316299}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -120}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035319330
 MonoBehaviour:
@@ -16242,12 +16308,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080187023}
   m_CullTransparentMesh: 1
---- !u!1 &1080944806 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2836940207534286419, guid: 605cc061cb1a3884d903bf1013950fec,
-    type: 3}
-  m_PrefabInstance: {fileID: 915712081}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091189915
 GameObject:
   m_ObjectHideFlags: 0
@@ -17539,10 +17599,10 @@ RectTransform:
   m_Father: {fileID: 1359316299}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -300}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170526492
 MonoBehaviour:
@@ -18080,8 +18140,9 @@ GameObject:
   - component: {fileID: 1184317098}
   - component: {fileID: 1184317097}
   - component: {fileID: 1184317096}
+  - component: {fileID: 1184317099}
   m_Layer: 5
-  m_Name: Slot - Escudo
+  m_Name: Slot - Huscarle_EscudoMadera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18179,6 +18240,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1184317099}
+        m_TargetAssemblyTypeName: BotonSelector, Assembly-CSharp
+        m_MethodName: EnviarEscudo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1184317097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18217,6 +18290,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184317094}
   m_CullTransparentMesh: 1
+--- !u!114 &1184317099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184317094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26449dae74bd46a469d7e31c2cedd145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoAEnviar: Huscarle_EscudoMadera.spriteLib
+  receptor: {fileID: 1999581712}
 --- !u!1 &1187498217
 GameObject:
   m_ObjectHideFlags: 0
@@ -27593,10 +27680,10 @@ RectTransform:
   m_Father: {fileID: 1359316299}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -480}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683886451
 MonoBehaviour:
@@ -28543,8 +28630,9 @@ GameObject:
   - component: {fileID: 1753447028}
   - component: {fileID: 1753447027}
   - component: {fileID: 1753447026}
+  - component: {fileID: 1753447029}
   m_Layer: 5
-  m_Name: Slot - Armadura
+  m_Name: Slot - Huscarle_Nude
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28642,13 +28730,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1080944806}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: 
+      - m_Target: {fileID: 1753447029}
+        m_TargetAssemblyTypeName: BotonSelector, Assembly-CSharp
+        m_MethodName: EnviarCuerpo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -28692,6 +28780,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753447024}
   m_CullTransparentMesh: 1
+--- !u!114 &1753447029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753447024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26449dae74bd46a469d7e31c2cedd145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoAEnviar: Huscarle_Nude.spriteLib
+  receptor: {fileID: 1999581712}
 --- !u!1 &1762987112
 GameObject:
   m_ObjectHideFlags: 0
@@ -30803,7 +30905,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 915712081}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080944806}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
@@ -32434,6 +32536,7 @@ GameObject:
   - component: {fileID: 1999581715}
   - component: {fileID: 1999581714}
   - component: {fileID: 1999581716}
+  - component: {fileID: 1999581717}
   m_Layer: 5
   m_Name: Spawn
   m_TagString: Untagged
@@ -32543,7 +32646,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1999581714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1999581717}
+        m_TargetAssemblyTypeName: CambioSkin, Assembly-CSharp
+        m_MethodName: GuardarSkin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1999581717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999581712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedf762b1ce8565408a9f24b95d01df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmaSelect: Arma
+  BarbaSelect: Huscarle_Barba1
+  CuerpoSelect: Huscarle_Nude
+  EscudoSelect: Huscarle_EscudoMadera
+  PeloSelect: Huscarle_Pelo1
 --- !u!1 &2001093570
 GameObject:
   m_ObjectHideFlags: 0
@@ -32826,8 +32958,9 @@ GameObject:
   - component: {fileID: 2015268116}
   - component: {fileID: 2015268115}
   - component: {fileID: 2015268114}
+  - component: {fileID: 2015268117}
   m_Layer: 5
-  m_Name: Slot - Escudo (1)
+  m_Name: Slot - Huscarle_EscudoCuero1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32925,6 +33058,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2015268117}
+        m_TargetAssemblyTypeName: BotonSelector, Assembly-CSharp
+        m_MethodName: EnviarEscudo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2015268115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32963,6 +33108,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015268112}
   m_CullTransparentMesh: 1
+--- !u!114 &2015268117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015268112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26449dae74bd46a469d7e31c2cedd145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoAEnviar: Huscarle_EscudoCuero1.spriteLib
+  receptor: {fileID: 1999581712}
 --- !u!1 &2024311638
 GameObject:
   m_ObjectHideFlags: 0
@@ -33166,6 +33325,7 @@ GameObject:
   - component: {fileID: 2041990907}
   - component: {fileID: 2041990906}
   - component: {fileID: 2041990905}
+  - component: {fileID: 2041990908}
   m_Layer: 5
   m_Name: Slot - Arma
   m_TagString: Untagged
@@ -33263,6 +33423,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2041990908}
+        m_TargetAssemblyTypeName: BotonSelector, Assembly-CSharp
+        m_MethodName: EnviarArma
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2041990906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33301,6 +33473,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041990903}
   m_CullTransparentMesh: 1
+--- !u!114 &2041990908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041990903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26449dae74bd46a469d7e31c2cedd145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoAEnviar: Arma
+  receptor: {fileID: 1999581712}
 --- !u!1 &2043513691
 GameObject:
   m_ObjectHideFlags: 0

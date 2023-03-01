@@ -3,35 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class characterSkinSave
+
+public class CambioSkin : MonoBehaviour
 {
-    public GameObject Arma;
-    public UnityEngine.U2D.Animation.SpriteLibraryAsset Barbas;
-    public UnityEngine.U2D.Animation.SpriteLibraryAsset Cuerpo;
-    public UnityEngine.U2D.Animation.SpriteLibraryAsset Escudos;
-    public UnityEngine.U2D.Animation.SpriteLibraryAsset Pelos;
-}
+    public class characterSkinSave
+    {
+        public string arma;
+        public string Barbas;
+        public string Cuerpo;
+        public string Escudos;
+        public string Pelos;
+    }
 
-public class CambiodeSkin : MonoBehaviour
-{
-    [SerializeField] public GameObject ArmaSelect;
-    [SerializeField] public UnityEngine.U2D.Animation.SpriteLibraryAsset BarbaSelect;
-    [SerializeField] public UnityEngine.U2D.Animation.SpriteLibraryAsset CuerpoSelect;
-    [SerializeField] public UnityEngine.U2D.Animation.SpriteLibraryAsset EscudoSelect;
-    [SerializeField] public UnityEngine.U2D.Animation.SpriteLibraryAsset PeloSelect;
+    protected string pathArma = "Armas_Huscarle/";
+    protected string pathBarbas = "Skins_Huscarle/Barbas/";
+    protected string pathCuerpo = "Skins_Huscarle/Cuerpo/";
+    protected string pathEscudos = "Skins_Huscarle/Escudos/";
+    protected string pathPelos = "Skins_Huscarle/Pelos/";
 
-    public string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json";
-    public characterSkinSave Skin = new characterSkinSave();
+    public string ArmaSelect = "Arma";
+    public string BarbaSelect = "Huscarle_Barba1";
+    public string CuerpoSelect = "Huscarle_Nude";
+    public string EscudoSelect = "Huscarle_EscudoMadera";
+    public string PeloSelect = "Huscarle_Pelo1";
 
-   public void GuardarSkin()
+    protected string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json";
+    protected characterSkinSave Skin = new characterSkinSave();
+     
+    public void GuardarSkin()
     {
         characterSkinSave skin = new characterSkinSave()
         {
-            Arma = ArmaSelect,
-            Barbas = BarbaSelect,
-            Cuerpo = CuerpoSelect,
-            Escudos = EscudoSelect,
-            Pelos = PeloSelect
+            arma = pathArma + ArmaSelect,
+            Barbas = pathBarbas + BarbaSelect,
+            Cuerpo = pathCuerpo + CuerpoSelect,
+            Escudos = pathEscudos + EscudoSelect,
+            Pelos = pathPelos + PeloSelect
         };
 
         string skinJSON = JsonUtility.ToJson(skin);
