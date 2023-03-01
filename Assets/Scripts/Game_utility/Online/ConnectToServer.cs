@@ -56,8 +56,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         MenuManager.Instance.OpenMenu("title");
-        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
-        //SceneManager.LoadScene("Lobby"); // <- delete this
+        /*PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
+        //SceneManager.LoadScene("Lobby"); // <- delete this*/
     }
 
     public void CreateRoom()

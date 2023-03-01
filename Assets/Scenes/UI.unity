@@ -14818,7 +14818,7 @@ Camera:
   far clip plane: 1000
   field of view: 50
   orthographic: 1
-  orthographic size: 2.7168124
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16242,6 +16242,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080187023}
   m_CullTransparentMesh: 1
+--- !u!1 &1080944806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2836940207534286419, guid: 605cc061cb1a3884d903bf1013950fec,
+    type: 3}
+  m_PrefabInstance: {fileID: 915712081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091189915
 GameObject:
   m_ObjectHideFlags: 0
@@ -28636,6 +28642,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1080944806}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1753447027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30785,7 +30803,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 915712081}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1080944806}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}

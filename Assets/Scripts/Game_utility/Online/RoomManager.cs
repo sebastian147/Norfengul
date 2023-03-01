@@ -6,12 +6,23 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
 
+
 public class RoomManager : MonoBehaviourPunCallbacks
 {
+
         public static RoomManager Instance;    
         public GameObject playerManager;
         string folderPath = "Assets/Resources/Skins_Huscarle";
         string folderPathA = "Assets/Resources/Armas_Huscarle";
+        string archivoJson = "Assets/Scripts/Game_utility/JSON/ColoresPeloyBarba.json";
+        
+        public ColorData datosColor = new ColorData();
+
+        private void CargarColores()
+        {
+                string contenido = File.ReadAllText(archivoJson);
+                datosColor = JsonUtility.FromJson<ColorData>(contenido);
+        }
 
         string skinRandomCarpeta(string path,string pathNT, string end)
         {
@@ -39,8 +50,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         public override void OnDisable() {
                 base.OnDisable();
                 SceneManager.sceneLoaded -= OnSceneLoaded;
-
         }
+
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
                 if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName((string)PhotonNetwork.CurrentRoom.CustomProperties["Scene"]))//game scene 
