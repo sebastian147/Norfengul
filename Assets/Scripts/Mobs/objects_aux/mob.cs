@@ -142,7 +142,6 @@ public class Mob : MonoBehaviourPunCallbacks
                 if(Pv.IsMine)
                 {
                         healthBar.SetMaxHealth(maxHealth);
-                        nickName.GetComponent<TextMesh>().text =  PhotonNetwork.NickName;
                 }
                 else
                         Destroy(ui);
@@ -276,12 +275,12 @@ public class Mob : MonoBehaviourPunCallbacks
         {
                 this.gameObject.layer = LayerMask.NameToLayer(layer);
         }
-        public void changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos, float R, float G, float B)
+        public void changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos, float R, float G, float B, string name)
         {
-                Pv.RPC("RPC_changeSkin", RpcTarget.AllBuffered,  Arma, Barbas, Cuerpo, Escudos, Pelos, R, G, B);//nombre funcion, a quien se lo paso, valor
+                Pv.RPC("RPC_changeSkin", RpcTarget.AllBuffered,  Arma, Barbas, Cuerpo, Escudos, Pelos, R, G, B, name);//nombre funcion, a quien se lo paso, valor
         }
         [PunRPC]
-        public void RPC_changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos, float R, float G, float B)
+        public void RPC_changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos, float R, float G, float B, string name)
         {
                 Color color = new Color(
                         R,
@@ -296,6 +295,8 @@ public class Mob : MonoBehaviourPunCallbacks
                 this.Pelos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Pelos);
                 this.arma.Armas = Resources.Load<Armas>(Arma);
                 mySpriteResolver.ResolveSpriteToSpriteRenderer();
+                nickName.GetComponent<TextMesh>().text =  name;
+
 
         }
 

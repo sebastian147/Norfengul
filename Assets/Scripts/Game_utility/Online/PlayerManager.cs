@@ -34,7 +34,6 @@ public class PlayerManager : MonoBehaviour
                 if(PV.IsMine)
                 {
                         CreateController();
-                
                 }
         }
 
@@ -57,10 +56,10 @@ public class PlayerManager : MonoBehaviour
                 R = (float)instantiationData[5];
                 G = (float)instantiationData[6];
                 B = (float)instantiationData[7];
+                
 
-                print(Arma + Barbas + Cuerpo + Escudos + Pelos);
 
-                player.GetComponent<playerMovement>().changeSkin(Arma,Barbas,Cuerpo,Escudos,Pelos, R, G, B);//deberia llamar a esta funcion dentro de player y aca solo deberia pasarle los datos
+                player.GetComponent<playerMovement>().changeSkin(Arma,Barbas,Cuerpo,Escudos,Pelos, R, G, B, PhotonNetwork.NickName);//deberia llamar a esta funcion dentro de player y aca solo deberia pasarle los datos
         }
 
         public void Die()
