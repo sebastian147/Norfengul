@@ -9,32 +9,6 @@ using System.Linq;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-        [System.Serializable]
-        public class ColorData
-        {
-                public float r;
-                public float g;
-                public float b;
-                public float a;
-                public string name;
-        }
-
-        [System.Serializable]
-        private class ColorList
-        {
-                public List<ColorData> colors;
-        }
-
-        [System.Serializable]
-        public class CharacterSkin 
-        {
-                public string arma;
-                public string Barbas;
-                public string Cuerpo;
-                public string Escudos;
-                public string Pelos;
-        }
-
         public static RoomManager Instance;    
         public GameObject playerManager;
         string folderPath = "Assets/Resources/Skins_Huscarle";

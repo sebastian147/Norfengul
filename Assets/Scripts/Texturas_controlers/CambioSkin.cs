@@ -6,15 +6,6 @@ using System.IO;
 
 public class CambioSkin : MonoBehaviour
 {
-    public class characterSkinSave
-    {
-        public string arma;
-        public string Barbas;
-        public string Cuerpo;
-        public string Escudos;
-        public string Pelos;
-    }
-
     protected string pathArma = "Armas_Huscarle/";
     protected string pathBarbas = "Skins_Huscarle/Barbas/";
     protected string pathCuerpo = "Skins_Huscarle/Cuerpo/";
@@ -29,7 +20,7 @@ public class CambioSkin : MonoBehaviour
 
     protected string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json";
     protected characterSkinSave Skin = new characterSkinSave();
-     
+    
     public void GuardarSkin()
     {
         characterSkinSave skin = new characterSkinSave()
