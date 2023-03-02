@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e3a642eb3bffa1148ba9ddf4bcc8cbc9
+guid: a1e0d02580d4f8948b7eaf0e8f94f550
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,64 +104,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eldes - Jump_0
+      name: Eldes - Wall_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 11
         y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 14
+        height: 10
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0.016422998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d812bcb083dac34fbfaf99e5cbeeb04
-      internalID: 2012982758
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Jump_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 357f4edd31c02a74aa75d1e7a3ec990a
-      internalID: -69668388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eldes - Jump_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 1
-        width: 32
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d127a0572b844f4ab2f411b953cd03c
-      internalID: -177170727
+      spriteID: 1fa0b79b849bc104e9fe4ca6a4292048
+      internalID: 241442921
       vertices: []
       indices: 
       edges: []
@@ -170,16 +128,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eldes - Jump_0: 2012982758
-      Eldes - Jump_2: -177170727
-      Eldes - Jump_1: -69668388
+      Eldes - Wall_0: 241442921
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

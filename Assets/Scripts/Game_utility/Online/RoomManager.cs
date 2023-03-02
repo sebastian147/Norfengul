@@ -63,6 +63,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName((string)PhotonNetwork.CurrentRoom.CustomProperties["Scene"]))//game scene 
                 {
                         ColorList colorSelect = CargarColores();
+                        Debug.Log(colorSelect);
                         int ran = Random.Range(0, colorSelect.colors.Count);
                         float R = colorSelect.colors[ran].r;
                         float B = colorSelect.colors[ran].b;

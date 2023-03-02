@@ -19,11 +19,11 @@ public class CambioSkin : MonoBehaviour
     public string PeloSelect = "Huscarle_Pelo1";
 
     protected string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json";
-    protected characterSkinSave Skin = new characterSkinSave();
+    protected CharacterSkin Skin = new CharacterSkin();
     
     public void GuardarSkin()
     {
-        characterSkinSave skin = new characterSkinSave()
+        CharacterSkin skin = new CharacterSkin()
         {
             arma = pathArma + ArmaSelect,
             Barbas = pathBarbas + BarbaSelect,
