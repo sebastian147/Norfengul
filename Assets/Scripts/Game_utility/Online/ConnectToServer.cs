@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Photon.Realtime;
 using System.Linq;
-
+using static JsonFunctions;
 public class ConnectToServer : MonoBehaviourPunCallbacks 
 {
     public static ConnectToServer Instance;
@@ -33,7 +33,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     void Awake()
     {
         Instance = this;
-
         //para cambiar el escenario.
         scenes.Add("Prueba Sebaster");
         scenes.Add("Captura la bandera");
@@ -46,10 +45,13 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        
         PhotonNetwork.ConnectUsingSettings();
+
     }
     public override void OnConnectedToMaster()
     {
+        NickNameAsign();
         PhotonNetwork.JoinLobby(); 
         PhotonNetwork.AutomaticallySyncScene = true;
     }
@@ -62,6 +64,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
+        NickNameAsign();
 
         RoomOptions roomOptions = 
         new RoomOptions()
@@ -182,13 +185,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void NickNameAsign()
     {
-        /*playerName = playerNameInputField.text;
-        return;*/
-        string newPlayerName = playerNameInputField.text;
-        if (!string.IsNullOrEmpty(newPlayerName))
-        {
-            PhotonNetwork.NickName = newPlayerName;
-        }
+        string archivoPlayer = "Assets/Scripts/Game_utility/JSON/playerData.json";
+        PhotonNetwork.NickName = CargarValorJSON<PlayerData, string>(archivoPlayer, datos => datos.Name);
     }
 
 }
