@@ -4949,7 +4949,7 @@ SpriteRenderer:
   m_SortingLayerID: -400891399
   m_SortingLayer: 4
   m_SortingOrder: 7
-  m_Sprite: {fileID: -1725606876, guid: 7c6f2501c1f4a484d84f7a55e6ce8eee, type: 3}
+  m_Sprite: {fileID: -2053042554, guid: 9ffe3627a3bed714992bbd5ee4fbf40e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5091,7 +5091,7 @@ SpriteRenderer:
   m_SortingLayerID: -400891399
   m_SortingLayer: 4
   m_SortingOrder: 8
-  m_Sprite: {fileID: 748160673, guid: 72cf11eac88223b48aba0b3bbb6f112c, type: 3}
+  m_Sprite: {fileID: 1547172595, guid: 3bd01ca66fa931d47859b49bdceea29a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5226,8 +5226,8 @@ BoxCollider2D:
   m_Offset: {x: -0.026740775, y: -0.19608748}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    pivot: {x: 0.33333334, y: 0.5}
+    oldSize: {x: 6, y: 4}
     newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5427,7 +5427,7 @@ SpriteRenderer:
   m_SortingLayerID: -400891399
   m_SortingLayer: 4
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1888715359, guid: bfe04aaefb384084b95d899cd3af9c07, type: 3}
+  m_Sprite: {fileID: 1722258305, guid: 447c3c2a41301a445a2abbca33cb1b8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5493,7 +5493,6 @@ MonoBehaviour:
   - {fileID: 6715036968863409614}
   - {fileID: 1465484838121943822}
   - {fileID: -1722766525870770375}
-  - {fileID: 2710491443537091242}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -10769,7 +10768,7 @@ SpriteRenderer:
   m_SortingLayerID: -400891399
   m_SortingLayer: 4
   m_SortingOrder: 6
-  m_Sprite: {fileID: 347896775, guid: 081bcf7f7ffe65b4cb61fd2c1b4f2c0f, type: 3}
+  m_Sprite: {fileID: -2091893248, guid: b40294bdee149114c95de07a22f32353, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11270,7 +11269,7 @@ SpriteRenderer:
   m_SortingLayerID: -400891399
   m_SortingLayer: 4
   m_SortingOrder: 9
-  m_Sprite: {fileID: -1130953709, guid: c236a822ccb37b143b6e42998fa62a97, type: 3}
+  m_Sprite: {fileID: -1650979844, guid: b2daada072a16264dabdc6464ae30302, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
