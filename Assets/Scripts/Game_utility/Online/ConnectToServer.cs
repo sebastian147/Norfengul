@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Photon.Realtime;
 using System.Linq;
-
+using static JsonFunctions;
 public class ConnectToServer : MonoBehaviourPunCallbacks 
 {
     public static ConnectToServer Instance;
@@ -25,14 +25,17 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public static int ListCicleActual = 0;
     private int ListCicleMax = 0;
 
+    [SerializeField] string playerName = "CACA";
+    [SerializeField] TMP_InputField playerNameInputField; 
+
     
 
     void Awake()
     {
         Instance = this;
-
         //para cambiar el escenario.
         scenes.Add("Prueba Sebaster");
+        scenes.Add("Captura la bandera");
         scenes.Add("Prueba Chicho");
         scenes.Add("Prueba Polomir");
         ListCicleMax = scenes.Count;
@@ -42,22 +45,26 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        
         PhotonNetwork.ConnectUsingSettings();
+
     }
     public override void OnConnectedToMaster()
     {
+        NickNameAsign();
         PhotonNetwork.JoinLobby(); 
         PhotonNetwork.AutomaticallySyncScene = true;
     }
     public override void OnJoinedLobby()
     {
         MenuManager.Instance.OpenMenu("title");
-        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
-        //SceneManager.LoadScene("Lobby"); // <- delete this
+        /*PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
+        //SceneManager.LoadScene("Lobby"); // <- delete this*/
     }
 
     public void CreateRoom()
     {
+        NickNameAsign();
 
         RoomOptions roomOptions = 
         new RoomOptions()
@@ -175,4 +182,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         }
         scenesSelectButton.text = scenes[ListCicleActual];
     }
+
+    public void NickNameAsign()
+    {
+        string archivoPlayer = "Assets/Scripts/Game_utility/JSON/playerData.json";
+        PhotonNetwork.NickName = CargarValorJSON<PlayerData, string>(archivoPlayer, datos => datos.Name);
+    }
+
 }

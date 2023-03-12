@@ -28,6 +28,8 @@ public class Mob : MonoBehaviourPunCallbacks
         [SerializeField] public float moveSpeed = 40f;
         public Vector3 m_Velocity = Vector3.zero;
         [Range(0, .3f)] [SerializeField] public  float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+        [SerializeField] public float runningSpeed = 40f;
+        public bool running = false; 
 
 	[Header("Jump")]
 	[SerializeField] public int amountOfJumps = 1;
@@ -93,9 +95,10 @@ public class Mob : MonoBehaviourPunCallbacks
         public LayerMask enemyLayers;
         public LayerMask playerLayers;
         [SerializeField] public GameObject HitParticles; 
-
+        [SerializeField]public GameObject damageNumber;
         public MeleWeaponLogic arma;
-
+        public float knockBackTake;
+        public float dir;
 
         [Header("victory")]
         public bool victory = false;
@@ -107,8 +110,19 @@ public class Mob : MonoBehaviourPunCallbacks
         public float dashingTime = 0.2f;
         public float dashingCoolDown = 0;
         public float dashingCoolDownMax = 1f;
-        public bool canDash = true;
+        public bool canDash = false;
         [SerializeField] public TrailRenderer tr;
+
+        [Header("skin")]
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Barbas;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Cuerpo;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Escudos;
+        [SerializeField] public UnityEngine.U2D.Animation.SpriteLibrary Pelos;
+        [SerializeField] public Renderer ShaderPelos;
+        [SerializeField] public Renderer ShaderBarbas;
+        [SerializeField] public Color color;
+        [SerializeField] public GameObject nickName;
 
         void Awake()
         {
@@ -124,10 +138,16 @@ public class Mob : MonoBehaviourPunCallbacks
                 currentHealth = maxHealth;
                 myStateMachine.initializeStates();
                 //m_WhatIsWall = m_WhatIsGround;//borrame
+
                 if(Pv.IsMine)
+                {
                         healthBar.SetMaxHealth(maxHealth);
+                }
                 else
                         Destroy(ui);
+        }
+        private void Start() {
+    
         }
 
 
@@ -177,26 +197,47 @@ public class Mob : MonoBehaviourPunCallbacks
                 Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.right*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
                 Gizmos.DrawLine(m_WallCheck.position, m_WallCheck.position+Vector3.left*_wallRayCastLenght);
                 Gizmos.DrawLine(m_WallCheck.position+new Vector3(0, -distanceFromGrabs, 0), m_WallCheck.position+Vector3.left*_wallRayCastLenght+new Vector3(0,-distanceFromGrabs,0));
+
+                //attack
+                Gizmos.DrawWireSphere(attackPoint.position, arma.Armas.damageArea);
+
                 
         }
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, bool rightAttack, int knockBack)
 	{
-		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);//nombre funcion, a quien se lo paso, valor
+		Pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage, rightAttack, knockBack);//nombre funcion, a quien se lo paso, valor
 	}
         [PunRPC]
-	protected void RPC_TakeDamage(int damage)//try to move me
+	protected void RPC_TakeDamage(int damage, bool rightAttack, int knockBack)//try to move me
 	{
+
                 if(currentHealth > 0)//bug de muerte en respawn
-                {
+                {       
                         currentHealth -= damage;
+                        GameObject instance = Instantiate(damageNumber, myTransform.position, myTransform.rotation);
+                        instance.transform.Find("Damage").GetComponent<TextMesh>().text = damage.ToString();
+                        if(rightAttack)
+                        {
+                                dir = 1;
+                        }
+                        else if(!rightAttack)
+                        {
+                                dir = -1;
+                        }
+                        knockBackTake=knockBack;
+                        this.dir = dir;
+                        //myRigidbody.AddForce(new Vector2(dir,1) * myRigidbody.mass * knockBack, ForceMode2D.Impulse);
                         if(Pv.IsMine)
                                 healthBar.SetHealth(currentHealth);
                         //animacion de lastimado
                         if(currentHealth <= 0)
                         {
                                 Die();
+                                return;
                         }
+                        actualState = myStateMachine.changeState(myStates.Damage,this);
+
                 }
 	}
         //moveme de aca
@@ -206,14 +247,57 @@ public class Mob : MonoBehaviourPunCallbacks
                 healthBar.SetHealth(currentHealth);
                 myAnimator.SetBool("IsDead", true);
 		gameObject.GetComponent<Dissolve>().Active();
-        
-		
+                Barbas.GetComponent<Dissolve>().Active();
+                Pelos.GetComponent<Dissolve>().Active();
                 //GetComponent<BoxCollider2D>().enabled = false;
 		//GetComponent<CircleCollider2D>().enabled = false;
 		//m_Rigidbody2D.isKinematic = true;
+                myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y); 
 		this.enabled = false;
 		if(Pv.IsMine)
 			playerManager.Die();
+        }
+        public void changeWeapon(string weaponName)
+        {
+                Pv.RPC("RPC_changeWeapon", RpcTarget.AllBuffered, weaponName);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_changeWeapon(string weaponName)
+        {
+                arma.Armas = Resources.Load<Armas>(weaponName);
+        }
+        public void changeLayer(string layer)
+        {
+                Pv.RPC("RPC_changeLayer", RpcTarget.AllBuffered, layer);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_changeLayer(string layer)
+        {
+                this.gameObject.layer = LayerMask.NameToLayer(layer);
+        }
+        public void changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos, float R, float G, float B, string name)
+        {
+                Pv.RPC("RPC_changeSkin", RpcTarget.AllBuffered,  Arma, Barbas, Cuerpo, Escudos, Pelos, R, G, B, name);//nombre funcion, a quien se lo paso, valor
+        }
+        [PunRPC]
+        public void RPC_changeSkin(string Arma,string Barbas,string Cuerpo,string Escudos,string Pelos, float R, float G, float B, string name)
+        {
+                Color color = new Color(
+                        R,
+                        G,
+                        B
+                );
+                this.ShaderPelos.material.SetColor("_Color1", color);
+                this.ShaderBarbas.material.SetColor("_Color1", color);
+                this.Barbas.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Barbas);
+                this.Cuerpo.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Cuerpo);
+                this.Escudos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Escudos);
+                this.Pelos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Pelos);
+                this.arma.Armas = Resources.Load<Armas>(Arma);
+                mySpriteResolver.ResolveSpriteToSpriteRenderer();
+                nickName.GetComponent<TextMesh>().text =  name;
+
+
         }
 
 }

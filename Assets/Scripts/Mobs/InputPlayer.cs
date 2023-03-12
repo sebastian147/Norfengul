@@ -5,10 +5,10 @@ using UnityEngine;
 public class InputPlayer : MonoBehaviour
 {
     float DoubleTapTimeL = 0f;
-    float DoubleTapTimeMaxL = 0.7f;
+    float DoubleTapTimeMaxL = 2f;
     int DoubleTapCounterL = 0;
     float DoubleTapTimeR = 0f;
-    float DoubleTapTimeMaxR = 0.7f;
+    float DoubleTapTimeMaxR = 2f;
     int DoubleTapCounterR = 0;
 
     public void InputChecks(Mob myMob)
@@ -16,12 +16,35 @@ public class InputPlayer : MonoBehaviour
         JumpCheck(myMob);
         AttackCheck(myMob);
         MoveCheck(myMob);
-        VictoryCheck(myMob);
+        myMob.victory=ChangeBoolStateInput("v");
+        myMob.dashLeft=ChangeBoolStateInput("q");
+        myMob.dashRight=ChangeBoolStateInput("e");
+        myMob.running=IsRuning(myMob);        
         DropCheck(myMob);
         SlotOneCheck(myMob);
         SlotTwoCheck(myMob);
-        myMob.dashLeft = DoubleTap(myMob, "a", ref DoubleTapTimeL, DoubleTapTimeMaxL, ref DoubleTapCounterL);
-        myMob.dashRight = DoubleTap(myMob, "d", ref DoubleTapTimeR, DoubleTapTimeMaxR, ref DoubleTapCounterR);
+        //myMob.dashLeft = DoubleTap(myMob, "a", ref DoubleTapTimeL, DoubleTapTimeMaxL, ref DoubleTapCounterL);
+        //myMob.dashRight = DoubleTap(myMob, "d", ref DoubleTapTimeR, DoubleTapTimeMaxR, ref DoubleTapCounterR);
+    }
+    public bool ChangeBoolStateInput(string key)
+    {
+        if(Input.GetButton(key))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public bool IsRuning(Mob myMob)
+    {
+        if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public void JumpCheck(Mob myMob)//mover logica del tiempo a salto
     {
@@ -30,6 +53,10 @@ public class InputPlayer : MonoBehaviour
             myMob.jumpBufferCounter = myMob.jumpBufferTime;
             myMob.jumpStop = false;
             myMob.jumping = true;
+            if(myMob.jumpdones == 0)
+            {
+                myMob.jumpsends = 0;//esto es para que salte despues de golpear yno se bugue cuando cae haciendo un salto simple con el buffer
+            }
         }
         else if(Input.GetButtonUp("Jump"))
         {
@@ -55,26 +82,20 @@ public class InputPlayer : MonoBehaviour
     }
     public void VictoryCheck(Mob myMob)
     {
-        if(Input.GetButton("v"))
-        {
-            myMob.victory = true;
-        }
-        else{
-            myMob.victory = false;
-        }
+
     }
     public void SlotOneCheck(Mob myMob)
     {
         if(Input.GetButton("1"))
         {
-            myMob.arma.Armas = Resources.Load<Armas>("Arma");
+            myMob.changeWeapon("Armas_Huscarle/Arma");
         }
     }
     public void SlotTwoCheck(Mob myMob)
     {
         if(Input.GetButton("2"))
         {
-            myMob.arma.Armas = Resources.Load<Armas>("Arma 1");
+            myMob.changeWeapon("Armas_Huscarle/Arma1");
         }
     }
     public void MoveCheck(Mob myMob)

@@ -14,6 +14,7 @@ public class OnJumpState : MobBaseState
 	private float jumpTime = 0;
 	private float jumpTimeMax = 0.4f;
 	CornerCorrection c = new CornerCorrection();
+        private float moveSpeed = 0f;
         public override void animate(Mob myMob)
         {
                 myMob.myAnimator.SetBool("isJumping", true);
@@ -23,8 +24,8 @@ public class OnJumpState : MobBaseState
         {
                 myMob.jumping = false;
 		myMob.myAnimator.SetBool("isJumping", false);
-		myMob.jumpsends = 0;
-		myMob.jumpdones = 0;
+		//myMob.jumpsends = 0;
+		//myMob.jumpdones = 0;
 		//myMob.timeInAir = 0;
 
 		//wall grabbing
@@ -41,21 +42,30 @@ public class OnJumpState : MobBaseState
         }
         public override void StarState(Mob myMob)
         {
+                animate(myMob);
                 originalGravity = myMob.myRigidbody.gravityScale;
                 myMob.m_JumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, myMob.jumpHeight);//mover a start o awake cuando se sete el valor
                 jumpMade = false;
                 myMob.timeInAir = myMob.allowedTimeInAir;
                 jumpTime = jumpTimeMax;
-
-                if(myMob.wallGrabing == true)//time from wall jump
+                if(myMob.wallGrabing == true && !myMob.drop)//time from wall jump
                 {
+                        Flip(myMob);
                         move = myMob.horizontalMove;
                         jumpTimeFromWall = jumpTimeFromWallMax;
+                }
+                if(myMob.running == true)
+                {
+                        moveSpeed = myMob.runningSpeed;
+                }
+                else
+                {
+                        moveSpeed = myMob.moveSpeed;
                 }
         }
         public override void CheckChangeState(Mob myMob)
         {
-                if(((myMob._inWallRight && myMob.horizontalMove > 0)  || (myMob._inWallLeft && myMob.horizontalMove<0)) && !myMob.m_Grounded)
+                if(((myMob._inWallRight && myMob.horizontalMove > 0)  || (myMob._inWallLeft && myMob.horizontalMove<0)) && !myMob.m_Grounded && !myMob.drop)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.WallGrabing,myMob);
                         return;	
@@ -78,8 +88,8 @@ public class OnJumpState : MobBaseState
         }
         public override void UpdateState(Mob myMob)
         {
-                base.UpdateState(myMob);
-                animate(myMob);
+                if(!myMob.wallGrabing)
+                        base.UpdateState(myMob);
                 if(myMob.jumping)
                         MakeAJump(myMob);
                 if(myMob.jumpBufferCounter > 0 && myMob.m_Grounded && myMob.jumpsends == 0 )//buffer
@@ -152,8 +162,12 @@ public class OnJumpState : MobBaseState
                         myMob.horizontalMove = move;
                         jumpTimeFromWall -= Time.fixedDeltaTime;
                 }
+                else
+                {
+                        myMob.wallGrabing = false;
+                }
                 //move on air falta checkear
-                Vector3 targetVelocity = new Vector2(myMob.horizontalMove * myMob.moveSpeed*myMob.apexModifierCurrent, myMob.myRigidbody.velocity.y);
+                Vector3 targetVelocity = new Vector2(myMob.horizontalMove * moveSpeed*myMob.apexModifierCurrent, myMob.myRigidbody.velocity.y);
                 // And then smoothing it out and applying it to the character
                 myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing); 
         }

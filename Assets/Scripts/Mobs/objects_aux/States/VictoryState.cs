@@ -14,7 +14,7 @@ public class VictoryState : MobBaseState
     }
     public override void StarState(Mob myMob)
     {
-
+        animate(myMob);
     }
     public override void CheckChangeState(Mob myMob)
     {
@@ -22,6 +22,11 @@ public class VictoryState : MobBaseState
         {
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Attack,myMob);
             return;
+        }
+        if(Mathf.Abs(myMob.horizontalMove) != 0 && myMob.running == true)
+        {
+                myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
+                return;
         }
         if(Mathf.Abs(myMob.horizontalMove) != 0)
         {
@@ -42,7 +47,6 @@ public class VictoryState : MobBaseState
     public override void UpdateState(Mob myMob)
     {
         base.UpdateState(myMob);
-        animate(myMob);
         CheckChangeState(myMob);
     }
     public override void FixedUpdateState(Mob myMob)

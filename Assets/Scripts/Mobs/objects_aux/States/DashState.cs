@@ -16,13 +16,15 @@ public class DashState : MobBaseState
                 myMob.tr.emitting = false;
                 myMob.canDash = false;
                 myMob.myAnimator.SetBool("isRoll", false);
-
+                myMob.changeLayer("Player");
         }
         public override void StarState(Mob myMob)
         {
                 int direction = 1;
                 originalGravity = myMob.myRigidbody.gravityScale;
                 //myMob.myRigidbody.gravityScale = 0f;
+                myMob.changeLayer("Inmunity");
+
                 if(myMob.dashRight)
                 {
                         direction = 1;

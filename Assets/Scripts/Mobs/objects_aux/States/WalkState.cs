@@ -35,7 +35,12 @@ public class WalkState : MobBaseState
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
             return;
         }
-        if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1)
+        if(Mathf.Abs(myMob.horizontalMove) != 0 && myMob.running == true)
+        {
+                myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
+                return;
+        }
+        if(Mathf.Abs(myMob.myRigidbody.velocity.x) < 1 && Mathf.Abs(myMob.horizontalMove) == 0)
         {
             myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
             return;

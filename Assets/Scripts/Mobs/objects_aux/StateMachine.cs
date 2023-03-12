@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 public enum myStates{
     Idle,
     Walk,
@@ -10,7 +11,9 @@ public enum myStates{
     TakeDamage,
     //Crouch,
     Victory,
-    Dash
+    Dash,
+    Damage,
+    Running
 }
 public class StateMachine
 {
@@ -37,6 +40,8 @@ public class StateMachine
         myDictionary.Add((int) myStates.TakeDamage, new TakeDamageState());
         myDictionary.Add((int) myStates.Victory, new VictoryState());
         myDictionary.Add((int) myStates.Dash, new DashState());
+        myDictionary.Add((int) myStates.Damage, new DamageState());
+        myDictionary.Add((int) myStates.Running, new RunningState());
 
         //myStates.jumpSate = new JumpState();
         return myDictionary[0];
@@ -44,11 +49,12 @@ public class StateMachine
 
     public int changeState(myStates index, Mob myMob)
     {
+
         myDictionary[myMob.actualState].EndState(myMob);
         myDictionary[(int) index].StarState(myMob);
         //Returns the state needed by the mob
         //return (MobBaseState)myDictionary[index];
-        //Debug.Log((int) index);
+        Debug.Log(Enum.GetName(typeof(myStates), index)+myMob.GetInstanceID());
 
         return (int) index;
     }

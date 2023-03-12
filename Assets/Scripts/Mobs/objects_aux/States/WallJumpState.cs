@@ -20,12 +20,22 @@ public class WallJumpState : MobBaseState
                 timer = 0f;
                 myMob.wallGrabingDirection = myMob.horizontalMove;
                 Fliping(myMob);
+                animate(myMob);
+                myMob.myRigidbody.velocity = new Vector2(myMob.myRigidbody.velocity.x,0);//mover a fixed update
+
         }
         public override void CheckChangeState(Mob myMob)
         {
                 if((myMob.dashRight || myMob.dashLeft) && myMob.canDash)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Dash,myMob);
+                        return;
+                }
+                if(myMob.drop)
+                {
+                        myMob.jumpsends = myMob.amountOfJumps;
+                        myMob.jumpdones = myMob.amountOfJumps;
+                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
                         return;
                 }
                 if(myMob.horizontalMove !=  0 && myMob.horizontalMove !=  myMob.wallGrabingDirection && myMob.jumpBufferCounter>0) 
@@ -43,6 +53,7 @@ public class WallJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
                         return;
                 }
+
                 if(!myMob.m_Grounded && myMob.horizontalMove ==  myMob.wallGrabingDirection && !myMob._inWallLeft && !myMob._inWallRight)
                 {
                         myMob.jumpsends = myMob.amountOfJumps;
@@ -50,13 +61,7 @@ public class WallJumpState : MobBaseState
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
                         return;          
                 }
-                if(myMob.drop)
-                {
-                        myMob.jumpsends = myMob.amountOfJumps;
-                        myMob.jumpdones = myMob.amountOfJumps;
-                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
-                        return;
-                }
+
                 if(myMob.m_Grounded)
                 {
                         myMob.actualState = myMob.myStateMachine.changeState(myStates.Idle,myMob);
@@ -66,8 +71,7 @@ public class WallJumpState : MobBaseState
         }
         public override void UpdateState(Mob myMob)
         {
-                base.UpdateState(myMob);
-                animate(myMob);
+                //base.UpdateState(myMob);
                 if(myMob.horizontalMove !=  myMob.wallGrabingDirection)
                 {
                         timer += Time.fixedDeltaTime;

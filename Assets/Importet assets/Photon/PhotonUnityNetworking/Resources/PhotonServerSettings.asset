@@ -41,6 +41,11 @@ MonoBehaviour:
   - RespawnSpaceship
   - RPC_TakeDamage
   - TakeDamage
+  - SetArmas
+  - RPC_changeWeapon
+  - RPC_changeLayer
+  - RPC_changeSkin
+  - RPC_Name
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
