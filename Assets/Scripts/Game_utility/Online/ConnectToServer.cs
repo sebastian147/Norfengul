@@ -38,6 +38,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         scenes.Add("Captura la bandera");
         scenes.Add("Prueba Chicho");
         scenes.Add("Prueba Polomir");
+        scenes.Add("Nivel 1");
         ListCicleMax = scenes.Count;
         scenesSelectButton.text = scenes[ListCicleActual];
     }

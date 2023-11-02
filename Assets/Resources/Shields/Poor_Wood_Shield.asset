@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b501fc9a9dd9a0448ace0c607bd80c9, type: 3}
+  m_Name: Poor_Wood_Shield
+  m_EditorClassIdentifier: 
+  ID: 10
+  itemName: Escudo de madera Pobre
+  itemSprite: {fileID: 21300000, guid: cd3dade4b33fc4444918eed85344497e, type: 3}
+  itemDescription: Consiste en un simple tablero de madera con un asa para sostenerlo.
+    De esta manera, se ofrece una barrera entre el adversario y el guerrero para
+    defenderse de posibles golpes.
+  itemValue: 10
+  blocksToBreak: 1
+  cooldown: 5
+  library: {fileID: 7108339969198208228, guid: 56bb3d1ce44724243918b28ee3148889, type: 3}
