@@ -60,7 +60,8 @@ public class MenusManager : MonoBehaviour
                 InventoryUI.SetActive(false);
                 PauseMenuUI.SetActive(false);
                 JouneyUI.SetActive(true);
-                journalManager.ClassifyMisions ();
+                journalManager.CheckMissions();
+                journalManager.ClassifyMissions();
                 journalManager.ShowAllMissions();
             }
         }

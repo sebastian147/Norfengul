@@ -154,4 +154,17 @@ public class InventoryManager : MonoBehaviour
         }
         return -1;
     }
+
+    public int FindItem(Items itemToFind)
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            if (inventorySlots[i].itemIn != null && inventorySlots[i].itemIn == itemToFind)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }

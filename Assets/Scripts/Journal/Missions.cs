@@ -18,6 +18,7 @@ public class Missions : ScriptableObject
     public string missionName;
     [TextArea] public string description;
     public List<string> requiredAmount = new List<string>();
+    public Items requiredItems;
     public int experienceReward;
     public int coinsReward;
     public List<Items> itemRewards = new List<Items>();

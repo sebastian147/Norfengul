@@ -2,95 +2,117 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Photon.Pun;
-using Photon.Realtime;
 using TMPro;
 
 public class JournalManager : MonoBehaviour
 {
+    public List<Missions> missions;
+    private List<Missions> activeMissions = new List<Missions>();
+    private List<Missions> completedMissions = new List<Missions>();
 
-    public List<Missions> mission;
-    List<Missions> activeMissions = new List<Missions>();
-    List<Missions> completedMissions = new List<Missions>();
     public TextMeshProUGUI missionNameText;
     public TextMeshProUGUI missionDescriptionText;
-    public GameObject ActiveBox;
-    public GameObject CompletedBox;
-    public GameObject BotonPrefab;
+    public GameObject activeBox;
+    public GameObject completedBox;
+    public GameObject botonPrefab;
+    public InventoryManager inventoryManager;
 
-    public void UpdateMissionUI(Missions mission)
+    private void Start()
+    {
+        ClassifyMissions();
+        ShowAllMissions();
+    }
+
+    private void UpdateMissionUI(Missions mission)
     {
         missionNameText.text = mission.missionName;
         missionDescriptionText.text = mission.description;
     }
 
-    public void ClassifyMisions ()
+    public void ClassifyMissions()
     {
         activeMissions.Clear();
         completedMissions.Clear();
 
-        foreach (Missions missionItem in mission)
+        foreach (Missions mission in missions)
         {
-            if (missionItem.state == Missions.MissionState.Active)
+            if (mission.state == Missions.MissionState.Active)
             {
-                activeMissions.Add(missionItem);
+                activeMissions.Add(mission);
             }
-            else if (missionItem.state == Missions.MissionState.Completed)
+            else if (mission.state == Missions.MissionState.Completed)
             {
-                completedMissions.Add(missionItem);
+                completedMissions.Add(mission);
             }
         }
     }
 
-    public void ShowAllMissions ()
+    public void ShowAllMissions()
     {
-        foreach (Transform child in ActiveBox.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        ClearButtons(activeBox);
+        ClearButtons(completedBox);
 
-        foreach (Missions missionItem in activeMissions)
-        {
-            GameObject buttonInstance = Instantiate(BotonPrefab);
-            Button buttonComponent = buttonInstance.GetComponent<Button>();
-            
-            if (buttonComponent != null)
-            {
-                TextMeshProUGUI buttonText = buttonComponent.GetComponentInChildren<TextMeshProUGUI>();
-                if (buttonText != null)
-                {
-                    buttonText.text = missionItem.missionName;
-                }
-                buttonComponent.onClick.AddListener(() => UpdateMissionUI(missionItem));
-            }
-
-            buttonInstance.transform.SetParent(ActiveBox.transform);
-        }
-
-        foreach (Transform child in CompletedBox.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (Missions missionItem in completedMissions)
-        {
-            GameObject buttonInstance = Instantiate(BotonPrefab);
-            Button buttonComponent = buttonInstance.GetComponent<Button>();
-            
-            if (buttonComponent != null)
-            {
-                TextMeshProUGUI buttonText = buttonComponent.GetComponentInChildren<TextMeshProUGUI>();
-                if (buttonText != null)
-                {
-                    buttonText.text = missionItem.missionName;
-                }
-                buttonComponent.onClick.AddListener(() => UpdateMissionUI(missionItem));
-            }
-
-            buttonInstance.transform.SetParent(CompletedBox.transform);
-        }
-        
+        InstantiateButtons(activeMissions, activeBox);
+        InstantiateButtons(completedMissions, completedBox);
     }
 
+    private void InstantiateButtons(List<Missions> missionsList, GameObject container)
+    {
+        foreach (Missions mission in missionsList)
+        {
+            GameObject buttonInstance = Instantiate(botonPrefab);
+            Button buttonComponent = buttonInstance.GetComponent<Button>();
+
+            if (buttonComponent != null)
+            {
+                TextMeshProUGUI buttonText = buttonComponent.GetComponentInChildren<TextMeshProUGUI>();
+                if (buttonText != null)
+                {
+                    buttonText.text = mission.missionName;
+                }
+                buttonComponent.onClick.AddListener(() => UpdateMissionUI(mission));
+            }
+
+            buttonInstance.transform.SetParent(container.transform);
+        }
+    }
+
+    private void ClearButtons(GameObject container)
+    {
+        foreach (Transform child in container.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+
+    public void CheckMissions()
+    {
+        foreach (Missions mission in activeMissions)
+        {
+            if (HaveItemMissionRequirements(mission))
+            {
+                mission.state = Missions.MissionState.Completed;
+                GiveRewards(mission);
+            }
+        }
+    }
+
+    private void GiveRewards(Missions mission)
+    {
+        inventoryManager.Coins += mission.coinsReward;
+
+        if (mission.itemRewards != null)
+        {
+            foreach (Items missionItem in mission.itemRewards)
+            {
+                inventoryManager.AddItem(missionItem);
+            }
+        }
+    }
+
+    private bool HaveItemMissionRequirements (Missions missionToAnalyze)
+    {
+        return inventoryManager.FindItem(missionToAnalyze.requiredItems) != -1;
+    }
 }
