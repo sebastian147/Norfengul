@@ -12,9 +12,12 @@ public class JournalManager : MonoBehaviour
 
     public TextMeshProUGUI missionNameText;
     public TextMeshProUGUI missionDescriptionText;
+    
     public GameObject activeBox;
     public GameObject completedBox;
     public GameObject botonPrefab;
+
+    public TrackedMissions trackedMissions;
     public InventoryManager inventoryManager;
 
     private void Start()
@@ -27,6 +30,7 @@ public class JournalManager : MonoBehaviour
     {
         missionNameText.text = mission.missionName;
         missionDescriptionText.text = mission.description;
+        trackedMissions.missions = mission;
     }
 
     public void ClassifyMissions()

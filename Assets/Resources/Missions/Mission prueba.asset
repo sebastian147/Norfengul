@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245f9687d8d025047b5049e962865f7b, type: 3}
   m_Name: Mission prueba
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
   missionName: Mision de Prueba
   description: Esto es una Prueba. Que si Funciona me pone full cachondo.
   requiredAmount: []
@@ -20,3 +20,4 @@ MonoBehaviour:
   experienceReward: 0
   coinsReward: 19
   itemRewards: []
+  missionPosition: {x: 0, y: 0, z: 0}

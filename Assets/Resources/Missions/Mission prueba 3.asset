@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245f9687d8d025047b5049e962865f7b, type: 3}
   m_Name: Mission prueba 3
   m_EditorClassIdentifier: 
-  state: 0
+  state: 1
   missionName: CACA
   description: 'CACA
 
@@ -24,3 +24,4 @@ MonoBehaviour:
   itemRewards:
   - {fileID: 11400000, guid: 3a353f4a2974f4e4dab252bb4475188a, type: 2}
   - {fileID: 11400000, guid: 5f795e68f87da464aac00699a4a523b5, type: 2}
+  missionPosition: {x: 0, y: 0, z: 0}

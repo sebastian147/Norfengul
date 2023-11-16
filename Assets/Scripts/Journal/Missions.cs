@@ -22,6 +22,8 @@ public class Missions : ScriptableObject
     public int experienceReward;
     public int coinsReward;
     public List<Items> itemRewards = new List<Items>();
+
+    public Transform NPCPosition;
     
 }
 
