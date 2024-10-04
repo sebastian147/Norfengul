@@ -158,7 +158,7 @@ public class Mob : MonoBehaviourPunCallbacks
                         return;
                 myStateMachine.myDictionary[actualState].UpdateState(this);
                 //Fliping();
-                inputPlayer.InputChecks(this);//ver mejor manera
+                inputPlayer.InputChecks(this, arma);//ver mejor manera
                 collisionCheck.CollisionCheck(this);
         }
 
@@ -264,7 +264,7 @@ public class Mob : MonoBehaviourPunCallbacks
         [PunRPC]
         public void RPC_changeWeapon(string weaponName)
         {
-                arma.Armas = Resources.Load<Armas>(weaponName);
+                arma.Armas = Resources.Load<Weapon>(weaponName);
         }
         public void changeLayer(string layer)
         {
@@ -293,7 +293,7 @@ public class Mob : MonoBehaviourPunCallbacks
                 this.Cuerpo.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Cuerpo);
                 this.Escudos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Escudos);
                 this.Pelos.spriteLibraryAsset = Resources.Load<UnityEngine.U2D.Animation.SpriteLibraryAsset>(Pelos);
-                this.arma.Armas = Resources.Load<Armas>(Arma);
+                this.arma.Armas = Resources.Load<Weapon>(Arma);
                 mySpriteResolver.ResolveSpriteToSpriteRenderer();
                 nickName.GetComponent<TextMesh>().text =  name;
 

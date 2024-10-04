@@ -11,18 +11,16 @@ public class InputPlayer : MonoBehaviour
     float DoubleTapTimeMaxR = 2f;
     int DoubleTapCounterR = 0;
 
-    public void InputChecks(Mob myMob)
+    public void InputChecks(Mob myMob, MeleWeaponLogic myMeleWeaponLogic)
     {
         JumpCheck(myMob);
-        AttackCheck(myMob);
+        AttackCheck(myMob, myMeleWeaponLogic);
         MoveCheck(myMob);
         myMob.victory=ChangeBoolStateInput("v");
         myMob.dashLeft=ChangeBoolStateInput("q");
         myMob.dashRight=ChangeBoolStateInput("e");
         myMob.running=IsRuning(myMob);        
         DropCheck(myMob);
-        SlotOneCheck(myMob);
-        SlotTwoCheck(myMob);
         //myMob.dashLeft = DoubleTap(myMob, "a", ref DoubleTapTimeL, DoubleTapTimeMaxL, ref DoubleTapCounterL);
         //myMob.dashRight = DoubleTap(myMob, "d", ref DoubleTapTimeR, DoubleTapTimeMaxR, ref DoubleTapCounterR);
     }
@@ -68,9 +66,9 @@ public class InputPlayer : MonoBehaviour
         }
 
     }
-    public void AttackCheck(Mob myMob)
+    public void AttackCheck(Mob myMob, MeleWeaponLogic myMeleWeaponLogic)
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && myMeleWeaponLogic.Armas != null)
         {
             if(Time.time >= myMob.nextAttackTime)
             {
@@ -84,20 +82,15 @@ public class InputPlayer : MonoBehaviour
     {
 
     }
-    public void SlotOneCheck(Mob myMob)
+
+    /*public void SlotOneCheck(Mob myMob)
     {
         if(Input.GetButton("1"))
         {
-            myMob.changeWeapon("Armas_Huscarle/Arma");
+            myMob.changeWeapon("Armas_Huscarle/Espada_de_Hierro");
         }
-    }
-    public void SlotTwoCheck(Mob myMob)
-    {
-        if(Input.GetButton("2"))
-        {
-            myMob.changeWeapon("Armas_Huscarle/Arma1");
-        }
-    }
+    }*/
+    
     public void MoveCheck(Mob myMob)
     {
         myMob.horizontalMove = Input.GetAxisRaw("Horizontal");

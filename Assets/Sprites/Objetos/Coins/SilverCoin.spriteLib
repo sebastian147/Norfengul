@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 36
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Coin
+    m_Hash: -178571165
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: FrameCoin1
+      m_Hash: -1848470437
+      m_Sprite: {fileID: -1372265058, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1372265058, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    - m_Name: FrameCoin2
+      m_Hash: 148620769
+      m_Sprite: {fileID: 1712904455, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1712904455, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    - m_Name: FrameCoin3
+      m_Hash: 2145187191
+      m_Sprite: {fileID: -294630311, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -294630311, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    - m_Name: FrameCoin4
+      m_Hash: -508010284
+      m_Sprite: {fileID: -1467272717, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1467272717, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    - m_Name: FrameCoin5
+      m_Hash: -1765846974
+      m_Sprite: {fileID: -588393544, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -588393544, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    - m_Name: FrameCoin6
+      m_Hash: 263586296
+      m_Sprite: {fileID: -624999755, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -624999755, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    - m_Name: FrameCoin7
+      m_Hash: 2024878446
+      m_Sprite: {fileID: -1454410565, guid: 6f99eed42b981d444a0d723d7304ca0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1454410565, guid: 6f99eed42b981d444a0d723d7304ca0f,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 7
+  m_PrimaryLibraryGUID: 

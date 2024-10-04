@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572d2ef3058a36c46a6cc4a7f4437d1b, type: 3}
+  m_Name: Espada_de_Hierro
+  m_EditorClassIdentifier: 
+  ID: 1
+  itemName: Espada_de_Hierro
+  itemSprite: {fileID: 21300000, guid: 2cff9cff059eda04986032bba9fc595f, type: 3}
+  itemDescription: "Una espada de hierro es un arma compuesta por una hoja de hierro,
+    una aleaci\xF3n de hierro con otros elementos, que le confiere resistencia y
+    durabilidad. Su hoja, con una estructura cristalina de grano fino, proporciona
+    una superficie afilada y precisa."
+  itemValue: 30
+  damage: 20
+  weaponType: 1
+  knockback: 5
+  damageArea: 0.5
+  effect: 0
+  category: Armas Grandes
+  label: Hacha de Hierro
+  library: {fileID: 7108339969198208228, guid: c543994869b284943a4b26785d732070, type: 3}
+  mySpriteResolver: {fileID: 0}
+  HitBox:
+    serializedVersion: 2
+    x: 10
+    y: 0
+    width: 0
+    height: 0
