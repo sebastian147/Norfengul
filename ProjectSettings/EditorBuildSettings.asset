@@ -14,15 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prueba Sebaster.unity
     guid: 7bc1d42112e969443b83ae8085bf8dd9
-  - enabled: 1
-    path: Assets/Scenes/Prueba Chicho.unity
-    guid: 21a570079ed1a5848aabef4f9242a5d4
-  - enabled: 1
-    path: Assets/Scenes/Prueba Polomir.unity
-    guid: b0980e6cfa0169b49b24a4fc6f8f9cee
-  - enabled: 1
-    path: Assets/Scenes/Captura la bandera.unity
-    guid: ebab65768ced491448951b1612f20265
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8b1759434aa6d874bad4056ed7832a6a,
       type: 2}
