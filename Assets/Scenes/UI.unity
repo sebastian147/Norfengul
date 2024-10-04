@@ -14018,6 +14018,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3743600004574062606, guid: 605cc061cb1a3884d903bf1013950fec,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4363230796165308452, guid: 605cc061cb1a3884d903bf1013950fec,
         type: 3}
       propertyPath: sceneViewId

@@ -36,7 +36,8 @@ public class Enemy_behaviour : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    void Update () {
+    void Update () 
+    {
         if (inRange)
         {
             hit = Physics2D.Raycast(rayCast.position, Vector2.left, rayCastLength, raycastMask);
@@ -92,14 +93,8 @@ public class Enemy_behaviour : MonoBehaviour {
 
     void Move()
     {
-        anim.SetBool("canWalk", true);
-
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack"))
-        {
-            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
-
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        }
+        Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
     void Attack()

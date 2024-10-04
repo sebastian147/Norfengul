@@ -5,25 +5,16 @@ using UnityEngine;
 public class IA : MonoBehaviour
 {
     public float moveSpeed = 5;
-    public Vector2 origenPos;
     private Animator anim;
 
     void Start()
     {
-        origenPos = transform.position;
         anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if(transform.position.x != origenPos.x)
-        {
-            MoveTo(origenPos);
-        }
-        else 
-        {
-            Idle();
-        }
+    
     }
 
     void Idle()
@@ -36,5 +27,14 @@ public class IA : MonoBehaviour
         anim.SetBool("IsMoving", true);
         Vector2 targetPosition = new Vector2(target.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+        if (targetPosition.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (targetPosition.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }

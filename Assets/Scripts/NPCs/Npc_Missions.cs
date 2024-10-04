@@ -8,7 +8,7 @@ public class Npc_Missions : MonoBehaviour
 {
     public GameObject ExclamationUI;
     public Missions missionToActivate;
-    public bool playerIsClose;
+    private bool playerIsClose;
 
     void Update()
     {
