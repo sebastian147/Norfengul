@@ -21,7 +21,7 @@ public class AttackState : MobBaseState
         {
                 hitPlayerIDs = new HashSet<int>();
                 attackDirection=myMob.horizontalMove;
-                attackTipe =myMob.arma.Armas.weaponType.ToString();
+                attackTipe = myMob.arma.Armas.weaponType.ToString();
                 myMob.attacking = false;
                 animate(myMob);
                 CheckEnemysToAttack(myMob);

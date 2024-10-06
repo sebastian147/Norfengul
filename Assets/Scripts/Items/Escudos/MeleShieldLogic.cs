@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeShieldLogic : MonoBehaviour
+public class MeleShieldLogic : MonoBehaviour
 {
     public Shield shield;
     public SpriteRenderer mySpriteRenderer;

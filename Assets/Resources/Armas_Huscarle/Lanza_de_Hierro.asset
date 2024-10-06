@@ -18,14 +18,13 @@ MonoBehaviour:
   itemDescription: 
   itemValue: 0
   damage: 0
-  weaponType: 0
+  weaponType: 1
   knockback: 0
   damageArea: 0
   effect: 0
   category: 
   label: 
   library: {fileID: 7108339969198208228, guid: 4d02dd9356394b74b97df43b7fbc810f, type: 3}
-  mySpriteResolver: {fileID: 0}
   HitBox:
     serializedVersion: 2
     x: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeaponLogic : MonoBehaviour
+public class MeleWeaponLogic : MonoBehaviour
 {
     public Weapon Armas;
     public SpriteRenderer mySpriteRenderer;
@@ -34,6 +34,11 @@ public class MeleeWeaponLogic : MonoBehaviour
             mySpriteRenderer.enabled = false;
         }
     }
+        /*void Update()
+        {
+                mySpriteResolver.SetCategoryAndLabel(Armas.category, Armas.label);
+                mySpriteResolver.ResolveSpriteToSpriteRenderer();
+        }*/
 }
 /* to do
 * dont call ChangeWeapon() in update or add a conditional

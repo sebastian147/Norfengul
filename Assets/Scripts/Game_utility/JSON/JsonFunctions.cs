@@ -18,15 +18,9 @@ public class JsonFunctions
     // Loads a specific value from a JSON file using a selector function.
     public static T CargarValorJSON<TypeDataPass, T>(string archivoJson, Func<TypeDataPass, T> selector)
     {
-        try{
-                string contenido = File.ReadAllText(archivoJson); // Reads the JSON file.
-                TypeDataPass datos = JsonUtility.FromJson<TypeDataPass>(contenido); // Deserializes the file.
-                T valor = selector(datos); // Uses the selector to extract a specific value.
-        }
-        catch (Exception e)
-        {
-            Debug.Log("Error: Json dont exist" + e.Message);
-        }
+        string contenido = File.ReadAllText(archivoJson); // Reads the JSON file.
+        TypeDataPass datos = JsonUtility.FromJson<TypeDataPass>(contenido); // Deserializes the file.
+        T valor = selector(datos); // Uses the selector to extract a specific value.
         return valor; // Returns the selected value.
     }
 
@@ -64,6 +58,6 @@ public class JsonFunctions
     }
 }
 /* toDo: 
-        Potential issue: You should check if the file exists before reading or writing to avoid exceptions, especially in CargarJSON.
+        check if the file exist when reading
         Concurrency: If the file is opened or written to multiple times in quick succession, consider handling file locks or using async methods to avoid potential issues.
 */
