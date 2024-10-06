@@ -18,9 +18,15 @@ public class JsonFunctions
     // Loads a specific value from a JSON file using a selector function.
     public static T CargarValorJSON<TypeDataPass, T>(string archivoJson, Func<TypeDataPass, T> selector)
     {
-        string contenido = File.ReadAllText(archivoJson); // Reads the JSON file.
-        TypeDataPass datos = JsonUtility.FromJson<TypeDataPass>(contenido); // Deserializes the file.
-        T valor = selector(datos); // Uses the selector to extract a specific value.
+        try{
+                string contenido = File.ReadAllText(archivoJson); // Reads the JSON file.
+                TypeDataPass datos = JsonUtility.FromJson<TypeDataPass>(contenido); // Deserializes the file.
+                T valor = selector(datos); // Uses the selector to extract a specific value.
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error: Json dont exist" + e.Message);
+        }
         return valor; // Returns the selected value.
     }
 
@@ -28,7 +34,13 @@ public class JsonFunctions
     public static void GuardarJSON<TypeDataPass>(string archivoJson, TypeDataPass skin)
     {
         string skinJSON = JsonUtility.ToJson(skin); // Serializes the object to JSON.
-        File.WriteAllText(archivoJson, skinJSON); // Writes the serialized object to the file.
+        try{
+                File.WriteAllText(archivoJson, skinJSON); // Writes the serialized object to the file.
+        }
+        catch (Exception e)
+        {
+                Debug.Log("Error: Json dont exist" + e.Message);
+        }
     }
 
     // Updates a specific field in a JSON file based on a key (not fully implemented).
