@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8547918bf67769488a149903f1491cd
+guid: 3bfd1a0c9f2d26d4a87797c8a8ec2578
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK1_Cuerpo_0
+      name: BlackForestShieldman_ATTACK1_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c04524ea14ffed54295e38ce1e4857e6
-      internalID: -1822163890
+      spriteID: a124dadc9bf47044a8f668d7d7cb8f1d
+      internalID: 164686172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK1_Cuerpo_1
+      name: BlackForestShieldman_ATTACK1_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d257e90761b55e49ab594799451e459
-      internalID: 301007992
+      spriteID: 5da828a3484ae7a499196537f75a4652
+      internalID: -2145716137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK1_Cuerpo_2
+      name: BlackForestShieldman_ATTACK1_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe8c9f1fcfe05444faee55943651e665
-      internalID: 587710127
+      spriteID: 2d9b4d356f36eaf4dbb711fd2f79820b
+      internalID: 2063590831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK1_Cuerpo_3
+      name: BlackForestShieldman_ATTACK1_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1061adb1654cfc64eb58d3060aa36084
-      internalID: 59278477
+      spriteID: e981c5fb183e0e648879393b17b4cd2b
+      internalID: 1872010310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK1_Cuerpo_4
+      name: BlackForestShieldman_ATTACK1_Cuerpo_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24c1a102b49d8cb4492be112ccec1032
-      internalID: -14919559
+      spriteID: 9fc197cf6d46a604babe6892a08bf2a8
+      internalID: -1965152954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK1_Cuerpo_5
+      name: BlackForestShieldman_ATTACK1_Cuerpo_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1b17775f7b5bf249a6f47fbb86752d3
-      internalID: -1427163686
+      spriteID: 148c348b430c6ff489b47d90b9474f0f
+      internalID: -1947549054
       vertices: []
       indices: 
       edges: []
@@ -240,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_ATTACK1_Cuerpo_4: -14919559
-      Huscarle_2_ATTACK1_Cuerpo_5: -1427163686
-      Huscarle_2_ATTACK1_Cuerpo_1: 301007992
-      Huscarle_2_ATTACK1_Cuerpo_3: 59278477
-      Huscarle_2_ATTACK1_Cuerpo_2: 587710127
-      Huscarle_2_ATTACK1_Cuerpo_0: -1822163890
+      BlackForestShieldman_ATTACK1_Cuerpo_4: -1965152954
+      BlackForestShieldman_ATTACK1_Cuerpo_5: -1947549054
+      BlackForestShieldman_ATTACK1_Cuerpo_2: 2063590831
+      BlackForestShieldman_ATTACK1_Cuerpo_1: -2145716137
+      BlackForestShieldman_ATTACK1_Cuerpo_3: 1872010310
+      BlackForestShieldman_ATTACK1_Cuerpo_0: 164686172
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

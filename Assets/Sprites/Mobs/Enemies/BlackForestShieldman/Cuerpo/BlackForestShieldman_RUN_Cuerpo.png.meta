@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 139d3bd03852c594597e78ec6a099024
+guid: 21ba32975a968734595cbe1e3dfcd1d9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 16.2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_RUN_Cuerpo_0
+      name: BlackForestShieldman_RUN_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f00afa930684da446abe12a4a60bd9d4
-      internalID: -608860537
+      spriteID: 5a1fbf1eb3d3abe4bbff08e080bac276
+      internalID: 1782156573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_RUN_Cuerpo_1
+      name: BlackForestShieldman_RUN_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 702cbb6051fedf0418f7f468eee4e685
-      internalID: -957467931
+      spriteID: 98ed4f03f37dd874cb8784b9e86981c8
+      internalID: -587359000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_RUN_Cuerpo_2
+      name: BlackForestShieldman_RUN_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db581b2a290b2cb4895a721b75445ff0
-      internalID: -569591812
+      spriteID: 6006bdef55c16394b815f22bdecc2223
+      internalID: -193192535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_RUN_Cuerpo_3
+      name: BlackForestShieldman_RUN_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16d2e248c5f074a44a602819051f2aef
-      internalID: -747163051
+      spriteID: b7c0eb3c25f4bf441af9ad2d55c42bb5
+      internalID: -321479331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_RUN_Cuerpo_4
+      name: BlackForestShieldman_RUN_Cuerpo_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 557f2433792d9fd41b4f82a6b380cc40
-      internalID: 1468355976
+      spriteID: b9c3e0bd332646f4d8e183223d0fdd9e
+      internalID: -1162675090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_RUN_Cuerpo_5
+      name: BlackForestShieldman_RUN_Cuerpo_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f10bc047c3a51e349b1eb14b088677b3
-      internalID: 469598738
+      spriteID: de3d2732e6a75454eb55d5004a7cad67
+      internalID: 1182510821
       vertices: []
       indices: 
       edges: []
@@ -240,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_RUN_Cuerpo_3: -747163051
-      Huscarle_2_RUN_Cuerpo_5: 469598738
-      Huscarle_2_RUN_Cuerpo_4: 1468355976
-      Huscarle_2_RUN_Cuerpo_0: -608860537
-      Huscarle_2_RUN_Cuerpo_2: -569591812
-      Huscarle_2_RUN_Cuerpo_1: -957467931
+      BlackForestShieldman_RUN_Cuerpo_5: 1182510821
+      BlackForestShieldman_RUN_Cuerpo_4: -1162675090
+      BlackForestShieldman_RUN_Cuerpo_2: -193192535
+      BlackForestShieldman_RUN_Cuerpo_0: 1782156573
+      BlackForestShieldman_RUN_Cuerpo_3: -321479331
+      BlackForestShieldman_RUN_Cuerpo_1: -587359000
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

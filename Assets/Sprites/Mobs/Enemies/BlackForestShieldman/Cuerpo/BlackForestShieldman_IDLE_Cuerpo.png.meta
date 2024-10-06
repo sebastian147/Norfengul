@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 71be170b82290f240af209ce17861d6a
+guid: 08c42015ae9bd5a4888324ce48154007
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 16.2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_IDLE_Cuerpo_0
+      name: BlackForestShieldman_IDLE_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82174c2e75adb5b45ab7fbc924abd8ac
-      internalID: 1520977468
+      spriteID: 7bc57b67dc747624894c53170520337e
+      internalID: -169232754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_IDLE_Cuerpo_1
+      name: BlackForestShieldman_IDLE_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7af202131a7cb34fb0e4dda6d989ce7
-      internalID: -937194235
+      spriteID: e96e0f032528aff4e87b56490900514f
+      internalID: -1792511534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_IDLE_Cuerpo_2
+      name: BlackForestShieldman_IDLE_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea60865b6a4eff9468f70c625397b45a
-      internalID: -264724597
+      spriteID: d2a1ec0f1fdb6ac4ebc8cd6960f79b93
+      internalID: -1555727064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_IDLE_Cuerpo_3
+      name: BlackForestShieldman_IDLE_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53167dbb8e71df041b3bdab06970c8d5
-      internalID: -495044558
+      spriteID: d1857903827d629479c4124eaf374887
+      internalID: -1360317704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_IDLE_Cuerpo_4
+      name: BlackForestShieldman_IDLE_Cuerpo_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cf8fc9960ea9e14fbf44c6746ceca3a
-      internalID: -764013974
+      spriteID: fc564ebccf4a39648992a3986c6fe674
+      internalID: 1658530473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_IDLE_Cuerpo_5
+      name: BlackForestShieldman_IDLE_Cuerpo_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f5da2743f25eda45ac68023f266d26a
-      internalID: 41725724
+      spriteID: e9f75af76b0189245b6857351229f792
+      internalID: -946973920
       vertices: []
       indices: 
       edges: []
@@ -240,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_IDLE_Cuerpo_4: -764013974
-      Huscarle_2_IDLE_Cuerpo_1: -937194235
-      Huscarle_2_IDLE_Cuerpo_3: -495044558
-      Huscarle_2_IDLE_Cuerpo_0: 1520977468
-      Huscarle_2_IDLE_Cuerpo_2: -264724597
-      Huscarle_2_IDLE_Cuerpo_5: 41725724
+      BlackForestShieldman_IDLE_Cuerpo_1: -1792511534
+      BlackForestShieldman_IDLE_Cuerpo_3: -1360317704
+      BlackForestShieldman_IDLE_Cuerpo_5: -946973920
+      BlackForestShieldman_IDLE_Cuerpo_0: -169232754
+      BlackForestShieldman_IDLE_Cuerpo_2: -1555727064
+      BlackForestShieldman_IDLE_Cuerpo_4: 1658530473
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

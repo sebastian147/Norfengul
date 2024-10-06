@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e71bdecf890e414e823d704e8158195
+guid: 2da933d0c0b24214d949dbf57691567d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 16.2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_DEAD_Cuerpo_0
+      name: BlackForestShieldman_DEAD_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc812bfd8b685b46adec86d473c74ca
-      internalID: -1977155167
+      spriteID: 3a47b2d8891705a4e8fb86589189a986
+      internalID: -804732512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_DEAD_Cuerpo_1
+      name: BlackForestShieldman_DEAD_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bf3e7fd93c12b546a88c3616de7afd2
-      internalID: -1424879079
+      spriteID: d71292d51c556e14cad8aa9f026ea1e7
+      internalID: -190178140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_DEAD_Cuerpo_2
+      name: BlackForestShieldman_DEAD_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a93b55dda72e146a8365ad2dab1337
-      internalID: -1028433824
+      spriteID: bec3bf04c33f46b479af0d3b9bad0da7
+      internalID: 748025881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_DEAD_Cuerpo_3
+      name: BlackForestShieldman_DEAD_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4b8d4935a9de1640a97737cfd3d3849
-      internalID: 886299689
+      spriteID: 9ec06a7569bff9d4d951d8771948509e
+      internalID: 553489443
       vertices: []
       indices: 
       edges: []
@@ -198,10 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_DEAD_Cuerpo_2: -1028433824
-      Huscarle_2_DEAD_Cuerpo_3: 886299689
-      Huscarle_2_DEAD_Cuerpo_0: -1977155167
-      Huscarle_2_DEAD_Cuerpo_1: -1424879079
+      BlackForestShieldman_DEAD_Cuerpo_3: 553489443
+      BlackForestShieldman_DEAD_Cuerpo_1: -190178140
+      BlackForestShieldman_DEAD_Cuerpo_2: 748025881
+      BlackForestShieldman_DEAD_Cuerpo_0: -804732512
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

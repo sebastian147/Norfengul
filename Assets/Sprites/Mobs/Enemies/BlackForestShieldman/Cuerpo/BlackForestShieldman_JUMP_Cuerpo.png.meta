@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1518072d36fb0204688a8e0d56ff5d73
+guid: 8aeb30de49ac6de4bae4f65a45f45a20
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 16.2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_JUMP_Cuerpo_0
+      name: BlackForestShieldman_JUMP_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0f0b3c8468189f44a6bef1c26effd37
-      internalID: 1442598510
+      spriteID: 7a833ce2094f570438fed78f9e78cfdb
+      internalID: -1393415019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_JUMP_Cuerpo_1
+      name: BlackForestShieldman_JUMP_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2fb1417f071643488b8cd5059f48ab5
-      internalID: -406704040
+      spriteID: 399fbbe13029bb6458e198b8f6e826fe
+      internalID: 265160834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_JUMP_Cuerpo_2
+      name: BlackForestShieldman_JUMP_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8888f49815c6b84897dd2f4d0bf32bb
-      internalID: -1592582789
+      spriteID: e244f8f6b4b521249b2931ad072aa0dc
+      internalID: -2121118928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_JUMP_Cuerpo_3
+      name: BlackForestShieldman_JUMP_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73e21050c97b3c848b5f4c4183c9765b
-      internalID: -1349927153
+      spriteID: 0787e91a66d020a449d345624dc8c9a0
+      internalID: -236526570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_JUMP_Cuerpo_4
+      name: BlackForestShieldman_JUMP_Cuerpo_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a228e99d94bdb246b816ef18fc0db37
-      internalID: 1585688209
+      spriteID: bc888f5bad58afc4f9a69f9c0f236189
+      internalID: -818847674
       vertices: []
       indices: 
       edges: []
@@ -219,11 +231,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_JUMP_Cuerpo_1: -406704040
-      Huscarle_2_JUMP_Cuerpo_0: 1442598510
-      Huscarle_2_JUMP_Cuerpo_2: -1592582789
-      Huscarle_2_JUMP_Cuerpo_4: 1585688209
-      Huscarle_2_JUMP_Cuerpo_3: -1349927153
+      BlackForestShieldman_JUMP_Cuerpo_2: -2121118928
+      BlackForestShieldman_JUMP_Cuerpo_0: -1393415019
+      BlackForestShieldman_JUMP_Cuerpo_1: 265160834
+      BlackForestShieldman_JUMP_Cuerpo_4: -818847674
+      BlackForestShieldman_JUMP_Cuerpo_3: -236526570
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

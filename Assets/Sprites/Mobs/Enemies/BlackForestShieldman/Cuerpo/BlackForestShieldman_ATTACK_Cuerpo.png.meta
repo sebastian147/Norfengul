@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 414cab44bbe72124d9bacab7baaa2fee
+guid: c244f884f02713146ab311707362637b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 16.2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,131 +100,143 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK_Cuerpo_0
+      name: BlackForestShieldman_ATTACK_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.3333333, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6865cf4fd9216cb42858b6eb3706688b
-      internalID: 1648750658
+      spriteID: 3e4f10746430cd341804d7d01aed8b15
+      internalID: -1009682819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK_Cuerpo_1
+      name: BlackForestShieldman_ATTACK_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.3333333, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d530bc806d2af5842832ef7e0425a22c
-      internalID: -867761811
+      spriteID: fc01ab79b48f4414abda22c71bb0f7ca
+      internalID: 994507611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK_Cuerpo_2
+      name: BlackForestShieldman_ATTACK_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.3333333, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4be31ae5705ab4247a7aa0b57b3d2588
-      internalID: -1552792617
+      spriteID: 57618451389f3b246964e16bb9f119e0
+      internalID: 1141979063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK_Cuerpo_3
+      name: BlackForestShieldman_ATTACK_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 288
         y: 0
         width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.3333333, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 718b572f6bb375f4f9ef3ca2c31a0e94
-      internalID: 561162514
+      spriteID: 8f3f5a1e702082841a4a11003d9c8bd1
+      internalID: -1000137383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK_Cuerpo_4
+      name: BlackForestShieldman_ATTACK_Cuerpo_4
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.3333333, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 872fcd7f58137574291b7201dbd9b6ce
-      internalID: 1283121362
+      spriteID: 707d99e8f11e14242bfef67b9fcc1a37
+      internalID: -1913072521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_ATTACK_Cuerpo_5
+      name: BlackForestShieldman_ATTACK_Cuerpo_5
       rect:
         serializedVersion: 2
         x: 480
         y: 0
         width: 96
         height: 64
-      alignment: 9
-      pivot: {x: 0.3333333, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4779ab48c440b82429cf5cc33e965d0a
-      internalID: 1644127153
+      spriteID: 4e3b8a94a1309fe4c84e6a2989f86160
+      internalID: 349248746
       vertices: []
       indices: 
       edges: []
@@ -240,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_ATTACK_Cuerpo_2: -1552792617
-      Huscarle_2_ATTACK_Cuerpo_4: 1283121362
-      Huscarle_2_ATTACK_Cuerpo_0: 1648750658
-      Huscarle_2_ATTACK_Cuerpo_5: 1644127153
-      Huscarle_2_ATTACK_Cuerpo_1: -867761811
-      Huscarle_2_ATTACK_Cuerpo_3: 561162514
+      BlackForestShieldman_ATTACK_Cuerpo_1: 994507611
+      BlackForestShieldman_ATTACK_Cuerpo_5: 349248746
+      BlackForestShieldman_ATTACK_Cuerpo_0: -1009682819
+      BlackForestShieldman_ATTACK_Cuerpo_2: 1141979063
+      BlackForestShieldman_ATTACK_Cuerpo_4: -1913072521
+      BlackForestShieldman_ATTACK_Cuerpo_3: -1000137383
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

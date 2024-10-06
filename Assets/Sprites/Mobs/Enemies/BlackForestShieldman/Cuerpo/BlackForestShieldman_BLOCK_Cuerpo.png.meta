@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5e5f076a29d1d842a39ee54eb54643e
+guid: a245756aaee263640ab78769f59b7bea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 16.2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huscarle_2_BLOCK_Cuerpo_0
+      name: BlackForestShieldman_BLOCK_Cuerpo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59bade83e3cbe6e458672e9c779c7bf2
-      internalID: 2134590297
+      spriteID: 2e04727de213d9d4eb7ca28ebca09bf4
+      internalID: 1520711545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_BLOCK_Cuerpo_1
+      name: BlackForestShieldman_BLOCK_Cuerpo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bb7df5a8fddd9344ac6b47b3a148d4f
-      internalID: 1013012225
+      spriteID: 5936e72a91cb1c84aa7aa2e7e4788519
+      internalID: -1339355500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_BLOCK_Cuerpo_2
+      name: BlackForestShieldman_BLOCK_Cuerpo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a4e8334b6c74b043b8749f34b108806
-      internalID: -1639218462
+      spriteID: 3a4a44e2b428d0f47992dd99a9f1f48e
+      internalID: -569743851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_BLOCK_Cuerpo_3
+      name: BlackForestShieldman_BLOCK_Cuerpo_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96a650dc76b95ed48a14b41bd13240cb
-      internalID: 1714588199
+      spriteID: d8a1ad08448f3794aa249fc43efab53e
+      internalID: -605692764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_BLOCK_Cuerpo_4
+      name: BlackForestShieldman_BLOCK_Cuerpo_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 812c9af295455cd4d8720d4f222b66a9
-      internalID: 739141442
+      spriteID: 0e9d17ae5024b38498ea806cd512a6d4
+      internalID: -983271595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huscarle_2_BLOCK_Cuerpo_5
+      name: BlackForestShieldman_BLOCK_Cuerpo_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ab09ee677dc00a48bb607e5bc161852
-      internalID: 303447657
+      spriteID: ceca5053a7f76ca48a2858e9cf0c386c
+      internalID: 1365492178
       vertices: []
       indices: 
       edges: []
@@ -240,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huscarle_2_BLOCK_Cuerpo_0: 2134590297
-      Huscarle_2_BLOCK_Cuerpo_1: 1013012225
-      Huscarle_2_BLOCK_Cuerpo_5: 303447657
-      Huscarle_2_BLOCK_Cuerpo_4: 739141442
-      Huscarle_2_BLOCK_Cuerpo_2: -1639218462
-      Huscarle_2_BLOCK_Cuerpo_3: 1714588199
+      BlackForestShieldman_BLOCK_Cuerpo_0: 1520711545
+      BlackForestShieldman_BLOCK_Cuerpo_4: -983271595
+      BlackForestShieldman_BLOCK_Cuerpo_1: -1339355500
+      BlackForestShieldman_BLOCK_Cuerpo_2: -569743851
+      BlackForestShieldman_BLOCK_Cuerpo_5: 1365492178
+      BlackForestShieldman_BLOCK_Cuerpo_3: -605692764
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
