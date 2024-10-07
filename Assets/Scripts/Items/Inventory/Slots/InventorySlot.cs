@@ -34,7 +34,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         menuDesplegable.SetActive(false);
     }
 
-    public void Update()
+    public virtual void Update()
     {
         if (itemIn == null)
         {
@@ -49,11 +49,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public virtual void ReciveItemSlot (InventorySlot otherSlot)
     {
-        Items itemInPass = otherSlot.itemIn;
-        otherSlot.PassItemSlot(itemIn);
-        if(otherSlot.itemIn == itemIn)
+        if(otherSlot != null)
         {
-            itemIn = itemInPass;
+            Items itemInPass = otherSlot.itemIn;
+            otherSlot.PassItemSlot(itemIn);
+            if(otherSlot.itemIn == itemIn)
+            {
+                itemIn = itemInPass;
+            }
         }
     }
 

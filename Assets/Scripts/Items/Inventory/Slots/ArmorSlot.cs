@@ -15,15 +15,7 @@ public class ArmorSlot : InventorySlot
     
     private void Update ()
     {
-        if (itemIn == null)
-        {
-            imageItem.gameObject.SetActive(false);
-            imagePhantom.gameObject.SetActive(false);
-        }
-        else
-        {
-            DisplayItemSprite();
-        }
+        base.Update();
         armorToPass = itemIn as Armor;
         ArmorChanger();
     }
@@ -39,9 +31,9 @@ public class ArmorSlot : InventorySlot
 
     public override void PassItemSlot(Items itemToRecive)
     {
-        if (itemToRecive is Armor || itemToRecive == null)
+        if (itemToRecive is Weapon || itemToRecive == null)
         {
-            itemIn = itemToRecive;
+            base.PassItemSlot(itemToRecive);
         }
     }
 

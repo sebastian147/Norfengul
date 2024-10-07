@@ -14,15 +14,7 @@ public class WeaponSlot : InventorySlot
 
     private void Update ()
     {
-        if (itemIn == null)
-        {
-            imageItem.gameObject.SetActive(false);
-            imagePhantom.gameObject.SetActive(false);
-        }
-        else
-        {
-            DisplayItemSprite();
-        }
+        base.Update();
         weaponToPass = itemIn as Weapon;
         WeaponChanger();
     }
@@ -41,7 +33,7 @@ public class WeaponSlot : InventorySlot
     {
         if (itemToRecive is Weapon || itemToRecive == null)
         {
-            itemIn = itemToRecive;
+            base.PassItemSlot(itemToRecive);
         }
     }
 

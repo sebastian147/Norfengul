@@ -14,15 +14,7 @@ public class ShieldSlot : InventorySlot
     
     private void Update ()
     {
-        if (itemIn == null)
-        {
-            imageItem.gameObject.SetActive(false);
-            imagePhantom.gameObject.SetActive(false);
-        }
-        else
-        {
-            DisplayItemSprite();
-        }
+        base.Update();
         shieldToPass = itemIn as Shield;
         ShieldChanger();
     }
@@ -39,10 +31,9 @@ public class ShieldSlot : InventorySlot
 
     public override void PassItemSlot(Items itemToRecive)
     {
-        if (itemToRecive is Shield || itemToRecive == null)
-        {
-            itemIn = itemToRecive;
-        }
+        
+        base.PassItemSlot(itemToRecive);
+        
     }
 
     public override void OnPointerClick(PointerEventData eventData)
