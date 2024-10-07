@@ -6,60 +6,80 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-
 public class InventoryManager : MonoBehaviour
 {
-    public int Coins = 0;
+    // Public properties for coins and UI text
+    private int coins = 0;
+    public int Coins
+    {
+        get { return coins; }
+        set
+        {
+            coins = value;
+            UpdateCoinUI();
+        }
+    }
     public TextMeshProUGUI numCoins; 
 
+    // Maximum slots for the inventory
     private int maxSlots = 27;
     public int maxSlotsMoment = 9;
     public GameObject slotPrefab;
     public List<InventorySlot> inventorySlots;
-    
+
+    // GameObjects for inventory display
     public GameObject itemContainer;
     public GameObject inventoryMenu;
     public GameObject itemPikeablePrefab;
     public GameObject menuDesplegableToPass;
 
+    // Reference to the item info panel
     public InventoryItemInfoPanel inventoryItemInfoPanel;
 
+    // Slots for specific item types
     public InventorySlot armorSlot;
     public InventorySlot shieldSlot;
     public InventorySlot weaponSlot;
 
-
-    private void Start ()
+    private void Start()
     {
+        // Initialize inventory slots
         AddSlotsAndCreateInventorySlots();
     }
 
-    public void Update ()
+    public void Update()
     {
-        if(inventorySlots.Count < maxSlotsMoment)
+        // Ensure the inventory has the maximum allowed slots
+        if (inventorySlots.Count < maxSlotsMoment)
         {
             AddSlotsAndCreateInventorySlots();
         }
+        // Update the UI to show current coins
         UpdateCoinUI();
     }
 
-    public void UpdateCoinUI ()
+    public void UpdateCoinUI()
     {
+        // Update the coin display UI
         numCoins.text = Coins.ToString();
     }
 
-    public void AddSlotsAndCreateInventorySlots ()
+    public void AddSlotsAndCreateInventorySlots()
     {
-        if(maxSlotsMoment <= maxSlots)
+        // Add new inventory slots up to the maximum allowed
+        if (maxSlotsMoment <= maxSlots)
         {
             for (int i = inventorySlots.Count; i < maxSlotsMoment; i++)
             {
                 GameObject slotInstance = Instantiate(slotPrefab, itemContainer.transform);
                 InventorySlot slotComponent = slotInstance.GetComponent<InventorySlot>();
+                
+                // Set references for the slot
                 slotComponent.inventoryItemInfoPanel = inventoryItemInfoPanel;
                 slotComponent.slotId = i;
                 slotComponent.inventory = inventoryMenu;
                 slotComponent.menuDesplegable = menuDesplegableToPass;
+
                 if (slotComponent != null)
                 {
                     inventorySlots.Add(slotComponent);  
@@ -68,36 +88,39 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem (Items ItemToAdd)
+    public void AddItem(Items itemToAdd)
     {
+        // Add an item to the first available empty slot
         int emptySlotIndex = FindEmptySlot();
         if (emptySlotIndex != -1)
         {
-            inventorySlots[emptySlotIndex].itemIn = ItemToAdd;
+            inventorySlots[emptySlotIndex].itemIn = itemToAdd;
         }
         else
         {
-            Debug.Log("Inventario lleno. No se puede agregar más items.");
+            Debug.Log("Inventory full. Cannot add more items.");
         }
     }
 
-    public void RemoveItem(int SlotIdToRemove)
+    public void RemoveItem(int slotIdToRemove)
     {
-        if (SlotIdToRemove >= 0 && SlotIdToRemove < inventorySlots.Count)
+        // Remove an item from the specified slot
+        if (slotIdToRemove >= 0 && slotIdToRemove < inventorySlots.Count)
         {
-            inventorySlots[SlotIdToRemove].itemIn = null;
+            inventorySlots[slotIdToRemove].itemIn = null;
         }
         else
         {
-            Debug.Log("ID de slot no válido: " + SlotIdToRemove);
+            Debug.Log("Invalid slot ID: " + slotIdToRemove);
         }
     }
 
-    public void DropItem(int SlotToDrop)
+    public void DropItem(int slotToDrop)
     {
-        if (SlotToDrop >= 0 && SlotToDrop < inventorySlots.Count)
+        // Drop an item from the specified slot
+        if (slotToDrop >= 0 && slotToDrop < inventorySlots.Count)
         {
-            InventorySlot slot = inventorySlots[SlotToDrop];
+            InventorySlot slot = inventorySlots[slotToDrop];
             Items itemToDrop = slot.itemIn;
 
             if (itemToDrop != null)
@@ -106,45 +129,41 @@ public class InventoryManager : MonoBehaviour
                 ItemInWorld itemPickableScript = itemPickable.GetComponent<ItemInWorld>();
                 itemPickableScript.itemsPickable = slot.itemIn;
                 itemPickableScript.cooldown = 15.0f;
-                RemoveItem(SlotToDrop);
+                RemoveItem(slotToDrop);
             }
         }
         else
         {
-            Debug.Log("ID de slot no válido: " + SlotToDrop);
+            Debug.Log("Invalid slot ID: " + slotToDrop);
         }
     }
 
-    public void EquipItem(int SlotToEquip)
+    public void EquipItem(int slotToEquip)
     {
-        if(inventorySlots[SlotToEquip].itemIn is Armor)
+        // Equip an item from the specified slot
+        if (inventorySlots[slotToEquip].itemIn is Armor)
         {
-            inventorySlots[SlotToEquip].ReciveItemSlot(armorSlot);
+            inventorySlots[slotToEquip].ReciveItemSlot(armorSlot);
         }
-        else
+        else if (inventorySlots[slotToEquip].itemIn is Weapon)
         {
-            if(inventorySlots[SlotToEquip].itemIn is Weapon)
-            {
-                inventorySlots[SlotToEquip].ReciveItemSlot(weaponSlot);
-            }
-            else
-            {
-                if(inventorySlots[SlotToEquip].itemIn is Shield)
-                {
-                    inventorySlots[SlotToEquip].ReciveItemSlot(shieldSlot);
-                }
-            }
+            inventorySlots[slotToEquip].ReciveItemSlot(weaponSlot);
+        }
+        else if (inventorySlots[slotToEquip].itemIn is Shield)
+        {
+            inventorySlots[slotToEquip].ReciveItemSlot(shieldSlot);
         }
     }
 
-    public void UseItem(int SlotToUse)
+    public void UseItem(int slotToUse)
     {
-        RemoveItem(SlotToUse);
+        // Use an item from the specified slot
+        RemoveItem(slotToUse);
     }
 
-
-    public int FindEmptySlot ()
+    public int FindEmptySlot()
     {
+        // Find the first empty slot in the inventory
         for (int i = 0; i < inventorySlots.Count; i++)
         {
             if (inventorySlots[i].itemIn == null)
@@ -152,11 +171,12 @@ public class InventoryManager : MonoBehaviour
                 return i;
             }
         }
-        return -1;
+        return -1; // Return -1 if no empty slot is found
     }
 
     public int FindItem(Items itemToFind)
     {
+        // Find the index of a specific item in the inventory
         for (int i = 0; i < inventorySlots.Count; i++)
         {
             if (inventorySlots[i].itemIn != null && inventorySlots[i].itemIn == itemToFind)
@@ -164,7 +184,6 @@ public class InventoryManager : MonoBehaviour
                 return i;
             }
         }
-        return -1;
+        return -1; // Return -1 if the item is not found
     }
-
 }

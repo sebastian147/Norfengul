@@ -10,78 +10,43 @@ public class InventoryPreview : MonoBehaviour
     public GameObject barbaPj;
     public GameObject armaPj;
     public GameObject escudoPj;
-    
+
     public GameObject cuerpoPw;
     public GameObject peloPw;
     public GameObject barbaPw;
     public GameObject armaPw;
     public GameObject escudoPw;
 
-    public void Update ()
+    private void Update()
     {
-       ChangeSpritePreview ();
+       ChangeSpritePreview(); // Keep preview updated
     }
 
-    public void ChangeSpritePreview ()
+    private void ChangeSpritePreview()
     {
-        //Cuerpo
-        Image cuerpoIm = cuerpoPw.GetComponent<Image>();
-        SpriteRenderer cuerpoSp = cuerpoPj.GetComponent<SpriteRenderer>();
+        // Transfer sprites from the character GameObjects to the preview
+        UpdatePreviewSprite(cuerpoPj, cuerpoPw);
+        UpdatePreviewSprite(peloPj, peloPw);
+        UpdatePreviewSprite(barbaPj, barbaPw);
+        UpdatePreviewSprite(armaPj, armaPw, true);
+        UpdatePreviewSprite(escudoPj, escudoPw, true);
+    }
 
-        if (cuerpoIm != null && cuerpoSp != null)
+    private void UpdatePreviewSprite(GameObject characterObject, GameObject previewObject, bool checkEnabled = false)
+    {
+        Image previewImage = previewObject.GetComponent<Image>();
+        SpriteRenderer characterSprite = characterObject.GetComponent<SpriteRenderer>();
+
+        if (previewImage != null && characterSprite != null)
         {
-            cuerpoIm.sprite = cuerpoSp.sprite;
-        }
- 
-        //Pelo
-        Image peloIm = peloPw.GetComponent<Image>();
-        SpriteRenderer peloSp = peloPj.GetComponent<SpriteRenderer>();
-
-        if (peloIm != null && peloSp != null)
-        {
-            peloIm.sprite = peloSp.sprite;
-        }
-        
-        //Barba
-        Image barbaIm = barbaPw.GetComponent<Image>();
-        SpriteRenderer barbaSp = barbaPj.GetComponent<SpriteRenderer>();
-
-        if (barbaIm != null && barbaSp != null)
-        {
-            barbaIm.sprite = barbaSp.sprite;
-        }
-
-        //Arma
-        Image armaIm = armaPw.GetComponent<Image>();
-        SpriteRenderer armaSp = armaPj.GetComponent<SpriteRenderer>();
-
-        if (armaIm != null && armaSp != null)
-        {
-            if (armaSp.enabled)
+            if (!checkEnabled || characterSprite.enabled)
             {
-                armaIm.sprite = armaSp.sprite;
-                armaIm.enabled = true;
+                previewImage.sprite = characterSprite.sprite;
+                previewImage.enabled = true;
             }
             else
             {
-                armaIm.enabled = false;
-            }
-        }
-
-        //Escudo
-        Image escudoIm = escudoPw.GetComponent<Image>();
-        SpriteRenderer escudoSp = escudoPj.GetComponent<SpriteRenderer>();
-
-        if (escudoIm != null && escudoSp != null)
-        {
-            if (escudoSp.enabled)
-            {
-                escudoIm.sprite = escudoSp.sprite;
-                escudoIm.enabled = true;
-            }
-            else
-            {
-                escudoIm.enabled = false;
+                previewImage.enabled = false;
             }
         }
     }

@@ -5,37 +5,51 @@ using UnityEngine.UI;
 
 public class InventoryMenuDesplegable : MonoBehaviour
 {
-    public int slotIdRequired;
-    public InventoryManager inventoryManager;
+    private int _slotIdRequired;
+    public int slotIdRequired
+    {
+        get { return _slotIdRequired; }
+        set 
+        { 
+            _slotIdRequired = value; 
+            UpdateButtonInteractivity(); 
+        }
+    }
+    public InventoryManager InventoryManager { get; set; }
 
     public GameObject useItemButton;
     public GameObject equipItemButton;
     public GameObject dropItemButton;
 
-    private Button useItemButtonComponent;
-    private Button equipItemButtonComponent;
-    private Button dropItemButtonComponent;
+    private Button _useItemButtonComponent;
+    private Button _equipItemButtonComponent;
+    private Button _dropItemButtonComponent;
 
-    public void Start()
+    private void Start()
     {
-        useItemButtonComponent = useItemButton.GetComponent<Button>();
-        equipItemButtonComponent = equipItemButton.GetComponent<Button>();
-        dropItemButtonComponent = dropItemButton.GetComponent<Button>();
+        // Initialize button components for later use
+        _useItemButtonComponent = useItemButton.GetComponent<Button>();
+        _equipItemButtonComponent = equipItemButton.GetComponent<Button>();
+        _dropItemButtonComponent = dropItemButton.GetComponent<Button>();
+
+        // Assign listeners to buttons only once in Start to avoid multiple subscriptions
+        _useItemButtonComponent.onClick.AddListener(() => InventoryManager.UseItem(_slotIdRequired));
+        _equipItemButtonComponent.onClick.AddListener(() => InventoryManager.EquipItem(_slotIdRequired));
+        _dropItemButtonComponent.onClick.AddListener(() => InventoryManager.DropItem(_slotIdRequired));
     }
 
-    public void Update()
+    private void UpdateButtonInteractivity()
     {
-        useItemButtonComponent.onClick.AddListener(() => inventoryManager.UseItem(slotIdRequired));
-        equipItemButtonComponent.onClick.AddListener(() => inventoryManager.EquipItem(slotIdRequired));
-        dropItemButtonComponent.onClick.AddListener(() => inventoryManager.DropItem(slotIdRequired));
-
-        if(inventoryManager.inventorySlots[slotIdRequired].itemIn is Armor || inventoryManager.inventorySlots[slotIdRequired].itemIn is Weapon || inventoryManager.inventorySlots[slotIdRequired].itemIn is Shield)
+        // Check item type and enable/disable equip button accordingly
+        if(InventoryManager.inventorySlots[_slotIdRequired].itemIn is Armor 
+           || InventoryManager.inventorySlots[_slotIdRequired].itemIn is Weapon 
+           || InventoryManager.inventorySlots[_slotIdRequired].itemIn is Shield)
         {
-            equipItemButtonComponent.interactable = true;
+            _equipItemButtonComponent.interactable = true;
         }
         else
         {
-            equipItemButtonComponent.interactable = false;
+            _equipItemButtonComponent.interactable = false;
         }
     }
 

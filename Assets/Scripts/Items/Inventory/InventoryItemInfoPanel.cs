@@ -7,8 +7,17 @@ using TMPro;
 
 public class InventoryItemInfoPanel : MonoBehaviour
 {
-    public Items itemIn;
+    private Items _itemIn;
 
+    public Items itemIn
+    {
+        get { return _itemIn; }
+        set 
+        { 
+            _itemIn = value; 
+            UpdateItemInfo(); // Automatically update the UI when the item is set
+        }
+    }
     public TextMeshProUGUI ItemNamePanel;
     public TextMeshProUGUI ItemDescriptionPanel;
     public TextMeshProUGUI ItemValuePanel;
@@ -18,18 +27,19 @@ public class InventoryItemInfoPanel : MonoBehaviour
     public GameObject itemValue;
     public GameObject itemDamage;
 
-    public void Update()
+    private void UpdateItemInfo()
     {
-        if(itemIn != null)
+        // Check if there is an item to display
+        if(_itemIn  != null)
         {
-            ItemNamePanel.text = itemIn.itemName;
-            ItemDescriptionPanel.text = itemIn.itemDescription;
-            ItemValuePanel.text = itemIn.itemValue.ToString();
+            ItemNamePanel.text = _itemIn.itemName;
+            ItemDescriptionPanel.text = _itemIn.itemDescription;
+            ItemValuePanel.text = _itemIn.itemValue.ToString();
             itemValue.SetActive(true);
             itemDamage.SetActive(true);
-            if(itemIn is Weapon)
+            if(_itemIn  is Weapon)
             {
-                Weapon weapon = itemIn as Weapon;
+                Weapon weapon = _itemIn as Weapon;
                 ItemDamagePanel.text = weapon.damage.ToString();
             }
         }

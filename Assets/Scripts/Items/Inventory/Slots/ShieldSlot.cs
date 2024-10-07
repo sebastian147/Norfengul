@@ -7,43 +7,13 @@ using TMPro;
 using static JsonFunctions;
 
 
-public class ShieldSlot : InventorySlot
+public class ShieldSlot : EquipableSlot<Shield>
 {
-    private Shield shieldToPass;
     public MeleShieldLogic ShieldLogic;
-    
-    private void Update ()
-    {
-        base.Update();
-        shieldToPass = itemIn as Shield;
-        ShieldChanger();
-    }
 
-    public override void ReciveItemSlot(InventorySlot slotToPass)
+    public override void Changer(Shield iToPass)
     {
-        if (slotToPass.itemIn is Shield || slotToPass.itemIn == null)
-        {
-            Items itemInPass = slotToPass.itemIn;
-            slotToPass.PassItemSlot(itemIn);
-            itemIn = itemInPass;
-        }
-    }
-
-    public override void PassItemSlot(Items itemToRecive)
-    {
-        
-        base.PassItemSlot(itemToRecive);
-        
-    }
-
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("No hay menu desplegable en este slot");
-    }
-
-    public void ShieldChanger()
-    {
-        ShieldLogic.shield = shieldToPass;
+        ShieldLogic.shield = iToPass;
     }
 
 }
