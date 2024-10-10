@@ -14,6 +14,5 @@ public class Weapon : Items
     [SerializeField] public int effect;
     [SerializeField] public string category;
     [SerializeField] public string label;
-    [SerializeField] public UnityEngine.U2D.Animation.SpriteLibraryAsset library;
     [SerializeField] public Rect HitBox; // Defining weapon hitbox area
 }

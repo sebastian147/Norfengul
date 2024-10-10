@@ -7467,7 +7467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde3d599690a00e46b834c6055382087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shield: {fileID: 11400000, guid: 2b9b58dfd7afb014697731fbfd74f856, type: 2}
   mySpriteRenderer: {fileID: 5089487086485701752}
   mySpriteLibrary: {fileID: 6682166191420498984}
   mySpriteResolver: {fileID: 7275336686405424596}
@@ -8214,7 +8213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554e51bf4c93a764fbfa84e6ef154729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coins: 0
   numCoins: {fileID: 58047549215174294}
   maxSlotsMoment: 9
   slotPrefab: {fileID: 6179159961294576408, guid: 8f6f094e83fbda241b0884dc1b1c1c70,
@@ -17109,7 +17107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea04ffbd84026640aa6135101dbc071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIn: {fileID: 0}
   ItemNamePanel: {fileID: 8431237803883476620}
   ItemDescriptionPanel: {fileID: 3108542732745169503}
   ItemValuePanel: {fileID: 1177518409211696799}
@@ -18113,8 +18110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5a798f495c1b24f888c91c20181c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIdRequired: 0
-  inventoryManager: {fileID: 6836941357781199213}
   useItemButton: {fileID: 360337606788304929}
   equipItemButton: {fileID: 5144004393056711973}
   dropItemButton: {fileID: 2059506840752308451}
@@ -18247,7 +18242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efb7fa05023aa04b912baf7eb996a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Armas: {fileID: 11400000, guid: e4753b29aa158db4fad4e22ee2806a67, type: 2}
   mySpriteRenderer: {fileID: 8764354547361725496}
   mySpriteLibrary: {fileID: 3186983592829019602}
   mySpriteResolver: {fileID: 4913300104244398425}

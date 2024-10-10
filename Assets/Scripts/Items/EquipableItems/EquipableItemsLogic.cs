@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleWeaponLogic : MonoBehaviour
+public class EquipableItemsLogic<t> : MonoBehaviour where t : Items
 {
-    public Weapon Armas;
+    protected t equipableItem;
+    public virtual t EquipableItem
+    {
+        get { return equipableItem; }
+        set { equipableItem = value; 
+              ChangeEquip();
+            }
+    }
     public SpriteRenderer mySpriteRenderer;
     public UnityEngine.U2D.Animation.SpriteLibrary mySpriteLibrary;
     public UnityEngine.U2D.Animation.SpriteResolver mySpriteResolver;
 
-    // Updates the weapon each frame, should consider moving to an event-based system if performance issues arise
-    public void Update()
-    {
-        ChangeWeapon();
-    }
 
     // Changes the weapon sprite based on the current Weapon object assigned
-    void ChangeWeapon()
+    public void ChangeEquip()
     {
-        if (Armas != null)
+        if (equipableItem != null)
         {
+
             if (mySpriteLibrary == null || mySpriteRenderer == null || mySpriteResolver == null) {
-                Debug.LogError("Missing components in MeleeWeaponLogic");
+                Debug.LogError("Missing components in Logic");
                 return;
             }
-            mySpriteLibrary.spriteLibraryAsset = Armas.library;
+            mySpriteLibrary.spriteLibraryAsset = equipableItem.library;
             mySpriteResolver.ResolveSpriteToSpriteRenderer();
             mySpriteRenderer.enabled = true;
         }
