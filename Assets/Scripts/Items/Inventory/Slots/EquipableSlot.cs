@@ -10,29 +10,40 @@ using static JsonFunctions;
 public class EquipableSlot<T> : InventorySlot where T : Items
 {
 
-    private T iToPass;    
+    protected T _iToPass;
+    public virtual T iToPass
+    {
+        get { return _iToPass; }
+        set { if(_iToPass != value)
+                {
+                    _iToPass = value; 
+                    Changer(_iToPass as T);
+
+                }
+            }
+    }
     private void Update ()
     {
         base.Update();
-        iToPass = itemIn as T;
-        Changer(iToPass);
+        iToPass  = itemIn as T; 
     }
 
     public override void ReciveItemSlot(InventorySlot slotToPass)
     {
         if (slotToPass.itemIn is T || slotToPass.itemIn == null)
         {
-            Items itemInPass = slotToPass.itemIn;
+            Items _iToPass = slotToPass.itemIn;
             slotToPass.PassItemSlot(itemIn);
-            itemIn = itemInPass;
+            itemIn = _iToPass;
         }
     }
 
     public override void PassItemSlot(Items itemToRecive)
     {
-        
-        base.PassItemSlot(itemToRecive);
-        
+        if(itemToRecive is T || itemToRecive == null)
+        {
+            base.PassItemSlot(itemToRecive);
+        }
     }
 
     public override void OnPointerClick(PointerEventData eventData)
@@ -40,7 +51,9 @@ public class EquipableSlot<T> : InventorySlot where T : Items
         Debug.Log("No hay menu desplegable en este slot");
     }
 
-    public virtual void Changer(T iToPass){}
+    public virtual void Changer(T iToPass){
+        Debug.Log("No hay nada que cambiar");
+    }
 
 }
 

@@ -96,7 +96,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             menuDesplegable.SetActive(false);
             itemToDrag.transform.SetParent(inventory.transform);
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-            Debug.Log("ON DRAG");
         }
     }
 
@@ -104,7 +103,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         itemToDrag.transform.SetParent(this.gameObject.transform);
         rectTransform.localPosition = initialPosition;
-        Debug.Log("ON END DRAG");
     }
 
     public virtual void OnDrop(PointerEventData eventData)
