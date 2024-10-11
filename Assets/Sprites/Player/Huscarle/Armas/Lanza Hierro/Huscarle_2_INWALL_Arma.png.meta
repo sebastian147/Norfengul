@@ -133,7 +133,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 8eb75c069b96e4244b182dc75708761b, type: 3}
+      name: _NormalMap
     nameFileIdTable:
       Huscarle_2_INWALL_Arma_0: -1270659764
   spritePackingTag: 

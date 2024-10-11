@@ -238,7 +238,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 91496120b2883894e87ba93602e5e458, type: 3}
+      name: _NormalMap
     nameFileIdTable:
       Huscarle_2_ATTACK_Escudo_2: 1241670138
       Huscarle_2_ATTACK_Escudo_1: 634268972
