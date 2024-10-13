@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prueba Sebaster.unity
     guid: 7bc1d42112e969443b83ae8085bf8dd9
+  - enabled: 1
+    path: Assets/Scenes/Testing.unity
+    guid: 99282da3774a7174ab1f9495d47a7d2a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8b1759434aa6d874bad4056ed7832a6a,
       type: 2}

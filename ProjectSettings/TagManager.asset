@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -53,6 +54,9 @@ TagManager:
     locked: 0
   - name: Trees
     uniqueID: 905581775
+    locked: 0
+  - name: Enemy
+    uniqueID: 99355747
     locked: 0
   - name: player
     uniqueID: 3894075897
