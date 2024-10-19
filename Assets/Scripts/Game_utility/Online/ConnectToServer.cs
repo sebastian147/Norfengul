@@ -34,6 +34,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         Instance = this;
         //para cambiar el escenario.
+        scenes.Add("Testing");
         scenes.Add("Prueba Sebaster");
         scenes.Add("Nivel 1");
         ListCicleMax = scenes.Count;

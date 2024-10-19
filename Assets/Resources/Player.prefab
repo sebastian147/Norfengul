@@ -15962,6 +15962,7 @@ GameObject:
   - component: {fileID: 3218079559990597199}
   - component: {fileID: 122383343757912151}
   - component: {fileID: 1805627073131452425}
+  - component: {fileID: 6715511791181855056}
   m_Layer: 5
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -16054,6 +16055,22 @@ MonoBehaviour:
   canvasGroup: {fileID: 0}
   initialPosition: {x: 0, y: 0, z: 0}
   WeaponLogic: {fileID: 8107550478014900018}
+--- !u!114 &6715511791181855056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539015816546955871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde3d599690a00e46b834c6055382087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: {fileID: 0}
+  mySpriteRenderer: {fileID: 0}
+  mySpriteLibrary: {fileID: 0}
+  mySpriteResolver: {fileID: 0}
 --- !u!1 &6714034403799996251
 GameObject:
   m_ObjectHideFlags: 0
