@@ -37,13 +37,4 @@ public class EquipableItemsLogic<t> : MonoBehaviour where t : Items
             mySpriteRenderer.enabled = false;
         }
     }
-        /*void Update()
-        {
-                mySpriteResolver.SetCategoryAndLabel(Armas.category, Armas.label);
-                mySpriteResolver.ResolveSpriteToSpriteRenderer();
-        }*/
 }
-/* to do
-* dont call ChangeWeapon() in update or add a conditional
-* check if this is waponr or equipmet change ask Pablo
-*/

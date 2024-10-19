@@ -5,32 +5,47 @@ using System.IO;
 using static JsonFunctions;
 using TMPro;
 
+/// <summary>
+/// Clase encargada de cambiar y guardar las skins del personaje.
+/// </summary>
 public class CambioSkin : MonoBehaviour
 {
-    private string pathArma = "Armas_Huscarle/";
-    private string pathBarbas = "Skins_Huscarle/Barbas/";
-    private string pathCuerpo = "Skins_Huscarle/Cuerpo/";
-    private string pathEscudos = "Skins_Huscarle/Escudos/";
-    private string pathPelos = "Skins_Huscarle/Pelos/";
+    private readonly string pathArma = "Armas_Huscarle/"; // Ruta de las armas
+    private readonly string pathBarbas = "Skins_Huscarle/Barbas/"; // Ruta de las barbas
+    private readonly string pathCuerpo = "Skins_Huscarle/Cuerpo/"; // Ruta de los cuerpos
+    private readonly string pathEscudos = "Skins_Huscarle/Escudos/"; // Ruta de los escudos
+    private readonly string pathPelos = "Skins_Huscarle/Pelos/"; // Ruta de los pelos
 
-    public string ArmaSelect = "Arma";
-    public string BarbaSelect = "Huscarle_Barba1";
-    public string CuerpoSelect = "Huscarle_Nude";
-    public string EscudoSelect = "Huscarle_EscudoMadera";
-    public string PeloSelect = "Huscarle_Pelo1";
+    private string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json"; // Archivo de configuración de la skin
+    private string archivoPlayer = "Assets/Scripts/Game_utility/JSON/playerData.json"; // Archivo de configuración del jugador
 
-    private string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json";
-    private string archivoPlayer = "Assets/Scripts/Game_utility/JSON/playerData.json";
-    private string name;
-    public void SaveName(TMP_InputField   textMeshPro)
+    private string name; // Nombre del jugador
+
+    // Propiedades que almacenan las selecciones actuales de las skins
+    public string ArmaSelect { get; set; } = "Espada_de_Hierro";
+    public string BarbaSelect { get; set; } = "Huscarle_Barba1";
+    public string CuerpoSelect { get; set; } = "Huscarle_Nude";
+    public string EscudoSelect { get; set; } = "Huscarle_EscudoMadera";
+    public string PeloSelect { get; set; } = "Huscarle_Pelo1";
+
+    /// <summary>
+    /// Guarda el nombre del jugador a partir de un campo de texto.
+    /// </summary>
+    /// <param name="textMeshPro">El campo de texto que contiene el nombre.</param>
+    public void SaveName(TMP_InputField textMeshPro)
     {
-        if (textMeshPro != null) // Verificar que el componente TextMeshPro existe
+        if (textMeshPro != null) // Verifica que el componente TextMeshPro existe
         {
-                name = textMeshPro.text; // Extraer el texto del TextMeshPro y asignarlo a la variable name
+            name = textMeshPro.text; // Extrae el texto y lo asigna a la variable name
         }
     }
+
+    /// <summary>
+    /// Guarda la configuración de la skin en archivos JSON.
+    /// </summary>
     public void GuardarSkin()
     {
+        // Crea una instancia de CharacterSkin con las rutas seleccionadas
         CharacterSkin skin = new CharacterSkin()
         {
             arma = pathArma + ArmaSelect,
@@ -39,8 +54,11 @@ public class CambioSkin : MonoBehaviour
             Escudos = pathEscudos + EscudoSelect,
             Pelos = pathPelos + PeloSelect
         };
-        EscribirDatoJSON<PlayerData, string>(archivoPlayer, datos => datos.Name, (datos, valor) => datos.Name = valor, name);
-        GuardarJSON<CharacterSkin>(archivoCharacter,skin);
 
+        // Guarda el nombre del jugador en el archivo JSON de jugador
+        EscribirDatoJSON<PlayerData, string>(archivoPlayer, datos => datos.Name, (datos, valor) => datos.Name = valor, name);
+
+        // Guarda la configuración de la skin en el archivo JSON de personaje
+        GuardarJSON<CharacterSkin>(archivoCharacter, skin);
     }
 }

@@ -25,8 +25,8 @@ public class VictoryState : MobBaseState
         }
         if(Mathf.Abs(myMob.horizontalMove) != 0 && myMob.running == true)
         {
-                myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
-                return;
+            myMob.actualState = myMob.myStateMachine.changeState(myStates.Running,myMob);
+            return;
         }
         if(Mathf.Abs(myMob.horizontalMove) != 0)
         {

@@ -3,63 +3,85 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// Controla el efecto de disolución en varios objetos de juego.
+/// </summary>
 public class Dissolve : MonoBehaviour
 {
-    [SerializeField] GameObject[] t; 
-    Material[] material;
-    int i = 0;
+    [SerializeField] private GameObject[] t; // Objetos que tendrán el efecto de disolución
+    private Material[] materials; // Materiales de los objetos a disolver
+    private int i = 0; // Índice para recorrer los objetos
 
-    bool isDissolving = false;
-    double fade = 1f;
+    private bool isDissolving = false; // Bandera que indica si el efecto de disolución está activo
+    private double fade = 1f; // Controla el nivel de disolución (1 es visible, 0 es invisible)
 
-    bool active = false;
-    // Start is called before the first frame update
+    private bool active = false; // Bandera para activar o desactivar el efecto
+
+    /// <summary>
+    /// Propiedad que controla si el efecto de disolución está activo o no.
+    /// </summary>
+    public bool ActiveEffect
+    {
+        get => active;
+        set
+        {
+            active = value;
+            if (active)
+            {
+                isDissolving = true; // Si se activa, inicia la disolución
+            }
+        }
+    }
+
+    /// <summary>
+    /// Método que se ejecuta al inicio. Inicializa los materiales de los objetos.
+    /// </summary>
     void Start()
     {
-        material = new Material[t.Length];
-        foreach(GameObject e in t) 
+        materials = new Material[t.Length]; // Inicializa el array de materiales
+        for (int i = 0; i < t.Length; i++)
         {
             try
             {
-                material[i] = e.GetComponent<SpriteRenderer>().material;
+                // Intenta obtener el material del SpriteRenderer del objeto actual
+                materials[i] = t[i].GetComponent<SpriteRenderer>().material;
             }
-            catch(Exception s)
+            catch (Exception e)
             {
-                print(i);
-                print(e);
-                print(s);
+                // Si falla, imprime un error
+                Debug.LogError($"Error en {i}: {t[i]} - {e}");
             }
-            i++;
         }
-       // material = GetComponent<SpriteRenderer>().material;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Método que se llama en cada frame. Controla la disolución.
+    /// </summary>
     void Update()
     {
-
-        if(active)
+        if (isDissolving) // Si está disolviendo
         {
-            isDissolving = true;
-        }
+            fade -= Time.deltaTime * 0.5; // Reduce el valor de fade gradualmente
 
-        if(isDissolving)
-        {
-            fade -=  Time.deltaTime*0.5;
-
-            if(fade <= 0f)
+            if (fade <= 0f)
             {
-                fade = 0f;
-                isDissolving = false;
+                fade = 0f; // Asegura que fade no sea negativo
+                isDissolving = false; // Detiene la disolución cuando fade llega a 0
             }
-            for(int i = 0; i<t.Length;i++ ) 
+
+            // Aplica el valor de fade a cada material
+            for (int i = 0; i < t.Length; i++)
             {
-                material[i].SetFloat("_Fade", (float)fade);
+                materials[i].SetFloat("_Fade", (float)fade);
             }
         }
     }
-    public void Active()
+
+    /// <summary>
+    /// Activa el efecto de disolución.
+    /// </summary>
+    public void TriggerDissolve()
     {
-        active = true;
+        ActiveEffect = true; // Activa el efecto
     }
 }

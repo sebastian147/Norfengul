@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MeleShieldLogic : EquipableItemsLogic<Shield>
 {
-    public Shield shield
+    [HideInInspector]public Shield shield
     {
         get { return base.EquipableItem; }
         set { base.EquipableItem = value; } 
     }
+    
 }
 /* to do
 *  dont call ChangeShield() in update or add a conditional

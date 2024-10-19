@@ -8,7 +8,7 @@ public class CollisionUpdates : MonoBehaviour
     {
         IsDeathZoneCheck(myMob);
         IsGroundedCheck(myMob);
-	IsWallCheck(myMob);
+		IsWallCheck(myMob);
     }
 	private void IsWallCheck(Mob myMob)
 	{
@@ -38,10 +38,10 @@ public class CollisionUpdates : MonoBehaviour
 	{
 		Collider2D[] collidersD = Physics2D.OverlapCircleAll(myMob.m_GroundCheck.position, myMob.k_GroundedRadius, myMob.m_whatIsDeath);
 
-                for (int i = 0; i < collidersD.Length; i++)
-                {
-                        myMob.TakeDamage(147483647, false, 0);
-                }
+        for (int i = 0; i < collidersD.Length; i++)
+        {
+            myMob.TakeDamage(147483647, false, 0);
+        }
 	}
 
     public void IsGroundedCheck(Mob myMob)

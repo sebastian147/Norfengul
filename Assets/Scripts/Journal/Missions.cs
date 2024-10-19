@@ -18,12 +18,15 @@ public class Missions : ScriptableObject
     public string missionName;
     [TextArea] public string description;
     public List<string> requiredAmount = new List<string>();
-    public Items requiredItems;
+    public Items requiredItems; //could be a list?
     public int experienceReward;
     public int coinsReward;
     public List<Items> itemRewards = new List<Items>();
 
-    public Transform NPCPosition;
-    
+    public Transform NPCPosition; //Npc que te dio la mision
+    public Transform misionPosition; //Posicion del objetivo de la mision
+
+    //check if add traquers to items
+
 }
 

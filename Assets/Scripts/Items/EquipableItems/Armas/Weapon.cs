@@ -15,4 +15,6 @@ public class Weapon : Items
     [SerializeField] public string category;
     [SerializeField] public string label;
     [SerializeField] public Rect HitBox; // Defining weapon hitbox area
+    [SerializeField] public float cooldown; // Cooldown period for weapon attacks
+    [SerializeField] public bool twoHanded ; // Range of weapon attacks
 }

@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ArmorType { Light, Heavy }
+public enum ArmorType { Light, Heavy, Medium, Magical }
 
 [CreateAssetMenu(fileName = "NewArmor", menuName = "Items/Armor", order = 1)]
 public class Armor : Items
 {
-    public ArmorType armorType;
-    public int damageAbsorb;
-    public int magicResistance; 
+    [SerializeField] public ArmorType armorType;
+    [SerializeField] public int magicalArmor;
+    [SerializeField] public int fisicalArmor;
+    [SerializeField] public int durability;
+    [SerializeField] public float weight;
 }
-/*to do
-* check if library not null
-*/

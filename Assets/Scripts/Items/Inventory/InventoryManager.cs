@@ -54,8 +54,6 @@ public class InventoryManager : MonoBehaviour
         {
             AddSlotsAndCreateInventorySlots();
         }
-        // Update the UI to show current coins
-        UpdateCoinUI();
     }
 
     public void UpdateCoinUI()

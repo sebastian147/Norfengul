@@ -11,5 +11,5 @@ public class Items : ScriptableObject
     [TextArea] public string itemDescription;
     [SerializeField]public int itemValue;
     [SerializeField]public UnityEngine.U2D.Animation.SpriteLibraryAsset library;
-    [SerializeField]public string Sound;
+    [SerializeField]public string sound; //temporary TODO
 }
