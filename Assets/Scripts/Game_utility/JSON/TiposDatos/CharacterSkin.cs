@@ -6,12 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterSkin 
 {
-    public string arma;    // Name of the weapon.
+    public string Arma;    // Name of the weapon.
     public string Barbas;  // Name of the beard.
     public string Cuerpo;  // Name of the body type.
     public string Escudos; // Name of the shield.
     public string Pelos;   // Name of the hair type.
 }
-/* ToDO:  
-    Change name of arma to Arma
-*/

@@ -57,7 +57,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
                         CharacterSkin skins = CargarJSON<CharacterSkin>(skinJson);
                         string Barbas = skinRandomCarpeta(folderPath+"/Barbas", "Assets/Resources/",".spriteLib");
-                        string Arma = skins.arma;
+                        string Arma = skins.Arma;
                         string Cuerpo = skins.Cuerpo;
                         string Escudos = skins.Escudos;
                         string Pelos = skinRandomCarpeta(folderPath+"/Pelos", "Assets/Resources/",".spriteLib");

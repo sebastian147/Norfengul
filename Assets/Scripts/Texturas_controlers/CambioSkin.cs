@@ -48,7 +48,7 @@ public class CambioSkin : MonoBehaviour
         // Crea una instancia de CharacterSkin con las rutas seleccionadas
         CharacterSkin skin = new CharacterSkin()
         {
-            arma = pathArma + ArmaSelect,
+            Arma = pathArma + ArmaSelect,
             Barbas = pathBarbas + BarbaSelect,
             Cuerpo = pathCuerpo + CuerpoSelect,
             Escudos = pathEscudos + EscudoSelect,
@@ -61,4 +61,5 @@ public class CambioSkin : MonoBehaviour
         // Guarda la configuración de la skin en el archivo JSON de personaje
         GuardarJSON<CharacterSkin>(archivoCharacter, skin);
     }
+    //TODO add exception when saving skin
 }
