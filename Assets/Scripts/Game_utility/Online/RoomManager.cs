@@ -50,10 +50,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 {
                         ColorList colorSelect = CargarJSON<ColorList>(archivoJson);
                         Debug.Log(colorSelect);
-                        int ran = Random.Range(0, colorSelect.colors.Count);
-                        float R = colorSelect.colors[ran].r;
-                        float B = colorSelect.colors[ran].b;
-                        float G = colorSelect.colors[ran].g;
+                        int ran = Random.Range(0, colorSelect.Colors.Count);
+                        float R = colorSelect.Colors[ran].R;
+                        float B = colorSelect.Colors[ran].B;
+                        float G = colorSelect.Colors[ran].G;
 
                         CharacterSkin skins = CargarJSON<CharacterSkin>(skinJson);
                         string Barbas = skinRandomCarpeta(folderPath+"/Barbas", "Assets/Resources/",".spriteLib");

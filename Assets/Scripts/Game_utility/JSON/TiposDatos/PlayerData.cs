@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Serializable class representing player data with a name and value.
+/// <summary>
+/// Clase serializable que representa los datos de un jugador, específicamente su nombre.
+/// </summary>
 [System.Serializable]
 public class PlayerData 
 {
-    public string Name;  // Player's name.
-    public string Value; // Player's value (VALUE?).
-}
+    /// <summary>
+    /// Obtiene o establece el nombre del jugador.
+    /// </summary>
+    public string Name;
+    /// <summary>
+    /// Obtiene o establece el valor del jugador.
+    /// </summary>
+    public string Value;
 
-// TOdo use better name than Value for variable
+    // TODO: Considerar agregar más propiedades relacionadas con el jugador, como nivel o puntuación.
+}

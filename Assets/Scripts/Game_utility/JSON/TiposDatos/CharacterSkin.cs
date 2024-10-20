@@ -2,13 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Serializable class representing different parts of a character's skin.
+/// <summary>
+/// Clase serializable que representa las diferentes partes del skin de un personaje.
+/// </summary>
 [System.Serializable]
 public class CharacterSkin 
 {
-    public string Arma;    // Name of the weapon.
-    public string Barbas;  // Name of the beard.
-    public string Cuerpo;  // Name of the body type.
-    public string Escudos; // Name of the shield.
-    public string Pelos;   // Name of the hair type.
+    /// <summary>
+    /// Obtiene o establece el nombre del arma.
+    /// </summary>
+    public string Arma;
+
+    /// <summary>
+    /// Obtiene o establece el nombre de la barba.
+    /// </summary>
+    public string Barbas;
+
+    /// <summary>
+    /// Obtiene o establece el tipo de cuerpo.
+    /// </summary>
+    public string Cuerpo;
+    /// <summary>
+    /// Obtiene o establece el nombre del escudo.
+    /// </summary>
+    public string Escudos;
+
+    /// <summary>
+    /// Obtiene o establece el tipo de pelo.
+    /// </summary>
+    public string Pelos;
+    // TODO: Implementar validación para asegurarse de que todos los campos tengan valores válidos.
 }

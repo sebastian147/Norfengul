@@ -1,33 +1,33 @@
 {
-    "colors": [    
-    {"r": 0.522, "g": 0.51, "b": 0.384, "a": 1, "name": "Rubio ceniza"},
-    {"r": 0.494, "g": 0.478, "b": 0.333, "a": 1, "name": "Rubio claro"},
-    {"r": 0.541, "g": 0.525, "b": 0.325, "a": 1, "name": "Rubio estandar"},
-    {"r": 0.408, "g": 0.392, "b": 0.255, "a": 1, "name": "Rubio opaco"},
-    {"r": 0.275, "g": 0.267, "b": 0.169, "a": 1, "name": "Rubio Oscuro"},
+    "Colors": [    
+    {"R": 0.522, "G": 0.51, "B": 0.384, "A": 1, "Name": "Rubio ceniza"},
+    {"R": 0.494, "G": 0.478, "B": 0.333, "A": 1, "Name": "Rubio claro"},
+    {"R": 0.541, "G": 0.525, "B": 0.325, "A": 1, "Name": "Rubio estandar"},
+    {"R": 0.408, "G": 0.392, "B": 0.255, "A": 1, "Name": "Rubio opaco"},
+    {"R": 0.275, "G": 0.267, "B": 0.169, "A": 1, "Name": "Rubio Oscuro"},
 
-    {"r": 0.475, "g": 0.388, "b": 0.286, "a": 1, "name": "Anaranjado ceniza"},
-    {"r": 0.435, "g": 0.345, "b": 0.231, "a": 1, "name": "Anaranjado claro"},
-    {"r": 0.475, "g": 0.353, "b": 0.2, "a": 1, "name": "Anaranjado estandar"},
-    {"r": 0.388, "g": 0.278, "b": 0.141, "a": 1, "name": "Anaranjado opaco"},
-    {"r": 0.353, "g": 0.227, "b": 0.075, "a": 1, "name": "Anaranjado Oscuro"},
+    {"R": 0.475, "G": 0.388, "B": 0.286, "A": 1, "Name": "Anaranjado ceniza"},
+    {"R": 0.435, "G": 0.345, "B": 0.231, "A": 1, "Name": "Anaranjado claro"},
+    {"R": 0.475, "G": 0.353, "B": 0.2, "A": 1, "Name": "Anaranjado estandar"},
+    {"R": 0.388, "G": 0.278, "B": 0.141, "A": 1, "Name": "Anaranjado opaco"},
+    {"R": 0.353, "G": 0.227, "B": 0.075, "A": 1, "Name": "Anaranjado Oscuro"},
 
-    {"r": 0.447, "g": 0.282, "b": 0.243, "a": 1, "name": "Pelirojo ceniza"},
-    {"r": 0.408, "g": 0.239, "b": 0.2, "a": 1, "name": "Pelirojo claro"},
-    {"r": 0.333, "g": 0.165, "b": 0.129, "a": 1, "name": "Pelirojo estandar"},
-    {"r": 0.294, "g": 0.173, "b": 0.145, "a": 1, "name": "Pelirojo opaco"},
-    {"r": 0.239, "g": 0.133, "b": 0.11, "a": 1, "name": "Pelirojo Oscuro"},
+    {"R": 0.447, "G": 0.282, "B": 0.243, "A": 1, "Name": "Pelirojo ceniza"},
+    {"R": 0.408, "G": 0.239, "B": 0.2, "A": 1, "Name": "Pelirojo claro"},
+    {"R": 0.333, "G": 0.165, "B": 0.129, "A": 1, "Name": "Pelirojo estandar"},
+    {"R": 0.294, "G": 0.173, "B": 0.145, "A": 1, "Name": "Pelirojo opaco"},
+    {"R": 0.239, "G": 0.133, "B": 0.11, "A": 1, "Name": "Pelirojo Oscuro"},
 
-    {"r": 0.239, "g": 0.216, "b": 0.2, "a": 1, "name": "Castaño ceniza"},
-    {"r": 0.247, "g": 0.208, "b": 0.169, "a": 1, "name": "Castaño claro"},
-    {"r": 0.255, "g": 0.2, "b": 0.145, "a": 1, "name": "Castaño estandar"},
-    {"r": 0.173, "g": 0.141, "b": 0.11, "a": 1, "name": "Castaño opaco"},
-    {"r": 0.114, "g": 0.098, "b": 0.078, "a": 1, "name": "Castaño Oscuro"},
+    {"R": 0.239, "G": 0.216, "B": 0.2, "A": 1, "Name": "Castaño ceniza"},
+    {"R": 0.247, "G": 0.208, "B": 0.169, "A": 1, "Name": "Castaño claro"},
+    {"R": 0.255, "G": 0.2, "B": 0.145, "A": 1, "Name": "Castaño estandar"},
+    {"R": 0.173, "G": 0.141, "B": 0.11, "A": 1, "Name": "Castaño opaco"},
+    {"R": 0.114, "G": 0.098, "B": 0.078, "A": 1, "Name": "Castaño Oscuro"},
 
-    {"r": 0.569, "g": 0.569, "b": 0.569, "a": 1, "name": "Gris ceniza"},
-    {"r": 0.388, "g": 0.380, "b": 0.376, "a": 1, "name": "Gris claro"},
-    {"r": 0.247, "g": 0.247, "b": 0.247, "a": 1, "name": "Gris estandar"},
-    {"r": 0.18, "g": 0.18, "b": 0.18, "a": 1, "name": "Negro estandar"},
-    {"r": 0.086, "g": 0.086, "b": 0.086, "a": 1, "name": "Negro Oscuro"}
+    {"R": 0.569, "G": 0.569, "B": 0.569, "A": 1, "Name": "Gris ceniza"},
+    {"R": 0.388, "G": 0.380, "B": 0.376, "A": 1, "Name": "Gris claro"},
+    {"R": 0.247, "G": 0.247, "B": 0.247, "A": 1, "Name": "Gris estandar"},
+    {"R": 0.18, "G": 0.18, "B": 0.18, "A": 1, "Name": "Negro estandar"},
+    {"R": 0.086, "G": 0.086, "B": 0.086, "A": 1, "Name": "Negro Oscuro"}
     ]
 }
