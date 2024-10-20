@@ -1,80 +1,71 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 /// <summary>
 /// Controla el efecto de disolución en varios objetos de juego.
 /// </summary>
 public class Dissolve : MonoBehaviour
 {
-    [SerializeField] private GameObject[] t; // Objetos que tendrán el efecto de disolución
-    private Material[] materials; // Materiales de los objetos a disolver
-    private int i = 0; // Índice para recorrer los objetos
-
-    private bool isDissolving = false; // Bandera que indica si el efecto de disolución está activo
-    private double fade = 1f; // Controla el nivel de disolución (1 es visible, 0 es invisible)
-
-    private bool active = false; // Bandera para activar o desactivar el efecto
+    [SerializeField] private GameObject[] t; // Objetos a disolver
+    private Material[] materials; // Materiales de los objetos
+    private bool isDissolving = false; // Indica si el efecto está activo
+    private float fade = 1f; // Nivel de disolución (1 = visible, 0 = invisible)
+    private bool active = false; // Controla la activación/desactivación del efecto
 
     /// <summary>
-    /// Propiedad que controla si el efecto de disolución está activo o no.
+    /// Propiedad para activar/desactivar el efecto de disolución.
     /// </summary>
     public bool ActiveEffect
     {
         get => active;
         set
         {
+            if (active == value) return; // Evita cambios redundantes
             active = value;
-            if (active)
-            {
-                isDissolving = true; // Si se activa, inicia la disolución
-            }
+            if (active) isDissolving = true; // Inicia la disolución si se activa
         }
     }
 
     /// <summary>
-    /// Método que se ejecuta al inicio. Inicializa los materiales de los objetos.
+    /// Inicializa los materiales de los objetos al inicio.
     /// </summary>
-    void Start()
+    private void Start()
     {
         materials = new Material[t.Length]; // Inicializa el array de materiales
+
         for (int i = 0; i < t.Length; i++)
         {
-            try
+            // Utiliza TryGetComponent para obtener el material de manera segura
+            if (t[i].TryGetComponent(out SpriteRenderer renderer))
             {
-                // Intenta obtener el material del SpriteRenderer del objeto actual
-                materials[i] = t[i].GetComponent<SpriteRenderer>().material;
+                materials[i] = renderer.material;
             }
-            catch (Exception e)
+            else
             {
-                // Si falla, imprime un error
-                Debug.LogError($"Error en {i}: {t[i]} - {e}");
+                Debug.LogError($"El objeto {t[i].name} no tiene un SpriteRenderer.");
             }
         }
     }
 
     /// <summary>
-    /// Método que se llama en cada frame. Controla la disolución.
+    /// Controla el proceso de disolución en cada frame.
     /// </summary>
-    void Update()
+    private void Update()
     {
-        if (isDissolving) // Si está disolviendo
+        if (!isDissolving) return; // Si no está disolviendo, no hace nada
+
+        fade = Mathf.Max(fade - Time.deltaTime * 0.5f, 0f); // Reduce 'fade' y asegura que no sea negativo
+
+        // Aplica el valor de fade a cada material
+        for (int i = 0; i < materials.Length; i++)
         {
-            fade -= Time.deltaTime * 0.5; // Reduce el valor de fade gradualmente
-
-            if (fade <= 0f)
+            if (materials[i] != null)
             {
-                fade = 0f; // Asegura que fade no sea negativo
-                isDissolving = false; // Detiene la disolución cuando fade llega a 0
+                materials[i].SetFloat("_Fade", fade);
             }
+        }//TODO BLOKING STRUCTURE
 
-            // Aplica el valor de fade a cada material
-            for (int i = 0; i < t.Length; i++)
-            {
-                materials[i].SetFloat("_Fade", (float)fade);
-            }
-        }
+        if (fade == 0f) isDissolving = false; // Finaliza la disolución cuando fade llega a 0
     }
 
     /// <summary>
@@ -82,6 +73,6 @@ public class Dissolve : MonoBehaviour
     /// </summary>
     public void TriggerDissolve()
     {
-        ActiveEffect = true; // Activa el efecto
+        ActiveEffect = true; // Activa la disolución
     }
 }
