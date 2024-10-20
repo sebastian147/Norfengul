@@ -4068,8 +4068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf6c9b4b786b4a4e85a90d2afbd2b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: error
-  open: 0
+  MenuName: error
 --- !u!224 &597862856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4280,8 +4279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf6c9b4b786b4a4e85a90d2afbd2b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: title
-  open: 0
+  MenuName: title
 --- !u!1 &630719620
 GameObject:
   m_ObjectHideFlags: 0
@@ -9251,8 +9249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf6c9b4b786b4a4e85a90d2afbd2b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: loading
-  open: 1
+  MenuName: loading
 --- !u!1 &1187669429
 GameObject:
   m_ObjectHideFlags: 0
@@ -9807,8 +9804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf6c9b4b786b4a4e85a90d2afbd2b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: create room
-  open: 0
+  MenuName: create room
 --- !u!224 &1287016913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14970,8 +14966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf6c9b4b786b4a4e85a90d2afbd2b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: room
-  open: 0
+  MenuName: room
 --- !u!224 &1907115332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16680,5 +16675,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf6c9b4b786b4a4e85a90d2afbd2b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: find room
-  open: 0
+  MenuName: find room
