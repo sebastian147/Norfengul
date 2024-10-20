@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timers : MonoBehaviour
+public class Timers
 {
     public bool timePassFixed(ref float time, float timeMax, bool start)
     {

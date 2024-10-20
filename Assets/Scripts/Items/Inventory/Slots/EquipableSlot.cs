@@ -22,7 +22,7 @@ public class EquipableSlot<T> : InventorySlot where T : Items
                 }
             }
     }
-    private void Update ()
+    public override void Update ()
     {
         base.Update();
         iToPass  = itemIn as T; 

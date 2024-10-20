@@ -25,7 +25,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public static int ListCicleActual = 0;
     private int ListCicleMax = 0;
 
-    [SerializeField] string playerName = "CACA";
     [SerializeField] TMP_InputField playerNameInputField; 
 
     

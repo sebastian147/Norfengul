@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputPlayer : MonoBehaviour
+public class InputPlayer
 {
+    #pragma warning disable 0168 // variable declared but not used.
+    #pragma warning disable 0219 // variable assigned but not used.
+    #pragma warning disable 0414 // private field assigned but not used.
+    //TODO CHECK NOT USED VARIABLES
     float DoubleTapTimeL = 0f;
     float DoubleTapTimeMaxL = 2f;
     int DoubleTapCounterL = 0;

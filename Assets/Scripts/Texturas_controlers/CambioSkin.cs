@@ -20,7 +20,8 @@ public class CambioSkin : MonoBehaviour
     private string archivoCharacter = "Assets/Scripts/Game_utility/JSON/characterSkin.json"; // Archivo de configuración de la skin
     private string archivoPlayer = "Assets/Scripts/Game_utility/JSON/playerData.json"; // Archivo de configuración del jugador
 
-    private string name; // Nombre del jugador
+    private string playerName; // Nombre del jugador
+    public string Name { get => playerName; set => playerName = value; } // Propiedad que almacena el nombre del jugador
 
     // Propiedades que almacenan las selecciones actuales de las skins
     public string ArmaSelect { get; set; } = "Espada_de_Hierro";
@@ -37,7 +38,7 @@ public class CambioSkin : MonoBehaviour
     {
         if (textMeshPro != null) // Verifica que el componente TextMeshPro existe
         {
-            name = textMeshPro.text; // Extrae el texto y lo asigna a la variable name
+            Name = textMeshPro.text; // Extrae el texto y lo asigna a la variable name
         }
     }
 
@@ -59,7 +60,7 @@ public class CambioSkin : MonoBehaviour
         try
         {
             // Guarda el nombre del jugador en el archivo JSON de jugador
-            EscribirDatoJSON<PlayerData, string>(archivoPlayer, datos => datos.Name, (datos, valor) => datos.Name = valor, name);
+            EscribirDatoJSON<PlayerData, string>(archivoPlayer, datos => datos.Name, (datos, valor) => datos.Name = valor, Name);
 
             // Guarda la configuración de la skin en el archivo JSON de personaje
             GuardarJSON<CharacterSkin>(archivoCharacter, skin);

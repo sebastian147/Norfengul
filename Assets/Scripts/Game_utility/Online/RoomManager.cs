@@ -9,6 +9,10 @@ using static JsonFunctions;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
+        #pragma warning disable 0168 // variable declared but not used.
+        #pragma warning disable 0219 // variable assigned but not used.
+        #pragma warning disable 0414 // private field assigned but not used.
+        //TODO CHECK NOT USED VARIABLES
         public static RoomManager Instance;    
         public GameObject playerManager;
         string folderPath = "Assets/Resources/Skins_Huscarle";

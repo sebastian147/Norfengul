@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Photon.Pun;
-
+#pragma warning disable 0168 // variable declared but not used.
+#pragma warning disable 0219 // variable assigned but not used.
+#pragma warning disable 0414 // private field assigned but not used.
+//TODO CHECK NOT USED VARIABLES
 public class Mob : MonoBehaviourPunCallbacks
 {
         //Declaration of variables that are from player.
@@ -226,7 +229,7 @@ public class Mob : MonoBehaviourPunCallbacks
                                 dir = -1;
                         }
                         knockBackTake=knockBack;
-                        this.dir = dir;
+                        //this.dir = dir;
                         //myRigidbody.AddForce(new Vector2(dir,1) * myRigidbody.mass * knockBack, ForceMode2D.Impulse);
                         if(Pv.IsMine)
                                 healthBar.SetHealth(currentHealth);

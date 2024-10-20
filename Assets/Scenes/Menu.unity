@@ -1258,7 +1258,6 @@ GameObject:
   - component: {fileID: 199837242}
   - component: {fileID: 199837241}
   - component: {fileID: 199837240}
-  - component: {fileID: 199837243}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -1331,9 +1330,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 199837243}
+      - m_Target: {fileID: 11500000, guid: f44a84125b6aa0343bfef9cb02412ba0, type: 3}
         m_TargetAssemblyTypeName: Quitbutton, Assembly-CSharp
-        m_MethodName: QuitApplication
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1381,18 +1380,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199837238}
   m_CullTransparentMesh: 1
---- !u!114 &199837243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199837238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44a84125b6aa0343bfef9cb02412ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &209583293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,7 +1597,6 @@ MonoBehaviour:
     type: 3}
   startGameButton: {fileID: 893045479}
   scenesSelectButton: {fileID: 714929294}
-  playerName: CACA
   playerNameInputField: {fileID: 1660222698}
 --- !u!1 &241993513
 GameObject:
@@ -8473,11 +8459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedf762b1ce8565408a9f24b95d01df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArmaSelect: Espada_de_Hierro
-  BarbaSelect: Huscarle_Barba1
-  CuerpoSelect: Huscarle_Nude
-  EscudoSelect: Huscarle_EscudoMadera
-  PeloSelect: Huscarle_Pelo1
 --- !u!114 &1053900425
 MonoBehaviour:
   m_ObjectHideFlags: 0
