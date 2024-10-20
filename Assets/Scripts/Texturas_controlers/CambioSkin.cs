@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using static JsonFunctions;
 using TMPro;
+using System;
 
 /// <summary>
 /// Clase encargada de cambiar y guardar las skins del personaje.
@@ -55,11 +56,19 @@ public class CambioSkin : MonoBehaviour
             Pelos = pathPelos + PeloSelect
         };
 
-        // Guarda el nombre del jugador en el archivo JSON de jugador
-        EscribirDatoJSON<PlayerData, string>(archivoPlayer, datos => datos.Name, (datos, valor) => datos.Name = valor, name);
+        try
+        {
+            // Guarda el nombre del jugador en el archivo JSON de jugador
+            EscribirDatoJSON<PlayerData, string>(archivoPlayer, datos => datos.Name, (datos, valor) => datos.Name = valor, name);
 
-        // Guarda la configuración de la skin en el archivo JSON de personaje
-        GuardarJSON<CharacterSkin>(archivoCharacter, skin);
+            // Guarda la configuración de la skin en el archivo JSON de personaje
+            GuardarJSON<CharacterSkin>(archivoCharacter, skin);
+        }
+        catch (Exception e)
+        {
+            // En caso de error, muestra el mensaje de la excepción en el log de depuración
+            Debug.LogError($"Error al guardar los datos: {e.Message}");
+        }
     }
     //TODO add exception when saving skin
 }
