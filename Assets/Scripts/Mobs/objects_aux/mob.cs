@@ -170,7 +170,7 @@ public class Mob : MonoBehaviourPunCallbacks
                 if(!Pv.IsMine)
                         return;
                 myStateMachine.myDictionary[actualState].FixedUpdateState(this);
-                canDash = t.timePassFixed(ref dashingCoolDown, dashingCoolDownMax, !canDash);
+                canDash = t.TimePassFixed(ref dashingCoolDown, dashingCoolDownMax, !canDash);
         }
         public void OnDrawGizmosSelected()
         {
