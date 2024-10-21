@@ -98,5 +98,6 @@ public class DamageState : MobBaseState
         diry = myMob.m_Grounded ? 1 : 0;
         Vector3 targetVelocity = new Vector2(myMob.dir * myMob.knockBackTake, diry * myMob.knockBackTake * 2);
         myMob.myRigidbody.velocity = Vector3.SmoothDamp(myMob.myRigidbody.velocity, targetVelocity, ref myMob.m_Velocity, myMob.m_MovementSmoothing);
+        //si se aplica mucho knockback hacer fuerza y no velocidad
     }
 }
