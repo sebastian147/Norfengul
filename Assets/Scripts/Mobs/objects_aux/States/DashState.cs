@@ -2,82 +2,99 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Estado DashState para manejar el movimiento de dash del mob.
+/// Aplica un impulso de velocidad en la dirección del dash y modifica la gravedad temporalmente.
+/// </summary>
 public class DashState : MobBaseState
 {
-        float time;
-        float originalGravity;
-        public override void animate(Mob myMob)
-        {
-                myMob.myAnimator.SetBool("isRoll", true);
-        }
-        public override void EndState(Mob myMob)
-        {
-                myMob.myRigidbody.gravityScale = originalGravity;
-                myMob.tr.emitting = false;
-                myMob.canDash = false;
-                myMob.myAnimator.SetBool("isRoll", false);
-                myMob.changeLayer("Player");
-        }
-        public override void StarState(Mob myMob)
-        {
-                int direction = 1;
-                originalGravity = myMob.myRigidbody.gravityScale;
-                //myMob.myRigidbody.gravityScale = 0f;
-                myMob.changeLayer("Inmunity");
+    float time;
+    float originalGravity;
+    private string DASH_ANIMATION = "isRoll";
 
-                if(myMob.dashRight)
-                {
-                        direction = 1;
-                }
-                else if(myMob.dashLeft)
-                {
-                        direction = -1;
-                }
-                else
-                {
-                        Debug.Log("error");
-                }
-                myMob.myRigidbody.velocity = new Vector2(direction * myMob.dashingPower, 0f);
-                //myMob.tr.emitting = true;
-                time = myMob.dashingTime;
-                Fliping(myMob);
-                animate(myMob);
-        }
-        public override void CheckChangeState(Mob myMob)
-        {
-                if(time <= 0 && myMob.m_Grounded)
-                {
-                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk,myMob);
-                        return;
-                }
-                if(time <= 0 && !myMob.m_Grounded)
-                {
-                        myMob.jumpsends = myMob.amountOfJumps;
-                        myMob.jumpdones = myMob.amountOfJumps;
-                        myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump,myMob);
-                        return;
-                }
-        }
-        public override void UpdateState(Mob myMob)
-        {
-                if( !(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
-                        CheckChangeState(myMob);
+    /// <summary>
+    /// Activa la animación de rodar (dash).
+    /// </summary>
+    public override void animate(Mob myMob)
+    {
+        myMob.myAnimator.SetBool(DASH_ANIMATION, true);
+    }
 
-        }
-        public override void FixedUpdateState(Mob myMob)
+    /// <summary>
+    /// Finaliza el estado de dash, restaurando la gravedad y desactivando la animación y el efecto de dash.
+    /// </summary>
+    public override void EndState(Mob myMob)
+    {
+        myMob.myRigidbody.gravityScale = originalGravity;
+        myMob.tr.emitting = false;
+        myMob.canDash = false;
+        myMob.myAnimator.SetBool(DASH_ANIMATION, false);
+        myMob.changeLayer("Player");
+    }
+
+    /// <summary>
+    /// Inicia el estado de dash, aplicando el impulso de velocidad en la dirección correcta y activando la animación.
+    /// </summary>
+    public override void StartState(Mob myMob)
+    {
+        int direction = myMob.dashRight ? 1 : (myMob.dashLeft ? -1 : throw new System.Exception("error"));
+
+        originalGravity = myMob.myRigidbody.gravityScale;
+        myMob.changeLayer("Inmunity");
+
+        myMob.myRigidbody.velocity = new Vector2(direction * myMob.dashingPower, 0f);
+        time = myMob.dashingTime;
+        Fliping(myMob);
+        animate(myMob);
+    }
+
+    /// <summary>
+    /// Comprueba las condiciones para cambiar de estado después de finalizar el dash.
+    /// </summary>
+    public override void CheckChangeState(Mob myMob)
+    {
+        if (time <= 0)
         {
-                time -= Time.fixedDeltaTime;
+            if (myMob.m_Grounded)
+            {
+                myMob.actualState = myMob.myStateMachine.changeState(myStates.Walk, myMob);
+            }
+            else
+            {
+                myMob.jumpsends = myMob.amountOfJumps;
+                myMob.jumpdones = myMob.amountOfJumps;
+                myMob.actualState = myMob.myStateMachine.changeState(myStates.Jump, myMob);
+            }
         }
-        public override void Fliping(Mob myMob)
+    }
+
+    /// <summary>
+    /// Actualiza el estado verificando si la animación ha terminado para cambiar de estado.
+    /// </summary>
+    public override void UpdateState(Mob myMob)
+    {
+        if (!(myMob.myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
         {
-                if(myMob.m_FacingRight && myMob.dashLeft)
-                {
-                        Flip(myMob);
-                }
-                else if(!myMob.m_FacingRight && myMob.dashRight)
-                {
-                        Flip(myMob);
-                }
+            CheckChangeState(myMob);
         }
-        
+    }
+
+    /// <summary>
+    /// Resta el tiempo de dash a medida que pasa el tiempo en cada FixedUpdate.
+    /// </summary>
+    public override void FixedUpdateState(Mob myMob)
+    {
+        time -= Time.fixedDeltaTime;
+    }
+
+    /// <summary>
+    /// Invierte la dirección del personaje si está mirando en la dirección opuesta al dash.
+    /// </summary>
+    public override void Fliping(Mob myMob)
+    {
+        if ((myMob.m_FacingRight && myMob.dashLeft) || (!myMob.m_FacingRight && myMob.dashRight))
+        {
+            Flip(myMob);
+        }
+    }
 }

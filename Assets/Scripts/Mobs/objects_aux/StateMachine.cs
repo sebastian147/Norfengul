@@ -8,8 +8,6 @@ public enum myStates{
     Jump,
     Attack,
     WallGrabing,
-    TakeDamage,
-    //Crouch,
     Victory,
     Dash,
     Damage,
@@ -23,7 +21,6 @@ public class StateMachine
     Lista de estados
     0   IDLE
     1   WALK
-    2   CROUCH 
     "Idle"
 
     */
@@ -37,7 +34,6 @@ public class StateMachine
         myDictionary.Add((int) myStates.Jump, new OnJumpState());
         myDictionary.Add((int) myStates.Attack, new AttackState());
         myDictionary.Add((int) myStates.WallGrabing, new WallJumpState());
-        myDictionary.Add((int) myStates.TakeDamage, new TakeDamageState());
         myDictionary.Add((int) myStates.Victory, new VictoryState());
         myDictionary.Add((int) myStates.Dash, new DashState());
         myDictionary.Add((int) myStates.Damage, new DamageState());
@@ -51,7 +47,7 @@ public class StateMachine
     {
 
         myDictionary[myMob.actualState].EndState(myMob);
-        myDictionary[(int) index].StarState(myMob);
+        myDictionary[(int) index].StartState(myMob);
         //Returns the state needed by the mob
         //return (MobBaseState)myDictionary[index];
         Debug.Log(Enum.GetName(typeof(myStates), index)+myMob.GetInstanceID());

@@ -20,8 +20,11 @@ public class TrackedMissions : MonoBehaviour
 
     void Update()
     {
-        TrackedUI();
-        CompassMission();
+        if(TrackedHUD != null && ObjetivesBox != null)
+        {
+            TrackedUI();
+            CompassMission();
+        }
     }
 
     private void TrackedUI()
